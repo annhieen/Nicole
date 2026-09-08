@@ -1,421 +1,336 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<title>Tenant Portal Redesign — Case Study</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --canvas:#F3F3F1; --mist:#E8EBEB; --frost:#F7F7F4;
-    --ink:#14191C; --slate:#687075; --muted:#92999C;
-    --signal:#D99A24; --signal-deep:#B97912; --signal-pale:#F3E4C2;
-    --hairline:rgba(20,25,28,.10);
-  }
-  *{box-sizing:border-box; margin:0; padding:0;}
-  body{background:var(--canvas); color:var(--ink); font-family:'Inter Tight', sans-serif; line-height:1.6;}
-  .mono{font-family:'IBM Plex Mono', monospace;}
-  a{color:inherit;}
-
-  .wrap{max-width:800px; margin:0 auto; padding:64px 32px 140px;}
-  .back{font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--slate); text-decoration:none;}
-  .eyebrow{font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:0.06em; color:var(--slate); margin-top:32px; text-transform:uppercase;}
-  .h1{font-size:clamp(40px,6vw,58px); font-weight:600; letter-spacing:-0.02em; margin-top:12px;}
-  .sub{font-size:18px; color:var(--slate); margin-top:14px; max-width:56ch;}
-  .meta{margin-top:32px; display:grid; grid-template-columns:repeat(5,1fr); gap:16px; padding:20px 0; border-top:1px solid var(--hairline); border-bottom:1px solid var(--hairline);}
-  .meta-label{font-family:'IBM Plex Mono', monospace; font-size:10px; letter-spacing:0.05em; text-transform:uppercase; color:var(--muted);}
-  .meta-val{font-size:13px; margin-top:5px; font-weight:500;}
-
-  .h2{font-size:26px; font-weight:600; letter-spacing:-0.01em; margin-top:64px;}
-  .p{font-size:16px; color:var(--slate); margin-top:14px; max-width:64ch;}
-  .p b{color:var(--ink); font-weight:600;}
-
-  .quote-block{margin:32px 0; padding:20px 24px; background:var(--frost); border:1px solid var(--hairline); border-radius:12px; font-size:16px; font-style:italic;}
-  .quote-block .attr{font-family:'IBM Plex Mono', monospace; font-style:normal; font-size:10px; color:var(--slate); margin-top:8px; text-transform:uppercase; letter-spacing:0.04em;}
-
-  .principle-block{margin-top:14px; padding:18px 20px; border-left:3px solid var(--signal-pale); max-width:66ch; border-radius:0 10px 10px 0; transition:background .25s;}
-  .principle-block:hover{background:rgba(255,255,255,.5);}
-  .pb-header{display:flex; align-items:center; justify-content:space-between; cursor:pointer;}
-  .pb-num{font-size:17px; font-weight:600; letter-spacing:-0.005em; color:var(--ink);}
-  .pb-idx{font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--signal-deep); letter-spacing:0.03em; margin-right:8px;}
-  .pb-toggle{font-family:'IBM Plex Mono', monospace; font-size:10px; letter-spacing:0.04em; color:var(--muted); border:1px solid var(--hairline); padding:4px 10px; border-radius:20px; transition:all .2s; flex-shrink:0;}
-  .principle-block:hover .pb-toggle{border-color:var(--signal-deep); color:var(--signal-deep);}
-  .principle-block.open .pb-toggle{background:var(--ink); color:#fff; border-color:var(--ink);}
-  .pb-desc{font-size:14.5px; color:var(--slate); margin-top:8px; line-height:1.55;}
-  .pb-expand{max-height:0; overflow:hidden; opacity:0; transition:max-height .5s ease, opacity .3s ease, margin-top .3s ease;}
-  .principle-block.open .pb-expand{max-height:600px; opacity:1; margin-top:16px;}
-
-  .pullquote{margin:44px 0; padding:0 0 0 18px; border-left:3px solid var(--signal); font-size:22px; font-weight:600; letter-spacing:-0.01em; line-height:1.32; max-width:56ch;}
-
-  .flow-strip{margin-top:14px; display:flex; align-items:center; gap:8px; flex-wrap:wrap;}
-  .flow-step{font-family:'IBM Plex Mono', monospace; font-size:11px; padding:7px 12px; border-radius:20px; background:var(--frost); border:1px solid var(--hairline); font-weight:600;}
-  .flow-arrow{color:var(--muted); font-size:12px;}
-
-  .chip-row{margin-top:14px; display:flex; gap:6px; flex-wrap:wrap;}
-  .chip{font-family:'IBM Plex Mono', monospace; font-size:9.5px; padding:5px 9px; border-radius:14px; background:var(--mist); color:var(--slate);}
-
-  .compare-cols{margin-top:14px; display:grid; grid-template-columns:1fr 1fr; gap:14px;}
-  .compare-col-label{font-family:'IBM Plex Mono', monospace; font-size:10px; letter-spacing:0.04em; text-transform:uppercase; color:var(--signal-deep); font-weight:700;}
-  .compare-col-items{margin-top:8px; font-size:12.5px; color:var(--slate); line-height:1.8;}
-
-  .outcome-panel{margin-top:24px; padding:28px; border-radius:16px; background:var(--ink); color:#fff; display:grid; grid-template-columns:1fr 1fr; gap:20px;}
-  .outcome-item{padding:16px; background:rgba(255,255,255,.06); border-radius:10px;}
-  .outcome-num{font-size:32px; font-weight:700; color:var(--signal); letter-spacing:-0.02em;}
-  .outcome-label{font-size:12.5px; color:#C9C6BC; margin-top:6px;}
-  .outcome-src{font-family:'IBM Plex Mono', monospace; font-size:9.5px; color:#8A8880; margin-top:6px; text-transform:uppercase; letter-spacing:0.03em;}
-  .outcome-scale{grid-column:1/-1; padding-top:16px; border-top:1px solid rgba(255,255,255,.12); font-size:13px; color:#C9C6BC;}
-
-  .tags-row{margin-top:22px; display:flex; gap:8px; flex-wrap:wrap;}
-  .tag{font-family:'IBM Plex Mono', monospace; font-size:10px; letter-spacing:0.04em; text-transform:uppercase; padding:5px 10px; border:1px solid var(--hairline); border-radius:6px; color:var(--slate);}
-  .footer-nav{margin-top:80px; padding-top:24px; border-top:1px solid var(--hairline); font-size:13px; color:var(--slate);}
-
-  /* Portal frame (recreated PortalX chrome) */
-  .portal-frame{position:relative; margin-top:16px; border-radius:16px; overflow:hidden; border:1px solid var(--hairline); box-shadow:0 14px 36px rgba(25,35,40,.08); transition:background .4s;}
-  .portal-panel{position:absolute; inset:0; background:var(--frost); transform:translateX(100%); transition:transform .3s ease; overflow-y:auto; z-index:5;}
-  .portal-panel.open{transform:translateX(0);}
-  .panel-close{position:absolute; top:14px; right:14px; width:28px; height:28px; border-radius:50%; background:rgba(0,0,0,.28); color:#fff; border:none; font-size:13px; cursor:pointer; display:flex; align-items:center; justify-content:center; z-index:2;}
-  .portal-topbar{display:flex; align-items:center; justify-content:space-between; padding:14px 20px; background:rgba(255,255,255,.12); backdrop-filter:blur(4px);}
-  .portal-brand{font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.05em; color:#fff;}
-  .portal-badge{font-family:'IBM Plex Mono', monospace; font-size:9.5px; letter-spacing:0.04em; color:var(--signal-pale); background:rgba(0,0,0,.25); padding:4px 10px; border-radius:20px;}
-  .portal-body{padding:22px;}
-  .portal-greeting{font-size:13px; font-weight:600; color:#fff;}
-  .portal-hub-title{font-size:20px; font-weight:700; color:#fff; margin-top:12px;}
-  .portal-hub-desc{font-size:12.5px; color:rgba(255,255,255,.75); margin-top:8px; max-width:48ch;}
-
-  .switcher{display:flex; gap:8px; margin-top:6px; flex-wrap:wrap;}
-  .switch-btn{font-family:'Inter Tight',sans-serif; font-size:12px; font-weight:600; padding:8px 14px; border-radius:20px; border:1px solid var(--hairline); background:#fff; color:var(--slate); cursor:pointer;}
-  .switch-btn.on{color:#fff; border-color:transparent;}
-
-  .portal-cards{margin-top:18px; display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px;}
-  .portal-card{padding:14px; background:#fff; border:1px solid var(--hairline); border-radius:10px; cursor:pointer; transition:transform .15s;}
-  .portal-card:hover{transform:translateY(-2px);}
-  .portal-card-icon{font-size:18px;}
-  .portal-card-title{font-size:13px; font-weight:700; color:var(--ink); margin-top:6px;}
-  .portal-card-desc{font-size:10.5px; color:var(--slate); margin-top:4px; line-height:1.4;}
-  .portal-card-btn{margin-top:8px; display:inline-block; font-family:'IBM Plex Mono', monospace; font-size:9px; font-weight:700; padding:4px 9px; border-radius:14px; color:#fff;}
-
-  .rk-toast2{
-    position:fixed; bottom:14px; left:50%; transform:translateX(-50%) translateY(20px); max-width:90%;
-    background:var(--ink); color:#fff; font-size:12px; padding:10px 16px; border-radius:8px; opacity:0;
-    transition:opacity .25s, transform .25s; pointer-events:none; z-index:50; text-align:center; box-shadow:0 8px 24px rgba(0,0,0,.2);
-  }
-  .rk-toast2.show{opacity:1; transform:translateX(-50%) translateY(0);}
-
-  /* Sub-page content */
-  .subpage{background:var(--frost); padding:0;}
-  .subpage-header{padding:20px 22px; color:#fff;}
-  .subpage-tag{font-family:'IBM Plex Mono', monospace; font-size:9.5px; letter-spacing:0.05em; opacity:.75;}
-  .subpage-title{font-size:19px; font-weight:700; margin-top:6px;}
-  .subpage-sub{font-size:12px; opacity:.8; margin-top:6px;}
-  .subpage-body{padding:20px 22px;}
-  .sp-back{font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--slate); cursor:pointer; margin-bottom:12px; display:inline-block;}
-  .sp-section-label{display:flex; align-items:center; gap:10px; margin-top:20px;}
-  .sp-section-label:first-child{margin-top:0;}
-  .sp-line{flex:1; height:1px; background:var(--hairline);}
-  .sp-section-title{font-family:'IBM Plex Mono', monospace; font-size:11px; font-weight:700; color:var(--ink);}
-  .sp-card{margin-top:10px; padding:14px; background:#fff; border:1px solid var(--hairline); border-radius:10px;}
-  .sp-card-title{font-size:13px; font-weight:700; display:flex; align-items:center; gap:8px;}
-  .sp-card-sub{font-size:11px; color:var(--slate); margin-top:4px;}
-  .sp-field{display:flex; justify-content:space-between; padding:6px 0; border-top:1px dashed var(--hairline); font-size:11.5px;}
-  .sp-field:first-of-type{border-top:none;}
-  .sp-note{margin-top:10px; padding:10px 12px; background:var(--signal-pale); border-radius:8px; font-size:11px; color:var(--signal-deep);}
-  .sp-note li{margin-left:14px; margin-top:4px;}
-  .sp-tip{margin-top:8px; padding:8px 10px; background:#E4EEE7; border-radius:6px; font-size:10.5px; color:#2F7D5A;}
-  .sp-contact-row{display:flex; justify-content:space-between; padding:8px 0; border-top:1px dashed var(--hairline); font-size:11.5px;}
-  .sp-contact-row:first-of-type{border-top:none;}
-</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
 </head>
 <body>
-<div class="wrap">
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/nicole-phan-portfolio-design-system-4bdb97ed-0a4d-49a2-a990-c73a92387521/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/nicole-phan-portfolio-design-system-4bdb97ed-0a4d-49a2-a990-c73a92387521/tokens/colors.css">
+<link rel="stylesheet" href="_ds/nicole-phan-portfolio-design-system-4bdb97ed-0a4d-49a2-a990-c73a92387521/tokens/typography.css">
+<link rel="stylesheet" href="_ds/nicole-phan-portfolio-design-system-4bdb97ed-0a4d-49a2-a990-c73a92387521/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/nicole-phan-portfolio-design-system-4bdb97ed-0a4d-49a2-a990-c73a92387521/tokens/radius-shadow.css">
+<link rel="stylesheet" href="_ds/nicole-phan-portfolio-design-system-4bdb97ed-0a4d-49a2-a990-c73a92387521/tokens/motion.css">
+<link rel="stylesheet" href="_ds/nicole-phan-portfolio-design-system-4bdb97ed-0a4d-49a2-a990-c73a92387521/tokens/base.css">
+<link rel="stylesheet" href="_ds/nicole-phan-portfolio-design-system-4bdb97ed-0a4d-49a2-a990-c73a92387521/styles.css">
+<script src="_ds/nicole-phan-portfolio-design-system-4bdb97ed-0a4d-49a2-a990-c73a92387521/_ds_bundle.js"></script>
+<style>
+  html, body { margin: 0; padding: 0; background: var(--page-background); background-attachment: fixed; }
+  * { box-sizing: border-box; }
+  a { color: var(--ink); text-decoration: none; }
+  a:hover { color: var(--signal-deep); }
+</style>
+</helmet>
 
-  <a class="back" href="#">&larr; All projects</a>
-  <div class="eyebrow">Product Design · Content Systems · Implementation</div>
-  <div class="h1">Tenant Portal Redesign</div>
-  <p class="sub">Reworking StarRez PortalX so prospects and tenants could find the information they needed more easily — without changing the platform itself.</p>
+<div style="font-family: 'Inter Tight', system-ui, sans-serif; color: var(--ink); min-height: 100vh">
+  <main style="max-width: 860px; margin: 0 auto; padding: clamp(32px, 5vw, 56px) clamp(20px, 4vw, 40px) 120px">
 
-  <div class="meta">
-    <div><div class="meta-label">Role</div><div class="meta-val">Product &amp; Systems Design · Implementation</div></div>
-    <div><div class="meta-label">Team</div><div class="meta-val">Solo — proposed, designed &amp; implemented</div></div>
-    <div><div class="meta-label">Platform</div><div class="meta-val">StarRez PortalX</div></div>
-    <div><div class="meta-label">Status</div><div class="meta-val">Shipped · Late 2025</div></div>
-    <div><div class="meta-label">Scale</div><div class="meta-val">7 buildings + 40+ rooming houses</div></div>
-  </div>
+    <a href="Homepage.dc.html" style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: .05em; color: var(--slate)" style-hover="color: var(--signal-deep)">← All projects</a>
 
-  <p class="p">PortalX was used from application through tenancy, but most of the experience relied on long text templates. Prospects had little visual guidance during application, while tenants still contacted Building Managers for basic information that should have been easier to find.</p>
+    <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--slate); margin-top: 32px">Product design · Content systems · Implementation</div>
+    <h1 style="font-size: clamp(38px, 5.6vw, 56px); font-weight: 600; letter-spacing: -.035em; line-height: 1.02; margin: 12px 0 0">Tenant Portal Redesign</h1>
+    <p style="font-size: clamp(16px, 1.4vw, 18px); line-height: 1.5; color: var(--slate); max-width: 56ch; margin: 14px 0 0; text-wrap: pretty">Reworking StarRez PortalX so prospects and tenants could find the information they needed more easily — without changing the platform itself.</p>
 
-  <div class="h2">How I approached it</div>
-
-  <div class="principle-block" data-pb="1">
-    <div class="pb-header">
-      <div class="pb-num"><span class="pb-idx">01</span> Organise the portal around the journey</div>
-      <div class="pb-toggle">Inspect +</div>
-    </div>
-    <div class="pb-desc">I mapped what prospects and tenants needed from application through move-in, everyday living and renewal, then reorganised the information around those stages.</div>
-    <div class="pb-expand">
-      <div class="flow-strip">
-        <span class="flow-step">Apply</span><span class="flow-arrow">→</span>
-        <span class="flow-step">Prepare to move in</span><span class="flow-arrow">→</span>
-        <span class="flow-step">Move in</span><span class="flow-arrow">→</span>
-        <span class="flow-step">Live</span><span class="flow-arrow">→</span>
-        <span class="flow-step">Get help</span><span class="flow-arrow">→</span>
-        <span class="flow-step">Renew / Vacate</span>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 16px; margin-top: 32px; padding: 20px 0; border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline)">
+      <div>
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted)">Role</div>
+        <div style="font-size: 13px; font-weight: 500; margin-top: 5px">Product &amp; systems design · Implementation</div>
+      </div>
+      <div>
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted)">Team</div>
+        <div style="font-size: 13px; font-weight: 500; margin-top: 5px">Solo — proposed, designed &amp; implemented</div>
+      </div>
+      <div>
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted)">Platform</div>
+        <div style="font-size: 13px; font-weight: 500; margin-top: 5px">StarRez PortalX</div>
+      </div>
+      <div>
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted)">Status</div>
+        <div style="font-size: 13px; font-weight: 500; margin-top: 5px">Shipped · Late 2025</div>
+      </div>
+      <div>
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted)">Scale</div>
+        <div style="font-size: 13px; font-weight: 500; margin-top: 5px">7 buildings + 40+ rooming houses</div>
       </div>
     </div>
-  </div>
 
-  <div class="principle-block" data-pb="2">
-    <div class="pb-header">
-      <div class="pb-num"><span class="pb-idx">02</span> Add the missing pre-arrival stage</div>
-      <div class="pb-toggle">Inspect +</div>
-    </div>
-    <div class="pb-desc">The existing journey jumped from completed paperwork to tenancy. I added a pre-arrival section for check-in, building information and practical setup, especially for international students arriving in Melbourne for the first time.</div>
-    <div class="pb-expand">
-      <div class="chip-row">
-        <span class="chip">Check-in</span>
-        <span class="chip">Transport</span>
-        <span class="chip">Banking</span>
-        <span class="chip">SIM</span>
-        <span class="chip">Support</span>
-      </div>
-    </div>
-  </div>
+    <p style="font-size: 16px; line-height: 1.6; color: var(--slate); max-width: 64ch; margin: 24px 0 0">PortalX was used from application through tenancy, but most of the experience relied on long text templates. Prospects had little visual guidance during application, while tenants still contacted Building Managers for basic information that should have been easier to find.</p>
 
-  <div class="principle-block" data-pb="3">
-    <div class="pb-header">
-      <div class="pb-num"><span class="pb-idx">03</span> Build a clearer experience within PortalX</div>
-      <div class="pb-toggle">Inspect +</div>
-    </div>
-    <div class="pb-desc">PortalX mainly gave me text templates and images. I used Figma to design fixed visual panels, kept changing information in PortalX templates, and linked the panels to the relevant pages.</div>
-    <div class="pb-expand">
-      <div class="flow-strip">
-        <span class="flow-step">Fixed visual panels</span><span class="flow-arrow">+</span>
-        <span class="flow-step">Dynamic PortalX content</span><span class="flow-arrow">→</span>
-        <span class="flow-step" style="border-color:var(--signal); color:var(--signal-deep);">Live tenant experience</span>
-      </div>
-      <p class="p" style="font-size:12.5px; margin-top:10px; font-style:italic;">Figma was used for visual design. The final experience was built directly in PortalX.</p>
-    </div>
-  </div>
+    <h2 style="font-size: clamp(22px, 2.2vw, 26px); font-weight: 600; letter-spacing: -.015em; margin: clamp(48px, 6vw, 64px) 0 0">How I approached it</h2>
+    <p style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin: 10px 0 0">Select a step to inspect the reasoning underneath</p>
 
-  <div class="principle-block" data-pb="4">
-    <div class="pb-header">
-      <div class="pb-num"><span class="pb-idx">04</span> Reuse the structure across buildings</div>
-      <div class="pb-toggle">Inspect +</div>
-    </div>
-    <div class="pb-desc">The core structure stays consistent, while branding, property information, facilities, contacts and user access change by building.</div>
-    <div class="pb-expand">
-      <div class="compare-cols">
-        <div>
-          <div class="compare-col-label">Stays the same</div>
-          <div class="compare-col-items">Navigation<br>Core sections<br>Tenant tasks</div>
+    <div style="display: grid; gap: 14px; margin-top: 18px">
+      <sc-for list="{{ blocks }}" as="b" hint-placeholder-count="4">
+        <div style="padding: 18px 20px; border-left: 3px solid var(--signal-pale); border-radius: 0 10px 10px 0; background: rgba(255,255,255,.32)" style-hover="background: rgba(255,255,255,.56)">
+          <div onClick="{{ b.toggle }}" style="display: flex; align-items: center; justify-content: space-between; gap: 16px; cursor: pointer">
+            <div style="font-size: 17px; font-weight: 600; letter-spacing: -.01em">
+              <span style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; letter-spacing: .04em; color: var(--signal-deep); margin-right: 8px">{{ b.idx }}</span>{{ b.title }}
+            </div>
+            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .06em; text-transform: uppercase; border: 1px solid var(--hairline); padding: 6px 12px; border-radius: 999px; flex-shrink: 0; color: {{ b.toggleColor }}; background: {{ b.toggleBg }}; border-color: {{ b.toggleBorder }}">{{ b.toggleLabel }}</div>
+          </div>
+          <p style="font-size: 14.5px; line-height: 1.55; color: var(--slate); margin: 8px 0 0; max-width: 62ch">{{ b.desc }}</p>
+
+          <sc-if value="{{ b.open }}" hint-placeholder-val="{{ false }}">
+            <div style="margin-top: 16px">
+              <sc-if value="{{ b.isFlow }}" hint-placeholder-val="{{ false }}">
+                <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px">
+                  <sc-for list="{{ b.flow }}" as="s" hint-placeholder-count="4">
+                    <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .04em; padding: 7px 12px; border-radius: 999px; background: rgba(247,247,244,.85); border: 1px solid {{ s.border }}; color: {{ s.color }}; font-weight: 500">{{ s.label }}</span>
+                  </sc-for>
+                </div>
+              </sc-if>
+
+              <sc-if value="{{ b.isChips }}" hint-placeholder-val="{{ false }}">
+                <div style="display: flex; flex-wrap: wrap; gap: 6px">
+                  <sc-for list="{{ b.chips }}" as="c" hint-placeholder-count="5">
+                    <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .05em; text-transform: uppercase; padding: 6px 10px; border-radius: 999px; background: var(--mist); color: var(--slate)">{{ c }}</span>
+                  </sc-for>
+                </div>
+              </sc-if>
+
+              <sc-if value="{{ b.isCompare }}" hint-placeholder-val="{{ false }}">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px">
+                  <div>
+                    <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .07em; text-transform: uppercase; color: var(--signal-deep); font-weight: 500">Stays the same</div>
+                    <div style="font-size: 12.5px; color: var(--slate); line-height: 1.9; margin-top: 8px">Navigation<br>Core sections<br>Tenant tasks</div>
+                  </div>
+                  <div>
+                    <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .07em; text-transform: uppercase; color: var(--signal-deep); font-weight: 500">Changes</div>
+                    <div style="font-size: 12.5px; color: var(--slate); line-height: 1.9; margin-top: 8px">Brand<br>Property details<br>Facilities<br>Contacts<br>Access</div>
+                  </div>
+                </div>
+              </sc-if>
+
+              <sc-if value="{{ b.note }}" hint-placeholder-val="{{ false }}">
+                <p style="font-size: 12.5px; line-height: 1.55; color: var(--slate); margin: 12px 0 0; max-width: 60ch">{{ b.note }}</p>
+              </sc-if>
+            </div>
+          </sc-if>
         </div>
-        <div>
-          <div class="compare-col-label">Changes</div>
-          <div class="compare-col-items">Brand<br>Property details<br>Facilities<br>Contacts<br>Access</div>
+      </sc-for>
+    </div>
+
+    <h2 style="font-size: clamp(22px, 2.2vw, 26px); font-weight: 600; letter-spacing: -.015em; margin: clamp(48px, 6vw, 64px) 0 0">Explore the tenant portal</h2>
+    <p style="font-size: 16px; line-height: 1.6; color: var(--slate); max-width: 64ch; margin: 14px 0 0">Switch buildings and open the main tenant sections to see how the same structure works with different branding and information.</p>
+
+    <div style="position: relative; margin-top: 18px; border-radius: 16px; overflow: hidden; border: 1px solid var(--hairline); box-shadow: 0 12px 36px rgba(25,35,40,.08); background: {{ buildingBg }}">
+      <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 20px; background: rgba(255,255,255,.12)">
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .07em; color: #fff">{{ buildingName }}</div>
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .07em; color: var(--signal-pale); background: rgba(0,0,0,.28); padding: 5px 10px; border-radius: 999px">RECREATED PORTAL · NOT LIVE</div>
+      </div>
+
+      <div style="padding: 22px">
+        <div style="font-size: 13px; font-weight: 600; color: #fff">Hi Nicole!</div>
+        <div style="font-size: 20px; font-weight: 600; letter-spacing: -.015em; color: #fff; margin-top: 12px">Your Tenant Information Hub</div>
+        <p style="font-size: 12.5px; line-height: 1.55; color: rgba(255,255,255,.82); margin: 8px 0 0; max-width: 52ch">{{ buildingDesc }}</p>
+
+        <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px">
+          <sc-for list="{{ buildingList }}" as="bl" hint-placeholder-count="3">
+            <button onClick="{{ bl.select }}" style="font-family: 'Inter Tight', system-ui, sans-serif; font-size: 12px; font-weight: 500; padding: 0 16px; min-height: 40px; border-radius: 999px; border: 1px solid {{ bl.border }}; background: {{ bl.bg }}; color: {{ bl.color }}; cursor: pointer">{{ bl.short }}</button>
+          </sc-for>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px; margin-top: 18px">
+          <sc-for list="{{ cards }}" as="c" hint-placeholder-count="9">
+            <div onClick="{{ c.open }}" style="padding: 14px; background: rgba(255,255,255,.94); border: 1px solid var(--hairline); border-radius: 10px; cursor: pointer; transition: transform 180ms cubic-bezier(.22,1,.36,1)" style-hover="transform: translateY(-2px)">
+              <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted)">{{ c.kicker }}</div>
+              <div style="font-size: 13px; font-weight: 600; margin-top: 6px">{{ c.title }}</div>
+              <div style="font-size: 10.5px; line-height: 1.45; color: var(--slate); margin-top: 4px">{{ c.desc }}</div>
+              <div style="margin-top: 10px; display: inline-block; font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: .06em; text-transform: uppercase; font-weight: 500; padding: 5px 10px; border-radius: 999px; background: {{ accentBtn }}; color: {{ accentBtnText }}">View details →</div>
+            </div>
+          </sc-for>
         </div>
       </div>
-      <p class="p" style="font-size:12.5px; margin-top:12px;">The same setup is now used as the starting point for new building launches and future portal updates.</p>
-    </div>
-  </div>
 
-  <div class="h2">Explore the tenant portal</div>
-  <p class="p">Switch buildings and open the main tenant sections to see how the same structure works with different branding and information.</p>
+      <sc-if value="{{ panelOpen }}" hint-placeholder-val="{{ false }}">
+        <div style="position: absolute; inset: 0; background: var(--frost); overflow-y: auto; z-index: 5">
+          <button onClick="{{ closePanel }}" style="position: absolute; top: 14px; right: 14px; width: 32px; height: 32px; border-radius: 50%; background: rgba(0,0,0,.3); color: #fff; border: none; font-size: 13px; cursor: pointer; z-index: 2">✕</button>
+          <div style="padding: 20px 22px; color: #fff; background: {{ buildingBg }}">
+            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .07em; opacity: .8">{{ panelKicker }}</div>
+            <div style="font-size: 19px; font-weight: 600; letter-spacing: -.015em; margin-top: 6px">{{ panelTitle }}</div>
+            <div style="font-size: 12px; opacity: .85; margin-top: 6px; max-width: 46ch">{{ panelSub }}</div>
+          </div>
 
-  <div class="portal-frame" id="portalFrame">
-    <div class="portal-topbar">
-      <div class="portal-brand" id="portalBrand">SPIRE BY ROOMINGKOS</div>
-      <div class="portal-badge">TENANT PORTAL</div>
+          <div style="padding: 20px 22px">
+            <sc-for list="{{ panelSections }}" as="s" hint-placeholder-count="3">
+              <div style="margin-top: 20px">
+                <div style="display: flex; align-items: center; gap: 10px">
+                  <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: .07em">{{ s.label }}</div>
+                  <div style="flex: 1; height: 1px; background: var(--hairline)"></div>
+                </div>
+                <div style="margin-top: 10px; padding: 14px; background: #fff; border: 1px solid var(--hairline); border-radius: 10px">
+                  <div style="font-size: 13px; font-weight: 600">{{ s.title }}</div>
+                  <div style="font-size: 11px; line-height: 1.5; color: var(--slate); margin-top: 4px">{{ s.sub }}</div>
+                  <sc-if value="{{ s.hasFields }}" hint-placeholder-val="{{ false }}">
+                    <div style="margin-top: 10px">
+                      <sc-for list="{{ s.fields }}" as="f" hint-placeholder-count="4">
+                        <div style="display: flex; justify-content: space-between; gap: 12px; padding: 7px 0; border-top: 1px dashed var(--hairline); font-size: 11.5px">
+                          <span style="color: var(--slate)">{{ f.k }}</span><b style="font-weight: 600">{{ f.v }}</b>
+                        </div>
+                      </sc-for>
+                    </div>
+                  </sc-if>
+                  <sc-if value="{{ s.hasNotes }}" hint-placeholder-val="{{ false }}">
+                    <div style="margin-top: 10px; padding: 10px 12px; background: var(--signal-pale); border-radius: 8px; font-size: 11px; line-height: 1.55; color: var(--signal-deep)">
+                      <sc-for list="{{ s.notes }}" as="n" hint-placeholder-count="2">
+                        <div style="margin-top: 4px">{{ n }}</div>
+                      </sc-for>
+                    </div>
+                  </sc-if>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </sc-if>
     </div>
-    <div class="portal-body" id="portalBody"></div>
-    <div class="portal-panel" id="portalPanel"></div>
-  </div>
+    <p style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: .05em; color: var(--muted); margin: 10px 0 0">Recreated structure · tenant values are dynamic per person, so no personal data is shown. Worked examples: Tenancy Information and New to Melbourne.</p>
 
-  <div class="h2">Impact</div>
-  <div class="outcome-panel">
-    <div class="outcome-item">
-      <div class="outcome-num">~35%</div>
-      <div class="outcome-label">Increase in portal usage</div>
-      <div class="outcome-src">Tracked after the redesign</div>
-    </div>
-    <div class="outcome-item">
-      <div class="outcome-num">~30–40%</div>
-      <div class="outcome-label">Fewer repeat enquiries to Building Managers</div>
-      <div class="outcome-src">Based on team feedback</div>
-    </div>
-    <div class="outcome-scale">Now used across <b style="color:#fff">7 buildings + 40+ rooming houses</b> — the starting point for new building launches and ongoing PortalX updates.</div>
-  </div>
+    <p style="font-size: clamp(20px, 2.1vw, 22px); font-weight: 600; letter-spacing: -.015em; line-height: 1.32; max-width: 52ch; margin: clamp(44px, 5vw, 56px) 0 0; padding-left: 18px; border-left: 3px solid var(--signal); text-wrap: pretty">The platform stayed the same. What changed was the order the information arrived in.</p>
 
-  <div class="footer-nav">← Back to all projects</div>
+    <h2 style="font-size: clamp(22px, 2.2vw, 26px); font-weight: 600; letter-spacing: -.015em; margin: clamp(48px, 6vw, 64px) 0 0">Impact</h2>
+    <div style="margin-top: 20px; padding: clamp(22px, 3vw, 28px); border-radius: 18px; background: var(--ink); color: var(--frost); display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px">
+      <div style="padding: 16px; background: rgba(255,255,255,.07); border-radius: 12px">
+        <div style="font-size: 32px; font-weight: 600; letter-spacing: -.03em; color: var(--signal)">~35%</div>
+        <div style="font-size: 12.5px; color: #C9C6BC; margin-top: 6px">Increase in portal usage</div>
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .07em; text-transform: uppercase; color: #8A8880; margin-top: 6px">Tracked after the redesign</div>
+      </div>
+      <div style="padding: 16px; background: rgba(255,255,255,.07); border-radius: 12px">
+        <div style="font-size: 32px; font-weight: 600; letter-spacing: -.03em; color: var(--signal)">~30–40%</div>
+        <div style="font-size: 12.5px; color: #C9C6BC; margin-top: 6px">Fewer repeat enquiries to Building Managers</div>
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .07em; text-transform: uppercase; color: #8A8880; margin-top: 6px">Based on team feedback</div>
+      </div>
+      <div style="grid-column: 1 / -1; padding-top: 16px; border-top: 1px solid rgba(255,255,255,.14); font-size: 13px; line-height: 1.6; color: #C9C6BC">Now used across <b style="color: #fff; font-weight: 600">7 buildings + 40+ rooming houses</b> — the starting point for new building launches and ongoing PortalX updates.</div>
+    </div>
+
+    <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px">
+      <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .07em; text-transform: uppercase; padding: 6px 10px; border: 1px solid var(--hairline); border-radius: 6px; color: var(--slate)">Journey mapping</span>
+      <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .07em; text-transform: uppercase; padding: 6px 10px; border: 1px solid var(--hairline); border-radius: 6px; color: var(--slate)">Content systems</span>
+      <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .07em; text-transform: uppercase; padding: 6px 10px; border: 1px solid var(--hairline); border-radius: 6px; color: var(--slate)">Platform constraints</span>
+      <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .07em; text-transform: uppercase; padding: 6px 10px; border: 1px solid var(--hairline); border-radius: 6px; color: var(--slate)">Reusable structure</span>
+    </div>
+
+    <div style="margin-top: clamp(56px, 7vw, 80px); padding-top: 24px; border-top: 1px solid var(--hairline)">
+      <a href="Homepage.dc.html" style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: .05em; color: var(--slate)" style-hover="color: var(--signal-deep)">← Back to all projects</a>
+    </div>
+
+  </main>
 </div>
 
-<script>
-// ===== Building Switcher (flagship demo) =====
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;$preview&quot;: {&quot;width&quot;: 1000, &quot;height&quot;: 1400}
+}">
 const BUILDINGS = {
-  spire: {
-    name:'SPIRE BY ROOMINGKOS', bg:'linear-gradient(160deg,#0F2E22,#153A2B)', btn:'#8FD9A0', btnText:'#0F2E22',
-    greeting:'Hi Nicole!', hub:'Your Tenant Information Hub',
-    desc:'Everything you need for your stay at SPIRE in one place, from tenancy details and WiFi access to house rules, maintenance requests, bond information, and building facilities.'
-  },
-  marshall: {
-    name:'MARSHALL MONASH', bg:'linear-gradient(160deg,#5C87B8,#6E9BC7)', btn:'#E8823C', btnText:'#fff',
-    greeting:'Hi Nicole!', hub:'Your Tenant Information Hub',
-    desc:'Everything you need for your stay at Marshall Monash in one place, from tenancy details and WiFi access to house rules, maintenance requests, bond information, and building facilities.'
-  },
-  acacia: {
-    name:'STUDENT SANCTUARY ACACIA', bg:'linear-gradient(160deg,#1F4A34,#2C6248)', btn:'#D4E157', btnText:'#1F4A34',
-    greeting:'Hi Nicole!', hub:'Your Tenant Information Hub',
-    desc:'Everything you need for your stay at Student Sanctuary Acacia in one place, from tenancy details and WiFi access to house rules, maintenance requests, bond information, and building facilities.'
-  },
+  spire: { name: "SPIRE BY ROOMINGKOS", short: "SPIRE", bg: "linear-gradient(160deg,#0F2E22,#153A2B)", btn: "#8FD9A0", btnText: "#0F2E22",
+    desc: "Everything you need for your stay at SPIRE in one place, from tenancy details and WiFi access to house rules, maintenance requests, bond information, and building facilities." },
+  marshall: { name: "MARSHALL MONASH", short: "Marshall Monash", bg: "linear-gradient(160deg,#4A719C,#6E9BC7)", btn: "#E8823C", btnText: "#fff",
+    desc: "Everything you need for your stay at Marshall Monash in one place, from tenancy details and WiFi access to house rules, maintenance requests, bond information, and building facilities." },
+  acacia: { name: "STUDENT SANCTUARY ACACIA", short: "Student Sanctuary", bg: "linear-gradient(160deg,#1F4A34,#2C6248)", btn: "#C6D64A", btnText: "#1F4A34",
+    desc: "Everything you need for your stay at Student Sanctuary Acacia in one place, from tenancy details and WiFi access to house rules, maintenance requests, bond information, and building facilities." },
 };
-const DASH_CARDS = [
-  {key:'tenancy', icon:'📄', title:'Tenancy Information', desc:'Lease, bond, and rent payment details.', tag:'YOUR STAY', panelTitle:'Tenancy Overview', panelSub:'Your lease details, bond information, and rental payment guide — all in one place.'},
-  {key:'rules', icon:'📋', title:'Basic House Rules', desc:'Community guidelines for all tenants.'},
-  {key:'wifi', icon:'📶', title:'Wifi Information', desc:'Network name and access details.'},
-  {key:'maintenance', icon:'🔧', title:'Maintenance Request', desc:'Report an issue in your room or common areas.'},
-  {key:'bond', icon:'💰', title:'Bond Information', desc:'Your bond status and lodgement records.'},
-  {key:'facilities', icon:'🏢', title:'Building Facility Guide', desc:'Guidance for shared facilities.'},
-  {key:'feedback', icon:'💬', title:'Feedback &amp; Complaint', desc:'Contact us for feedback or complaints.'},
-  {key:'renew', icon:'📝', title:'Renewal / Vacate', desc:'Manage your renewal or vacate request.'},
-  {key:'melbourne', icon:'🌆', title:'New to Melbourne', desc:'Getting settled — transport, banking, SIM and support.', tag:'YOUR GUIDE', panelTitle:'New to Melbourne?', panelSub:'Everything you need to get settled in your new city.'},
+
+const CARDS = [
+  { key: "tenancy", kicker: "Your stay", title: "Tenancy Information", desc: "Lease, bond, and rent payment details.",
+    panelTitle: "Tenancy Overview", panelSub: "Your lease details, bond information, and rental payment guide — all in one place." },
+  { key: "rules", kicker: "Living here", title: "Basic House Rules", desc: "Community guidelines for all tenants." },
+  { key: "wifi", kicker: "Living here", title: "WiFi Information", desc: "Network name and access details." },
+  { key: "maintenance", kicker: "Get help", title: "Maintenance Request", desc: "Report an issue in your room or common areas." },
+  { key: "bond", kicker: "Your stay", title: "Bond Information", desc: "Your bond status and lodgement records." },
+  { key: "facilities", kicker: "Living here", title: "Building Facility Guide", desc: "Guidance for shared facilities." },
+  { key: "feedback", kicker: "Get help", title: "Feedback & Complaint", desc: "Contact us for feedback or complaints." },
+  { key: "renew", kicker: "Renew / vacate", title: "Renewal / Vacate", desc: "Manage your renewal or vacate request." },
+  { key: "melbourne", kicker: "Your guide", title: "New to Melbourne", desc: "Getting settled — transport, banking, SIM and support.",
+    panelTitle: "New to Melbourne?", panelSub: "Everything you need to get settled in your new city." },
 ];
 
-let currentBuildingKey = 'spire';
+const PANEL_BODIES = {
+  tenancy: [
+    { label: "LEASE INFORMATION", title: "Your lease summary", sub: "Key details from your tenancy agreement.",
+      fields: [{ k: "Location", v: "[dynamic]" }, { k: "Room", v: "[dynamic]" }, { k: "Contract dates", v: "[dynamic]" }, { k: "Room rate", v: "[dynamic]" }] },
+    { label: "BOND INFORMATION", title: "Your bond details", sub: "Lodged with the Residential Tenancies Bond Authority (RTBA).",
+      notes: ["The RTBA is the Victorian government body that holds rental bonds independently, not the landlord.",
+              "Your bond is held securely and returned at the end of your tenancy, provided there are no outstanding claims."] },
+    { label: "PAYMENT INFORMATION", title: "Key dates", sub: "Important dates and reminders.",
+      fields: [{ k: "24th of every month", v: "Invoice issued" }, { k: "1st of every month", v: "Rent payment due" }] },
+  ],
+  melbourne: [
+    { label: "GETTING AROUND — PTV", title: "Using public transport in Melbourne", sub: "Get a myki card to travel across Victoria — from 7-Eleven, myki machines, or select train stations." },
+    { label: "OPENING A BANK ACCOUNT", title: "Setting up a bank account", sub: "International students can usually open an account online or in-branch — passport, visa, proof of enrolment, address and phone number." },
+    { label: "EMERGENCY & SUPPORT", title: "Who to contact", sub: "Keep these close for your first weeks.",
+      fields: [{ k: "Emergency service", v: "000" }, { k: "Lifeline (24/7 crisis support)", v: "13 11 14" }, { k: "Building support", v: "Direct line" }] },
+  ],
+};
 
-function renderPortal(key){
-  currentBuildingKey = key;
-  closePanel();
-  const b = BUILDINGS[key];
-  document.getElementById('portalFrame').style.background = b.bg;
-  document.getElementById('portalBrand').textContent = b.name;
-  document.getElementById('portalBody').innerHTML = `
-    <div class="portal-greeting">${b.greeting}</div>
-    <div class="portal-hub-title">${b.hub}</div>
-    <div class="portal-hub-desc">${b.desc}</div>
-    <div class="switcher" style="margin-top:16px">
-      ${Object.keys(BUILDINGS).map(k=>`<button class="switch-btn ${k===key?'on':''}" style="${k===key?`background:${b.btn};color:${b.btnText}`:''}" onclick="renderPortal('${k}')">${BUILDINGS[k].name.split(' ').slice(0,2).join(' ')}</button>`).join('')}
-    </div>
-    <div class="portal-cards">
-      ${DASH_CARDS.map(c=>`
-        <div class="portal-card" onclick="openPanel('${c.key}')">
-          <div class="portal-card-icon">${c.icon}</div>
-          <div class="portal-card-title">${c.title}</div>
-          <div class="portal-card-desc">${c.desc}</div>
-          <div class="portal-card-btn" style="background:${b.btn}; color:${b.btnText}">View details →</div>
-        </div>
-      `).join('')}
-    </div>
-  `;
-}
-renderPortal('spire');
+const BLOCKS = [
+  { idx: "01", title: "Organise the portal around the journey", kind: "flow",
+    desc: "I mapped what prospects and tenants needed from application through move-in, everyday living and renewal, then reorganised the information around those stages.",
+    flow: ["Apply", "Prepare to move in", "Move in", "Live", "Get help", "Renew / vacate"] },
+  { idx: "02", title: "Add the missing pre-arrival stage", kind: "chips",
+    desc: "The existing journey jumped from completed paperwork to tenancy. I added a pre-arrival section for check-in, building information and practical setup, especially for international students arriving in Melbourne for the first time.",
+    chips: ["Check-in", "Transport", "Banking", "SIM", "Support"] },
+  { idx: "03", title: "Build a clearer experience within PortalX", kind: "flow",
+    desc: "PortalX mainly gave me text templates and images. I used Figma to design fixed visual panels, kept changing information in PortalX templates, and linked the panels to the relevant pages.",
+    flow: ["Fixed visual panels", "Dynamic PortalX content", "Live tenant experience"], accentLast: true,
+    note: "Figma was used for visual design. The final experience was built directly in PortalX." },
+  { idx: "04", title: "Reuse the structure across buildings", kind: "compare",
+    desc: "The core structure stays consistent, while branding, property information, facilities, contacts and user access change by building.",
+    note: "The same setup is now used as the starting point for new building launches and future portal updates." },
+];
 
-// ===== In-panel section content (opens over the dashboard, same screen) =====
-function tenancyPanelBody(){
-  return `
-    <div class="subpage-body">
-      <div class="sp-section-label"><div class="sp-section-title">LEASE INFORMATION</div><div class="sp-line"></div></div>
-      <div class="sp-card">
-        <div class="sp-card-title">📋 Your Lease Summary</div>
-        <div class="sp-card-sub">Key details from your tenancy agreement.</div>
-        <div class="sp-field"><span>Location</span><b>[example value]</b></div>
-        <div class="sp-field"><span>Room</span><b>[example value]</b></div>
-        <div class="sp-field"><span>Contract Dates</span><b>[example value]</b></div>
-        <div class="sp-field"><span>Room Rate</span><b>[example value]</b></div>
-        <div class="sp-card-sub" style="margin-top:8px; font-style:italic;">Fields shown are the real structure — values are dynamic per tenant, so no personal data is shown here.</div>
-      </div>
+class Component extends DCLogic {
+  state = { open: null, building: "spire", panel: null };
 
-      <div class="sp-section-label"><div class="sp-section-title">BOND INFORMATION</div><div class="sp-line"></div></div>
-      <div class="sp-card">
-        <div class="sp-card-title">🏦 Your Bond Details</div>
-        <div class="sp-card-sub">Lodged with the Residential Tenancies Bond Authority (RTBA).</div>
-        <div class="sp-note">
-          <b>What is the RTBA?</b>
-          <li>The Residential Tenancies Bond Authority is the Victorian government body that holds rental bonds independently, not the landlord.</li>
-          <li>Your bond is held securely and returned to you at the end of your tenancy, provided there are no outstanding claims.</li>
-        </div>
-      </div>
+  renderVals() {
+    const b = BUILDINGS[this.state.building];
+    const card = CARDS.find(c => c.key === this.state.panel);
+    const sections = (card && PANEL_BODIES[card.key]) || (card ? [{ label: card.kicker.toUpperCase(), title: card.title, sub: card.desc + " This panel follows the same structure — full worked examples are shown for Tenancy Information and New to Melbourne." }] : []);
 
-      <div class="sp-section-label"><div class="sp-section-title">PAYMENT INFORMATION</div><div class="sp-line"></div></div>
-      <div class="sp-card">
-        <div class="sp-card-title">📅 Key Dates</div>
-        <div class="sp-card-sub">Important dates &amp; reminders</div>
-        <div class="sp-field"><span>24th of every month</span><b>Invoice issued</b></div>
-        <div class="sp-field"><span>1st of every month</span><b>Rent payment due</b></div>
-      </div>
-    </div>
-  `;
-}
-function melbournePanelBody(){
-  return `
-    <div class="subpage-body">
-      <div class="sp-section-label"><div class="sp-section-title">GETTING AROUND — PTV</div><div class="sp-line"></div></div>
-      <div class="sp-card">
-        <div class="sp-card-title">🚆 Using public transport in Melbourne</div>
-        <div class="sp-card-sub">Get a myki card to use public transport across Victoria — from 7-Eleven, myki machines, or select train stations.</div>
-      </div>
-
-      <div class="sp-section-label"><div class="sp-section-title">OPENING A BANK ACCOUNT</div><div class="sp-line"></div></div>
-      <div class="sp-card">
-        <div class="sp-card-title">💳 Setting up a bank account</div>
-        <div class="sp-card-sub">International students can usually open an account online or in-branch — passport, visa, proof of enrolment, address and phone number.</div>
-        <div class="sp-tip">💡 Bonus tip: some banks offer student promotions or referral rewards.</div>
-      </div>
-
-      <div class="sp-section-label"><div class="sp-section-title">EMERGENCY &amp; SUPPORT</div><div class="sp-line"></div></div>
-      <div class="sp-card">
-        <div class="sp-contact-row"><span>Emergency service</span><b>000</b></div>
-        <div class="sp-contact-row"><span>Lifeline (24/7 crisis support)</span><b>13 11 14</b></div>
-        <div class="sp-contact-row"><span>Building support</span><b>Direct line</b></div>
-      </div>
-    </div>
-  `;
-}
-function stubPanelBody(c){
-  return `
-    <div class="subpage-body">
-      <div class="sp-card">
-        <div class="sp-card-title">${c.icon} ${c.title}</div>
-        <div class="sp-card-sub">${c.desc}</div>
-      </div>
-      <div class="sp-note" style="margin-top:14px;">This panel follows the same structure — a full worked example is shown for Tenancy Information and New to Melbourne.</div>
-    </div>
-  `;
-}
-function openPanel(key){
-  const b = BUILDINGS[currentBuildingKey];
-  const c = DASH_CARDS.find(x=>x.key===key);
-  const panel = document.getElementById('portalPanel');
-  let bodyHtml;
-  if(key==='tenancy') bodyHtml = tenancyPanelBody();
-  else if(key==='melbourne') bodyHtml = melbournePanelBody();
-  else bodyHtml = stubPanelBody(c);
-  panel.innerHTML = `
-    <button class="panel-close" onclick="closePanel()">✕</button>
-    <div class="subpage">
-      <div class="subpage-header" style="background:${b.bg}">
-        <div class="subpage-tag">${b.name} · ${c.tag || c.title.toUpperCase()}</div>
-        <div class="subpage-title">${c.panelTitle || c.title}</div>
-        <div class="subpage-sub">${c.panelSub || c.desc}</div>
-      </div>
-      ${bodyHtml}
-    </div>
-  `;
-  panel.classList.add('open');
-}
-function closePanel(){
-  const panel = document.getElementById('portalPanel');
-  if(panel) panel.classList.remove('open');
+    return {
+      blocks: BLOCKS.map(x => {
+        const open = this.state.open === x.idx;
+        return {
+          idx: x.idx, title: x.title, desc: x.desc, note: x.note || false, open,
+          toggle: () => this.setState(s => ({ open: s.open === x.idx ? null : x.idx })),
+          toggleLabel: open ? "Close −" : "Inspect +",
+          toggleColor: open ? "#F7F7F4" : "var(--muted)",
+          toggleBg: open ? "var(--ink)" : "transparent",
+          toggleBorder: open ? "var(--ink)" : "var(--hairline)",
+          isFlow: x.kind === "flow", isChips: x.kind === "chips", isCompare: x.kind === "compare",
+          chips: x.chips || [],
+          flow: (x.flow || []).map((label, i, arr) => {
+            const last = x.accentLast && i === arr.length - 1;
+            return { label, border: last ? "var(--border-active)" : "var(--hairline)", color: last ? "var(--signal-deep)" : "var(--ink)" };
+          }),
+        };
+      }),
+      buildingName: b.name, buildingBg: b.bg, buildingDesc: b.desc,
+      accentBtn: b.btn, accentBtnText: b.btnText,
+      buildingList: Object.keys(BUILDINGS).map(k => ({
+        short: BUILDINGS[k].short,
+        select: () => this.setState({ building: k, panel: null }),
+        bg: k === this.state.building ? b.btn : "#fff",
+        color: k === this.state.building ? b.btnText : "var(--slate)",
+        border: k === this.state.building ? "transparent" : "var(--hairline)",
+      })),
+      cards: CARDS.map(c => ({ ...c, open: () => this.setState({ panel: c.key }) })),
+      panelOpen: !!card,
+      closePanel: () => this.setState({ panel: null }),
+      panelKicker: card ? b.name + " · " + card.kicker.toUpperCase() : "",
+      panelTitle: card ? (card.panelTitle || card.title) : "",
+      panelSub: card ? (card.panelSub || card.desc) : "",
+      panelSections: sections.map(s => ({
+        label: s.label, title: s.title, sub: s.sub,
+        hasFields: !!s.fields, fields: s.fields || [],
+        hasNotes: !!s.notes, notes: s.notes || [],
+      })),
+    };
+  }
 }
 
-// ===== Expandable principle blocks =====
-document.querySelectorAll('.pb-header').forEach(header=>{
-  header.addEventListener('click', ()=>{
-    const block = header.closest('.principle-block');
-    document.querySelectorAll('.principle-block.open').forEach(b=>{
-      if(b!==block){ b.classList.remove('open'); b.querySelector('.pb-toggle').textContent='Inspect +'; }
-    });
-    block.classList.toggle('open');
-    header.querySelector('.pb-toggle').textContent = block.classList.contains('open') ? 'Close −' : 'Inspect +';
-  });
-});
 </script>
 </body>
 </html>

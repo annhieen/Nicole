@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Rumi — Case Study</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --canvas:#F3F3F1; --mist:#E8EBEB; --frost:#F7F7F4;
+    --ink:#14191C; --slate:#687075; --muted:#92999C;
+    --signal:#D99A24; --signal-deep:#B97912; --signal-pale:#F3E4C2;
+    --hairline:rgba(20,25,28,.10);
+    --glass-bg:rgba(255,255,255,.55); --glass-border:rgba(255,255,255,.75);
+    --drop:#C7C2B8; --ok:#5C8A6E; --ok-bg:#E4EEE7;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{background:var(--canvas); color:var(--ink); font-family:'Inter Tight', sans-serif; line-height:1.6;}
+  .mono{font-family:'IBM Plex Mono', monospace;}
+  a{color:inherit;}
+
+  .wrap{max-width:800px; margin:0 auto; padding:64px 32px 140px;}
+  .back{font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--slate); text-decoration:none;}
+  .eyebrow{font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:0.06em; color:var(--slate); margin-top:32px; text-transform:uppercase;}
+  .h1{font-size:clamp(40px,6vw,58px); font-weight:600; letter-spacing:-0.02em; margin-top:12px;}
+  .sub{font-size:18px; color:var(--slate); margin-top:14px; max-width:56ch;}
+  .meta{margin-top:32px; display:grid; grid-template-columns:repeat(4,1fr); gap:16px; padding:20px 0; border-top:1px solid var(--hairline); border-bottom:1px solid var(--hairline);}
+  .meta-label{font-family:'IBM Plex Mono', monospace; font-size:10px; letter-spacing:0.05em; text-transform:uppercase; color:var(--muted);}
+  .meta-val{font-size:13px; margin-top:5px; font-weight:500;}
+
+  .h2{font-size:26px; font-weight:600; letter-spacing:-0.01em; margin-top:64px;}
+  .p{font-size:16px; color:var(--slate); margin-top:14px; max-width:62ch;}
+
+  .surface-root{margin-top:28px; display:grid; grid-template-columns:1fr 28px 1fr; align-items:center; gap:10px;}
+  .sr-box{padding:18px; border-radius:12px;}
+  .sr-box.left{background:var(--mist);}
+  .sr-box.right{background:var(--signal-pale);}
+  .sr-tag{font-family:'IBM Plex Mono', monospace; font-size:9px; letter-spacing:0.05em; text-transform:uppercase; color:var(--slate);}
+  .sr-box.right .sr-tag{color:var(--signal-deep);}
+  .sr-text{font-size:14px; margin-top:8px; line-height:1.45;}
+  .sr-arrow{font-size:18px; color:var(--muted); text-align:center;}
+
+  .quote-block{margin:32px 0; padding:20px 24px; background:var(--frost); border:1px solid var(--hairline); border-radius:12px; font-size:16px; font-style:italic;}
+  .quote-block .attr{font-family:'IBM Plex Mono', monospace; font-style:normal; font-size:10px; color:var(--slate); margin-top:8px; text-transform:uppercase; letter-spacing:0.04em;}
+
+  /* ===== INTERACTIVE DEMO ===== */
+  .demo{
+    margin-top:24px; border-radius:20px; background:var(--glass-bg); border:1px solid var(--glass-border);
+    backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); padding:28px; box-shadow:0 14px 36px rgba(25,35,40,.08);
+  }
+  .demo-flag{
+    display:inline-flex; align-items:center; gap:6px; font-family:'IBM Plex Mono', monospace; font-size:10px;
+    letter-spacing:0.05em; text-transform:uppercase; color:var(--signal-deep); background:var(--signal-pale);
+    padding:5px 10px; border-radius:6px;
+  }
+  .persona{
+    margin-top:16px; padding:14px 16px; background:rgba(255,255,255,.5); border-radius:10px; border:1px solid var(--hairline);
+    font-size:13px; color:var(--slate); display:flex; flex-wrap:wrap; gap:14px;
+  }
+  .persona b{color:var(--ink); font-weight:500;}
+  .step-head{margin-top:22px; display:flex; align-items:baseline; justify-content:space-between; gap:16px;}
+  .step-title{font-size:18px; font-weight:600;}
+  .step-count{font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--muted);}
+  .step-caption{font-size:14px; color:var(--slate); margin-top:6px; min-height:38px;}
+
+  .room-grid{margin-top:18px; display:grid; grid-template-columns:repeat(4,1fr); gap:10px;}
+  .room{
+    padding:10px; border-radius:8px; background:#fff; border:1px solid var(--hairline);
+    font-size:11px; transition:opacity .35s, transform .35s, background .35s;
+  }
+  .room .rn{font-weight:600; font-size:12px;}
+  .room .rd{color:var(--slate); margin-top:3px; font-size:10px;}
+  .room.dropped{opacity:0.28; background:transparent; text-decoration:line-through; transform:scale(0.97);}
+  .room.flag{border-color:var(--signal); background:var(--signal-pale);}
+  .room.pick{border-color:var(--ok); background:var(--ok-bg);}
+
+  .final-cards{margin-top:18px; display:grid; grid-template-columns:repeat(3,1fr); gap:12px;}
+  .fcard{padding:16px; border-radius:12px; background:#fff; border:1px solid var(--hairline);}
+  .fcard.best{border-color:var(--ok);}
+  .fcard.trade{border-color:var(--slate);}
+  .fcard.flagcard{border-color:var(--signal);}
+  .fcard-tag{font-family:'IBM Plex Mono', monospace; font-size:9px; letter-spacing:0.04em; text-transform:uppercase;}
+  .fcard.best .fcard-tag{color:var(--ok);}
+  .fcard.trade .fcard-tag{color:var(--slate);}
+  .fcard.flagcard .fcard-tag{color:var(--signal-deep);}
+  .fcard-title{font-size:14px; font-weight:600; margin-top:6px;}
+  .fcard-why{font-size:12px; color:var(--slate); margin-top:6px; line-height:1.4;}
+
+  .controls{margin-top:22px; display:flex; align-items:center; justify-content:space-between;}
+  .dots{display:flex; gap:6px;}
+  .dot{width:6px; height:6px; border-radius:50%; background:var(--hairline);}
+  .dot.active{background:var(--signal);}
+  .btns{display:flex; gap:8px;}
+  .btn{
+    font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:0.03em; text-transform:uppercase;
+    padding:9px 16px; border-radius:8px; border:1px solid var(--ink); background:var(--ink); color:var(--frost);
+    cursor:pointer;
+  }
+  .btn.ghost{background:transparent; color:var(--ink); border-color:var(--hairline);}
+  .btn:disabled{opacity:0.35; cursor:default;}
+
+  /* ===== PRODUCT-STYLE RESKIN (recreated UI, not live) ===== */
+  .app-frame{
+    border-radius:16px; overflow:hidden; border:1px solid var(--hairline);
+    background:#FBF8F3; box-shadow:0 14px 36px rgba(25,35,40,.08);
+  }
+  .app-topbar{
+    display:flex; align-items:center; justify-content:space-between; padding:14px 20px;
+    background:#fff; border-bottom:1px solid var(--hairline);
+  }
+  .app-brand{display:flex; align-items:center; gap:10px;}
+  .app-logo{
+    width:30px; height:30px; border-radius:7px; background:#C8283A; color:#fff;
+    display:flex; align-items:center; justify-content:center; font-weight:700; font-size:12px;
+    font-family:'IBM Plex Mono', monospace;
+  }
+  .app-brand-text .n1{font-size:13px; font-weight:700; letter-spacing:-0.01em;}
+  .app-brand-text .n2{font-size:10px; color:var(--muted); margin-top:1px;}
+  .app-nav{display:flex; align-items:center; gap:20px; font-size:12px; color:var(--muted); font-weight:500;}
+  .app-nav .on{color:var(--ink); position:relative;}
+  .app-nav .on::after{content:''; position:absolute; left:0; right:0; bottom:-14px; height:2px; background:#C8283A;}
+  .app-demo-badge{
+    font-family:'IBM Plex Mono', monospace; font-size:10px; letter-spacing:0.05em; color:var(--signal-deep);
+    background:var(--signal-pale); padding:4px 10px; border-radius:20px; display:flex; align-items:center; gap:5px;
+  }
+  .app-demo-badge .d{width:6px; height:6px; border-radius:50%; background:var(--signal-deep);}
+
+  .app-body{padding:22px 24px 26px;}
+  .app-sec-head{display:flex; align-items:center; gap:10px; margin-top:6px;}
+  .app-sec-num{
+    width:22px; height:22px; border-radius:50%; background:var(--ink); color:#fff; font-size:11px; font-weight:600;
+    display:flex; align-items:center; justify-content:center; flex-shrink:0;
+  }
+  .app-sec-title{font-size:16px; font-weight:700;}
+  .app-sec-sub{font-size:11px; color:#C8283A; font-weight:600; margin-left:auto;}
+
+  .inq-grid{
+    margin-top:12px; display:grid; grid-template-columns:repeat(3,1fr); gap:14px 18px;
+    padding:16px 18px; background:#fff; border:1px solid var(--hairline); border-radius:10px;
+  }
+  .inq-label{font-family:'IBM Plex Mono', monospace; font-size:9px; letter-spacing:0.05em; color:var(--muted); text-transform:uppercase;}
+  .inq-val{font-size:13px; font-weight:600; margin-top:4px;}
+
+  .reason-box{
+    margin-top:16px; padding:14px 16px; background:#fff; border-left:3px solid #C8283A;
+    border-radius:0 8px 8px 0; font-size:13px; line-height:1.55; color:#3A3D40; min-height:44px;
+  }
+
+  .pcard-grid{margin-top:14px; display:grid; grid-template-columns:repeat(4,1fr); gap:10px;}
+  .pcard-room{
+    padding:12px; border-radius:10px; background:#fff; border:1px solid var(--hairline); font-size:11px;
+    transition:opacity .35s, transform .35s, border-color .35s;
+  }
+  .pcard-room .badge{
+    width:18px; height:18px; border-radius:50%; background:var(--mist); color:var(--slate); font-size:10px; font-weight:700;
+    display:flex; align-items:center; justify-content:center; margin-bottom:6px;
+  }
+  .pcard-room.top .badge{background:#C8283A; color:#fff;}
+  .pcard-room .rn{font-weight:700; font-size:11.5px;}
+  .pcard-room .rd{color:var(--slate); font-size:9.5px; margin-top:2px;}
+  .pcard-room .rp{font-weight:700; font-size:14px; margin-top:6px;}
+  .pcard-room .rp span{font-weight:400; font-size:9px; color:var(--muted);}
+  .pcard-room.dropped{opacity:0.25; transform:scale(0.96); text-decoration:line-through;}
+  .pcard-room.flag{border-color:var(--signal);}
+  .pcard-room.pick{border-color:#C8283A;}
+
+  .final-app-cards{margin-top:14px; display:grid; grid-template-columns:repeat(3,1fr); gap:12px;}
+  .facard{padding:16px; border-radius:12px; background:#fff; border:1.5px solid var(--hairline);}
+  .facard.best{border-color:#C8283A;}
+  .facard.flagcard{border-color:var(--signal);}
+  .fa-badge{
+    width:22px; height:22px; border-radius:50%; background:var(--mist); color:var(--slate); font-size:11px; font-weight:700;
+    display:flex; align-items:center; justify-content:center; margin-bottom:8px;
+  }
+  .facard.best .fa-badge{background:#C8283A; color:#fff;}
+  .fa-title{font-size:13px; font-weight:700;}
+  .fa-sub{font-size:10.5px; color:var(--slate); margin-top:2px;}
+  .fa-price{font-size:16px; font-weight:700; margin-top:8px;}
+  .fa-why{font-size:11px; color:var(--slate); margin-top:8px; line-height:1.4; min-height:34px;}
+  .fa-btns{margin-top:10px; display:flex; gap:6px;}
+  .fa-btn{
+    flex:1; font-family:'IBM Plex Mono', monospace; font-size:9.5px; letter-spacing:0.02em; text-transform:uppercase;
+    padding:7px 4px; border-radius:6px; border:1px solid var(--hairline); text-align:center; background:#fff; color:var(--ink);
+  }
+  .fa-btn.included{background:#C8283A; color:#fff; border-color:#C8283A;}
+
+  .app-controls{margin-top:20px; padding-top:16px; border-top:1px solid var(--hairline); display:flex; align-items:center; justify-content:space-between;}
+  .replay-btn{
+    margin-left:auto; font-family:'IBM Plex Mono', monospace; font-size:10.5px; letter-spacing:0.03em;
+    padding:6px 12px; border-radius:20px; border:1px solid var(--hairline); background:#fff; color:var(--ink); cursor:pointer;
+  }
+  .replay-btn:hover{border-color:#C8283A; color:#C8283A;}
+
+  .flow-wrap{margin-top:12px; padding:16px 12px 8px; background:#fff; border:1px solid var(--hairline); border-radius:10px; overflow-x:auto;}
+  #flowSvg{width:100%; min-width:680px; display:block;}
+  .flow-col-label{font-family:'IBM Plex Mono', monospace; font-size:9.5px; font-weight:700; fill:var(--ink);}
+  .flow-col-count{font-family:'IBM Plex Mono', monospace; font-size:8.5px; fill:var(--muted);}
+  .flow-pick-label{font-family:'Inter Tight', sans-serif; font-size:10.5px; font-weight:600; fill:var(--ink);}
+  .flow-pick-num{font-family:'IBM Plex Mono', monospace; font-size:9px; font-weight:700; fill:#fff;}
+
+  .flow-legend{
+    margin-top:8px; font-size:11px; color:var(--slate); line-height:1.6; padding:0 2px;
+  }
+  .fl-term{font-family:'IBM Plex Mono', monospace; font-weight:600; color:var(--ink); font-size:10.5px;}
+
+  .final-app-cards{margin-top:16px; display:grid; grid-template-columns:repeat(3,1fr); gap:12px;}
+  .fa-toggle{
+    flex:1; font-family:'IBM Plex Mono', monospace; font-size:9.5px; letter-spacing:0.02em; text-transform:uppercase;
+    padding:7px 4px; border-radius:6px; border:1px solid var(--hairline); text-align:center; background:#fff; color:var(--ink); cursor:pointer;
+  }
+  .fa-toggle.on{background:#C8283A; color:#fff; border-color:#C8283A;}
+
+  .reply-panel{margin-top:14px; padding:16px 18px; background:#fff; border:1px solid var(--hairline); border-radius:10px;}
+  .reply-row{display:flex; align-items:center; gap:16px; padding:8px 0;}
+  .reply-label{font-family:'IBM Plex Mono', monospace; font-size:10px; letter-spacing:0.04em; color:var(--muted); width:70px; flex-shrink:0;}
+  .pill-toggle{display:flex; gap:4px; background:var(--mist); padding:3px; border-radius:8px;}
+  .pill-toggle span{font-size:11px; padding:5px 10px; border-radius:6px; color:var(--slate);}
+  .pill-toggle span.on{background:#fff; color:#C8283A; font-weight:600; box-shadow:0 1px 2px rgba(0,0,0,.08);}
+  .reply-note{font-size:11px; color:var(--muted); margin-top:8px; font-style:italic;}
+  .instr-box{
+    width:100%; min-height:52px; padding:10px 12px; font-family:'IBM Plex Mono', monospace; font-size:11.5px;
+    color:var(--ink); background:var(--frost); border:1px solid var(--hairline); border-radius:8px; resize:vertical;
+  }
+  .instr-box::placeholder{color:var(--muted);}
+  .chip-row{margin-top:8px; display:flex; gap:6px; flex-wrap:wrap;}
+  .instr-chip{
+    font-family:'IBM Plex Mono', monospace; font-size:10px; padding:5px 10px; border-radius:20px;
+    border:1px solid var(--hairline); background:#fff; color:var(--slate); cursor:pointer;
+  }
+  .instr-chip:hover{border-color:#C8283A; color:#C8283A;}
+  .regen-btn{
+    margin-top:14px; font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.03em;
+    padding:9px 16px; border-radius:8px; border:none; background:#C8283A; color:#fff; cursor:pointer;
+  }
+  .regen-btn:hover{background:#A81F2E;}
+  .regen-btn:active{transform:scale(0.98);}
+  .applied-tag{
+    margin-top:12px; font-family:'IBM Plex Mono', monospace; font-size:10px; color:#C8283A; background:var(--signal-pale);
+    display:inline-block; padding:5px 10px; border-radius:6px;
+  }
+  .reply-msg{
+    margin-top:10px; padding:14px 16px; background:var(--frost); border:1px solid var(--hairline); border-radius:8px;
+    font-size:12.5px; line-height:1.7; color:#3A3D40; white-space:pre-wrap;
+  }
+
+  .evidence{margin-top:20px;}
+  .evidence-label{font-family:'IBM Plex Mono', monospace; font-size:10px; letter-spacing:0.05em; text-transform:uppercase; color:var(--slate);}
+  .evidence-frame{margin-top:8px; border-radius:12px; overflow:hidden; border:1px solid var(--hairline);}
+  .evidence-frame img{width:100%; display:block;}
+
+  .principles{margin-top:24px; display:grid; grid-template-columns:1fr 1fr; gap:14px;}
+  .pcard{padding:16px; background:var(--frost); border:1px solid var(--hairline); border-radius:12px;}
+  .pcard-num{font-family:'IBM Plex Mono', monospace; font-size:9px; color:var(--signal-deep); letter-spacing:0.04em; text-transform:uppercase;}
+  .pcard-text{font-size:14px; margin-top:6px; font-weight:500; line-height:1.4;}
+
+  .principle-block{margin-top:14px; padding:18px 20px; border-left:3px solid var(--signal-pale); max-width:66ch; border-radius:0 10px 10px 0; transition:background .25s;}
+  .principle-block:hover{background:rgba(255,255,255,.5);}
+  .pb-header{display:flex; align-items:center; justify-content:space-between; cursor:pointer;}
+  .pb-num{font-size:17px; font-weight:600; letter-spacing:-0.005em; color:var(--ink);}
+  .pb-idx{font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--signal-deep); letter-spacing:0.03em; margin-right:8px;}
+  .pb-toggle{
+    font-family:'IBM Plex Mono', monospace; font-size:10px; letter-spacing:0.04em; color:var(--muted);
+    border:1px solid var(--hairline); padding:4px 10px; border-radius:20px; transition:all .2s; flex-shrink:0;
+  }
+  .principle-block:hover .pb-toggle{border-color:var(--signal-deep); color:var(--signal-deep);}
+  .principle-block.open .pb-toggle{background:var(--ink); color:#fff; border-color:var(--ink);}
+  .pb-desc{font-size:14.5px; color:var(--slate); margin-top:8px; line-height:1.55;}
+  .pb-expand{
+    max-height:0; overflow:hidden; opacity:0; transition:max-height .4s ease, opacity .3s ease, margin-top .3s ease;
+  }
+  .principle-block.open .pb-expand{max-height:260px; opacity:1; margin-top:16px;}
+
+  .chain{display:flex; flex-wrap:wrap; align-items:center; gap:6px 2px;}
+  .chain-node{
+    font-family:'IBM Plex Mono', monospace; font-size:10.5px; padding:6px 10px; border-radius:6px;
+    background:#fff; border:1px solid var(--hairline); color:var(--ink);
+  }
+  .chain-node.muted{color:var(--slate); background:var(--mist);}
+  .chain-node.signal{background:var(--ink); color:var(--signal); border-color:var(--ink); font-weight:600;}
+  .chain-arrow{color:var(--muted); font-size:11px;}
+
+  .mini-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:10px;}
+  .mini-card{padding:12px; background:#fff; border:1px solid var(--hairline); border-radius:8px;}
+  .mini-card.signal-card{border-color:var(--signal);}
+  .mini-tag{font-family:'IBM Plex Mono', monospace; font-size:9px; letter-spacing:0.03em; text-transform:uppercase; color:var(--signal-deep); font-weight:600;}
+  .mini-text{font-size:12px; color:var(--slate); margin-top:6px; line-height:1.4;}
+
+  .seq{display:flex; flex-direction:column; align-items:flex-start;}
+  .seq-step{
+    font-family:'IBM Plex Mono', monospace; font-size:11.5px; padding:7px 12px; border-radius:6px;
+    background:#fff; border:1px solid var(--hairline); color:var(--ink); opacity:0; transform:translateY(4px);
+  }
+  .principle-block.open .seq-step{animation:seqIn .35s ease forwards;}
+  .principle-block.open .seq-step[data-s="0"]{animation-delay:.05s;}
+  .principle-block.open .seq-step.checking{animation-delay:.4s;}
+  .principle-block.open .seq-step.warn{animation-delay:1.3s;}
+  .principle-block.open .seq-step[data-s="3"]{animation-delay:1.7s;}
+  .principle-block.open .seq-step[data-s="4"]{animation-delay:2.05s;}
+  @keyframes seqIn{to{opacity:1; transform:translateY(0);}}
+  .seq-step.warn{background:var(--signal-pale); border-color:var(--signal); color:var(--signal-deep); font-weight:600;}
+  .seq-arrow{color:var(--muted); font-size:11px; padding:2px 0 2px 14px;}
+  .dots span{opacity:0; animation:dotBlink 1.1s infinite;}
+  .dots span:nth-child(2){animation-delay:.2s;} .dots span:nth-child(3){animation-delay:.4s;}
+  @keyframes dotBlink{0%,100%{opacity:0;} 50%{opacity:1;}}
+
+  .what-if-tabs{display:flex; gap:6px;}
+  .wi-tab{
+    font-family:'IBM Plex Mono', monospace; font-size:9.5px; letter-spacing:0.03em; padding:6px 10px;
+    border-radius:6px; border:1px solid var(--hairline); background:#fff; color:var(--slate); cursor:pointer;
+  }
+  .wi-tab.on{background:var(--ink); color:#fff; border-color:var(--ink);}
+  .wi-flow{margin-top:12px; display:flex; align-items:center; gap:8px; flex-wrap:wrap;}
+
+  .chain-node.dim{opacity:0.55; font-style:italic;}
+  .next-row{margin-top:18px; padding-top:14px; border-top:1px dashed var(--hairline);}
+  .next-tag{font-family:'IBM Plex Mono', monospace; font-size:9px; letter-spacing:0.04em; text-transform:uppercase; color:var(--muted);}
+  .next-caption{font-size:11px; color:var(--muted); margin-top:8px; font-style:italic;}
+
+  .prospect-strip{
+    font-size:12.5px; padding:10px 14px; background:var(--mist); border-radius:8px; color:var(--ink);
+  }
+  .ps-tag{font-family:'IBM Plex Mono', monospace; font-size:9px; letter-spacing:0.04em; text-transform:uppercase; color:var(--slate); margin-right:8px;}
+  .stage-tabs{display:flex; gap:6px; margin-top:14px; flex-wrap:wrap;}
+  .stage-tab{
+    font-family:'IBM Plex Mono', monospace; font-size:10px; letter-spacing:0.02em; padding:7px 11px;
+    border-radius:20px; border:1px solid var(--hairline); background:#fff; color:var(--slate); cursor:pointer;
+  }
+  .stage-tab.on{background:var(--ink); color:#fff; border-color:var(--ink);}
+  .stage-body{margin-top:14px; padding:14px 16px; background:#fff; border:1px solid var(--hairline); border-radius:8px; min-height:70px;}
+  .sb-q{font-size:13px; font-weight:600; color:var(--ink);}
+  .sb-row{display:flex; gap:16px; margin-top:10px; flex-wrap:wrap;}
+  .sb-item{font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--slate);}
+  .sb-item b{color:var(--ink);}
+  .sb-result{
+    margin-top:10px; display:inline-block; font-family:'IBM Plex Mono', monospace; font-size:10px; letter-spacing:0.03em;
+    text-transform:uppercase; padding:5px 10px; border-radius:6px; background:var(--signal-pale); color:var(--signal-deep); font-weight:600;
+  }
+  .sb-note{font-size:11px; color:var(--muted); margin-top:8px; font-style:italic;}
+  .stage-legend{margin-top:12px; display:flex; gap:16px; flex-wrap:wrap;}
+  .sl-item{font-family:'IBM Plex Mono', monospace; font-size:10.5px; color:var(--slate);}
+  .sl-item b{color:var(--ink);}
+
+  .control-flow{display:flex; flex-direction:column; align-items:flex-start;}
+  .cf-step{padding:10px 14px; background:#fff; border:1px solid var(--hairline); border-radius:8px;}
+  .cf-step.highlight{border-color:var(--signal); background:var(--signal-pale);}
+  .cf-step.final{background:var(--ink); border-color:var(--ink);}
+  .cf-step.final .cf-title{color:#fff;}
+  .cf-title{font-size:12.5px; font-weight:600; color:var(--ink);}
+  .cf-step.highlight .cf-title{color:var(--signal-deep);}
+  .cf-sub{font-family:'IBM Plex Mono', monospace; font-size:9.5px; color:var(--slate); margin-top:4px;}
+  .cf-arrow{color:var(--muted); font-size:11px; padding:3px 0 3px 16px;}
+  .cf-microline{font-size:12px; color:var(--slate); margin-top:12px; font-style:italic;}
+
+  .dsh-line{
+    margin-top:-24px; margin-bottom:40px; font-family:'IBM Plex Mono', monospace; font-size:12px;
+    letter-spacing:0.08em; color:var(--muted); text-transform:uppercase;
+  }
+  .dsh-line span{color:var(--signal-deep); margin:0 6px;}
+
+  .pq-rules{color:var(--ink); font-weight:700;}
+  .pq-ai{color:var(--muted); font-style:italic;}
+  .pq-people{color:var(--signal-deep); font-weight:700;}
+
+  .pullquote{margin:44px 0; padding:0 0 0 18px; border-left:3px solid var(--signal); font-size:22px; font-weight:600; letter-spacing:-0.01em; line-height:1.32; max-width:56ch;}
+
+  .outcome-panel{margin-top:24px; padding:28px; border-radius:16px; background:var(--ink); color:var(--frost); display:grid; grid-template-columns:1fr auto; align-items:center; gap:20px;}
+  .outcome-label{font-family:'IBM Plex Mono', monospace; font-size:10px; letter-spacing:0.05em; color:var(--muted); text-transform:uppercase;}
+  .outcome-desc{font-size:13px; color:#C9C6BC; margin-top:6px; max-width:32ch;}
+  .outcome-num{text-align:right;}
+  .outcome-from{font-family:'IBM Plex Mono', monospace; font-size:16px; color:#6D726F; text-decoration:line-through;}
+  .outcome-to{font-size:36px; font-weight:700; color:var(--signal); letter-spacing:-0.02em;}
+  .outcome-sub{font-size:11px; color:var(--muted); margin-top:4px;}
+
+  .progression{margin-top:20px; display:flex; align-items:stretch; gap:0;}
+  .prog-step{
+    flex:1; padding:18px; background:var(--frost); border:1px solid var(--hairline); border-radius:12px;
+  }
+  .prog-step.future{border-style:dashed; background:transparent;}
+  .prog-num{font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--signal-deep); letter-spacing:0.04em;}
+  .prog-title{font-size:16px; font-weight:600; margin-top:6px; letter-spacing:-0.005em;}
+  .prog-sub{font-size:12px; color:var(--slate); margin-top:6px; font-style:italic;}
+  .prog-desc{font-size:12.5px; color:var(--slate); margin-top:8px; line-height:1.5;}
+  .prog-step.future .prog-desc, .prog-step.future .prog-sub{color:var(--muted);}
+  .prog-arrow{display:flex; align-items:center; padding:0 10px; color:var(--muted); font-size:16px; flex-shrink:0;}
+  .prog-arrow.dashed{color:var(--signal-pale); font-weight:300;}
+
+  @media (max-width:700px){
+    .progression{flex-direction:column;}
+    .prog-arrow{padding:8px 0; justify-content:center; transform:rotate(90deg);}
+  }
+
+  .tags-row{margin-top:22px; display:flex; gap:8px; flex-wrap:wrap;}
+  .tag{font-family:'IBM Plex Mono', monospace; font-size:10px; letter-spacing:0.04em; text-transform:uppercase; padding:5px 10px; border:1px solid var(--hairline); border-radius:6px; color:var(--slate);}
+  .footer-nav{margin-top:80px; padding-top:24px; border-top:1px solid var(--hairline); font-size:13px; color:var(--slate);}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <a class="back" href="#">&larr; All projects</a>
+  <div class="eyebrow">Product Strategy · Business Analysis · AI Workflow Design</div>
+  <div class="h1">Rumi</div>
+  <p class="sub">Turning a fragmented room-finding journey into a structured, human-supervised recommendation workflow.</p>
+
+  <div class="meta">
+    <div><div class="meta-label">Role</div><div class="meta-val">Product &amp; BA / Delivery lead</div></div>
+    <div><div class="meta-label">Team</div><div class="meta-val">Nicole + 1 developer</div></div>
+    <div><div class="meta-label">Status</div><div class="meta-val">Shipped · 2026</div></div>
+    <div><div class="meta-label">Timeline</div><div class="meta-val">3 weeks to build</div></div>
+  </div>
+
+  <p class="p">RoomingKos had traffic, but few meaningful enquiries — and when Leasing did get one, working out which room actually suited the prospect could take 5–7 minutes of manual cross-referencing per enquiry.</p>
+
+  <div class="surface-root">
+    <div class="sr-box left"><div class="sr-tag">What it looked like</div><div class="sr-text">We needed more enquiries.</div></div>
+    <div class="sr-arrow">→</div>
+    <div class="sr-box right"><div class="sr-tag">What was actually happening</div><div class="sr-text">Prospects didn't know what to ask for — and once they did, Leasing couldn't process it fast enough.</div></div>
+  </div>
+
+  <div class="quote-block">
+    How do we turn the way an experienced Leasing Manager makes a recommendation into a system — without removing the judgement that still belongs to them?
+    <div class="attr">The question behind Rumi</div>
+  </div>
+
+  <div class="h2">What I learned from Leasing</div>
+  <ul class="steps">
+    <li>Room matching relied on a mix of fixed business rules and contextual judgement.</li>
+    <li>The same customer input could mean different things depending on who was asking.</li>
+    <li>Some requirements couldn't be verified from the available data.</li>
+    <li>A recommendation still needed a clear human owner before it could become action.</li>
+  </ul>
+
+  <div class="h2">See the decision logic in action</div>
+  <p class="p">A simplified recreation of how Rumi narrows a candidate set, surfaces trade-offs, and prepares a response for human review.</p>
+
+  <div class="app-frame">
+    <div class="app-topbar">
+      <div class="app-brand">
+        <div class="app-logo">RK</div>
+        <div class="app-brand-text">
+          <div class="n1">RoomingKos</div>
+          <div class="n2">Rumi for Sales</div>
+        </div>
+      </div>
+      <div class="app-nav">
+        <span class="on">Today</span><span>Enquiries</span><span>Properties</span><span>Admin</span>
+      </div>
+      <div class="app-demo-badge"><span class="d"></span>RECREATED DEMO · NOT LIVE</div>
+    </div>
+
+    <div class="app-body">
+      <div class="app-sec-head"><div class="app-sec-num">1</div><div class="app-sec-title">Inquiry</div></div>
+      <div class="inq-grid">
+        <div><div class="inq-label">Applicant</div><div class="inq-val">Student</div></div>
+        <div><div class="inq-label">Budget</div><div class="inq-val">$350–450 / wk</div></div>
+        <div><div class="inq-label">Preferred area</div><div class="inq-val">Monash Clayton</div></div>
+        <div><div class="inq-label">Move-in</div><div class="inq-val">10 Feb</div></div>
+        <div><div class="inq-label">Room type</div><div class="inq-val">Single, solo</div></div>
+        <div><div class="inq-label">Mandatory</div><div class="inq-val">Female-only</div></div>
+      </div>
+
+      <div class="app-sec-head" style="margin-top:26px">
+        <div class="app-sec-num">2</div><div class="app-sec-title">Matches</div>
+        <button class="replay-btn" id="replayBtn">▶ Replay</button>
+      </div>
+
+      <div class="flow-wrap">
+        <svg id="flowSvg" viewBox="0 0 1000 330" preserveAspectRatio="xMinYMin meet"></svg>
+      </div>
+      <div class="flow-legend">
+        <span class="fl-term">Feasibility checks</span> — Lease · Category · Occupancy · Move-in window · Location eligibility.<br>
+        <span class="fl-term">Requirement checks</span> — must-have requirements are enforced where the data allows, or surfaced for human verification where it doesn't (see Riverside, below).
+      </div>
+
+      <div class="final-app-cards" id="finalCards"></div>
+
+      <div class="app-sec-head" style="margin-top:26px">
+        <div class="app-sec-num">3</div><div class="app-sec-title">Reply</div>
+        <div class="app-sec-sub" id="replyCount">2 rooms included</div>
+      </div>
+
+      <div class="reply-panel">
+        <div class="reply-row">
+          <span class="reply-label">SEND AS</span>
+          <div class="pill-toggle" id="sendAsToggle"><span class="on" data-val="Email">Email</span><span data-val="WhatsApp">WhatsApp</span></div>
+        </div>
+        <div class="reply-row">
+          <span class="reply-label">FORMAT</span>
+          <div class="pill-toggle" id="formatToggle">
+            <span class="on" data-val="standard">Standard</span><span data-val="concise">Concise</span><span data-val="simple">Simple</span><span data-val="bullets">Bullets</span>
+          </div>
+        </div>
+        <div class="reply-row" style="align-items:flex-start">
+          <span class="reply-label" style="margin-top:8px">INSTRUCTIONS</span>
+          <div style="flex:1">
+            <textarea id="extraInstructions" class="instr-box" placeholder="Mood to strike, something to emphasise, a question to ask — the facts, rooms and links never change."></textarea>
+            <div class="chip-row">
+              <button class="instr-chip" data-txt="Make it sound more casual">More casual</button>
+              <button class="instr-chip" data-txt="Mention I can arrange viewings this weekend">Mention weekend viewings</button>
+              <button class="instr-chip" data-txt="Keep it as brief as possible">Keep it brief</button>
+            </div>
+          </div>
+        </div>
+        <button class="regen-btn" id="regenBtn">✦ Regenerate</button>
+        <div class="reply-note">Built from a template I wrote — Rumi fills in the specific rooms, prices and dates, and adapts tone or emphasis to instructions like these.</div>
+        <div class="applied-tag" id="appliedTag" style="display:none"></div>
+        <div class="reply-msg" id="replyMsg"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="h2">How I thought about it</div>
+  <p class="p" style="margin-top:8px; font-size:13px; color:var(--muted)">Click a step to inspect the reasoning underneath.</p>
+
+  <div class="principle-block" data-pb="1">
+    <div class="pb-header">
+      <div class="pb-num"><span class="pb-idx">01</span> Follow the problem, not the feature</div>
+      <div class="pb-toggle">Inspect +</div>
+    </div>
+    <div class="pb-desc">I didn't start with AI. Guided Enquiry solved an information problem, then exposed a processing bottleneck that led to Rumi. I see Rumi the same way — one step toward a more connected customer and operational system.</div>
+    <div class="pb-expand">
+      <div class="chain">
+        <span class="chain-node">Vague enquiries</span><span class="chain-arrow">→</span>
+        <span class="chain-node muted">Guided Enquiry</span><span class="chain-arrow">→</span>
+        <span class="chain-node">Better inputs</span><span class="chain-arrow">→</span>
+        <span class="chain-node muted">Processing bottleneck</span><span class="chain-arrow">→</span>
+        <span class="chain-node signal">Rumi</span>
+      </div>
+      <div class="next-row">
+        <span class="next-tag">NEXT — vision, not yet built</span>
+        <div class="chain" style="margin-top:8px">
+          <span class="chain-node dim">Rumi conversion</span><span class="chain-arrow">→</span>
+          <span class="chain-node dim">CRM update</span><span class="chain-arrow">→</span>
+          <span class="chain-node dim">Less duplicate work</span><span class="chain-arrow">→</span>
+          <span class="chain-node dim">Better insight</span>
+        </div>
+        <div class="next-caption">Part of the same direction as Operational Hub, below.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="principle-block" data-pb="2">
+    <div class="pb-header">
+      <div class="pb-num"><span class="pb-idx">02</span> Model the decision before automating it</div>
+      <div class="pb-toggle">Inspect +</div>
+    </div>
+    <div class="pb-desc">I translated how Leasing matches a prospect to available rooms into a structured decision process. Clear constraints remove options that cannot work; viable rooms are compared against the prospect's needs; uncertainty stays visible; and AI helps reason across the strongest remaining options.</div>
+    <div class="pb-expand">
+      <div class="prospect-strip">
+        <span class="ps-tag">Prospect needs</span> Student · Oct move-in · 12+ months · $400/wk · Monash Clayton · Female-only
+      </div>
+      <div class="stage-tabs">
+        <button class="stage-tab on" data-stage="feas">01 Feasibility</button>
+        <button class="stage-tab" data-stage="fit">02 Fit</button>
+        <button class="stage-tab" data-stage="unc">03 Uncertainty</button>
+        <button class="stage-tab" data-stage="rea">04 Reasoning</button>
+      </div>
+      <div class="stage-body" id="stageBody"></div>
+      <div class="stage-legend">
+        <span class="sl-item"><b>Impossible</b> → Remove</span>
+        <span class="sl-item"><b>Trade-off</b> → Compare</span>
+        <span class="sl-item"><b>Unknown</b> → Verify</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="principle-block" data-pb="3">
+    <div class="pb-header">
+      <div class="pb-num"><span class="pb-idx">03</span> Decide where human judgement belongs</div>
+      <div class="pb-toggle">Inspect +</div>
+    </div>
+    <div class="pb-desc">Rumi narrows the decision space, but Leasing keeps control of the final recommendation and response. It surfaces evidence, trade-offs and unknowns, then prepares a prospect-ready message that Leasing can edit, regenerate or tailor with additional instructions before sending.</div>
+    <div class="pb-expand">
+      <div class="control-flow">
+        <div class="cf-step"><div class="cf-title">Rumi prepares</div><div class="cf-sub">Summary · Recommendations · Rationale · Trade-offs · Unknowns</div></div>
+        <div class="cf-arrow">↓</div>
+        <div class="cf-step highlight"><div class="cf-title">Leasing reviews</div><div class="cf-sub">Verify · Include / Exclude · Adjust recommendation</div></div>
+        <div class="cf-arrow">↓</div>
+        <div class="cf-step"><div class="cf-title">Rumi drafts response</div><div class="cf-sub">Email / WhatsApp · Standard / Concise / Bullets</div></div>
+        <div class="cf-arrow">↓</div>
+        <div class="cf-step highlight"><div class="cf-title">Leasing customises</div><div class="cf-sub">Edit directly · Add instructions · Regenerate</div></div>
+        <div class="cf-arrow">↓</div>
+        <div class="cf-step final"><div class="cf-title">Final customer response</div></div>
+      </div>
+      <div class="cf-microline">Reduce cognitive work — without transferring decision or communication control.</div>
+    </div>
+  </div>
+
+  <div class="principle-block" data-pb="4">
+    <div class="pb-header">
+      <div class="pb-num"><span class="pb-idx">04</span> Design for what happens next</div>
+      <div class="pb-toggle">Inspect +</div>
+    </div>
+    <div class="pb-desc">A recommendation still has to work in real operations. I designed for AI failure, incomplete evidence and overlapping team ownership — so every output has a safe, clear path to action.</div>
+    <div class="pb-expand">
+      <div class="what-if-tabs">
+        <button class="wi-tab on" data-wi="fail">AI FAILS</button>
+        <button class="wi-tab" data-wi="unknown">DATA UNKNOWN</button>
+        <button class="wi-tab" data-wi="overlap">TEAM OVERLAP</button>
+      </div>
+      <div class="wi-flow" id="wiFlow"></div>
+    </div>
+  </div>
+
+  <p class="pullquote">The system doesn't need to know everything. It needs to know what it can decide, what it should surface, and when a person should take over.</p>
+  <div class="dsh-line">DECIDE <span>→</span> SURFACE <span>→</span> HAND OVER</div>
+
+  <div class="h2">Outcome</div>
+  <div class="outcome-panel">
+    <div>
+      <div class="outcome-label">Room matching &amp; response preparation</div>
+      <div class="outcome-desc">Rumi turns prospect requirements and room availability into a review-ready recommendation and response in under a minute — replacing around 5–7 minutes of manual cross-referencing before Leasing review.</div>
+    </div>
+    <div class="outcome-num">
+      <div class="outcome-from">5–7 min</div>
+      <div class="outcome-to">&lt;1 min</div>
+      <div class="outcome-sub">manual analysis → review-ready output</div>
+    </div>
+  </div>
+
+  <div class="progression">
+    <div class="prog-step">
+      <div class="prog-num">01</div>
+      <div class="prog-title">Structured decision</div>
+      <div class="prog-sub">From manual judgement to a repeatable decision flow.</div>
+      <div class="prog-desc">Rules, evidence, trade-offs and unknowns are surfaced consistently, while Leasing retains final judgement.</div>
+    </div>
+    <div class="prog-arrow">→</div>
+    <div class="prog-step">
+      <div class="prog-num">02</div>
+      <div class="prog-title">Faster response</div>
+      <div class="prog-sub">Less processing between enquiry and response.</div>
+      <div class="prog-desc">Rumi prepares both the recommendation and prospect-ready message, helping Leasing respond sooner with relevant options.</div>
+    </div>
+    <div class="prog-arrow dashed">→</div>
+    <div class="prog-step future">
+      <div class="prog-num">03</div>
+      <div class="prog-title">Built to extend</div>
+      <div class="prog-sub">From one workflow to a connected system.</div>
+      <div class="prog-desc">The structured enquiry-to-decision flow creates a foundation for future CRM and operational integrations — reducing duplicate work and enabling richer insight.</div>
+    </div>
+  </div>
+
+  <div class="tags-row">
+    <span class="tag">AI Workflow</span>
+    <span class="tag">Decision Rules</span>
+    <span class="tag">Human-in-the-loop</span>
+    <span class="tag">Failure Design</span>
+  </div>
+
+  <div class="footer-nav">← Back to all projects</div>
+</div>
+
+<script>
+// 12 mock candidate rooms. dropStage: 0=hard gates, 1=location/window, 2=rank (reaches rank but not final), null=final pick
+const rooms = [
+  {id:1, name:'Clayton Central Studio', price:420, dropStage:null, pick:1},
+  {id:2, name:'Sunview PBSA Ensuite',   price:480, dropStage:null, pick:2},
+  {id:3, name:'Birch Lane Twin',        price:400, dropStage:2,    pick:null},
+  {id:4, name:'Riverside Rooming Single', price:360, dropStage:null, pick:3},
+  {id:5, name:'Maple Ct Professional',  price:410, dropStage:0, reason:'Professional-only — category gate'},
+  {id:6, name:'Clayton Overflow Twin',  price:390, dropStage:0, reason:'Needs 2 tenants — occupancy gate'},
+  {id:7, name:'Birch Lane Single',      price:370, dropStage:1, reason:'Leased til March — window gate'},
+  {id:8, name:'Hawthorn Studio',        price:400, dropStage:1, reason:'55 min commute — location gate'},
+  {id:9, name:'Birch Lane Compact',     price:350, dropStage:0, reason:'12-month lease only — lease gate'},
+  {id:10,name:'Maple Ct Twin Share',    price:380, dropStage:0, reason:'Co-lease required — occupancy gate'},
+  {id:11,name:'Eastview PBSA',          price:430, dropStage:1, reason:'Available 20 Feb — window gate'},
+  {id:12,name:'Southbank PBSA',         price:440, dropStage:0, reason:'Building requires a co-signed lease — occupancy gate'},
+];
+
+const colX = [30, 220, 410, 600, 720];
+const colLabels = [
+  {label:'Pool', count:'12 in'},
+  {label:'Hard gates', count:'7 on'},
+  {label:'Location', count:'4 on'},
+  {label:'Rank', count:'4 on'},
+  {label:'LLM picks', count:'3 picked'},
+];
+const rowH = 20, rowStart = 46, chartBottom = 300;
+const pickY = [70, 110, 150]; // where the 3 final picks land on the right
+
+const svg = document.getElementById('flowSvg');
+const NS = 'http://www.w3.org/2000/svg';
+
+function buildSvg(){
+  svg.innerHTML = '';
+  // column headers
+  colLabels.forEach((c,i)=>{
+    const t1 = document.createElementNS(NS,'text');
+    t1.setAttribute('x', colX[i]); t1.setAttribute('y', 16); t1.setAttribute('class','flow-col-label');
+    t1.textContent = c.label; svg.appendChild(t1);
+    const t2 = document.createElementNS(NS,'text');
+    t2.setAttribute('x', colX[i]); t2.setAttribute('y', 28); t2.setAttribute('class','flow-col-count');
+    t2.textContent = c.count; svg.appendChild(t2);
+  });
+  // vertical gridlines
+  colX.forEach(x=>{
+    const l = document.createElementNS(NS,'line');
+    l.setAttribute('x1',x); l.setAttribute('x2',x); l.setAttribute('y1',36); l.setAttribute('y2',chartBottom);
+    l.setAttribute('stroke','#EDEAE3'); l.setAttribute('stroke-width','1');
+    svg.appendChild(l);
+  });
+
+  const paths = [];
+  rooms.forEach((r,i)=>{
+    const y0 = rowStart + i*rowH;
+    const path = document.createElementNS(NS,'path');
+    let d;
+    if(r.dropStage===null){
+      // survivor: flows to final pick slot
+      const yFinal = pickY[r.pick-1];
+      d = `M ${colX[0]},${y0} L ${colX[3]},${y0} C ${colX[3]+50},${y0} ${colX[4]-50},${yFinal} ${colX[4]},${yFinal}`;
+      path.setAttribute('stroke', '#C8283A');
+      path.setAttribute('stroke-width', '2');
+    } else {
+      const xDrop = colX[r.dropStage+1];
+      d = `M ${colX[0]},${y0} L ${xDrop},${y0} C ${xDrop+30},${y0} ${xDrop+50},${chartBottom-10} ${xDrop+70},${chartBottom+10}`;
+      path.setAttribute('stroke', '#D8D1C7');
+      path.setAttribute('stroke-width', '1.5');
+    }
+    path.setAttribute('d', d);
+    path.setAttribute('fill','none');
+    path.setAttribute('stroke-linecap','round');
+    const title = document.createElementNS(NS,'title');
+    title.textContent = r.dropStage===null ? `${r.name} — LLM pick #${r.pick}` : `${r.name} — ${r.reason}`;
+    path.appendChild(title);
+    svg.appendChild(path);
+    paths.push(path);
+  });
+
+  // final pick markers + labels
+  rooms.filter(r=>r.dropStage===null).sort((a,b)=>a.pick-b.pick).forEach(r=>{
+    const y = pickY[r.pick-1];
+    const circle = document.createElementNS(NS,'circle');
+    circle.setAttribute('cx', colX[4]+8); circle.setAttribute('cy', y); circle.setAttribute('r', 9);
+    circle.setAttribute('fill', '#C8283A');
+    svg.appendChild(circle);
+    const num = document.createElementNS(NS,'text');
+    num.setAttribute('x', colX[4]+8); num.setAttribute('y', y+3); num.setAttribute('text-anchor','middle');
+    num.setAttribute('class','flow-pick-num'); num.textContent = r.pick;
+    svg.appendChild(num);
+    const label = document.createElementNS(NS,'text');
+    label.setAttribute('x', colX[4]+22); label.setAttribute('y', y+4); label.setAttribute('class','flow-pick-label');
+    label.textContent = r.name;
+    svg.appendChild(label);
+  });
+
+  return paths;
+}
+
+function playAnimation(paths){
+  paths.forEach((p,i)=>{
+    const len = p.getTotalLength();
+    p.style.transition = 'none';
+    p.style.strokeDasharray = len;
+    p.style.strokeDashoffset = len;
+  });
+  // force reflow
+  void svg.getBoundingClientRect();
+  paths.forEach((p,i)=>{
+    p.style.transition = `stroke-dashoffset 1s ease ${i*0.035}s`;
+    p.style.strokeDashoffset = 0;
+  });
+}
+
+let currentPaths = buildSvg();
+requestAnimationFrame(()=> playAnimation(currentPaths));
+
+document.getElementById('replayBtn').addEventListener('click', ()=>{
+  currentPaths = buildSvg();
+  requestAnimationFrame(()=> playAnimation(currentPaths));
+});
+
+// ===== Final picks cards + Reply generator =====
+const finalPicks = [
+  {id:1, name:'Clayton Central Studio', price:420, why:'In budget, right room type, closest commute to campus.', note:'Closest option to campus, in budget, right room type.', flag:false, included:true},
+  {id:2, name:'Sunview PBSA Ensuite',   price:480, why:'$30/wk above budget — but strongest overall room fit.', note:'$30/wk above your budget, but the strongest overall room fit.', flag:false, included:true},
+  {id:4, name:'Riverside Rooming Single', price:360, why:'Female-only requirement could not be confirmed from available data.', note:'Great fit overall — the female-only requirement still needs confirming before this goes out.', flag:true, included:false},
+];
+
+function renderFinalCards(){
+  document.getElementById('finalCards').innerHTML = finalPicks.map((r,i)=>`
+    <div class="facard ${r.flag?'flagcard':(i===0?'best':'')}">
+      <div class="fa-badge">${i+1}</div>
+      <div class="fa-title">${r.name}</div>
+      <div class="fa-price">$${r.price}<span> / wk</span></div>
+      <div class="fa-why">${r.why}</div>
+      <div class="fa-btns">
+        <div class="fa-btn">Why matched</div>
+        <div class="fa-toggle ${r.included?'on':''}" data-id="${r.id}">${r.included?'Included':(r.flag?'1 to check':'Include')}</div>
+      </div>
+    </div>
+  `).join('');
+  document.querySelectorAll('.fa-toggle').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const id = parseInt(btn.dataset.id);
+      const room = finalPicks.find(r=>r.id===id);
+      room.included = !room.included;
+      renderFinalCards();
+      renderReply();
+    });
+  });
+}
+
+let currentFormat = 'standard';
+
+function renderReply(){
+  const included = finalPicks.filter(r=>r.included);
+  document.getElementById('replyCount').textContent = `${included.length} room${included.length===1?'':'s'} included`;
+  const msgEl = document.getElementById('replyMsg');
+  const tagEl = document.getElementById('appliedTag');
+  const instructions = document.getElementById('extraInstructions').value.trim();
+
+  if(included.length===0){
+    msgEl.textContent = 'Select at least one room above to include it in the reply.';
+    tagEl.style.display = 'none';
+    return;
+  }
+
+  const lower = instructions.toLowerCase();
+  const casual = lower.includes('casual');
+  const weekend = lower.includes('weekend');
+  const brief = lower.includes('brief') || lower.includes('short');
+
+  const greeting = casual ? 'Hey Alex,' : 'Hi Alex,';
+  const closing = casual
+    ? `Keen to hear what you think!`
+    : `Let me know if you'd like to arrange a viewing for either of these.`;
+  const weekendLine = weekend ? `I can also arrange viewings this weekend if that's easier for you.\n\n` : '';
+
+  let msg = '';
+  if(currentFormat === 'bullets'){
+    msg = `${greeting}\n\nHere ${included.length===1?'is':'are'} ${included.length} option${included.length===1?'':'s'} worth considering:\n\n`;
+    included.forEach(r=>{ msg += `• ${r.name} — $${r.price}/wk. ${r.note}\n`; });
+    msg += `\n${weekendLine}${closing}`;
+  } else if(currentFormat === 'simple'){
+    msg = `${greeting}\n\n`;
+    included.forEach(r=>{ msg += `${r.name}: $${r.price}/wk.\n`; });
+    msg += `\n${weekendLine}${closing}`;
+  } else if(currentFormat === 'concise' || brief){
+    msg = `${greeting} Found ${included.length} option${included.length===1?'':'s'} near Monash Clayton within your budget:\n\n`;
+    included.forEach(r=>{ msg += `${r.name} — $${r.price}/wk\n`; });
+    msg += `\n${weekendLine}${closing}`;
+  } else {
+    msg = `${greeting}\n\nI've found ${included.length} current option${included.length===1?'':'s'} that look worth considering for your move.\n\nYou're looking for a room from around 10 Feb, near Monash Clayton, with a weekly budget of $350–450.\n\n`;
+    included.forEach(r=>{
+      msg += `${r.name} — $${r.price}/wk\n${r.note}\nView details →\n\n`;
+    });
+    msg += `${weekendLine}${closing}`;
+  }
+
+  msgEl.textContent = msg;
+
+  if(instructions){
+    tagEl.style.display = 'inline-block';
+    tagEl.textContent = `✦ Applied: "${instructions}"`;
+  } else {
+    tagEl.style.display = 'none';
+  }
+}
+
+renderFinalCards();
+renderReply();
+
+// ===== Reply panel controls =====
+document.getElementById('formatToggle').querySelectorAll('span').forEach(el=>{
+  el.addEventListener('click', ()=>{
+    document.getElementById('formatToggle').querySelectorAll('span').forEach(s=>s.classList.remove('on'));
+    el.classList.add('on');
+    currentFormat = el.dataset.val;
+    renderReply();
+  });
+});
+document.getElementById('sendAsToggle').querySelectorAll('span').forEach(el=>{
+  el.addEventListener('click', ()=>{
+    document.getElementById('sendAsToggle').querySelectorAll('span').forEach(s=>s.classList.remove('on'));
+    el.classList.add('on');
+  });
+});
+document.querySelectorAll('.instr-chip').forEach(chip=>{
+  chip.addEventListener('click', ()=>{
+    document.getElementById('extraInstructions').value = chip.dataset.txt;
+  });
+});
+document.getElementById('regenBtn').addEventListener('click', (e)=>{
+  const btn = e.currentTarget;
+  const original = btn.textContent;
+  btn.textContent = 'Regenerating…';
+  btn.disabled = true;
+  setTimeout(()=>{
+    renderReply();
+    btn.textContent = original;
+    btn.disabled = false;
+  }, 500);
+});
+
+// ===== Expandable "How I thought about it" blocks =====
+document.querySelectorAll('.pb-header').forEach(header=>{
+  header.addEventListener('click', ()=>{
+    const block = header.closest('.principle-block');
+    document.querySelectorAll('.principle-block.open').forEach(b=>{
+      if(b!==block){ b.classList.remove('open'); b.querySelector('.pb-toggle').textContent='Inspect +'; }
+    });
+    block.classList.toggle('open');
+    header.querySelector('.pb-toggle').textContent = block.classList.contains('open') ? 'Close −' : 'Inspect +';
+  });
+});
+
+// ===== Stage tabs for block 02 (Feasibility / Fit / Uncertainty / Reasoning) =====
+const stageData = {
+  feas: {
+    q: 'Can this room actually work?',
+    rows: [['Lease','✓'],['Eligibility','✓'],['Occupancy','✓'],['Move-in','✓']],
+    result: 'Impossible → Remove'
+  },
+  fit: {
+    q: 'How well does it match?',
+    rows: [['Location','Strong'],['Price','+$30/wk'],['Room type','Strong']],
+    result: 'Trade-off → Keep + Compare',
+    note: 'Location isn\'t literal: a student is ranked by commute to campus; a professional by suburb + nearby areas.'
+  },
+  unc: {
+    q: "What can't we verify?",
+    rows: [['Female-only','Source data unavailable']],
+    result: 'Unknown → Flag for review'
+  },
+  rea: {
+    q: 'Which options are strongest overall?',
+    rows: [['Viable rooms','→'],['Compare fit + trade-offs','→'],['AI reasoning','→']],
+    result: 'Recommend + Explain'
+  },
+};
+function renderStage(key){
+  const d = stageData[key];
+  const rowsHtml = d.rows.map(([a,b])=>`<span class="sb-item"><b>${a}</b> ${b}</span>`).join('');
+  document.getElementById('stageBody').innerHTML = `
+    <div class="sb-q">${d.q}</div>
+    <div class="sb-row">${rowsHtml}</div>
+    <div class="sb-result">${d.result}</div>
+    ${d.note ? `<div class="sb-note">${d.note}</div>` : ''}
+  `;
+}
+document.querySelectorAll('.stage-tab').forEach(tab=>{
+  tab.addEventListener('click', (e)=>{
+    e.stopPropagation();
+    document.querySelectorAll('.stage-tab').forEach(t=>t.classList.remove('on'));
+    tab.classList.add('on');
+    renderStage(tab.dataset.stage);
+  });
+});
+renderStage('feas');
+
+// ===== What-if tabs for block 04 =====
+const wiData = {
+  fail: ['Recommendation ready', '→', 'Model call times out', '→', 'Deterministic fallback', '→', 'Marked "degraded"', '→', 'Human review'],
+  unknown: ['Requirement can\'t be verified', '→', 'Flagged, not guessed', '→', 'Stays visible on the card', '→', 'Human confirms before sending'],
+  overlap: ['2 rooms, 2 teams', '→', 'Best match sets primary owner', '→', 'Secondary: view-only', '→', 'Explicit handoff if needed'],
+};
+function renderWiFlow(key){
+  document.getElementById('wiFlow').innerHTML = wiData[key].map(t=>
+    t==='→' ? `<span class="chain-arrow">→</span>` : `<span class="chain-node ${t.includes('degraded')||t.includes('Flagged')||t.includes('primary owner')?'signal':''}">${t}</span>`
+  ).join('');
+}
+document.querySelectorAll('.wi-tab').forEach(tab=>{
+  tab.addEventListener('click', (e)=>{
+    e.stopPropagation();
+    document.querySelectorAll('.wi-tab').forEach(t=>t.classList.remove('on'));
+    tab.classList.add('on');
+    renderWiFlow(tab.dataset.wi);
+  });
+});
+renderWiFlow('fail');
+</script>
+</body>
+</html>
