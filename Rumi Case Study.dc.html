@@ -817,31 +817,53 @@
   </div>
 
   <div style="font-size: 15px; color: var(--slate); margin-top: 10px; line-height: 1.55">
-    The workflow needed explicit behaviour when the system could not be certain. I designed paths for model failure, missing data and overlapping ownership so Rumi could fall back, flag or hand over rather than silently fail or guess.
+    The workflow needed explicit behaviour when normal decision-making broke down. I designed paths for model failure, missing data and overlapping ownership so Rumi could fall back, flag or hand over instead of silently failing or inventing certainty.
   </div>
 
   <sc-if value="{{ open4 }}" hint-placeholder-val="{{ false }}">
 
     <div style="margin-top: 18px">
 
+      <!-- SCENARIO TABS -->
       <div style="display: flex; gap: 6px; flex-wrap: wrap">
 
         <sc-for list="{{ scenarios }}" as="sc" hint-placeholder-count="3">
+
           <button type="button"
                   onClick="{{ sc.onPick }}"
-                  style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .04em; padding: 9px 12px; border-radius: 6px; cursor: pointer; border: 1px solid {{ sc.border }}; background: {{ sc.bg }}; color: {{ sc.color }}">
+                  style="font-family: 'IBM Plex Mono', monospace;
+                         font-size: 10px;
+                         letter-spacing: .04em;
+                         padding: 9px 12px;
+                         border-radius: 6px;
+                         cursor: pointer;
+                         border: 1px solid {{ sc.border }};
+                         background: {{ sc.bg }};
+                         color: {{ sc.color }}">
             {{ sc.label }}
           </button>
+
         </sc-for>
 
       </div>
 
+
+      <!-- SCENARIO FLOW -->
       <div style="margin-top: 14px; display: flex; align-items: center; gap: 8px 4px; flex-wrap: wrap">
 
         <sc-for list="{{ scenarioNodes }}" as="node" hint-placeholder-count="5">
-          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; padding: 7px 11px; border-radius: 6px; border: 1px solid {{ node.border }}; background: {{ node.bg }}; color: {{ node.color }}; font-weight: {{ node.weight }}">
+
+          <span style="font-family: 'IBM Plex Mono', monospace;
+                       font-size: 10.5px;
+                       padding: 7px 11px;
+                       border-radius: 6px;
+                       border: 1px solid {{ node.border }};
+                       background: {{ node.bg }};
+                       color: {{ node.color }};
+                       font-weight: {{ node.weight }}">
             {{ node.text }}
           </span>
+
         </sc-for>
 
       </div>
@@ -873,7 +895,7 @@
   </div>
 
   <div style="font-size: 15px; color: var(--slate); margin-top: 10px; line-height: 1.55">
-    I treated Rumi as one layer in a wider customer and operational system rather than a standalone AI feature. Structuring the enquiry first, then the decision that followed, created a reusable foundation for later CRM and operational connections.
+    I treated Rumi as one layer in a wider customer and operational system rather than a standalone AI feature. Structuring the enquiry first, then the decision that followed, created a reusable foundation that could later connect into CRM and operational workflows.
   </div>
 
   <sc-if value="{{ open1 }}" hint-placeholder-val="{{ false }}">
@@ -882,6 +904,7 @@
 
       <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px 4px">
 
+        <!-- BUILT -->
         <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; padding: 7px 11px; border-radius: 6px; background: #fff; border: 1px solid var(--hairline)">
           Enquiry
         </span>
@@ -894,6 +917,7 @@
 
         <span style="color: var(--muted); font-size: 11px">→</span>
 
+        <!-- FUTURE -->
         <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; padding: 7px 11px; border-radius: 6px; background: #fff; border: 1px dashed var(--hairline); color: var(--slate)">
           Conversion
         </span>
@@ -2001,58 +2025,60 @@ class Component extends DCLogic {
           })),
 
 
-      scenarioNodes:
-        SCENARIOS[s.scenario]
-          .nodes
-          .map(t => {
+    scenarioNodes:
+  SCENARIOS[s.scenario]
+    .nodes
+    .map(t => {
 
-            if (t === '→') {
-
-              return {
-                text: '→',
-                bg: 'transparent',
-                border: 'transparent',
-                color: 'var(--muted)',
-                weight: 400
-              };
-
-            }
-
-
-            const sig =
-              t.includes('degraded') ||
-              t.includes('Flagged') ||
-              t.includes('primary owner');
+      // Arrow
+      if (t === '→') {
+        return {
+          text: '→',
+          bg: 'transparent',
+          border: 'transparent',
+          color: 'var(--muted)',
+          weight: 400
+        };
+      }
 
 
-            return {
+      // Key system response / outcome
+      const sig =
+        t.includes('degraded') ||
+        t.includes('Flagged') ||
+        t.includes('primary owner');
 
-              text:
-                t,
 
-              bg:
-                sig
-                  ? 'var(--ink)'
-                  : '#fff',
+      return {
 
-              border:
-                sig
-                  ? 'var(--ink)'
-                  : 'var(--hairline)',
+        text:
+          t,
 
-              color:
-                sig
-                  ? 'var(--signal)'
-                  : 'var(--ink)',
+        // Important result = pale signal,
+        // active scenario tab remains black separately.
+        bg:
+          sig
+            ? 'var(--signal-pale)'
+            : '#fff',
 
-              weight:
-                sig
-                  ? 600
-                  : 400
+        border:
+          sig
+            ? 'var(--signal)'
+            : 'var(--hairline)',
 
-            };
+        color:
+          sig
+            ? 'var(--signal-deep)'
+            : 'var(--ink)',
 
-          })
+        weight:
+          sig
+            ? 600
+            : 400
+
+      };
+
+    })
 
     };
 
