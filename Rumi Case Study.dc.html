@@ -164,11 +164,7 @@
 
 <!-- CONTEXT -->
 <p style="font-size: 16.5px; color: var(--slate); margin: 40px 0 0; max-width: 64ch; text-wrap: pretty">
-  The Guided Enquiry flow on the RoomingKos website improved the quality and structure of incoming rental enquiries. But better inputs exposed the next problem downstream: Leasing still had to manually interpret each prospect’s needs against live room availability, pricing and property criteria before deciding what to recommend.
-</p>
-
-<p style="font-size: 16.5px; color: var(--slate); margin: 14px 0 0; max-width: 64ch; text-wrap: pretty">
-  Preparing a suitable recommendation typically took 5–7 minutes per enquiry.
+  The Guided Enquiry flow on the RoomingKos website improved the quality and structure of incoming rental enquiries. That exposed the next bottleneck: Leasing still had to manually match each prospect against live availability, pricing and property criteria, typically taking 5–7 minutes per enquiry.
 </p>
 
 
@@ -180,11 +176,11 @@
     <div style="padding: 18px; border-radius: 12px; background: var(--mist)">
 
       <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--slate)">
-        What Guided Enquiry solved
+        What Guided Enquiry Solved
       </div>
 
       <div style="font-size: 14.5px; margin-top: 8px; line-height: 1.45; color: var(--slate)">
-        “We needed better information from prospects.”
+        Better, more structured prospect information.
       </div>
 
     </div>
@@ -198,11 +194,11 @@
     <div style="padding: 18px; border-radius: 12px; background: var(--signal-pale)">
 
       <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--signal-deep)">
-        What it revealed next
+        What It Revealed Next
       </div>
 
       <div style="font-size: 14.5px; margin-top: 8px; line-height: 1.45; color: var(--ink)">
-        “Once the information became structured, the bottleneck moved downstream: Leasing still had to manually decide which rooms were genuinely suitable.”
+        Room matching was still a manual decision.
       </div>
 
     </div>
@@ -215,7 +211,7 @@
 <!-- CORE QUESTION -->
 <div style="margin: 32px 0; padding: 22px 24px; background: var(--frost); border: 1px solid var(--hairline); border-radius: 12px; font-size: 16.5px; line-height: 1.5; max-width: 66ch">
 
-  How do we turn the way an experienced Leasing Manager evaluates and recommends rooms into a system — without removing the judgement that still belongs to them?
+  How do we turn the way an experienced Leasing Manager evaluates and recommends rooms into an automatic system without removing the judgement that still belongs to them?
 
   <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--slate); margin-top: 10px; text-transform: uppercase; letter-spacing: .06em">
     The question behind Rumi
@@ -226,7 +222,7 @@
 
 <!-- LEASING INSIGHTS -->
 <h2 style="font-size: clamp(22px, 2.4vw, 26px); font-weight: 600; letter-spacing: -.02em; margin: 64px 0 0">
-  What I learned from Leasing
+  What I learned from Leasing Process
 </h2>
 
 <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 18px; max-width: 64ch">
@@ -234,32 +230,24 @@
   <div style="display: flex; gap: 12px; align-items: flex-start">
     <span style="width: 6px; height: 6px; border-radius: 50%; background: var(--signal); margin-top: 9px; flex: 0 0 auto"></span>
     <span style="font-size: 15.5px; color: var(--slate)">
-      <strong style="color: var(--ink); font-weight: 600">Room matching was not one decision.</strong>
-      It combined fixed eligibility rules with contextual judgement.
+      <strong style="color: var(--ink); font-weight: 600">Room matching relied on a mix of fixed business rules and contextual judgement.</strong>
+      Some criteria were clear-cut, while preferences such as location, budget and room type could carry different weight depending on the prospect’s wider needs and trade-offs.
     </span>
   </div>
 
   <div style="display: flex; gap: 12px; align-items: flex-start">
     <span style="width: 6px; height: 6px; border-radius: 50%; background: var(--signal); margin-top: 9px; flex: 0 0 auto"></span>
     <span style="font-size: 15.5px; color: var(--slate)">
-      <strong style="color: var(--ink); font-weight: 600">Not every preference carried the same weight.</strong>
-      Location, budget and room type mattered differently depending on the prospect’s wider needs and acceptable trade-offs.
+      <strong style="color: var(--ink); font-weight: 600">Some requirements couldn’t be verified from the available data.</strong>
+      Instead of guessing, the system needed to surface those unknowns for Leasing to review..
     </span>
   </div>
 
   <div style="display: flex; gap: 12px; align-items: flex-start">
     <span style="width: 6px; height: 6px; border-radius: 50%; background: var(--signal); margin-top: 9px; flex: 0 0 auto"></span>
     <span style="font-size: 15.5px; color: var(--slate)">
-      <strong style="color: var(--ink); font-weight: 600">The available data could not verify every requirement.</strong>
-      Some uncertainty had to remain visible rather than being guessed away.
-    </span>
-  </div>
-
-  <div style="display: flex; gap: 12px; align-items: flex-start">
-    <span style="width: 6px; height: 6px; border-radius: 50%; background: var(--signal); margin-top: 9px; flex: 0 0 auto"></span>
-    <span style="font-size: 15.5px; color: var(--slate)">
-      <strong style="color: var(--ink); font-weight: 600">A recommendation still needed a human owner.</strong>
-      Even when the system could narrow the options, Leasing needed to retain control of the final recommendation and customer response.
+      <strong style="color: var(--ink); font-weight: 600">Leasing still needed to own the final recommendation.</strong>
+      Rumi could filter, compare and explain the strongest options, but the final decision and customer response remained with the team.
     </span>
   </div>
 
@@ -274,7 +262,7 @@
   </div>
 
   <div style="font-size: 14.5px; color: var(--slate); line-height: 1.58; margin-top: 7px">
-    I led discovery with Leasing and translated these findings into the decision model behind Rumi: separating hard constraints from ranked preferences, keeping uncertainty visible, defining where AI could assist, and preserving Leasing ownership of the final recommendation. I then worked with one developer to turn that model into a working workflow.
+    I translated this into Rumi’s decision model: hard constraints, ranked preferences, visible uncertainty and a clear human hand-off function, then worked with tech team to ship it.
   </div>
 
 </div>
