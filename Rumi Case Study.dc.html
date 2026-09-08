@@ -5,9 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="./support.js"></script>
 </head>
+
 <body>
 <x-dc>
+
 <helmet>
+
 <link rel="stylesheet" href="_ds/nicole-phan-portfolio-design-system-4bdb97ed-0a4d-49a2-a990-c73a92387521/tokens/fonts.css">
 <link rel="stylesheet" href="_ds/nicole-phan-portfolio-design-system-4bdb97ed-0a4d-49a2-a990-c73a92387521/tokens/colors.css">
 <link rel="stylesheet" href="_ds/nicole-phan-portfolio-design-system-4bdb97ed-0a4d-49a2-a990-c73a92387521/tokens/typography.css">
@@ -16,376 +19,1161 @@
 <link rel="stylesheet" href="_ds/nicole-phan-portfolio-design-system-4bdb97ed-0a4d-49a2-a990-c73a92387521/tokens/motion.css">
 <link rel="stylesheet" href="_ds/nicole-phan-portfolio-design-system-4bdb97ed-0a4d-49a2-a990-c73a92387521/tokens/base.css">
 <link rel="stylesheet" href="_ds/nicole-phan-portfolio-design-system-4bdb97ed-0a4d-49a2-a990-c73a92387521/styles.css">
+
 <script src="_ds/nicole-phan-portfolio-design-system-4bdb97ed-0a4d-49a2-a990-c73a92387521/_ds_bundle.js"></script>
+
 <style>
-  html, body { margin: 0; padding: 0; background: var(--page-background); background-attachment: fixed; }
-  * { box-sizing: border-box; }
-  a { color: var(--ink); text-decoration: none; }
-  a:hover { color: var(--signal-deep); }
-  textarea, button { font-family: inherit; }
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--page-background);
+    background-attachment: fixed;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  a {
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: var(--signal-deep);
+  }
+
+  textarea,
+  button {
+    font-family: inherit;
+  }
 </style>
+
 </helmet>
+
 
 <div style="font-family: 'Inter Tight', system-ui, sans-serif; color: var(--ink); line-height: 1.6">
 
+  <!-- HEADER -->
   <header style="position: sticky; top: 0; z-index: 50; background: rgba(247,247,244,.72); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border-bottom: 1px solid var(--hairline)">
+
     <nav style="max-width: 1480px; margin: 0 auto; padding: 14px clamp(20px, 4vw, 40px); display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap">
-      <a href="/" style="font-family: 'IBM Plex Mono', monospace; font-size: 15px; font-weight: 500; letter-spacing: .06em; min-height: 44px; display: inline-flex; align-items: center">NP</a>
-      <div style="display: flex; align-items: center; gap: clamp(18px, 3vw, 34px); font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; letter-spacing: .07em; text-transform: uppercase">
-        <a href="/#work" style="min-height: 44px; display: inline-flex; align-items: center; border-bottom: 2px solid var(--signal)">Work</a>
-        <a href="/#about" style="min-height: 44px; display: inline-flex; align-items: center; border-bottom: 2px solid transparent" style-hover="border-bottom-color: var(--border-active); color: var(--signal-deep)">About</a>
-        <a href="/#resume" style="min-height: 44px; display: inline-flex; align-items: center; border-bottom: 2px solid transparent" style-hover="border-bottom-color: var(--border-active); color: var(--signal-deep)">Resume ↗</a>
-      </div>
-      <a href="/#contact" style="background: var(--ink); color: var(--frost); font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; padding: 0 20px; min-height: 44px; border-radius: 999px; display: inline-flex; align-items: center; gap: 9px" style-hover="background: #000; color: var(--frost)">
-        <span style="width: 6px; height: 6px; border-radius: 50%; background: var(--signal); box-shadow: 0 0 0 4px var(--signal-glow)"></span>Contact
+
+      <a href="/" style="font-family: 'IBM Plex Mono', monospace; font-size: 15px; font-weight: 500; letter-spacing: .06em; min-height: 44px; display: inline-flex; align-items: center">
+        NP
       </a>
+
+      <div style="display: flex; align-items: center; gap: clamp(18px, 3vw, 34px); font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; letter-spacing: .07em; text-transform: uppercase">
+
+        <a href="/#work"
+           style="min-height: 44px; display: inline-flex; align-items: center; border-bottom: 2px solid var(--signal)">
+          Work
+        </a>
+
+        <a href="/#about"
+           style="min-height: 44px; display: inline-flex; align-items: center; border-bottom: 2px solid transparent"
+           style-hover="border-bottom-color: var(--border-active); color: var(--signal-deep)">
+          About
+        </a>
+
+        <a href="/#resume"
+           style="min-height: 44px; display: inline-flex; align-items: center; border-bottom: 2px solid transparent"
+           style-hover="border-bottom-color: var(--border-active); color: var(--signal-deep)">
+          Resume ↗
+        </a>
+
+      </div>
+
+      <a href="/#contact"
+         style="background: var(--ink); color: var(--frost); font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; padding: 0 20px; min-height: 44px; border-radius: 999px; display: inline-flex; align-items: center; gap: 9px"
+         style-hover="background: #000; color: var(--frost)">
+
+        <span style="width: 6px; height: 6px; border-radius: 50%; background: var(--signal); box-shadow: 0 0 0 4px var(--signal-glow)"></span>
+        Contact
+
+      </a>
+
     </nav>
+
   </header>
+
 
   <main style="max-width: 880px; margin: 0 auto; padding: clamp(32px, 5vw, 64px) clamp(20px, 4vw, 32px) clamp(80px, 10vw, 140px)">
 
-    <a href="/#work" style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: .04em; color: var(--slate); min-height: 44px; display: inline-flex; align-items: center">← All projects</a>
+    <a href="/#work"
+       style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: .04em; color: var(--slate); min-height: 44px; display: inline-flex; align-items: center">
+      ← All projects
+    </a>
 
-    <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; letter-spacing: .07em; text-transform: uppercase; color: var(--slate); margin-top: 20px">Product strategy · Business analysis · AI workflow design</div>
-    <h1 style="font-size: clamp(40px, 6vw, 58px); font-weight: 600; letter-spacing: -.03em; line-height: 1.02; margin: 12px 0 0">Rumi</h1>
-    <p style="font-size: clamp(17px, 1.6vw, 19px); color: var(--slate); margin: 14px 0 0; max-width: 56ch; text-wrap: pretty">Turning a fragmented room-finding journey into a structured, human-supervised recommendation workflow.</p>
 
+    <!-- HERO -->
+    <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; letter-spacing: .07em; text-transform: uppercase; color: var(--slate); margin-top: 20px">
+      Product strategy · Business analysis · AI workflow design
+    </div>
+
+    <h1 style="font-size: clamp(40px, 6vw, 58px); font-weight: 600; letter-spacing: -.03em; line-height: 1.02; margin: 12px 0 0">
+      Rumi
+    </h1>
+
+    <p style="font-size: clamp(17px, 1.6vw, 19px); color: var(--slate); margin: 14px 0 0; max-width: 58ch; text-wrap: pretty">
+      Turning rental enquiries and manual room matching into a structured, human-supervised recommendation workflow.
+    </p>
+
+
+    <!-- PROJECT META -->
     <div style="margin-top: 32px; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 20px 16px; padding: 20px 0; border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline)">
+
       <div>
-        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted)">Role</div>
-        <div style="font-size: 13.5px; margin-top: 5px; font-weight: 500">Product &amp; BA / Delivery lead</div>
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted)">
+          Role
+        </div>
+        <div style="font-size: 13.5px; margin-top: 5px; font-weight: 500">
+          Product &amp; BA / Delivery lead
+        </div>
       </div>
+
       <div>
-        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted)">Team</div>
-        <div style="font-size: 13.5px; margin-top: 5px; font-weight: 500">Nicole + 1 developer</div>
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted)">
+          Team
+        </div>
+        <div style="font-size: 13.5px; margin-top: 5px; font-weight: 500">
+          Nicole + 1 developer
+        </div>
       </div>
+
       <div>
-        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted)">Status</div>
-        <div style="font-size: 13.5px; margin-top: 5px; font-weight: 500">Shipped · 2026</div>
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted)">
+          Status
+        </div>
+        <div style="font-size: 13.5px; margin-top: 5px; font-weight: 500">
+          Shipped · 2026
+        </div>
       </div>
+
       <div>
-        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted)">Timeline</div>
-        <div style="font-size: 13.5px; margin-top: 5px; font-weight: 500">3 weeks to build</div>
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted)">
+          Timeline
+        </div>
+        <div style="font-size: 13.5px; margin-top: 5px; font-weight: 500">
+          3 weeks to build
+        </div>
       </div>
+
     </div>
 
-    <p style="font-size: 16.5px; color: var(--slate); margin: 40px 0 0; max-width: 62ch; text-wrap: pretty">RoomingKos had traffic, but few meaningful enquiries — and when Leasing did get one, working out which room actually suited the prospect could take 5–7 minutes of manual cross-referencing per enquiry.</p>
 
+    <!-- CONTEXT -->
+    <p style="font-size: 16.5px; color: var(--slate); margin: 40px 0 0; max-width: 64ch; text-wrap: pretty">
+      The new Guided Enquiry flow on the website helped RoomingKos capture more structured rental enquiries, but it also exposed a new downstream bottleneck: room matching and recommendation were still manual. Leasing had to interpret each prospect’s needs against live room availability, pricing and property criteria before preparing a recommendation.
+    </p>
+
+    <p style="font-size: 16.5px; color: var(--slate); margin: 14px 0 0; max-width: 64ch; text-wrap: pretty">
+      That process typically took 5–7 minutes per enquiry.
+    </p>
+
+
+    <!-- MY CONTRIBUTION -->
+    <div style="margin-top: 24px; padding: 16px 18px; background: var(--mist); border-radius: 10px; max-width: 66ch">
+
+      <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted)">
+        My contribution
+      </div>
+
+      <div style="font-size: 14.5px; color: var(--slate); line-height: 1.55; margin-top: 7px">
+        I led discovery with Leasing, translated their room-matching process into business rules and ranking logic, defined where AI and human judgement should sit, and worked with a developer to turn the workflow into a working system.
+      </div>
+
+    </div>
+
+
+    <!-- PROBLEM REFRAME -->
     <div style="margin-top: 28px; display: grid; grid-template-columns: 1fr; gap: 12px">
+
       <div style="display: grid; grid-template-columns: minmax(0, 1fr) 28px minmax(0, 1fr); align-items: center; gap: 10px">
+
         <div style="padding: 18px; border-radius: 12px; background: var(--mist)">
-          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--slate)">What it looked like</div>
-          <div style="font-size: 14.5px; margin-top: 8px; line-height: 1.45; color: var(--slate)">“We needed more enquiries.”</div>
+
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--slate)">
+            What it looked like
+          </div>
+
+          <div style="font-size: 14.5px; margin-top: 8px; line-height: 1.45; color: var(--slate)">
+            “We needed more enquiries.”
+          </div>
+
         </div>
-        <div style="font-size: 18px; color: var(--muted); text-align: center">→</div>
+
+        <div style="font-size: 18px; color: var(--muted); text-align: center">
+          →
+        </div>
+
         <div style="padding: 18px; border-radius: 12px; background: var(--signal-pale)">
-          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--signal-deep)">What was actually happening</div>
-          <div style="font-size: 14.5px; margin-top: 8px; line-height: 1.45; color: var(--ink)">“Prospects didn’t know what to ask for — and once they did, Leasing couldn’t process it fast enough.”</div>
+
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--signal-deep)">
+            What was actually happening
+          </div>
+
+          <div style="font-size: 14.5px; margin-top: 8px; line-height: 1.45; color: var(--ink)">
+            “Once enquiries became more structured, the constraint shifted downstream: deciding which available room best matched each prospect.”
+          </div>
+
         </div>
+
       </div>
+
     </div>
 
+
+    <!-- CORE QUESTION -->
     <div style="margin: 32px 0; padding: 22px 24px; background: var(--frost); border: 1px solid var(--hairline); border-radius: 12px; font-size: 16.5px; line-height: 1.5; max-width: 66ch">
+
       How do we turn the way an experienced Leasing Manager makes a recommendation into a system — without removing the judgement that still belongs to them?
-      <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--slate); margin-top: 10px; text-transform: uppercase; letter-spacing: .06em">The question behind Rumi</div>
+
+      <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--slate); margin-top: 10px; text-transform: uppercase; letter-spacing: .06em">
+        The question behind Rumi
+      </div>
+
     </div>
 
-    <h2 style="font-size: clamp(22px, 2.4vw, 26px); font-weight: 600; letter-spacing: -.02em; margin: 64px 0 0">What I learned from Leasing</h2>
+
+    <!-- LEASING INSIGHTS -->
+    <h2 style="font-size: clamp(22px, 2.4vw, 26px); font-weight: 600; letter-spacing: -.02em; margin: 64px 0 0">
+      What I learned from Leasing
+    </h2>
+
     <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 18px; max-width: 64ch">
-      <div style="display: flex; gap: 12px; align-items: flex-start"><span style="width: 6px; height: 6px; border-radius: 50%; background: var(--signal); margin-top: 9px; flex: 0 0 auto"></span><span style="font-size: 15.5px; color: var(--slate)">Room matching relied on a mix of fixed business rules and contextual judgement.</span></div>
-      <div style="display: flex; gap: 12px; align-items: flex-start"><span style="width: 6px; height: 6px; border-radius: 50%; background: var(--signal); margin-top: 9px; flex: 0 0 auto"></span><span style="font-size: 15.5px; color: var(--slate)">The same customer input could mean different things depending on who was asking.</span></div>
-      <div style="display: flex; gap: 12px; align-items: flex-start"><span style="width: 6px; height: 6px; border-radius: 50%; background: var(--signal); margin-top: 9px; flex: 0 0 auto"></span><span style="font-size: 15.5px; color: var(--slate)">Some requirements couldn’t be verified from the available data.</span></div>
-      <div style="display: flex; gap: 12px; align-items: flex-start"><span style="width: 6px; height: 6px; border-radius: 50%; background: var(--signal); margin-top: 9px; flex: 0 0 auto"></span><span style="font-size: 15.5px; color: var(--slate)">A recommendation still needed a clear human owner before it could become action.</span></div>
+
+      <div style="display: flex; gap: 12px; align-items: flex-start">
+        <span style="width: 6px; height: 6px; border-radius: 50%; background: var(--signal); margin-top: 9px; flex: 0 0 auto"></span>
+        <span style="font-size: 15.5px; color: var(--slate)">
+          Room matching relied on a mix of fixed business rules and contextual judgement.
+        </span>
+      </div>
+
+      <div style="display: flex; gap: 12px; align-items: flex-start">
+        <span style="width: 6px; height: 6px; border-radius: 50%; background: var(--signal); margin-top: 9px; flex: 0 0 auto"></span>
+        <span style="font-size: 15.5px; color: var(--slate)">
+          A preference such as location, budget or room type could carry different weight depending on the prospect’s wider needs and trade-offs.
+        </span>
+      </div>
+
+      <div style="display: flex; gap: 12px; align-items: flex-start">
+        <span style="width: 6px; height: 6px; border-radius: 50%; background: var(--signal); margin-top: 9px; flex: 0 0 auto"></span>
+        <span style="font-size: 15.5px; color: var(--slate)">
+          Some requirements couldn’t be verified from the available data.
+        </span>
+      </div>
+
+      <div style="display: flex; gap: 12px; align-items: flex-start">
+        <span style="width: 6px; height: 6px; border-radius: 50%; background: var(--signal); margin-top: 9px; flex: 0 0 auto"></span>
+        <span style="font-size: 15.5px; color: var(--slate)">
+          A recommendation still needed a clear human owner before it could become action.
+        </span>
+      </div>
+
     </div>
 
-    <h2 style="font-size: clamp(22px, 2.4vw, 26px); font-weight: 600; letter-spacing: -.02em; margin: 64px 0 0">See the decision logic in action</h2>
-    <p style="font-size: 16px; color: var(--slate); margin: 14px 0 0; max-width: 62ch; text-wrap: pretty">A simplified recreation of how Rumi narrows a candidate set, surfaces trade-offs, and prepares a response for human review.</p>
+
+    <!-- DEMO -->
+    <h2 style="font-size: clamp(22px, 2.4vw, 26px); font-weight: 600; letter-spacing: -.02em; margin: 64px 0 0">
+      See the decision logic in action
+    </h2>
+
+    <p style="font-size: 16px; color: var(--slate); margin: 14px 0 0; max-width: 62ch; text-wrap: pretty">
+      A simplified recreation of how Rumi filters available rooms, compares viable options and prepares a recommendation for Leasing review.
+    </p>
+
 
     <div style="margin-top: 24px; border-radius: 16px; overflow: hidden; border: 1px solid var(--hairline); background: #FBF8F3; box-shadow: 0 12px 36px rgba(25,35,40,.055)">
+
       <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding: 14px 20px; background: #fff; border-bottom: 1px solid var(--hairline)">
+
         <div style="display: flex; align-items: center; gap: 10px">
-          <div style="width: 30px; height: 30px; border-radius: 7px; background: #C8283A; color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 12px; font-family: 'IBM Plex Mono', monospace">RK</div>
-          <div>
-            <div style="font-size: 13px; font-weight: 700; letter-spacing: -.01em">RoomingKos</div>
-            <div style="font-size: 10px; color: var(--muted); margin-top: 1px">Rumi for Sales</div>
+
+          <div style="width: 30px; height: 30px; border-radius: 7px; background: #C8283A; color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 12px; font-family: 'IBM Plex Mono', monospace">
+            RK
           </div>
+
+          <div>
+            <div style="font-size: 13px; font-weight: 700; letter-spacing: -.01em">
+              RoomingKos
+            </div>
+
+            <div style="font-size: 10px; color: var(--muted); margin-top: 1px">
+              Rumi for Sales
+            </div>
+          </div>
+
         </div>
+
         <div style="display: flex; align-items: center; gap: 18px; font-size: 12px; color: var(--muted); font-weight: 500">
-          <span style="color: var(--ink); border-bottom: 2px solid #C8283A; padding-bottom: 2px">Today</span>
-          <span>Enquiries</span><span>Properties</span><span>Admin</span>
+          <span style="color: var(--ink); border-bottom: 2px solid #C8283A; padding-bottom: 2px">
+            Today
+          </span>
+          <span>Enquiries</span>
+          <span>Properties</span>
+          <span>Admin</span>
         </div>
+
         <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .06em; color: var(--signal-deep); background: var(--signal-pale); padding: 5px 10px; border-radius: 20px; display: flex; align-items: center; gap: 6px">
-          <span style="width: 6px; height: 6px; border-radius: 50%; background: var(--signal-deep)"></span>Recreated demo · not live
+          <span style="width: 6px; height: 6px; border-radius: 50%; background: var(--signal-deep)"></span>
+          Recreated demo · not live
         </div>
+
       </div>
+
 
       <div style="padding: 22px clamp(16px, 3vw, 24px) 26px">
 
+        <!-- STEP 1 -->
         <div style="display: flex; align-items: center; gap: 10px">
-          <div style="width: 22px; height: 22px; border-radius: 50%; background: var(--ink); color: #fff; font-size: 11px; font-weight: 600; display: flex; align-items: center; justify-content: center; flex: 0 0 auto">1</div>
-          <div style="font-size: 16px; font-weight: 700">Enquiry</div>
-        </div>
-        <div style="margin-top: 12px; display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 14px 18px; padding: 16px 18px; background: #fff; border: 1px solid var(--hairline); border-radius: 10px">
-          <div><div style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .06em; color: var(--muted); text-transform: uppercase">Applicant</div><div style="font-size: 13px; font-weight: 600; margin-top: 4px">Student</div></div>
-          <div><div style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .06em; color: var(--muted); text-transform: uppercase">Budget</div><div style="font-size: 13px; font-weight: 600; margin-top: 4px">$350–450 / wk</div></div>
-          <div><div style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .06em; color: var(--muted); text-transform: uppercase">Preferred area</div><div style="font-size: 13px; font-weight: 600; margin-top: 4px">Monash Clayton</div></div>
-          <div><div style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .06em; color: var(--muted); text-transform: uppercase">Move-in</div><div style="font-size: 13px; font-weight: 600; margin-top: 4px">10 Feb</div></div>
-          <div><div style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .06em; color: var(--muted); text-transform: uppercase">Room type</div><div style="font-size: 13px; font-weight: 600; margin-top: 4px">Single, solo</div></div>
-          <div><div style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .06em; color: var(--muted); text-transform: uppercase">Mandatory</div><div style="font-size: 13px; font-weight: 600; margin-top: 4px">Female-only</div></div>
+
+          <div style="width: 22px; height: 22px; border-radius: 50%; background: var(--ink); color: #fff; font-size: 11px; font-weight: 600; display: flex; align-items: center; justify-content: center; flex: 0 0 auto">
+            1
+          </div>
+
+          <div style="font-size: 16px; font-weight: 700">
+            Enquiry
+          </div>
+
         </div>
 
-        <div style="display: flex; align-items: center; gap: 10px; margin-top: 26px">
-          <div style="width: 22px; height: 22px; border-radius: 50%; background: var(--ink); color: #fff; font-size: 11px; font-weight: 600; display: flex; align-items: center; justify-content: center; flex: 0 0 auto">2</div>
-          <div style="font-size: 16px; font-weight: 700">Matches</div>
-          <button type="button" onClick="{{ replay }}" style="margin-left: auto; font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: .04em; padding: 8px 14px; border-radius: 20px; border: 1px solid var(--hairline); background: #fff; color: var(--ink); cursor: pointer" style-hover="border-color: #C8283A; color: #C8283A">Replay</button>
+
+        <div style="margin-top: 12px; display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 14px 18px; padding: 16px 18px; background: #fff; border: 1px solid var(--hairline); border-radius: 10px">
+
+          <div>
+            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .06em; color: var(--muted); text-transform: uppercase">
+              Applicant
+            </div>
+            <div style="font-size: 13px; font-weight: 600; margin-top: 4px">
+              Student
+            </div>
+          </div>
+
+          <div>
+            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .06em; color: var(--muted); text-transform: uppercase">
+              Budget
+            </div>
+            <div style="font-size: 13px; font-weight: 600; margin-top: 4px">
+              $350–450 / wk
+            </div>
+          </div>
+
+          <div>
+            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .06em; color: var(--muted); text-transform: uppercase">
+              Preferred area
+            </div>
+            <div style="font-size: 13px; font-weight: 600; margin-top: 4px">
+              Monash Clayton
+            </div>
+          </div>
+
+          <div>
+            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .06em; color: var(--muted); text-transform: uppercase">
+              Move-in
+            </div>
+            <div style="font-size: 13px; font-weight: 600; margin-top: 4px">
+              10 Feb
+            </div>
+          </div>
+
+          <div>
+            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .06em; color: var(--muted); text-transform: uppercase">
+              Room type
+            </div>
+            <div style="font-size: 13px; font-weight: 600; margin-top: 4px">
+              Single, solo
+            </div>
+          </div>
+
+          <div>
+            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .06em; color: var(--muted); text-transform: uppercase">
+              Mandatory
+            </div>
+            <div style="font-size: 13px; font-weight: 600; margin-top: 4px">
+              Female-only
+            </div>
+          </div>
+
         </div>
+
+
+        <!-- STEP 2 -->
+        <div style="display: flex; align-items: center; gap: 10px; margin-top: 26px">
+
+          <div style="width: 22px; height: 22px; border-radius: 50%; background: var(--ink); color: #fff; font-size: 11px; font-weight: 600; display: flex; align-items: center; justify-content: center; flex: 0 0 auto">
+            2
+          </div>
+
+          <div style="font-size: 16px; font-weight: 700">
+            Matches
+          </div>
+
+          <button type="button"
+                  onClick="{{ replay }}"
+                  style="margin-left: auto; font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: .04em; padding: 8px 14px; border-radius: 20px; border: 1px solid var(--hairline); background: #fff; color: var(--ink); cursor: pointer"
+                  style-hover="border-color: #C8283A; color: #C8283A">
+            Replay
+          </button>
+
+        </div>
+
 
         <div style="margin-top: 12px; padding: 16px 12px 8px; background: #fff; border: 1px solid var(--hairline); border-radius: 10px; overflow-x: auto">
-          <svg ref="{{ flowRef }}" viewBox="0 0 1000 330" preserveAspectRatio="xMinYMin meet" style="width: 100%; min-width: 680px; display: block"></svg>
+          <svg ref="{{ flowRef }}"
+               viewBox="0 0 1000 330"
+               preserveAspectRatio="xMinYMin meet"
+               style="width: 100%; min-width: 680px; display: block">
+          </svg>
         </div>
+
+
         <div style="margin-top: 10px; font-size: 12.5px; color: var(--slate); line-height: 1.6; padding: 0 2px">
-          <span style="font-family: 'IBM Plex Mono', monospace; font-weight: 600; color: var(--ink); font-size: 10.5px">FEASIBILITY CHECKS</span> — Lease · Category · Occupancy · Move-in window · Location eligibility.<br>
-          <span style="font-family: 'IBM Plex Mono', monospace; font-weight: 600; color: var(--ink); font-size: 10.5px">REQUIREMENT CHECKS</span> — must-have requirements are enforced where the data allows, or surfaced for human verification where it doesn’t (see Riverside, below).
+
+          <span style="font-family: 'IBM Plex Mono', monospace; font-weight: 600; color: var(--ink); font-size: 10.5px">
+            FEASIBILITY CHECKS
+          </span>
+          — Lease · Category · Occupancy · Move-in window · Location eligibility.
+          <br>
+
+          <span style="font-family: 'IBM Plex Mono', monospace; font-weight: 600; color: var(--ink); font-size: 10.5px">
+            REQUIREMENT CHECKS
+          </span>
+          — must-have requirements are enforced where the data allows, or surfaced for human verification where it doesn’t (see Riverside, below).
+
         </div>
+
 
         <div style="margin-top: 16px; display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px">
+
           <sc-for list="{{ picks }}" as="pick" hint-placeholder-count="3">
+
             <div style="padding: 16px; border-radius: 12px; background: #fff; border: 1.5px solid {{ pick.border }}">
-              <div style="width: 22px; height: 22px; border-radius: 50%; background: {{ pick.badgeBg }}; color: {{ pick.badgeColor }}; font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center; margin-bottom: 8px">{{ pick.rank }}</div>
-              <div style="font-size: 13.5px; font-weight: 700">{{ pick.name }}</div>
-              <div style="font-size: 16px; font-weight: 700; margin-top: 8px">{{ pick.priceLabel }}<span style="font-weight: 400; font-size: 9.5px; color: var(--muted)"> / wk</span></div>
-              <div style="font-size: 11.5px; color: var(--slate); margin-top: 8px; line-height: 1.45; min-height: 50px">{{ pick.why }}</div>
-              <div style="display: flex; gap: 6px; margin-top: 10px">
-                <div style="flex: 1 1 0; min-width: 0; font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .04em; text-transform: uppercase; padding: 9px 6px; border-radius: 6px; text-align: center; border: 1px solid var(--hairline); background: #fff; color: var(--ink)">Why matched</div>
-                <button type="button" onClick="{{ pick.onToggle }}" style="flex: 1 1 0; min-width: 0; font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .04em; text-transform: uppercase; padding: 9px 6px; border-radius: 6px; text-align: center; cursor: pointer; border: 1px solid {{ pick.toggleBorder }}; background: {{ pick.toggleBg }}; color: {{ pick.toggleColor }}">{{ pick.toggleLabel }}</button>
+
+              <div style="width: 22px; height: 22px; border-radius: 50%; background: {{ pick.badgeBg }}; color: {{ pick.badgeColor }}; font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center; margin-bottom: 8px">
+                {{ pick.rank }}
               </div>
+
+              <div style="font-size: 13.5px; font-weight: 700">
+                {{ pick.name }}
+              </div>
+
+              <div style="font-size: 16px; font-weight: 700; margin-top: 8px">
+                {{ pick.priceLabel }}
+                <span style="font-weight: 400; font-size: 9.5px; color: var(--muted)">
+                  / wk
+                </span>
+              </div>
+
+              <div style="font-size: 11.5px; color: var(--slate); margin-top: 8px; line-height: 1.45; min-height: 50px">
+                {{ pick.why }}
+              </div>
+
+              <div style="display: flex; gap: 6px; margin-top: 10px">
+
+                <div style="flex: 1 1 0; min-width: 0; font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .04em; text-transform: uppercase; padding: 9px 6px; border-radius: 6px; text-align: center; border: 1px solid var(--hairline); background: #fff; color: var(--ink)">
+                  Why matched
+                </div>
+
+                <button type="button"
+                        onClick="{{ pick.onToggle }}"
+                        style="flex: 1 1 0; min-width: 0; font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .04em; text-transform: uppercase; padding: 9px 6px; border-radius: 6px; text-align: center; cursor: pointer; border: 1px solid {{ pick.toggleBorder }}; background: {{ pick.toggleBg }}; color: {{ pick.toggleColor }}">
+                  {{ pick.toggleLabel }}
+                </button>
+
+              </div>
+
             </div>
+
           </sc-for>
+
         </div>
 
+
+        <!-- STEP 3 -->
         <div style="display: flex; align-items: center; gap: 10px; margin-top: 26px">
-          <div style="width: 22px; height: 22px; border-radius: 50%; background: var(--ink); color: #fff; font-size: 11px; font-weight: 600; display: flex; align-items: center; justify-content: center; flex: 0 0 auto">3</div>
-          <div style="font-size: 16px; font-weight: 700">Reply</div>
-          <div style="margin-left: auto; font-size: 11.5px; color: #C8283A; font-weight: 600">{{ replyCount }}</div>
+
+          <div style="width: 22px; height: 22px; border-radius: 50%; background: var(--ink); color: #fff; font-size: 11px; font-weight: 600; display: flex; align-items: center; justify-content: center; flex: 0 0 auto">
+            3
+          </div>
+
+          <div style="font-size: 16px; font-weight: 700">
+            Reply
+          </div>
+
+          <div style="margin-left: auto; font-size: 11.5px; color: #C8283A; font-weight: 600">
+            {{ replyCount }}
+          </div>
+
         </div>
+
 
         <div style="margin-top: 14px; padding: 16px 18px; background: #fff; border: 1px solid var(--hairline); border-radius: 10px">
+
           <div style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap; padding: 8px 0">
-            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .05em; color: var(--muted); width: 74px; flex: 0 0 auto">SEND AS</span>
+
+            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .05em; color: var(--muted); width: 74px; flex: 0 0 auto">
+              SEND AS
+            </span>
+
             <div style="display: flex; gap: 4px; background: var(--mist); padding: 3px; border-radius: 8px">
+
               <sc-for list="{{ channels }}" as="ch" hint-placeholder-count="2">
-                <button type="button" onClick="{{ ch.onPick }}" style="font-size: 11.5px; padding: 7px 12px; border-radius: 6px; border: none; cursor: pointer; background: {{ ch.bg }}; color: {{ ch.color }}; font-weight: {{ ch.weight }}">{{ ch.label }}</button>
+
+                <button type="button"
+                        onClick="{{ ch.onPick }}"
+                        style="font-size: 11.5px; padding: 7px 12px; border-radius: 6px; border: none; cursor: pointer; background: {{ ch.bg }}; color: {{ ch.color }}; font-weight: {{ ch.weight }}">
+                  {{ ch.label }}
+                </button>
+
               </sc-for>
+
             </div>
+
           </div>
+
+
           <div style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap; padding: 8px 0">
-            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .05em; color: var(--muted); width: 74px; flex: 0 0 auto">FORMAT</span>
+
+            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .05em; color: var(--muted); width: 74px; flex: 0 0 auto">
+              FORMAT
+            </span>
+
             <div style="display: flex; gap: 4px; background: var(--mist); padding: 3px; border-radius: 8px; flex-wrap: wrap">
+
               <sc-for list="{{ formats }}" as="fmt" hint-placeholder-count="4">
-                <button type="button" onClick="{{ fmt.onPick }}" style="font-size: 11.5px; padding: 7px 12px; border-radius: 6px; border: none; cursor: pointer; background: {{ fmt.bg }}; color: {{ fmt.color }}; font-weight: {{ fmt.weight }}">{{ fmt.label }}</button>
+
+                <button type="button"
+                        onClick="{{ fmt.onPick }}"
+                        style="font-size: 11.5px; padding: 7px 12px; border-radius: 6px; border: none; cursor: pointer; background: {{ fmt.bg }}; color: {{ fmt.color }}; font-weight: {{ fmt.weight }}">
+                  {{ fmt.label }}
+                </button>
+
               </sc-for>
+
             </div>
+
           </div>
+
+
           <div style="display: flex; align-items: flex-start; gap: 16px; flex-wrap: wrap; padding: 8px 0">
-            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .05em; color: var(--muted); width: 74px; flex: 0 0 auto; margin-top: 10px">NOTES</span>
+
+            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .05em; color: var(--muted); width: 74px; flex: 0 0 auto; margin-top: 10px">
+              NOTES
+            </span>
+
             <div style="flex: 1 1 240px; min-width: 0">
-              <textarea value="{{ instructions }}" onChange="{{ onInstructions }}" placeholder="Mood to strike, something to emphasise, a question to ask — the facts, rooms and links never change." style="width: 100%; min-height: 56px; padding: 10px 12px; font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; line-height: 1.5; color: var(--ink); background: var(--frost); border: 1px solid var(--hairline); border-radius: 8px; resize: vertical"></textarea>
+
+              <textarea value="{{ instructions }}"
+                        onChange="{{ onInstructions }}"
+                        placeholder="Mood to strike, something to emphasise, a question to ask — the facts, rooms and links never change."
+                        style="width: 100%; min-height: 56px; padding: 10px 12px; font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; line-height: 1.5; color: var(--ink); background: var(--frost); border: 1px solid var(--hairline); border-radius: 8px; resize: vertical"></textarea>
+
               <div style="margin-top: 8px; display: flex; gap: 6px; flex-wrap: wrap">
+
                 <sc-for list="{{ chips }}" as="chip" hint-placeholder-count="3">
-                  <button type="button" onClick="{{ chip.onPick }}" style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; padding: 6px 11px; border-radius: 20px; border: 1px solid var(--hairline); background: #fff; color: var(--slate); cursor: pointer" style-hover="border-color: #C8283A; color: #C8283A">{{ chip.label }}</button>
+
+                  <button type="button"
+                          onClick="{{ chip.onPick }}"
+                          style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; padding: 6px 11px; border-radius: 20px; border: 1px solid var(--hairline); background: #fff; color: var(--slate); cursor: pointer"
+                          style-hover="border-color: #C8283A; color: #C8283A">
+                    {{ chip.label }}
+                  </button>
+
                 </sc-for>
+
               </div>
+
             </div>
+
           </div>
-          <button type="button" onClick="{{ regenerate }}" style="margin-top: 14px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .04em; padding: 11px 18px; border-radius: 8px; border: none; background: #C8283A; color: #fff; cursor: pointer">{{ regenLabel }}</button>
-          <div style="font-size: 11.5px; color: var(--muted); margin-top: 10px; font-style: italic; max-width: 64ch">Built from a template I wrote — Rumi fills in the specific rooms, prices and dates, and adapts tone or emphasis to instructions like these.</div>
+
+
+          <button type="button"
+                  onClick="{{ regenerate }}"
+                  style="margin-top: 14px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .04em; padding: 11px 18px; border-radius: 8px; border: none; background: #C8283A; color: #fff; cursor: pointer">
+            {{ regenLabel }}
+          </button>
+
+
+          <div style="font-size: 11.5px; color: var(--muted); margin-top: 10px; font-style: italic; max-width: 64ch">
+            Built from a template I wrote — Rumi fills in the specific rooms, prices and dates, and adapts tone or emphasis to instructions like these.
+          </div>
+
+
           <sc-if value="{{ hasInstructions }}" hint-placeholder-val="{{ false }}">
-            <div style="margin-top: 12px; font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--signal-deep); background: var(--signal-pale); display: inline-block; padding: 6px 10px; border-radius: 6px">{{ appliedTag }}</div>
+
+            <div style="margin-top: 12px; font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--signal-deep); background: var(--signal-pale); display: inline-block; padding: 6px 10px; border-radius: 6px">
+              {{ appliedTag }}
+            </div>
+
           </sc-if>
-          <div style="margin-top: 10px; padding: 14px 16px; background: var(--frost); border: 1px solid var(--hairline); border-radius: 8px; font-size: 12.5px; line-height: 1.7; color: #3A3D40; white-space: pre-wrap">{{ replyText }}</div>
+
+
+          <div style="margin-top: 10px; padding: 14px 16px; background: var(--frost); border: 1px solid var(--hairline); border-radius: 8px; font-size: 12.5px; line-height: 1.7; color: #3A3D40; white-space: pre-wrap">
+            {{ replyText }}
+          </div>
+
         </div>
+
       </div>
+
     </div>
 
-    <h2 style="font-size: clamp(22px, 2.4vw, 26px); font-weight: 600; letter-spacing: -.02em; margin: 64px 0 0">How I thought about it</h2>
-    <p style="font-size: 13px; color: var(--muted); margin: 8px 0 0">Click a step to inspect the reasoning underneath.</p>
 
+    <!-- THINKING -->
+    <h2 style="font-size: clamp(22px, 2.4vw, 26px); font-weight: 600; letter-spacing: -.02em; margin: 64px 0 0">
+      How I thought about it
+    </h2>
+
+    <p style="font-size: 13px; color: var(--muted); margin: 8px 0 0">
+      Click a step to inspect the reasoning underneath.
+    </p>
+
+
+    <!-- PRINCIPLE 01 -->
     <div style="margin-top: 18px; padding: 18px 20px; border-left: 3px solid var(--signal-pale); border-radius: 0 10px 10px 0; max-width: 68ch">
-      <div onClick="{{ toggle1 }}" style="display: flex; align-items: center; justify-content: space-between; gap: 16px; cursor: pointer">
-        <div style="font-size: 17.5px; font-weight: 600; letter-spacing: -.01em"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: var(--signal-deep); letter-spacing: .04em; margin-right: 10px">01</span>Follow the problem, not the feature</div>
-        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .05em; color: var(--muted); border: 1px solid var(--hairline); padding: 6px 11px; border-radius: 20px; flex: 0 0 auto">{{ label1 }}</div>
+
+      <div onClick="{{ toggle1 }}"
+           style="display: flex; align-items: center; justify-content: space-between; gap: 16px; cursor: pointer">
+
+        <div style="font-size: 17.5px; font-weight: 600; letter-spacing: -.01em">
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: var(--signal-deep); letter-spacing: .04em; margin-right: 10px">
+            01
+          </span>
+          Follow the problem, not the feature
+        </div>
+
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .05em; color: var(--muted); border: 1px solid var(--hairline); padding: 6px 11px; border-radius: 20px; flex: 0 0 auto">
+          {{ label1 }}
+        </div>
+
       </div>
-      <div style="font-size: 15px; color: var(--slate); margin-top: 10px; line-height: 1.55">I didn’t start with AI. Guided Enquiry solved an information problem, then exposed a processing bottleneck that led to Rumi. I see Rumi the same way — one step toward a more connected customer and operational system.</div>
+
+
+      <div style="font-size: 15px; color: var(--slate); margin-top: 10px; line-height: 1.55">
+        I didn’t start with AI. Guided Enquiry solved the upstream information problem by structuring what prospects submitted. That exposed the next constraint: Leasing still had to interpret those inputs and manually decide what to recommend. Rumi became the next layer in the same system — first structure the enquiry, then structure the decision that follows.
+      </div>
+
+
       <sc-if value="{{ open1 }}" hint-placeholder-val="{{ false }}">
+
         <div style="margin-top: 18px">
+
           <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px 4px">
-            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; padding: 7px 11px; border-radius: 6px; background: #fff; border: 1px solid var(--hairline)">Vague enquiries</span><span style="color: var(--muted); font-size: 11px">→</span>
-            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; padding: 7px 11px; border-radius: 6px; background: var(--mist); border: 1px solid var(--hairline); color: var(--slate)">Guided Enquiry</span><span style="color: var(--muted); font-size: 11px">→</span>
-            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; padding: 7px 11px; border-radius: 6px; background: #fff; border: 1px solid var(--hairline)">Better inputs</span><span style="color: var(--muted); font-size: 11px">→</span>
-            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; padding: 7px 11px; border-radius: 6px; background: var(--mist); border: 1px solid var(--hairline); color: var(--slate)">Processing bottleneck</span><span style="color: var(--muted); font-size: 11px">→</span>
-            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; padding: 7px 11px; border-radius: 6px; background: var(--ink); border: 1px solid var(--ink); color: var(--signal); font-weight: 600">Rumi</span>
+
+            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; padding: 7px 11px; border-radius: 6px; background: #fff; border: 1px solid var(--hairline)">
+              Vague enquiries
+            </span>
+
+            <span style="color: var(--muted); font-size: 11px">→</span>
+
+            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; padding: 7px 11px; border-radius: 6px; background: var(--mist); border: 1px solid var(--hairline); color: var(--slate)">
+              Guided Enquiry
+            </span>
+
+            <span style="color: var(--muted); font-size: 11px">→</span>
+
+            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; padding: 7px 11px; border-radius: 6px; background: #fff; border: 1px solid var(--hairline)">
+              Better inputs
+            </span>
+
+            <span style="color: var(--muted); font-size: 11px">→</span>
+
+            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; padding: 7px 11px; border-radius: 6px; background: var(--mist); border: 1px solid var(--hairline); color: var(--slate)">
+              Processing bottleneck
+            </span>
+
+            <span style="color: var(--muted); font-size: 11px">→</span>
+
+            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; padding: 7px 11px; border-radius: 6px; background: var(--ink); border: 1px solid var(--ink); color: var(--signal); font-weight: 600">
+              Rumi
+            </span>
+
           </div>
+
+
           <div style="margin-top: 18px; padding-top: 14px; border-top: 1px dashed var(--hairline)">
-            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .05em; text-transform: uppercase; color: var(--muted)">Next — vision, not yet built</span>
+
+            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .05em; text-transform: uppercase; color: var(--muted)">
+              Next — vision, not yet built
+            </span>
+
             <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px 4px; margin-top: 10px">
-              <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; padding: 7px 11px; border-radius: 6px; background: #fff; border: 1px dashed var(--hairline); color: var(--slate)">Rumi conversion</span><span style="color: var(--muted); font-size: 11px">→</span>
-              <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; padding: 7px 11px; border-radius: 6px; background: #fff; border: 1px dashed var(--hairline); color: var(--slate)">CRM update</span><span style="color: var(--muted); font-size: 11px">→</span>
-              <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; padding: 7px 11px; border-radius: 6px; background: #fff; border: 1px dashed var(--hairline); color: var(--slate)">Less duplicate work</span><span style="color: var(--muted); font-size: 11px">→</span>
-              <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; padding: 7px 11px; border-radius: 6px; background: #fff; border: 1px dashed var(--hairline); color: var(--slate)">Better insight</span>
+
+              <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; padding: 7px 11px; border-radius: 6px; background: #fff; border: 1px dashed var(--hairline); color: var(--slate)">
+                Rumi conversion
+              </span>
+
+              <span style="color: var(--muted); font-size: 11px">→</span>
+
+              <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; padding: 7px 11px; border-radius: 6px; background: #fff; border: 1px dashed var(--hairline); color: var(--slate)">
+                CRM update
+              </span>
+
+              <span style="color: var(--muted); font-size: 11px">→</span>
+
+              <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; padding: 7px 11px; border-radius: 6px; background: #fff; border: 1px dashed var(--hairline); color: var(--slate)">
+                Less duplicate work
+              </span>
+
+              <span style="color: var(--muted); font-size: 11px">→</span>
+
+              <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; padding: 7px 11px; border-radius: 6px; background: #fff; border: 1px dashed var(--hairline); color: var(--slate)">
+                Better insight
+              </span>
+
             </div>
-            <div style="font-size: 11.5px; color: var(--muted); margin-top: 10px; font-style: italic">Part of the same direction as Operational Hub — product discovery / roadmap vision.</div>
+
+            <div style="font-size: 11.5px; color: var(--muted); margin-top: 10px; font-style: italic">
+              Part of the same direction as Operational Hub — product discovery / roadmap vision.
+            </div>
+
           </div>
+
         </div>
+
       </sc-if>
+
     </div>
 
+
+    <!-- PRINCIPLE 02 -->
     <div style="margin-top: 14px; padding: 18px 20px; border-left: 3px solid var(--signal-pale); border-radius: 0 10px 10px 0; max-width: 68ch">
-      <div onClick="{{ toggle2 }}" style="display: flex; align-items: center; justify-content: space-between; gap: 16px; cursor: pointer">
-        <div style="font-size: 17.5px; font-weight: 600; letter-spacing: -.01em"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: var(--signal-deep); letter-spacing: .04em; margin-right: 10px">02</span>Model the decision before automating it</div>
-        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .05em; color: var(--muted); border: 1px solid var(--hairline); padding: 6px 11px; border-radius: 20px; flex: 0 0 auto">{{ label2 }}</div>
+
+      <div onClick="{{ toggle2 }}"
+           style="display: flex; align-items: center; justify-content: space-between; gap: 16px; cursor: pointer">
+
+        <div style="font-size: 17.5px; font-weight: 600; letter-spacing: -.01em">
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: var(--signal-deep); letter-spacing: .04em; margin-right: 10px">
+            02
+          </span>
+          Model the decision before automating it
+        </div>
+
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .05em; color: var(--muted); border: 1px solid var(--hairline); padding: 6px 11px; border-radius: 20px; flex: 0 0 auto">
+          {{ label2 }}
+        </div>
+
       </div>
-      <div style="font-size: 15px; color: var(--slate); margin-top: 10px; line-height: 1.55">I translated how Leasing matches a prospect to available rooms into a structured decision process. Clear constraints remove options that cannot work; viable rooms are compared against the prospect’s needs; uncertainty stays visible; and AI helps reason across the strongest remaining options.</div>
+
+
+      <div style="font-size: 15px; color: var(--slate); margin-top: 10px; line-height: 1.55">
+        I separated what could be decided deterministically from what still required contextual judgement. Hard constraints remove options that cannot work; viable rooms are ranked against the prospect’s needs; uncertainty stays visible; and AI reasons across the strongest remaining choices before preparing a recommendation.
+      </div>
+
+
       <sc-if value="{{ open2 }}" hint-placeholder-val="{{ false }}">
+
         <div style="margin-top: 18px">
+
           <div style="font-size: 12.5px; padding: 11px 14px; background: var(--mist); border-radius: 8px; color: var(--ink)">
-            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .05em; text-transform: uppercase; color: var(--slate); margin-right: 10px">Prospect needs</span>Student · Oct move-in · 12+ months · $400/wk · Monash Clayton · Female-only
+            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .05em; text-transform: uppercase; color: var(--slate); margin-right: 10px">
+              Prospect needs
+            </span>
+            Student · Oct move-in · 12+ months · $400/wk · Monash Clayton · Female-only
           </div>
+
+
           <div style="display: flex; gap: 6px; margin-top: 14px; flex-wrap: wrap">
+
             <sc-for list="{{ stages }}" as="stage" hint-placeholder-count="4">
-              <button type="button" onClick="{{ stage.onPick }}" style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .04em; padding: 9px 12px; border-radius: 20px; cursor: pointer; border: 1px solid {{ stage.border }}; background: {{ stage.bg }}; color: {{ stage.color }}">{{ stage.label }}</button>
+
+              <button type="button"
+                      onClick="{{ stage.onPick }}"
+                      style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .04em; padding: 9px 12px; border-radius: 20px; cursor: pointer; border: 1px solid {{ stage.border }}; background: {{ stage.bg }}; color: {{ stage.color }}">
+                {{ stage.label }}
+              </button>
+
             </sc-for>
+
           </div>
+
+
           <div style="margin-top: 14px; padding: 14px 16px; background: #fff; border: 1px solid var(--hairline); border-radius: 8px">
-            <div style="font-size: 13.5px; font-weight: 600">{{ stageQuestion }}</div>
-            <div style="display: flex; gap: 16px; margin-top: 10px; flex-wrap: wrap">
-              <sc-for list="{{ stageRows }}" as="row" hint-placeholder-count="4">
-                <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--slate)"><b style="color: var(--ink)">{{ row.a }}</b> {{ row.b }}</span>
-              </sc-for>
+
+            <div style="font-size: 13.5px; font-weight: 600">
+              {{ stageQuestion }}
             </div>
-            <div style="margin-top: 12px; display: inline-block; font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .04em; text-transform: uppercase; padding: 6px 10px; border-radius: 6px; background: var(--signal-pale); color: var(--signal-deep); font-weight: 600">{{ stageResult }}</div>
+
+            <div style="display: flex; gap: 16px; margin-top: 10px; flex-wrap: wrap">
+
+              <sc-for list="{{ stageRows }}" as="row" hint-placeholder-count="4">
+
+                <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--slate)">
+                  <b style="color: var(--ink)">
+                    {{ row.a }}
+                  </b>
+                  {{ row.b }}
+                </span>
+
+              </sc-for>
+
+            </div>
+
+
+            <div style="margin-top: 12px; display: inline-block; font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .04em; text-transform: uppercase; padding: 6px 10px; border-radius: 6px; background: var(--signal-pale); color: var(--signal-deep); font-weight: 600">
+              {{ stageResult }}
+            </div>
+
+
             <sc-if value="{{ hasStageNote }}" hint-placeholder-val="{{ false }}">
-              <div style="font-size: 11.5px; color: var(--muted); margin-top: 10px; font-style: italic">{{ stageNote }}</div>
+              <div style="font-size: 11.5px; color: var(--muted); margin-top: 10px; font-style: italic">
+                {{ stageNote }}
+              </div>
             </sc-if>
+
           </div>
+
+
           <div style="margin-top: 12px; display: flex; gap: 16px; flex-wrap: wrap">
-            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: var(--slate)"><b style="color: var(--ink)">Impossible</b> → Remove</span>
-            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: var(--slate)"><b style="color: var(--ink)">Trade-off</b> → Compare</span>
-            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: var(--slate)"><b style="color: var(--ink)">Unknown</b> → Verify</span>
+
+            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: var(--slate)">
+              <b style="color: var(--ink)">Impossible</b> → Remove
+            </span>
+
+            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: var(--slate)">
+              <b style="color: var(--ink)">Trade-off</b> → Compare
+            </span>
+
+            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: var(--slate)">
+              <b style="color: var(--ink)">Unknown</b> → Verify
+            </span>
+
           </div>
+
         </div>
+
       </sc-if>
+
     </div>
 
+
+    <!-- PRINCIPLE 03 -->
     <div style="margin-top: 14px; padding: 18px 20px; border-left: 3px solid var(--signal-pale); border-radius: 0 10px 10px 0; max-width: 68ch">
-      <div onClick="{{ toggle3 }}" style="display: flex; align-items: center; justify-content: space-between; gap: 16px; cursor: pointer">
-        <div style="font-size: 17.5px; font-weight: 600; letter-spacing: -.01em"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: var(--signal-deep); letter-spacing: .04em; margin-right: 10px">03</span>Decide where human judgement belongs</div>
-        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .05em; color: var(--muted); border: 1px solid var(--hairline); padding: 6px 11px; border-radius: 20px; flex: 0 0 auto">{{ label3 }}</div>
+
+      <div onClick="{{ toggle3 }}"
+           style="display: flex; align-items: center; justify-content: space-between; gap: 16px; cursor: pointer">
+
+        <div style="font-size: 17.5px; font-weight: 600; letter-spacing: -.01em">
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: var(--signal-deep); letter-spacing: .04em; margin-right: 10px">
+            03
+          </span>
+          Decide where human judgement belongs
+        </div>
+
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .05em; color: var(--muted); border: 1px solid var(--hairline); padding: 6px 11px; border-radius: 20px; flex: 0 0 auto">
+          {{ label3 }}
+        </div>
+
       </div>
-      <div style="font-size: 15px; color: var(--slate); margin-top: 10px; line-height: 1.55">Rumi narrows the decision space, but Leasing keeps control of the final recommendation and response. It surfaces evidence, trade-offs and unknowns, then prepares a prospect-ready message that Leasing can edit, regenerate or tailor with additional instructions before sending.</div>
+
+
+      <div style="font-size: 15px; color: var(--slate); margin-top: 10px; line-height: 1.55">
+        Rumi narrows the decision space, but Leasing keeps control of the final recommendation and response. It surfaces evidence, trade-offs and unknowns, then prepares a prospect-ready message that Leasing can edit, regenerate or tailor with additional instructions before sending.
+      </div>
+
+
       <sc-if value="{{ open3 }}" hint-placeholder-val="{{ false }}">
+
         <div style="margin-top: 18px; display: flex; flex-direction: column; align-items: flex-start">
+
           <div style="padding: 11px 14px; background: #fff; border: 1px solid var(--hairline); border-radius: 8px">
-            <div style="font-size: 12.5px; font-weight: 600">Rumi prepares</div>
-            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; color: var(--slate); margin-top: 4px">Summary · Recommendations · Rationale · Trade-offs · Unknowns</div>
+            <div style="font-size: 12.5px; font-weight: 600">
+              Rumi prepares
+            </div>
+            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; color: var(--slate); margin-top: 4px">
+              Summary · Recommendations · Rationale · Trade-offs · Unknowns
+            </div>
           </div>
-          <div style="color: var(--muted); font-size: 11px; padding: 4px 0 4px 16px">↓</div>
+
+          <div style="color: var(--muted); font-size: 11px; padding: 4px 0 4px 16px">
+            ↓
+          </div>
+
           <div style="padding: 11px 14px; background: var(--signal-pale); border: 1px solid var(--signal); border-radius: 8px">
-            <div style="font-size: 12.5px; font-weight: 600; color: var(--signal-deep)">Leasing reviews</div>
-            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; color: var(--slate); margin-top: 4px">Verify · Include / Exclude · Adjust recommendation</div>
+            <div style="font-size: 12.5px; font-weight: 600; color: var(--signal-deep)">
+              Leasing reviews
+            </div>
+            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; color: var(--slate); margin-top: 4px">
+              Verify · Include / Exclude · Adjust recommendation
+            </div>
           </div>
-          <div style="color: var(--muted); font-size: 11px; padding: 4px 0 4px 16px">↓</div>
+
+          <div style="color: var(--muted); font-size: 11px; padding: 4px 0 4px 16px">
+            ↓
+          </div>
+
           <div style="padding: 11px 14px; background: #fff; border: 1px solid var(--hairline); border-radius: 8px">
-            <div style="font-size: 12.5px; font-weight: 600">Rumi drafts response</div>
-            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; color: var(--slate); margin-top: 4px">Email / WhatsApp · Standard / Concise / Bullets</div>
+            <div style="font-size: 12.5px; font-weight: 600">
+              Rumi drafts response
+            </div>
+            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; color: var(--slate); margin-top: 4px">
+              Email / WhatsApp · Standard / Concise / Bullets
+            </div>
           </div>
-          <div style="color: var(--muted); font-size: 11px; padding: 4px 0 4px 16px">↓</div>
+
+          <div style="color: var(--muted); font-size: 11px; padding: 4px 0 4px 16px">
+            ↓
+          </div>
+
           <div style="padding: 11px 14px; background: var(--signal-pale); border: 1px solid var(--signal); border-radius: 8px">
-            <div style="font-size: 12.5px; font-weight: 600; color: var(--signal-deep)">Leasing customises</div>
-            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; color: var(--slate); margin-top: 4px">Edit directly · Add instructions · Regenerate</div>
+            <div style="font-size: 12.5px; font-weight: 600; color: var(--signal-deep)">
+              Leasing customises
+            </div>
+            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; color: var(--slate); margin-top: 4px">
+              Edit directly · Add instructions · Regenerate
+            </div>
           </div>
-          <div style="color: var(--muted); font-size: 11px; padding: 4px 0 4px 16px">↓</div>
+
+          <div style="color: var(--muted); font-size: 11px; padding: 4px 0 4px 16px">
+            ↓
+          </div>
+
           <div style="padding: 11px 14px; background: var(--ink); border: 1px solid var(--ink); border-radius: 8px">
-            <div style="font-size: 12.5px; font-weight: 600; color: var(--frost)">Final customer response</div>
+            <div style="font-size: 12.5px; font-weight: 600; color: var(--frost)">
+              Final customer response
+            </div>
           </div>
+
         </div>
-        <div style="font-size: 12.5px; color: var(--slate); margin-top: 14px; font-style: italic">Reduce cognitive work — without transferring decision or communication control.</div>
+
+        <div style="font-size: 12.5px; color: var(--slate); margin-top: 14px; font-style: italic">
+          Reduce cognitive work — without transferring decision or communication control.
+        </div>
+
       </sc-if>
+
     </div>
 
+
+    <!-- PRINCIPLE 04 -->
     <div style="margin-top: 14px; padding: 18px 20px; border-left: 3px solid var(--signal-pale); border-radius: 0 10px 10px 0; max-width: 68ch">
-      <div onClick="{{ toggle4 }}" style="display: flex; align-items: center; justify-content: space-between; gap: 16px; cursor: pointer">
-        <div style="font-size: 17.5px; font-weight: 600; letter-spacing: -.01em"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: var(--signal-deep); letter-spacing: .04em; margin-right: 10px">04</span>Design for what happens next</div>
-        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .05em; color: var(--muted); border: 1px solid var(--hairline); padding: 6px 11px; border-radius: 20px; flex: 0 0 auto">{{ label4 }}</div>
-      </div>
-      <div style="font-size: 15px; color: var(--slate); margin-top: 10px; line-height: 1.55">A recommendation still has to work in real operations. I designed for AI failure, incomplete evidence and overlapping team ownership — so every output has a safe, clear path to action.</div>
-      <sc-if value="{{ open4 }}" hint-placeholder-val="{{ false }}">
-        <div style="margin-top: 18px">
-          <div style="display: flex; gap: 6px; flex-wrap: wrap">
-            <sc-for list="{{ scenarios }}" as="sc" hint-placeholder-count="3">
-              <button type="button" onClick="{{ sc.onPick }}" style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .04em; padding: 9px 12px; border-radius: 6px; cursor: pointer; border: 1px solid {{ sc.border }}; background: {{ sc.bg }}; color: {{ sc.color }}">{{ sc.label }}</button>
-            </sc-for>
-          </div>
-          <div style="margin-top: 14px; display: flex; align-items: center; gap: 8px 4px; flex-wrap: wrap">
-            <sc-for list="{{ scenarioNodes }}" as="node" hint-placeholder-count="5">
-              <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; padding: 7px 11px; border-radius: 6px; border: 1px solid {{ node.border }}; background: {{ node.bg }}; color: {{ node.color }}; font-weight: {{ node.weight }}">{{ node.text }}</span>
-            </sc-for>
-          </div>
+
+      <div onClick="{{ toggle4 }}"
+           style="display: flex; align-items: center; justify-content: space-between; gap: 16px; cursor: pointer">
+
+        <div style="font-size: 17.5px; font-weight: 600; letter-spacing: -.01em">
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: var(--signal-deep); letter-spacing: .04em; margin-right: 10px">
+            04
+          </span>
+          Design for what happens next
         </div>
+
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .05em; color: var(--muted); border: 1px solid var(--hairline); padding: 6px 11px; border-radius: 20px; flex: 0 0 auto">
+          {{ label4 }}
+        </div>
+
+      </div>
+
+
+      <div style="font-size: 15px; color: var(--slate); margin-top: 10px; line-height: 1.55">
+        A recommendation still has to work in real operations. I designed for AI failure, incomplete evidence and overlapping team ownership, so the workflow always has a clear fallback, owner and next action rather than quietly failing or guessing.
+      </div>
+
+
+      <sc-if value="{{ open4 }}" hint-placeholder-val="{{ false }}">
+
+        <div style="margin-top: 18px">
+
+          <div style="display: flex; gap: 6px; flex-wrap: wrap">
+
+            <sc-for list="{{ scenarios }}" as="sc" hint-placeholder-count="3">
+
+              <button type="button"
+                      onClick="{{ sc.onPick }}"
+                      style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .04em; padding: 9px 12px; border-radius: 6px; cursor: pointer; border: 1px solid {{ sc.border }}; background: {{ sc.bg }}; color: {{ sc.color }}">
+                {{ sc.label }}
+              </button>
+
+            </sc-for>
+
+          </div>
+
+
+          <div style="margin-top: 14px; display: flex; align-items: center; gap: 8px 4px; flex-wrap: wrap">
+
+            <sc-for list="{{ scenarioNodes }}" as="node" hint-placeholder-count="5">
+
+              <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; padding: 7px 11px; border-radius: 6px; border: 1px solid {{ node.border }}; background: {{ node.bg }}; color: {{ node.color }}; font-weight: {{ node.weight }}">
+                {{ node.text }}
+              </span>
+
+            </sc-for>
+
+          </div>
+
+        </div>
+
       </sc-if>
+
     </div>
 
-    <p style="margin: 56px 0 0; padding-left: 20px; border-left: 3px solid var(--signal); font-size: clamp(19px, 2.2vw, 23px); font-weight: 600; letter-spacing: -.02em; line-height: 1.35; max-width: 56ch; text-wrap: pretty">The system doesn’t need to know everything. It needs to know what it can decide, what it should surface, and when a person should take over.</p>
-    <div style="margin-top: 20px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: .09em; color: var(--muted); text-transform: uppercase">DECIDE <span style="color: var(--signal-deep); margin: 0 6px">→</span> SURFACE <span style="color: var(--signal-deep); margin: 0 6px">→</span> HAND OVER</div>
 
-    <h2 style="font-size: clamp(22px, 2.4vw, 26px); font-weight: 600; letter-spacing: -.02em; margin: 64px 0 0">Outcome</h2>
+    <!-- PRINCIPLE STATEMENT -->
+    <p style="margin: 56px 0 0; padding-left: 20px; border-left: 3px solid var(--signal); font-size: clamp(19px, 2.2vw, 23px); font-weight: 600; letter-spacing: -.02em; line-height: 1.35; max-width: 56ch; text-wrap: pretty">
+      The system doesn’t need to know everything. It needs to know what it can decide, what it should surface, and when a person should take over.
+    </p>
+
+    <div style="margin-top: 20px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: .09em; color: var(--muted); text-transform: uppercase">
+      DECIDE
+      <span style="color: var(--signal-deep); margin: 0 6px">→</span>
+      SURFACE
+      <span style="color: var(--signal-deep); margin: 0 6px">→</span>
+      HAND OVER
+    </div>
+
+
+    <!-- OUTCOME -->
+    <h2 style="font-size: clamp(22px, 2.4vw, 26px); font-weight: 600; letter-spacing: -.02em; margin: 64px 0 0">
+      Outcome
+    </h2>
+
+
     <div style="margin-top: 24px; padding: clamp(22px, 3vw, 28px); border-radius: 16px; background: var(--ink); color: var(--frost); display: flex; flex-wrap: wrap; gap: 24px; align-items: center; justify-content: space-between">
+
       <div style="flex: 1 1 280px; min-width: 0">
-        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .06em; color: var(--muted); text-transform: uppercase">Room matching &amp; response preparation</div>
-        <div style="font-size: 13.5px; color: #C9C6BC; margin-top: 8px; max-width: 40ch; line-height: 1.55">Rumi turns prospect requirements and room availability into a review-ready recommendation and response in under a minute — replacing around 5–7 minutes of manual cross-referencing before Leasing review.</div>
+
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .06em; color: var(--muted); text-transform: uppercase">
+          Room matching &amp; response preparation
+        </div>
+
+        <div style="font-size: 13.5px; color: #C9C6BC; margin-top: 8px; max-width: 40ch; line-height: 1.55">
+          Rumi turns prospect requirements and room availability into a review-ready recommendation and response in under a minute — replacing around 5–7 minutes of manual cross-referencing before Leasing review.
+        </div>
+
       </div>
+
+
       <div style="text-align: right; flex: 0 0 auto">
-        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 16px; color: #8B908C; text-decoration: line-through">5–7 min</div>
-        <div style="font-size: clamp(30px, 4vw, 38px); font-weight: 700; color: var(--signal); letter-spacing: -.03em; line-height: 1.1">&lt;1 min</div>
-        <div style="font-size: 11.5px; color: var(--muted); margin-top: 4px">manual analysis → review-ready output</div>
+
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 16px; color: #8B908C; text-decoration: line-through">
+          5–7 min
+        </div>
+
+        <div style="font-size: clamp(30px, 4vw, 38px); font-weight: 700; color: var(--signal); letter-spacing: -.03em; line-height: 1.1">
+          &lt;1 min
+        </div>
+
+        <div style="font-size: 11.5px; color: var(--muted); margin-top: 4px">
+          manual analysis → review-ready output
+        </div>
+
       </div>
+
     </div>
 
+
+    <!-- OUTCOME CARDS -->
     <div style="margin-top: 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px">
+
       <div style="padding: 18px; background: var(--frost); border: 1px solid var(--hairline); border-radius: 12px">
-        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--signal-deep); letter-spacing: .05em">01</div>
-        <div style="font-size: 16.5px; font-weight: 600; margin-top: 6px; letter-spacing: -.01em">Structured decision</div>
-        <div style="font-size: 12.5px; color: var(--slate); margin-top: 6px; font-style: italic">From manual judgement to a repeatable decision flow.</div>
-        <div style="font-size: 13px; color: var(--slate); margin-top: 8px; line-height: 1.5">Rules, evidence, trade-offs and unknowns are surfaced consistently, while Leasing retains final judgement.</div>
+
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--signal-deep); letter-spacing: .05em">
+          01
+        </div>
+
+        <div style="font-size: 16.5px; font-weight: 600; margin-top: 6px; letter-spacing: -.01em">
+          Structured decision
+        </div>
+
+        <div style="font-size: 12.5px; color: var(--slate); margin-top: 6px; font-style: italic">
+          From manual judgement to a repeatable decision flow.
+        </div>
+
+        <div style="font-size: 13px; color: var(--slate); margin-top: 8px; line-height: 1.5">
+          Rules, evidence, trade-offs and unknowns are surfaced consistently, while Leasing retains final judgement.
+        </div>
+
       </div>
+
+
       <div style="padding: 18px; background: var(--frost); border: 1px solid var(--hairline); border-radius: 12px">
-        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--signal-deep); letter-spacing: .05em">02</div>
-        <div style="font-size: 16.5px; font-weight: 600; margin-top: 6px; letter-spacing: -.01em">Faster response</div>
-        <div style="font-size: 12.5px; color: var(--slate); margin-top: 6px; font-style: italic">Less processing between enquiry and response.</div>
-        <div style="font-size: 13px; color: var(--slate); margin-top: 8px; line-height: 1.5">Rumi prepares both the recommendation and prospect-ready message, helping Leasing respond sooner with relevant options.</div>
+
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--signal-deep); letter-spacing: .05em">
+          02
+        </div>
+
+        <div style="font-size: 16.5px; font-weight: 600; margin-top: 6px; letter-spacing: -.01em">
+          Faster response
+        </div>
+
+        <div style="font-size: 12.5px; color: var(--slate); margin-top: 6px; font-style: italic">
+          Less processing between enquiry and response.
+        </div>
+
+        <div style="font-size: 13px; color: var(--slate); margin-top: 8px; line-height: 1.5">
+          Rumi prepares both the recommendation and prospect-ready message, helping Leasing respond sooner with relevant options.
+        </div>
+
       </div>
+
+
       <div style="padding: 18px; background: transparent; border: 1px dashed var(--hairline); border-radius: 12px">
-        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--signal-deep); letter-spacing: .05em">03</div>
-        <div style="font-size: 16.5px; font-weight: 600; margin-top: 6px; letter-spacing: -.01em">Built to extend</div>
-        <div style="font-size: 12.5px; color: var(--muted); margin-top: 6px; font-style: italic">From one workflow to a connected system.</div>
-        <div style="font-size: 13px; color: var(--muted); margin-top: 8px; line-height: 1.5">The structured enquiry-to-decision flow creates a foundation for future CRM and operational integrations — reducing duplicate work and enabling richer insight.</div>
+
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--signal-deep); letter-spacing: .05em">
+          03
+        </div>
+
+        <div style="font-size: 16.5px; font-weight: 600; margin-top: 6px; letter-spacing: -.01em">
+          Designed for extension
+        </div>
+
+        <div style="font-size: 12.5px; color: var(--muted); margin-top: 6px; font-style: italic">
+          A foundation for a more connected system.
+        </div>
+
+        <div style="font-size: 13px; color: var(--muted); margin-top: 8px; line-height: 1.5">
+          The structured enquiry-to-decision flow creates a reusable foundation for future CRM and operational integrations, reducing duplicate work and enabling richer insight.
+        </div>
+
       </div>
+
     </div>
 
+
+    <!-- TAGS -->
     <div style="margin-top: 24px; display: flex; gap: 8px; flex-wrap: wrap">
-      <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .05em; text-transform: uppercase; padding: 6px 11px; border: 1px solid var(--hairline); border-radius: 6px; color: var(--slate)">AI workflow</span>
-      <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .05em; text-transform: uppercase; padding: 6px 11px; border: 1px solid var(--hairline); border-radius: 6px; color: var(--slate)">Decision rules</span>
-      <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .05em; text-transform: uppercase; padding: 6px 11px; border: 1px solid var(--hairline); border-radius: 6px; color: var(--slate)">Human-in-the-loop</span>
-      <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .05em; text-transform: uppercase; padding: 6px 11px; border: 1px solid var(--hairline); border-radius: 6px; color: var(--slate)">Failure design</span>
+
+      <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .05em; text-transform: uppercase; padding: 6px 11px; border: 1px solid var(--hairline); border-radius: 6px; color: var(--slate)">
+        AI workflow
+      </span>
+
+      <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .05em; text-transform: uppercase; padding: 6px 11px; border: 1px solid var(--hairline); border-radius: 6px; color: var(--slate)">
+        Decision rules
+      </span>
+
+      <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .05em; text-transform: uppercase; padding: 6px 11px; border: 1px solid var(--hairline); border-radius: 6px; color: var(--slate)">
+        Human-in-the-loop
+      </span>
+
+      <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .05em; text-transform: uppercase; padding: 6px 11px; border: 1px solid var(--hairline); border-radius: 6px; color: var(--slate)">
+        Failure design
+      </span>
+
     </div>
 
+
+    <!-- BACK -->
     <div style="margin-top: 80px; padding-top: 24px; border-top: 1px solid var(--hairline)">
-      <a href="/#work" style="font-size: 13.5px; color: var(--slate); min-height: 44px; display: inline-flex; align-items: center" style-hover="color: var(--signal-deep)">← Back to all projects</a>
+
+      <a href="/#work"
+         style="font-size: 13.5px; color: var(--slate); min-height: 44px; display: inline-flex; align-items: center"
+         style-hover="color: var(--signal-deep)">
+        ← Back to all projects
+      </a>
+
     </div>
+
   </main>
+
 </div>
 
 </x-dc>
+
+
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1100,&quot;height&quot;:900}}">
+
 const ROOMS = [
   {id:1, name:'Clayton Central Studio', price:420, dropStage:null, pick:1},
   {id:2, name:'Sunview PBSA Ensuite', price:480, dropStage:null, pick:2},
@@ -400,7 +1188,9 @@ const ROOMS = [
   {id:11, name:'Eastview PBSA', price:430, dropStage:1, reason:'Available 20 Feb — window gate'},
   {id:12, name:'Southbank PBSA', price:440, dropStage:0, reason:'Building requires a co-signed lease — occupancy gate'}
 ];
+
 const COL_X = [30, 220, 410, 600, 720];
+
 const COL_LABELS = [
   {label:'Pool', count:'12 in'},
   {label:'Hard gates', count:'7 on'},
@@ -408,28 +1198,146 @@ const COL_LABELS = [
   {label:'Rank', count:'4 on'},
   {label:'LLM picks', count:'3 picked'}
 ];
+
 const PICK_Y = [70, 110, 150];
+
 const STAGES = {
-  feas: {label:'01 Feasibility', q:'Can this room actually work?', rows:[['Lease','✓'],['Eligibility','✓'],['Occupancy','✓'],['Move-in','✓']], result:'Impossible → Remove'},
-  fit: {label:'02 Fit', q:'How well does it match?', rows:[['Location','Strong'],['Price','+$30/wk'],['Room type','Strong']], result:'Trade-off → Keep + Compare', note:'Location isn’t literal: a student is ranked by commute to campus; a professional by suburb + nearby areas.'},
-  unc: {label:'03 Uncertainty', q:'What can’t we verify?', rows:[['Female-only','Source data unavailable']], result:'Unknown → Flag for review'},
-  rea: {label:'04 Reasoning', q:'Which options are strongest overall?', rows:[['Viable rooms','→'],['Compare fit + trade-offs','→'],['AI reasoning','→']], result:'Recommend + Explain'}
+  feas: {
+    label:'01 Feasibility',
+    q:'Can this room actually work?',
+    rows:[
+      ['Lease','✓'],
+      ['Eligibility','✓'],
+      ['Occupancy','✓'],
+      ['Move-in','✓']
+    ],
+    result:'Impossible → Remove'
+  },
+
+  fit: {
+    label:'02 Fit',
+    q:'How well does it match?',
+    rows:[
+      ['Location','Strong'],
+      ['Price','+$30/wk'],
+      ['Room type','Strong']
+    ],
+    result:'Trade-off → Keep + Compare',
+    note:'Location isn’t literal: a student is ranked by commute to campus; a professional by suburb + nearby areas.'
+  },
+
+  unc: {
+    label:'03 Uncertainty',
+    q:'What can’t we verify?',
+    rows:[
+      ['Female-only','Source data unavailable']
+    ],
+    result:'Unknown → Flag for review'
+  },
+
+  rea: {
+    label:'04 Reasoning',
+    q:'Which options are strongest overall?',
+    rows:[
+      ['Viable rooms','→'],
+      ['Compare fit + trade-offs','→'],
+      ['AI reasoning','→']
+    ],
+    result:'Recommend + Explain'
+  }
 };
+
 const SCENARIOS = {
-  fail: {label:'AI FAILS', nodes:['Recommendation ready','→','Model call times out','→','Deterministic fallback','→','Marked “degraded”','→','Human review']},
-  unknown: {label:'DATA UNKNOWN', nodes:['Requirement can’t be verified','→','Flagged, not guessed','→','Stays visible on the card','→','Human confirms before sending']},
-  overlap: {label:'TEAM OVERLAP', nodes:['2 rooms, 2 teams','→','Best match sets primary owner','→','Secondary: view-only','→','Explicit handoff if needed']}
+
+  fail: {
+    label:'AI FAILS',
+    nodes:[
+      'Recommendation ready',
+      '→',
+      'Model call times out',
+      '→',
+      'Deterministic fallback',
+      '→',
+      'Marked “degraded”',
+      '→',
+      'Human review'
+    ]
+  },
+
+  unknown: {
+    label:'DATA UNKNOWN',
+    nodes:[
+      'Requirement can’t be verified',
+      '→',
+      'Flagged, not guessed',
+      '→',
+      'Stays visible on the card',
+      '→',
+      'Human confirms before sending'
+    ]
+  },
+
+  overlap: {
+    label:'TEAM OVERLAP',
+    nodes:[
+      '2 rooms, 2 teams',
+      '→',
+      'Best match sets primary owner',
+      '→',
+      'Secondary: view-only',
+      '→',
+      'Explicit handoff if needed'
+    ]
+  }
+
 };
+
 const PICKS = [
-  {id:1, rank:1, name:'Clayton Central Studio', price:420, why:'In budget, right room type, closest commute to campus.', note:'Closest option to campus, in budget, right room type.', flag:false},
-  {id:2, rank:2, name:'Sunview PBSA Ensuite', price:480, why:'$30/wk above budget — but strongest overall room fit.', note:'$30/wk above your budget, but the strongest overall room fit.', flag:false},
-  {id:4, rank:3, name:'Riverside Rooming Single', price:360, why:'Female-only requirement could not be confirmed from available data.', note:'Great fit overall — the female-only requirement still needs confirming before this goes out.', flag:true}
+
+  {
+    id:1,
+    rank:1,
+    name:'Clayton Central Studio',
+    price:420,
+    why:'In budget, right room type, closest commute to campus.',
+    note:'Closest option to campus, in budget, right room type.',
+    flag:false
+  },
+
+  {
+    id:2,
+    rank:2,
+    name:'Sunview PBSA Ensuite',
+    price:480,
+    why:'$30/wk above budget — but strongest overall room fit.',
+    note:'$30/wk above your budget, but the strongest overall room fit.',
+    flag:false
+  },
+
+  {
+    id:4,
+    rank:3,
+    name:'Riverside Rooming Single',
+    price:360,
+    why:'Female-only requirement could not be confirmed from available data.',
+    note:'Great fit overall — the female-only requirement still needs confirming before this goes out.',
+    flag:true
+  }
+
 ];
+
 const RED = '#C8283A';
 
+
 class Component extends DCLogic {
+
   state = {
-    included: {1:true, 2:true, 4:false},
+    included: {
+      1:true,
+      2:true,
+      4:false
+    },
+
     channel: 'Email',
     format: 'standard',
     instructions: '',
@@ -439,193 +1347,827 @@ class Component extends DCLogic {
     scenario: 'fail'
   };
 
-  componentDidMount() { this.buildFlow(); }
-  componentWillUnmount() { clearTimeout(this._t); }
+
+  componentDidMount() {
+    this.buildFlow();
+  }
+
+
+  componentWillUnmount() {
+    clearTimeout(this._t);
+  }
+
 
   buildFlow() {
+
     const svg = this._svg;
+
     if (!svg) return;
+
     const NS = 'http://www.w3.org/2000/svg';
-    const el = (n, attrs) => { const e = document.createElementNS(NS, n); for (const k in attrs) e.setAttribute(k, attrs[k]); return e; };
-    svg.innerHTML = '';
-    COL_LABELS.forEach((c, i) => {
-      const t1 = el('text', {x: COL_X[i], y: 16, fill: '#14191C', 'font-size': 9.5, 'font-weight': 700, 'font-family': "'IBM Plex Mono', monospace"});
-      t1.textContent = c.label; svg.appendChild(t1);
-      const t2 = el('text', {x: COL_X[i], y: 28, fill: '#92999C', 'font-size': 8.5, 'font-family': "'IBM Plex Mono', monospace"});
-      t2.textContent = c.count; svg.appendChild(t2);
-    });
-    COL_X.forEach(x => svg.appendChild(el('line', {x1: x, x2: x, y1: 36, y2: 300, stroke: '#EDEAE3', 'stroke-width': 1})));
 
-    const rowH = 20, rowStart = 46, bottom = 300, paths = [];
-    ROOMS.forEach((r, i) => {
-      const y0 = rowStart + i * rowH;
-      let d, stroke, w;
-      if (r.dropStage === null) {
-        const yF = PICK_Y[r.pick - 1];
-        d = `M ${COL_X[0]},${y0} L ${COL_X[3]},${y0} C ${COL_X[3]+50},${y0} ${COL_X[4]-50},${yF} ${COL_X[4]},${yF}`;
-        stroke = RED; w = 2;
-      } else {
-        const xD = COL_X[r.dropStage + 1];
-        d = `M ${COL_X[0]},${y0} L ${xD},${y0} C ${xD+30},${y0} ${xD+50},${bottom-10} ${xD+70},${bottom+10}`;
-        stroke = '#D8D1C7'; w = 1.5;
+    const el = (n, attrs) => {
+
+      const e = document.createElementNS(NS, n);
+
+      for (const k in attrs) {
+        e.setAttribute(k, attrs[k]);
       }
-      const p = el('path', {d, fill: 'none', stroke, 'stroke-width': w, 'stroke-linecap': 'round'});
+
+      return e;
+    };
+
+
+    svg.innerHTML = '';
+
+
+    COL_LABELS.forEach((c, i) => {
+
+      const t1 = el('text', {
+        x: COL_X[i],
+        y: 16,
+        fill: '#14191C',
+        'font-size': 9.5,
+        'font-weight': 700,
+        'font-family': "'IBM Plex Mono', monospace"
+      });
+
+      t1.textContent = c.label;
+      svg.appendChild(t1);
+
+
+      const t2 = el('text', {
+        x: COL_X[i],
+        y: 28,
+        fill: '#92999C',
+        'font-size': 8.5,
+        'font-family': "'IBM Plex Mono', monospace"
+      });
+
+      t2.textContent = c.count;
+      svg.appendChild(t2);
+
+    });
+
+
+    COL_X.forEach(x => {
+
+      svg.appendChild(
+        el('line', {
+          x1: x,
+          x2: x,
+          y1: 36,
+          y2: 300,
+          stroke: '#EDEAE3',
+          'stroke-width': 1
+        })
+      );
+
+    });
+
+
+    const rowH = 20;
+    const rowStart = 46;
+    const bottom = 300;
+    const paths = [];
+
+
+    ROOMS.forEach((r, i) => {
+
+      const y0 = rowStart + i * rowH;
+
+      let d;
+      let stroke;
+      let w;
+
+
+      if (r.dropStage === null) {
+
+        const yF = PICK_Y[r.pick - 1];
+
+        d = `M ${COL_X[0]},${y0}
+             L ${COL_X[3]},${y0}
+             C ${COL_X[3]+50},${y0}
+               ${COL_X[4]-50},${yF}
+               ${COL_X[4]},${yF}`;
+
+        stroke = RED;
+        w = 2;
+
+      } else {
+
+        const xD = COL_X[r.dropStage + 1];
+
+        d = `M ${COL_X[0]},${y0}
+             L ${xD},${y0}
+             C ${xD+30},${y0}
+               ${xD+50},${bottom-10}
+               ${xD+70},${bottom+10}`;
+
+        stroke = '#D8D1C7';
+        w = 1.5;
+
+      }
+
+
+      const p = el('path', {
+        d,
+        fill: 'none',
+        stroke,
+        'stroke-width': w,
+        'stroke-linecap': 'round'
+      });
+
+
       const title = document.createElementNS(NS, 'title');
-      title.textContent = r.dropStage === null ? `${r.name} — LLM pick #${r.pick}` : `${r.name} — ${r.reason}`;
+
+      title.textContent =
+        r.dropStage === null
+          ? `${r.name} — LLM pick #${r.pick}`
+          : `${r.name} — ${r.reason}`;
+
       p.appendChild(title);
-      svg.appendChild(p); paths.push(p);
+      svg.appendChild(p);
+
+      paths.push(p);
+
     });
 
-    ROOMS.filter(r => r.dropStage === null).sort((a, b) => a.pick - b.pick).forEach(r => {
-      const y = PICK_Y[r.pick - 1];
-      svg.appendChild(el('circle', {cx: COL_X[4] + 8, cy: y, r: 9, fill: RED}));
-      const num = el('text', {x: COL_X[4] + 8, y: y + 3, 'text-anchor': 'middle', fill: '#fff', 'font-size': 9, 'font-weight': 700, 'font-family': "'IBM Plex Mono', monospace"});
-      num.textContent = r.pick; svg.appendChild(num);
-      const lab = el('text', {x: COL_X[4] + 22, y: y + 4, fill: '#14191C', 'font-size': 10.5, 'font-weight': 600, 'font-family': "'Inter Tight', sans-serif"});
-      lab.textContent = r.name; svg.appendChild(lab);
-    });
 
-    const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    ROOMS
+      .filter(r => r.dropStage === null)
+      .sort((a, b) => a.pick - b.pick)
+      .forEach(r => {
+
+        const y = PICK_Y[r.pick - 1];
+
+        svg.appendChild(
+          el('circle', {
+            cx: COL_X[4] + 8,
+            cy: y,
+            r: 9,
+            fill: RED
+          })
+        );
+
+
+        const num = el('text', {
+          x: COL_X[4] + 8,
+          y: y + 3,
+          'text-anchor': 'middle',
+          fill: '#fff',
+          'font-size': 9,
+          'font-weight': 700,
+          'font-family': "'IBM Plex Mono', monospace"
+        });
+
+        num.textContent = r.pick;
+        svg.appendChild(num);
+
+
+        const lab = el('text', {
+          x: COL_X[4] + 22,
+          y: y + 4,
+          fill: '#14191C',
+          'font-size': 10.5,
+          'font-weight': 600,
+          'font-family': "'Inter Tight', sans-serif"
+        });
+
+        lab.textContent = r.name;
+        svg.appendChild(lab);
+
+      });
+
+
+    const reduce =
+      window.matchMedia &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+
     if (reduce) return;
-    paths.forEach(p => { const l = p.getTotalLength(); p.style.transition = 'none'; p.style.strokeDasharray = l; p.style.strokeDashoffset = l; });
+
+
+    paths.forEach(p => {
+
+      const l = p.getTotalLength();
+
+      p.style.transition = 'none';
+      p.style.strokeDasharray = l;
+      p.style.strokeDashoffset = l;
+
+    });
+
+
     void svg.getBoundingClientRect();
-    paths.forEach((p, i) => { p.style.transition = `stroke-dashoffset .9s cubic-bezier(.22,1,.36,1) ${i * 0.035}s`; p.style.strokeDashoffset = 0; });
+
+
+    paths.forEach((p, i) => {
+
+      p.style.transition =
+        `stroke-dashoffset .9s cubic-bezier(.22,1,.36,1) ${i * 0.035}s`;
+
+      p.style.strokeDashoffset = 0;
+
+    });
+
   }
+
 
   buildReply() {
-    const inc = PICKS.filter(p => this.state.included[p.id]);
-    if (!inc.length) return 'Select at least one room above to include it in the reply.';
-    const lower = this.state.instructions.toLowerCase();
-    const casual = lower.includes('casual');
-    const weekend = lower.includes('weekend');
-    const brief = lower.includes('brief') || lower.includes('short');
-    const greeting = casual ? 'Hey Alex,' : 'Hi Alex,';
-    const closing = casual ? 'Keen to hear what you think!' : 'Let me know if you’d like to arrange a viewing for either of these.';
-    const weekendLine = weekend ? 'I can also arrange viewings this weekend if that’s easier for you.\n\n' : '';
-    const n = inc.length, plural = n === 1 ? '' : 's';
-    const fmt = this.state.format;
-    let msg = '';
-    if (fmt === 'bullets') {
-      msg = `${greeting}\n\nHere ${n === 1 ? 'is' : 'are'} ${n} option${plural} worth considering:\n\n`;
-      inc.forEach(r => { msg += `• ${r.name} — $${r.price}/wk. ${r.note}\n`; });
-      msg += `\n${weekendLine}${closing}`;
-    } else if (fmt === 'simple') {
-      msg = `${greeting}\n\n`;
-      inc.forEach(r => { msg += `${r.name}: $${r.price}/wk.\n`; });
-      msg += `\n${weekendLine}${closing}`;
-    } else if (fmt === 'concise' || brief) {
-      msg = `${greeting} Found ${n} option${plural} near Monash Clayton within your budget:\n\n`;
-      inc.forEach(r => { msg += `${r.name} — $${r.price}/wk\n`; });
-      msg += `\n${weekendLine}${closing}`;
-    } else {
-      msg = `${greeting}\n\nI’ve found ${n} current option${plural} that look worth considering for your move.\n\nYou’re looking for a room from around 10 Feb, near Monash Clayton, with a weekly budget of $350–450.\n\n`;
-      inc.forEach(r => { msg += `${r.name} — $${r.price}/wk\n${r.note}\nView details →\n\n`; });
-      msg += `${weekendLine}${closing}`;
+
+    const inc = PICKS.filter(
+      p => this.state.included[p.id]
+    );
+
+
+    if (!inc.length) {
+      return 'Select at least one room above to include it in the reply.';
     }
+
+
+    const lower =
+      this.state.instructions.toLowerCase();
+
+    const casual =
+      lower.includes('casual');
+
+    const weekend =
+      lower.includes('weekend');
+
+    const brief =
+      lower.includes('brief') ||
+      lower.includes('short');
+
+
+    const greeting =
+      casual
+        ? 'Hey Alex,'
+        : 'Hi Alex,';
+
+
+    const closing =
+      casual
+        ? 'Keen to hear what you think!'
+        : 'Let me know if you’d like to arrange a viewing for either of these.';
+
+
+    const weekendLine =
+      weekend
+        ? 'I can also arrange viewings this weekend if that’s easier for you.\n\n'
+        : '';
+
+
+    const n = inc.length;
+
+    const plural =
+      n === 1
+        ? ''
+        : 's';
+
+
+    const fmt =
+      this.state.format;
+
+
+    let msg = '';
+
+
+    if (fmt === 'bullets') {
+
+      msg =
+        `${greeting}\n\nHere ${n === 1 ? 'is' : 'are'} ${n} option${plural} worth considering:\n\n`;
+
+      inc.forEach(r => {
+        msg +=
+          `• ${r.name} — $${r.price}/wk. ${r.note}\n`;
+      });
+
+      msg +=
+        `\n${weekendLine}${closing}`;
+
+    } else if (fmt === 'simple') {
+
+      msg =
+        `${greeting}\n\n`;
+
+      inc.forEach(r => {
+        msg +=
+          `${r.name}: $${r.price}/wk.\n`;
+      });
+
+      msg +=
+        `\n${weekendLine}${closing}`;
+
+    } else if (fmt === 'concise' || brief) {
+
+      msg =
+        `${greeting} Found ${n} option${plural} near Monash Clayton within your budget:\n\n`;
+
+      inc.forEach(r => {
+        msg +=
+          `${r.name} — $${r.price}/wk\n`;
+      });
+
+      msg +=
+        `\n${weekendLine}${closing}`;
+
+    } else {
+
+      msg =
+        `${greeting}\n\nI’ve found ${n} current option${plural} that look worth considering for your move.\n\nYou’re looking for a room from around 10 Feb, near Monash Clayton, with a weekly budget of $350–450.\n\n`;
+
+      inc.forEach(r => {
+
+        msg +=
+          `${r.name} — $${r.price}/wk\n${r.note}\nView details →\n\n`;
+
+      });
+
+      msg +=
+        `${weekendLine}${closing}`;
+
+    }
+
+
     return msg;
+
   }
+
 
   renderVals() {
+
     const s = this.state;
-    const openLabel = i => (s.open === i ? 'Close −' : 'Inspect +');
-    const toggleOpen = i => () => this.setState({open: s.open === i ? 0 : i});
-    const incCount = PICKS.filter(p => s.included[p.id]).length;
-    const stage = STAGES[s.stage];
+
+
+    const openLabel =
+      i => (
+        s.open === i
+          ? 'Close −'
+          : 'Inspect +'
+      );
+
+
+    const toggleOpen =
+      i => () =>
+        this.setState({
+          open:
+            s.open === i
+              ? 0
+              : i
+        });
+
+
+    const incCount =
+      PICKS.filter(
+        p => s.included[p.id]
+      ).length;
+
+
+    const stage =
+      STAGES[s.stage];
+
 
     return {
-      flowRef: el => { this._svg = el; },
-      replay: () => this.buildFlow(),
 
-      picks: PICKS.map(p => {
-        const on = !!s.included[p.id];
-        return {
-          rank: p.rank, name: p.name, why: p.why, priceLabel: '$' + p.price,
-          border: p.flag ? 'var(--signal)' : (p.rank === 1 ? RED : 'var(--hairline)'),
-          badgeBg: p.rank === 1 ? RED : 'var(--mist)',
-          badgeColor: p.rank === 1 ? '#fff' : 'var(--slate)',
-          toggleLabel: on ? 'Included' : (p.flag ? '1 to check' : 'Include'),
-          toggleBg: on ? RED : '#fff',
-          toggleColor: on ? '#fff' : 'var(--ink)',
-          toggleBorder: on ? RED : 'var(--hairline)',
-          onToggle: () => this.setState(st => ({included: Object.assign({}, st.included, {[p.id]: !st.included[p.id]})}))
-        };
-      }),
+      flowRef:
+        el => {
+          this._svg = el;
+        },
 
-      replyCount: incCount + (incCount === 1 ? ' room included' : ' rooms included'),
 
-      channels: ['Email', 'WhatsApp'].map(c => ({
-        label: c,
-        bg: s.channel === c ? '#fff' : 'transparent',
-        color: s.channel === c ? RED : 'var(--slate)',
-        weight: s.channel === c ? 600 : 400,
-        onPick: () => this.setState({channel: c})
-      })),
+      replay:
+        () => this.buildFlow(),
 
-      formats: [['standard', 'Standard'], ['concise', 'Concise'], ['simple', 'Simple'], ['bullets', 'Bullets']].map(([k, label]) => ({
-        label,
-        bg: s.format === k ? '#fff' : 'transparent',
-        color: s.format === k ? RED : 'var(--slate)',
-        weight: s.format === k ? 600 : 400,
-        onPick: () => this.setState({format: k})
-      })),
 
-      chips: [
-        {label: 'More casual', txt: 'Make it sound more casual'},
-        {label: 'Mention weekend viewings', txt: 'Mention I can arrange viewings this weekend'},
-        {label: 'Keep it brief', txt: 'Keep it as brief as possible'}
-      ].map(c => ({label: c.label, onPick: () => this.setState({instructions: c.txt})})),
+      picks:
+        PICKS.map(p => {
 
-      instructions: s.instructions,
-      onInstructions: e => this.setState({instructions: e.target.value}),
-      hasInstructions: s.instructions.trim().length > 0,
-      appliedTag: 'Applied: “' + s.instructions.trim() + '”',
-      regenLabel: s.regenBusy ? 'Regenerating…' : 'Regenerate',
-      regenerate: () => {
-        if (s.regenBusy) return;
-        this.setState({regenBusy: true});
-        this._t = setTimeout(() => this.setState({regenBusy: false}), 450);
-      },
-      replyText: this.buildReply(),
+          const on =
+            !!s.included[p.id];
 
-      open1: s.open === 1, open2: s.open === 2, open3: s.open === 3, open4: s.open === 4,
-      label1: openLabel(1), label2: openLabel(2), label3: openLabel(3), label4: openLabel(4),
-      toggle1: toggleOpen(1), toggle2: toggleOpen(2), toggle3: toggleOpen(3), toggle4: toggleOpen(4),
 
-      stages: Object.keys(STAGES).map(k => ({
-        label: STAGES[k].label,
-        bg: s.stage === k ? 'var(--ink)' : '#fff',
-        color: s.stage === k ? '#fff' : 'var(--slate)',
-        border: s.stage === k ? 'var(--ink)' : 'var(--hairline)',
-        onPick: () => this.setState({stage: k})
-      })),
-      stageQuestion: stage.q,
-      stageRows: stage.rows.map(([a, b]) => ({a, b})),
-      stageResult: stage.result,
-      hasStageNote: !!stage.note,
-      stageNote: stage.note || '',
+          return {
 
-      scenarios: Object.keys(SCENARIOS).map(k => ({
-        label: SCENARIOS[k].label,
-        bg: s.scenario === k ? 'var(--ink)' : '#fff',
-        color: s.scenario === k ? '#fff' : 'var(--slate)',
-        border: s.scenario === k ? 'var(--ink)' : 'var(--hairline)',
-        onPick: () => this.setState({scenario: k})
-      })),
-      scenarioNodes: SCENARIOS[s.scenario].nodes.map(t => {
-        if (t === '→') return {text: '→', bg: 'transparent', border: 'transparent', color: 'var(--muted)', weight: 400};
-        const sig = t.includes('degraded') || t.includes('Flagged') || t.includes('primary owner');
-        return {
-          text: t,
-          bg: sig ? 'var(--ink)' : '#fff',
-          border: sig ? 'var(--ink)' : 'var(--hairline)',
-          color: sig ? 'var(--signal)' : 'var(--ink)',
-          weight: sig ? 600 : 400
-        };
-      })
+            rank:
+              p.rank,
+
+            name:
+              p.name,
+
+            why:
+              p.why,
+
+            priceLabel:
+              '$' + p.price,
+
+            border:
+              p.flag
+                ? 'var(--signal)'
+                : (
+                    p.rank === 1
+                      ? RED
+                      : 'var(--hairline)'
+                  ),
+
+            badgeBg:
+              p.rank === 1
+                ? RED
+                : 'var(--mist)',
+
+            badgeColor:
+              p.rank === 1
+                ? '#fff'
+                : 'var(--slate)',
+
+            toggleLabel:
+              on
+                ? 'Included'
+                : (
+                    p.flag
+                      ? '1 to check'
+                      : 'Include'
+                  ),
+
+            toggleBg:
+              on
+                ? RED
+                : '#fff',
+
+            toggleColor:
+              on
+                ? '#fff'
+                : 'var(--ink)',
+
+            toggleBorder:
+              on
+                ? RED
+                : 'var(--hairline)',
+
+            onToggle:
+              () =>
+                this.setState(st => ({
+                  included:
+                    Object.assign(
+                      {},
+                      st.included,
+                      {
+                        [p.id]:
+                          !st.included[p.id]
+                      }
+                    )
+                }))
+
+          };
+
+        }),
+
+
+      replyCount:
+        incCount +
+        (
+          incCount === 1
+            ? ' room included'
+            : ' rooms included'
+        ),
+
+
+      channels:
+        ['Email', 'WhatsApp']
+          .map(c => ({
+
+            label:
+              c,
+
+            bg:
+              s.channel === c
+                ? '#fff'
+                : 'transparent',
+
+            color:
+              s.channel === c
+                ? RED
+                : 'var(--slate)',
+
+            weight:
+              s.channel === c
+                ? 600
+                : 400,
+
+            onPick:
+              () =>
+                this.setState({
+                  channel: c
+                })
+
+          })),
+
+
+      formats:
+        [
+          ['standard', 'Standard'],
+          ['concise', 'Concise'],
+          ['simple', 'Simple'],
+          ['bullets', 'Bullets']
+        ]
+        .map(([k, label]) => ({
+
+          label,
+
+          bg:
+            s.format === k
+              ? '#fff'
+              : 'transparent',
+
+          color:
+            s.format === k
+              ? RED
+              : 'var(--slate)',
+
+          weight:
+            s.format === k
+              ? 600
+              : 400,
+
+          onPick:
+            () =>
+              this.setState({
+                format: k
+              })
+
+        })),
+
+
+      chips:
+        [
+          {
+            label:'More casual',
+            txt:'Make it sound more casual'
+          },
+
+          {
+            label:'Mention weekend viewings',
+            txt:'Mention I can arrange viewings this weekend'
+          },
+
+          {
+            label:'Keep it brief',
+            txt:'Keep it as brief as possible'
+          }
+        ]
+        .map(c => ({
+
+          label:
+            c.label,
+
+          onPick:
+            () =>
+              this.setState({
+                instructions: c.txt
+              })
+
+        })),
+
+
+      instructions:
+        s.instructions,
+
+
+      onInstructions:
+        e =>
+          this.setState({
+            instructions:
+              e.target.value
+          }),
+
+
+      hasInstructions:
+        s.instructions.trim().length > 0,
+
+
+      appliedTag:
+        'Applied: “' +
+        s.instructions.trim() +
+        '”',
+
+
+      regenLabel:
+        s.regenBusy
+          ? 'Regenerating…'
+          : 'Regenerate',
+
+
+      regenerate:
+        () => {
+
+          if (s.regenBusy) return;
+
+          this.setState({
+            regenBusy: true
+          });
+
+          this._t =
+            setTimeout(
+              () =>
+                this.setState({
+                  regenBusy: false
+                }),
+              450
+            );
+
+        },
+
+
+      replyText:
+        this.buildReply(),
+
+
+      open1:
+        s.open === 1,
+
+      open2:
+        s.open === 2,
+
+      open3:
+        s.open === 3,
+
+      open4:
+        s.open === 4,
+
+
+      label1:
+        openLabel(1),
+
+      label2:
+        openLabel(2),
+
+      label3:
+        openLabel(3),
+
+      label4:
+        openLabel(4),
+
+
+      toggle1:
+        toggleOpen(1),
+
+      toggle2:
+        toggleOpen(2),
+
+      toggle3:
+        toggleOpen(3),
+
+      toggle4:
+        toggleOpen(4),
+
+
+      stages:
+        Object.keys(STAGES)
+          .map(k => ({
+
+            label:
+              STAGES[k].label,
+
+            bg:
+              s.stage === k
+                ? 'var(--ink)'
+                : '#fff',
+
+            color:
+              s.stage === k
+                ? '#fff'
+                : 'var(--slate)',
+
+            border:
+              s.stage === k
+                ? 'var(--ink)'
+                : 'var(--hairline)',
+
+            onPick:
+              () =>
+                this.setState({
+                  stage: k
+                })
+
+          })),
+
+
+      stageQuestion:
+        stage.q,
+
+
+      stageRows:
+        stage.rows.map(
+          ([a, b]) => ({
+            a,
+            b
+          })
+        ),
+
+
+      stageResult:
+        stage.result,
+
+
+      hasStageNote:
+        !!stage.note,
+
+
+      stageNote:
+        stage.note || '',
+
+
+      scenarios:
+        Object.keys(SCENARIOS)
+          .map(k => ({
+
+            label:
+              SCENARIOS[k].label,
+
+            bg:
+              s.scenario === k
+                ? 'var(--ink)'
+                : '#fff',
+
+            color:
+              s.scenario === k
+                ? '#fff'
+                : 'var(--slate)',
+
+            border:
+              s.scenario === k
+                ? 'var(--ink)'
+                : 'var(--hairline)',
+
+            onPick:
+              () =>
+                this.setState({
+                  scenario: k
+                })
+
+          })),
+
+
+      scenarioNodes:
+        SCENARIOS[s.scenario]
+          .nodes
+          .map(t => {
+
+            if (t === '→') {
+
+              return {
+                text: '→',
+                bg: 'transparent',
+                border: 'transparent',
+                color: 'var(--muted)',
+                weight: 400
+              };
+
+            }
+
+
+            const sig =
+              t.includes('degraded') ||
+              t.includes('Flagged') ||
+              t.includes('primary owner');
+
+
+            return {
+
+              text:
+                t,
+
+              bg:
+                sig
+                  ? 'var(--ink)'
+                  : '#fff',
+
+              border:
+                sig
+                  ? 'var(--ink)'
+                  : 'var(--hairline)',
+
+              color:
+                sig
+                  ? 'var(--signal)'
+                  : 'var(--ink)',
+
+              weight:
+                sig
+                  ? 600
+                  : 400
+
+            };
+
+          })
+
     };
+
   }
+
 }
 
 </script>
+
 </body>
 </html>
