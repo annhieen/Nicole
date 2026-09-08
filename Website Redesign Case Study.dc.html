@@ -376,11 +376,11 @@ const UNI_PROPERTIES = [
 
 const BLOCKS = [
   { idx: "01", title: "Start with what people already know",
-    desc: "Prospects can start with a room type, suburb, university, or Guided Enquiry if they're not sure yet.",
+    desc: "Prospects can start from what they already know, a room type, suburb or university, or use Guided Enquiry when they still need help deciding.",
     rows: [["Know the room type", "Category page"], ["Know the area", "Suburb page"], ["Know the university", "Campus page"], ["Not sure yet", "Guided Enquiry"]],
-    note: "The Guided Enquiry popup only appears on broader pages where people are more likely to need help choosing — and the same structured form is shared by link over email and message." },
+    note: "Guided Enquiry appears where people are most likely to need help choosing, while the same structured flow can also be shared directly by link." },
   { idx: "02", title: "Answer the questions that block a decision",
-    desc: "I turned common questions into tools people could use themselves — before needing to contact the team.",
+    desc: "I turned recurring pre-enquiry questions into self-service tools people could use before contacting the team.",
     questions: [
       { q: "Is it available?", a: "Availability + lease dates" },
       { q: "What's included?", a: "Room + property features" },
@@ -390,10 +390,10 @@ const BLOCKS = [
       { q: "What's it like to live there?", a: "Community videos" },
     ] },
   { idx: "03", title: "Give Building Managers direct control",
-    desc: "Rent, availability and property details change often. I set up the site so Building Managers can update them directly in WordPress without relying on me for routine changes.",
+    desc: "Rent, availability and property details change frequently, so I structured the site so Building Managers could update them directly in WordPress Admin instead of routing routine changes through me.",
     rows: [["Building Manager", "WordPress", "Website"]],
     chips: ["Rent", "Availability", "Lease dates", "Images", "Room features", "Campus", "Travel time"],
-    note: "Before: the Building Manager asked me to update the website. After: they publish the change themselves." },
+    note: "Before: routine updates came through me. After: Building Managers could publish changes directly." },
 ];
 
 function money(n) { return "$" + n.toLocaleString("en-AU", { minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
