@@ -32,7 +32,7 @@
 
     <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--slate); margin-top: 32px">Product design · Content systems · Implementation</div>
     <h1 style="font-size: clamp(38px, 5.6vw, 56px); font-weight: 600; letter-spacing: -.035em; line-height: 1.02; margin: 12px 0 0">Tenant Portal Redesign</h1>
-    <p style="font-size: clamp(16px, 1.4vw, 18px); line-height: 1.5; color: var(--slate); max-width: 56ch; margin: 14px 0 0; text-wrap: pretty">Reworking StarRez PortalX so prospects and tenants could find the information they needed more easily — without changing the platform itself.</p>
+    <p style="font-size: clamp(16px, 1.4vw, 18px); line-height: 1.5; color: var(--slate); max-width: 56ch; margin: 14px 0 0; text-wrap: pretty">Turning a text-heavy tenant portal into a clearer self-service journey for prospects and tenants — from application through move-in and everyday living.</p>
 
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 16px; margin-top: 32px; padding: 20px 0; border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline)">
       <div>
@@ -57,9 +57,9 @@
       </div>
     </div>
 
-    <p style="font-size: 16px; line-height: 1.6; color: var(--slate); max-width: 64ch; margin: 24px 0 0">PortalX was used from application through tenancy, but most of the experience relied on long text templates. Prospects had little visual guidance during application, while tenants still contacted Building Managers for basic information that should have been easier to find.</p>
+    <p style="font-size: 16px; line-height: 1.6; color: var(--slate); max-width: 64ch; margin: 24px 0 0">PortalX supported the journey from application through tenancy, but the experience relied heavily on long text templates. Prospects lacked clear guidance during application, while tenants still contacted Building Managers for information that should have been easier to find.</p>
 
-    <h2 style="font-size: clamp(22px, 2.2vw, 26px); font-weight: 600; letter-spacing: -.015em; margin: clamp(48px, 6vw, 64px) 0 0">How I approached it</h2>
+    <h2 style="font-size: clamp(22px, 2.2vw, 26px); font-weight: 600; letter-spacing: -.015em; margin: clamp(48px, 6vw, 64px) 0 0">How I Redesigned The Portal</h2>
     <p style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin: 10px 0 0">Select a step to inspect the reasoning underneath</p>
 
     <div style="display: grid; gap: 14px; margin-top: 18px">
@@ -189,7 +189,7 @@
     </div>
     <p style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: .05em; color: var(--muted); margin: 10px 0 0">Recreated structure · tenant values are dynamic per person, so no personal data is shown. Worked examples: Tenancy Information and New to Melbourne.</p>
 
-    <p style="font-size: clamp(20px, 2.1vw, 22px); font-weight: 600; letter-spacing: -.015em; line-height: 1.32; max-width: 52ch; margin: clamp(44px, 5vw, 56px) 0 0; padding-left: 18px; border-left: 3px solid var(--signal); text-wrap: pretty">The platform stayed the same. What changed was the order the information arrived in.</p>
+    <p style="font-size: clamp(20px, 2.1vw, 22px); font-weight: 600; letter-spacing: -.015em; line-height: 1.32; max-width: 52ch; margin: clamp(44px, 5vw, 56px) 0 0; padding-left: 18px; border-left: 3px solid var(--signal); text-wrap: pretty">The platform stayed the same. The experience was reorganised around what people needed at each stage of the journey.</p>
 
     <h2 style="font-size: clamp(22px, 2.2vw, 26px); font-weight: 600; letter-spacing: -.015em; margin: clamp(48px, 6vw, 64px) 0 0">Impact</h2>
     <div style="margin-top: 20px; padding: clamp(22px, 3vw, 28px); border-radius: 18px; background: var(--ink); color: var(--frost); display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px">
@@ -201,7 +201,7 @@
       <div style="padding: 16px; background: rgba(255,255,255,.07); border-radius: 12px">
         <div style="font-size: 32px; font-weight: 600; letter-spacing: -.03em; color: var(--signal)">~30–40%</div>
         <div style="font-size: 12.5px; color: #C9C6BC; margin-top: 6px">Fewer repeat enquiries to Building Managers</div>
-        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .07em; text-transform: uppercase; color: #8A8880; margin-top: 6px">Based on team feedback</div>
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .07em; text-transform: uppercase; color: #8A8880; margin-top: 6px">Team feedback</div>
       </div>
       <div style="grid-column: 1 / -1; padding-top: 16px; border-top: 1px solid rgba(255,255,255,.14); font-size: 13px; line-height: 1.6; color: #C9C6BC">Now used across <b style="color: #fff; font-weight: 600">7 buildings + 40+ rooming houses</b> — the starting point for new building launches and ongoing PortalX updates.</div>
     </div>
@@ -270,14 +270,14 @@ const BLOCKS = [
     desc: "I mapped what prospects and tenants needed from application through move-in, everyday living and renewal, then reorganised the information around those stages.",
     flow: ["Apply", "Prepare to move in", "Move in", "Live", "Get help", "Renew / vacate"] },
   { idx: "02", title: "Add the missing pre-arrival stage", kind: "chips",
-    desc: "The existing journey jumped from completed paperwork to tenancy. I added a pre-arrival section for check-in, building information and practical setup, especially for international students arriving in Melbourne for the first time.",
+    desc: "The existing journey jumped from completed paperwork straight into tenancy. I introduced a pre-arrival stage for check-in, building information and practical setup, especially important for international students arriving in Melbourne for the first time.",
     chips: ["Check-in", "Transport", "Banking", "SIM", "Support"] },
   { idx: "03", title: "Build a clearer experience within PortalX", kind: "flow",
-    desc: "PortalX mainly gave me text templates and images. I used Figma to design fixed visual panels, kept changing information in PortalX templates, and linked the panels to the relevant pages.",
-    flow: ["Fixed visual panels", "Dynamic PortalX content", "Live tenant experience"], accentLast: true,
+    desc: "PortalX offered limited layout flexibility, so I separated stable visual guidance from information that needed frequent updates. Fixed visual panels were designed in Figma, while changing content stayed editable inside PortalX.",
+    flow: ["Fixed visual panels", "Dynamic PortalX content", "PortalX implementation"], accentLast: true,
     note: "Figma was used for visual design. The final experience was built directly in PortalX." },
   { idx: "04", title: "Reuse the structure across buildings", kind: "compare",
-    desc: "The core structure stays consistent, while branding, property information, facilities, contacts and user access change by building.",
+    desc: "The core information architecture stays consistent across buildings, while branding, property details, facilities, contacts and access rules change by property.",
     note: "The same setup is now used as the starting point for new building launches and future portal updates." },
 ];
 
