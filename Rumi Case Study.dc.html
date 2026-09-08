@@ -478,134 +478,139 @@
 
 
         <!-- STEP 3 -->
-        <div style="display: flex; align-items: center; gap: 10px; margin-top: 26px">
+<div style="display: flex; align-items: center; gap: 10px; margin-top: 26px">
 
-          <div style="width: 22px; height: 22px; border-radius: 50%; background: var(--ink); color: #fff; font-size: 11px; font-weight: 600; display: flex; align-items: center; justify-content: center; flex: 0 0 auto">
-            3
-          </div>
+  <div style="width: 22px; height: 22px; border-radius: 50%; background: var(--ink); color: #fff; font-size: 11px; font-weight: 600; display: flex; align-items: center; justify-content: center; flex: 0 0 auto">
+    3
+  </div>
 
-          <div style="font-size: 16px; font-weight: 700">
-            Reply
-          </div>
+  <div style="font-size: 16px; font-weight: 700">
+    Reply
+  </div>
 
-          <div style="margin-left: auto; font-size: 11.5px; color: #C8283A; font-weight: 600">
-            {{ replyCount }}
-          </div>
+  <div style="margin-left: auto; font-size: 11.5px; color: #C8283A; font-weight: 600">
+    {{ replyCount }}
+  </div>
 
-        </div>
-
-
-        <div style="margin-top: 14px; padding: 16px 18px; background: #fff; border: 1px solid var(--hairline); border-radius: 10px">
-
-          <div style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap; padding: 8px 0">
-
-            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .05em; color: var(--muted); width: 74px; flex: 0 0 auto">
-              SEND AS
-            </span>
-
-            <div style="display: flex; gap: 4px; background: var(--mist); padding: 3px; border-radius: 8px">
-
-              <sc-for list="{{ channels }}" as="ch" hint-placeholder-count="2">
-
-                <button type="button"
-                        onClick="{{ ch.onPick }}"
-                        style="font-size: 11.5px; padding: 7px 12px; border-radius: 6px; border: none; cursor: pointer; background: {{ ch.bg }}; color: {{ ch.color }}; font-weight: {{ ch.weight }}">
-                  {{ ch.label }}
-                </button>
-
-              </sc-for>
-
-            </div>
-
-          </div>
+</div>
 
 
-          <div style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap; padding: 8px 0">
+<div style="margin-top: 12px; padding: 14px 16px 16px; background: #fff; border: 1px solid var(--hairline); border-radius: 10px">
 
-            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .05em; color: var(--muted); width: 74px; flex: 0 0 auto">
-              FORMAT
-            </span>
+  <!-- SEND AS -->
+  <div style="display: grid; grid-template-columns: 90px minmax(0, 1fr); align-items: center; gap: 12px; padding: 5px 0">
 
-            <div style="display: flex; gap: 4px; background: var(--mist); padding: 3px; border-radius: 8px; flex-wrap: wrap">
+    <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .05em; color: var(--muted)">
+      SEND AS
+    </span>
 
-              <sc-for list="{{ formats }}" as="fmt" hint-placeholder-count="4">
+    <div style="display: flex; gap: 4px; background: var(--mist); padding: 3px; border-radius: 8px; width: fit-content">
 
-                <button type="button"
-                        onClick="{{ fmt.onPick }}"
-                        style="font-size: 11.5px; padding: 7px 12px; border-radius: 6px; border: none; cursor: pointer; background: {{ fmt.bg }}; color: {{ fmt.color }}; font-weight: {{ fmt.weight }}">
-                  {{ fmt.label }}
-                </button>
+      <sc-for list="{{ channels }}" as="ch" hint-placeholder-count="2">
 
-              </sc-for>
+        <button type="button"
+                onClick="{{ ch.onPick }}"
+                style="font-size: 11.5px; padding: 7px 12px; border-radius: 6px; border: none; cursor: pointer; background: {{ ch.bg }}; color: {{ ch.color }}; font-weight: {{ ch.weight }}">
+          {{ ch.label }}
+        </button>
 
-            </div>
+      </sc-for>
 
-          </div>
+    </div>
+
+  </div>
 
 
-          <div style="display: flex; align-items: flex-start; gap: 16px; flex-wrap: wrap; padding: 8px 0">
+  <!-- FORMAT -->
+  <div style="display: grid; grid-template-columns: 90px minmax(0, 1fr); align-items: center; gap: 12px; padding: 5px 0">
 
-            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .05em; color: var(--muted); width: 74px; flex: 0 0 auto; margin-top: 10px">
-              NOTES
-            </span>
+    <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .05em; color: var(--muted)">
+      FORMAT
+    </span>
 
-            <div style="flex: 1 1 240px; min-width: 0">
+    <div style="display: flex; gap: 4px; background: var(--mist); padding: 3px; border-radius: 8px; width: fit-content; flex-wrap: wrap">
 
-              <textarea value="{{ instructions }}"
-                        onChange="{{ onInstructions }}"
-                        placeholder="Mood to strike, something to emphasise, a question to ask — the facts, rooms and links never change."
-                        style="width: 100%; min-height: 56px; padding: 10px 12px; font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; line-height: 1.5; color: var(--ink); background: var(--frost); border: 1px solid var(--hairline); border-radius: 8px; resize: vertical"></textarea>
+      <sc-for list="{{ formats }}" as="fmt" hint-placeholder-count="4">
 
-              <div style="margin-top: 8px; display: flex; gap: 6px; flex-wrap: wrap">
+        <button type="button"
+                onClick="{{ fmt.onPick }}"
+                style="font-size: 11.5px; padding: 7px 12px; border-radius: 6px; border: none; cursor: pointer; background: {{ fmt.bg }}; color: {{ fmt.color }}; font-weight: {{ fmt.weight }}">
+          {{ fmt.label }}
+        </button>
 
-                <sc-for list="{{ chips }}" as="chip" hint-placeholder-count="3">
+      </sc-for>
 
-                  <button type="button"
-                          onClick="{{ chip.onPick }}"
-                          style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; padding: 6px 11px; border-radius: 20px; border: 1px solid var(--hairline); background: #fff; color: var(--slate); cursor: pointer"
-                          style-hover="border-color: #C8283A; color: #C8283A">
-                    {{ chip.label }}
-                  </button>
+    </div>
 
-                </sc-for>
+  </div>
 
-              </div>
 
-            </div>
+  <!-- NOTES -->
+  <div style="display: grid; grid-template-columns: 90px minmax(0, 1fr); align-items: start; gap: 12px; padding: 7px 0 4px">
 
-          </div>
+    <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .05em; color: var(--muted); margin-top: 9px">
+      NOTES
+    </span>
 
+    <div style="min-width: 0">
+
+      <textarea value="{{ instructions }}"
+                onChange="{{ onInstructions }}"
+                placeholder="Mood to strike, something to emphasise, a question to ask — the facts, rooms and links never change."
+                style="width: 100%; min-height: 48px; padding: 9px 11px; font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; line-height: 1.45; color: var(--ink); background: var(--frost); border: 1px solid var(--hairline); border-radius: 8px; resize: vertical"></textarea>
+
+      <div style="margin-top: 7px; display: flex; gap: 6px; flex-wrap: wrap">
+
+        <sc-for list="{{ chips }}" as="chip" hint-placeholder-count="3">
 
           <button type="button"
-                  onClick="{{ regenerate }}"
-                  style="margin-top: 14px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .04em; padding: 11px 18px; border-radius: 8px; border: none; background: #C8283A; color: #fff; cursor: pointer">
-            {{ regenLabel }}
+                  onClick="{{ chip.onPick }}"
+                  style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; padding: 6px 11px; border-radius: 20px; border: 1px solid var(--hairline); background: #fff; color: var(--slate); cursor: pointer"
+                  style-hover="border-color: #C8283A; color: #C8283A">
+            {{ chip.label }}
           </button>
 
-
-          <div style="font-size: 11.5px; color: var(--muted); margin-top: 10px; font-style: italic; max-width: 64ch">
-            Built from a template I wrote — Rumi fills in the specific rooms, prices and dates, and adapts tone or emphasis to instructions like these.
-          </div>
-
-
-          <sc-if value="{{ hasInstructions }}" hint-placeholder-val="{{ false }}">
-
-            <div style="margin-top: 12px; font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--signal-deep); background: var(--signal-pale); display: inline-block; padding: 6px 10px; border-radius: 6px">
-              {{ appliedTag }}
-            </div>
-
-          </sc-if>
-
-
-          <div style="margin-top: 10px; padding: 14px 16px; background: var(--frost); border: 1px solid var(--hairline); border-radius: 8px; font-size: 12.5px; line-height: 1.7; color: #3A3D40; white-space: pre-wrap">
-            {{ replyText }}
-          </div>
-
-        </div>
+        </sc-for>
 
       </div>
 
     </div>
+
+  </div>
+
+
+  <!-- ACTION -->
+  <div style="margin-top: 10px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap">
+
+    <button type="button"
+            onClick="{{ regenerate }}"
+            style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .04em; padding: 10px 16px; border-radius: 8px; border: none; background: #C8283A; color: #fff; cursor: pointer">
+      {{ regenLabel }}
+    </button>
+
+    <div style="font-size: 11.5px; color: var(--muted); font-style: italic; line-height: 1.45; max-width: 48ch">
+      Built from a template I wrote — Rumi fills in the room facts and adapts tone or emphasis to staff instructions.
+    </div>
+
+  </div>
+
+
+  <!-- APPLIED TAG -->
+  <sc-if value="{{ hasInstructions }}" hint-placeholder-val="{{ false }}">
+
+    <div style="margin-top: 9px; font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--signal-deep); background: var(--signal-pale); display: inline-block; padding: 6px 10px; border-radius: 6px">
+      {{ appliedTag }}
+    </div>
+
+  </sc-if>
+
+
+  <!-- GENERATED RESPONSE -->
+  <div style="margin-top: 10px; padding: 12px 14px; background: var(--frost); border: 1px solid var(--hairline); border-radius: 8px; font-size: 12.5px; line-height: 1.6; color: #3A3D40; white-space: pre-wrap">
+    {{ replyText }}
+  </div>
+
+</div>
 
 
     <!-- DESIGN THINKING -->
