@@ -1,9 +1,0 @@
-:root{
---radius-sm:6px;--radius-md:12px;--radius-lg:18px;--radius-xl:20px;--radius-pill:999px;
---border-width:1px;
---shadow-card:0 10px 30px rgba(15,25,30,.05);
---shadow-glass:0 12px 36px rgba(25,35,40,.055),inset 0 1px 0 rgba(255,255,255,.72);
---shadow-lift:0 16px 44px rgba(15,25,30,.08);
---blur-glass:18px;
---glow-active:0 0 0 6px var(--signal-glow);
-}
