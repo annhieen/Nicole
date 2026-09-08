@@ -116,7 +116,7 @@
 </h1>
 
 <p style="font-size: clamp(17px, 1.6vw, 19px); color: var(--slate); margin: 14px 0 0; max-width: 58ch; text-wrap: pretty">
-  Turning structured rental enquiries into a human-supervised decision system for room recommendations.
+  A human-supervised decision system that turns structured rental enquiries into room recommendations for Leasing review.
 </p>
 
 
@@ -162,107 +162,101 @@
 </div>
 
 
-<!-- CONTEXT -->
-<p style="font-size: 16.5px; color: var(--slate); margin: 40px 0 0; max-width: 64ch; text-wrap: pretty">
-  The Guided Enquiry flow on the RoomingKos website improved the quality and structure of incoming rental enquiries. That exposed the next bottleneck: Leasing still had to manually match each prospect against live availability, pricing and property criteria, typically taking 5–7 minutes per enquiry.
+<!-- OWNERSHIP -->
+<p style="font-size: 14px; color: var(--slate); margin: 20px 0 0; max-width: 66ch; line-height: 1.55">
+  I led the Leasing discovery, designed the decision logic and human hand-off, and worked with one developer to ship the workflow.
 </p>
 
 
-<!-- PROBLEM PROGRESSION -->
-<div style="margin-top: 28px; display: grid; grid-template-columns: 1fr; gap: 12px">
-
-  <div style="display: grid; grid-template-columns: minmax(0, 1fr) 28px minmax(0, 1fr); align-items: center; gap: 10px">
-
-    <div style="padding: 18px; border-radius: 12px; background: var(--mist)">
-
-      <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--slate)">
-        What Guided Enquiry Solved
-      </div>
-
-      <div style="font-size: 14.5px; margin-top: 8px; line-height: 1.45; color: var(--slate)">
-        Better, more structured prospect information.
-      </div>
-
-    </div>
-
-
-    <div style="font-size: 18px; color: var(--muted); text-align: center">
-      →
-    </div>
-
-
-    <div style="padding: 18px; border-radius: 12px; background: var(--signal-pale)">
-
-      <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--signal-deep)">
-        What It Revealed Next
-      </div>
-
-      <div style="font-size: 14.5px; margin-top: 8px; line-height: 1.45; color: var(--ink)">
-        Room matching was still a manual decision.
-      </div>
-
-    </div>
-
-  </div>
-
-</div>
-
-
-<!-- CORE QUESTION -->
-<div style="margin: 32px 0; padding: 22px 24px; background: var(--frost); border: 1px solid var(--hairline); border-radius: 12px; font-size: 16.5px; line-height: 1.5; max-width: 66ch">
-
-  How do we turn the way an experienced Leasing Manager evaluates and recommends rooms into an automatic system without removing the judgement that still belongs to them?
-
-  <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--slate); margin-top: 10px; text-transform: uppercase; letter-spacing: .06em">
-    The question behind Rumi
-  </div>
-
-</div>
-
-
-<!-- LEASING INSIGHTS -->
-<h2 style="font-size: clamp(22px, 2.4vw, 26px); font-weight: 600; letter-spacing: -.02em; margin: 64px 0 0">
-  What I learned from Leasing Process
+<!-- THE NEXT PROBLEM -->
+<h2 style="font-size: clamp(22px, 2.4vw, 26px); font-weight: 600; letter-spacing: -.02em; margin: 56px 0 0">
+  The next problem appeared downstream
 </h2>
 
-<div style="display: flex; flex-direction: column; gap: 12px; margin-top: 18px; max-width: 64ch">
+<p style="font-size: 16px; color: var(--slate); margin: 14px 0 0; max-width: 64ch; text-wrap: pretty">
+  The Guided Enquiry flow on the RoomingKos website improved the quality and structure of incoming rental enquiries. But once the inputs became clearer, a new constraint emerged: Leasing still had to manually work out which available rooms genuinely suited each prospect.
+</p>
+
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--signal-deep); margin-top: 14px; letter-spacing: .02em">
+  Preparing a recommendation typically took 5–7 minutes per enquiry.
+</div>
+
+
+<!-- PROGRESSION -->
+<div style="margin-top: 26px; display: grid; grid-template-columns: minmax(0, 1fr) 28px minmax(0, 1fr); align-items: stretch; gap: 10px">
+
+  <div style="padding: 18px; border-radius: 12px; background: var(--mist)">
+    <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--slate)">
+      Guided Enquiry
+    </div>
+    <div style="font-size: 14.5px; margin-top: 8px; line-height: 1.45; color: var(--slate)">
+      Better, more structured prospect information.
+    </div>
+  </div>
+
+  <div style="font-size: 18px; color: var(--muted); display: flex; align-items: center; justify-content: center">
+    →
+  </div>
+
+  <div style="padding: 18px; border-radius: 12px; background: var(--signal-pale)">
+    <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--signal-deep)">
+      New bottleneck
+    </div>
+    <div style="font-size: 14.5px; margin-top: 8px; line-height: 1.45; color: var(--ink)">
+      Room matching and recommendation were still manual.
+    </div>
+  </div>
+
+</div>
+
+
+<!-- DISCOVERY -->
+<h2 style="font-size: clamp(22px, 2.4vw, 26px); font-weight: 600; letter-spacing: -.02em; margin: 56px 0 0">
+  What Leasing’s process revealed
+</h2>
+
+<div style="display: flex; flex-direction: column; gap: 14px; margin-top: 18px; max-width: 66ch">
 
   <div style="display: flex; gap: 12px; align-items: flex-start">
     <span style="width: 6px; height: 6px; border-radius: 50%; background: var(--signal); margin-top: 9px; flex: 0 0 auto"></span>
-    <span style="font-size: 15.5px; color: var(--slate)">
-      <strong style="color: var(--ink); font-weight: 600">Room matching relied on a mix of fixed business rules and contextual judgement.</strong>
+    <span style="font-size: 15px; color: var(--slate); line-height: 1.55">
+      <strong style="color: var(--ink); font-weight: 600">
+        Room matching relied on a mix of fixed business rules and contextual judgement.
+      </strong>
       Some criteria were clear-cut, while preferences such as location, budget and room type could carry different weight depending on the prospect’s wider needs and trade-offs.
     </span>
   </div>
 
   <div style="display: flex; gap: 12px; align-items: flex-start">
     <span style="width: 6px; height: 6px; border-radius: 50%; background: var(--signal); margin-top: 9px; flex: 0 0 auto"></span>
-    <span style="font-size: 15.5px; color: var(--slate)">
-      <strong style="color: var(--ink); font-weight: 600">Some requirements couldn’t be verified from the available data.</strong>
-      Instead of guessing, the system needed to surface those unknowns for Leasing to review..
+    <span style="font-size: 15px; color: var(--slate); line-height: 1.55">
+      <strong style="color: var(--ink); font-weight: 600">
+        Some requirements could not be verified from the available data.
+      </strong>
+      Those unknowns needed to remain visible rather than being guessed away.
     </span>
   </div>
 
   <div style="display: flex; gap: 12px; align-items: flex-start">
     <span style="width: 6px; height: 6px; border-radius: 50%; background: var(--signal); margin-top: 9px; flex: 0 0 auto"></span>
-    <span style="font-size: 15.5px; color: var(--slate)">
-      <strong style="color: var(--ink); font-weight: 600">Leasing still needed to own the final recommendation.</strong>
-      Rumi could filter, compare and explain the strongest options, but the final decision and customer response remained with the team.
+    <span style="font-size: 15px; color: var(--slate); line-height: 1.55">
+      <strong style="color: var(--ink); font-weight: 600">
+        The final recommendation still needed a human owner.
+      </strong>
+      A system could narrow and explain the strongest options, but Leasing needed to retain control of the decision and customer response.
     </span>
   </div>
 
 </div>
 
 
-<!-- MY CONTRIBUTION -->
-<div style="margin-top: 28px; padding: 18px 20px; background: var(--mist); border-radius: 10px; max-width: 66ch">
+<!-- CORE QUESTION -->
+<div style="margin: 34px 0 0; padding: 22px 24px; background: var(--frost); border: 1px solid var(--hairline); border-radius: 12px; font-size: 16.5px; line-height: 1.5; max-width: 66ch">
 
-  <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted)">
-    My contribution
-  </div>
+  How do we structure the way an experienced Leasing Manager evaluates and recommends rooms — without removing the judgement that still belongs to them?
 
-  <div style="font-size: 14.5px; color: var(--slate); line-height: 1.58; margin-top: 7px">
-    I translated this into Rumi’s decision model: hard constraints, ranked preferences, visible uncertainty and a clear human hand-off function, then worked with tech team to ship it.
+  <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--slate); margin-top: 10px; text-transform: uppercase; letter-spacing: .06em">
+    The question behind Rumi
   </div>
 
 </div>
@@ -614,537 +608,437 @@
     </div>
 
 
-    <!-- THINKING -->
-    <h2 style="font-size: clamp(22px, 2.4vw, 26px); font-weight: 600; letter-spacing: -.02em; margin: 64px 0 0">
-      How I thought about it
-    </h2>
+    <!-- DESIGN THINKING -->
+<h2 style="font-size: clamp(22px, 2.4vw, 26px); font-weight: 600; letter-spacing: -.02em; margin: 64px 0 0">
+  How I designed the decision system
+</h2>
 
-    <p style="font-size: 13px; color: var(--muted); margin: 8px 0 0">
-      Click a step to inspect the reasoning underneath.
-    </p>
+<p style="font-size: 13px; color: var(--muted); margin: 8px 0 0">
+  The design decisions behind the workflow.
+</p>
 
 
-    <!-- PRINCIPLE 01 -->
-    <div style="margin-top: 18px; padding: 18px 20px; border-left: 3px solid var(--signal-pale); border-radius: 0 10px 10px 0; max-width: 68ch">
+<!-- 01 -->
+<div style="margin-top: 20px; padding: 18px 20px; border-left: 3px solid var(--signal-pale); border-radius: 0 10px 10px 0; max-width: 68ch">
 
-      <div onClick="{{ toggle1 }}"
-           style="display: flex; align-items: center; justify-content: space-between; gap: 16px; cursor: pointer">
+  <div onClick="{{ toggle2 }}"
+       style="display: flex; align-items: center; justify-content: space-between; gap: 16px; cursor: pointer">
 
-        <div style="font-size: 17.5px; font-weight: 600; letter-spacing: -.01em">
-          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: var(--signal-deep); letter-spacing: .04em; margin-right: 10px">
-            01
-          </span>
-          Follow the problem, not the feature
-        </div>
-
-        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .05em; color: var(--muted); border: 1px solid var(--hairline); padding: 6px 11px; border-radius: 20px; flex: 0 0 auto">
-          {{ label1 }}
-        </div>
-
-      </div>
-
-
-      <div style="font-size: 15px; color: var(--slate); margin-top: 10px; line-height: 1.55">
-        I didn’t start with AI. Guided Enquiry solved the upstream information problem by structuring what prospects submitted. That exposed the next constraint: Leasing still had to interpret those inputs and manually decide what to recommend. Rumi became the next layer in the same system — first structure the enquiry, then structure the decision that follows.
-      </div>
-
-
-      <sc-if value="{{ open1 }}" hint-placeholder-val="{{ false }}">
-
-        <div style="margin-top: 18px">
-
-          <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px 4px">
-
-            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; padding: 7px 11px; border-radius: 6px; background: #fff; border: 1px solid var(--hairline)">
-              Vague enquiries
-            </span>
-
-            <span style="color: var(--muted); font-size: 11px">→</span>
-
-            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; padding: 7px 11px; border-radius: 6px; background: var(--mist); border: 1px solid var(--hairline); color: var(--slate)">
-              Guided Enquiry
-            </span>
-
-            <span style="color: var(--muted); font-size: 11px">→</span>
-
-            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; padding: 7px 11px; border-radius: 6px; background: #fff; border: 1px solid var(--hairline)">
-              Better inputs
-            </span>
-
-            <span style="color: var(--muted); font-size: 11px">→</span>
-
-            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; padding: 7px 11px; border-radius: 6px; background: var(--mist); border: 1px solid var(--hairline); color: var(--slate)">
-              Processing bottleneck
-            </span>
-
-            <span style="color: var(--muted); font-size: 11px">→</span>
-
-            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; padding: 7px 11px; border-radius: 6px; background: var(--ink); border: 1px solid var(--ink); color: var(--signal); font-weight: 600">
-              Rumi
-            </span>
-
-          </div>
-
-
-          <div style="margin-top: 18px; padding-top: 14px; border-top: 1px dashed var(--hairline)">
-
-            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .05em; text-transform: uppercase; color: var(--muted)">
-              Next — vision, not yet built
-            </span>
-
-            <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px 4px; margin-top: 10px">
-
-              <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; padding: 7px 11px; border-radius: 6px; background: #fff; border: 1px dashed var(--hairline); color: var(--slate)">
-                Rumi conversion
-              </span>
-
-              <span style="color: var(--muted); font-size: 11px">→</span>
-
-              <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; padding: 7px 11px; border-radius: 6px; background: #fff; border: 1px dashed var(--hairline); color: var(--slate)">
-                CRM update
-              </span>
-
-              <span style="color: var(--muted); font-size: 11px">→</span>
-
-              <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; padding: 7px 11px; border-radius: 6px; background: #fff; border: 1px dashed var(--hairline); color: var(--slate)">
-                Less duplicate work
-              </span>
-
-              <span style="color: var(--muted); font-size: 11px">→</span>
-
-              <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; padding: 7px 11px; border-radius: 6px; background: #fff; border: 1px dashed var(--hairline); color: var(--slate)">
-                Better insight
-              </span>
-
-            </div>
-
-            <div style="font-size: 11.5px; color: var(--muted); margin-top: 10px; font-style: italic">
-              Part of the same direction as Operational Hub — product discovery / roadmap vision.
-            </div>
-
-          </div>
-
-        </div>
-
-      </sc-if>
-
-    </div>
-
-
-    <!-- PRINCIPLE 02 -->
-    <div style="margin-top: 14px; padding: 18px 20px; border-left: 3px solid var(--signal-pale); border-radius: 0 10px 10px 0; max-width: 68ch">
-
-      <div onClick="{{ toggle2 }}"
-           style="display: flex; align-items: center; justify-content: space-between; gap: 16px; cursor: pointer">
-
-        <div style="font-size: 17.5px; font-weight: 600; letter-spacing: -.01em">
-          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: var(--signal-deep); letter-spacing: .04em; margin-right: 10px">
-            02
-          </span>
-          Model the decision before automating it
-        </div>
-
-        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .05em; color: var(--muted); border: 1px solid var(--hairline); padding: 6px 11px; border-radius: 20px; flex: 0 0 auto">
-          {{ label2 }}
-        </div>
-
-      </div>
-
-
-      <div style="font-size: 15px; color: var(--slate); margin-top: 10px; line-height: 1.55">
-        I separated what could be decided deterministically from what still required contextual judgement. Hard constraints remove options that cannot work; viable rooms are ranked against the prospect’s needs; uncertainty stays visible; and AI reasons across the strongest remaining choices before preparing a recommendation.
-      </div>
-
-
-      <sc-if value="{{ open2 }}" hint-placeholder-val="{{ false }}">
-
-        <div style="margin-top: 18px">
-
-          <div style="font-size: 12.5px; padding: 11px 14px; background: var(--mist); border-radius: 8px; color: var(--ink)">
-            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .05em; text-transform: uppercase; color: var(--slate); margin-right: 10px">
-              Prospect needs
-            </span>
-            Student · Oct move-in · 12+ months · $400/wk · Monash Clayton · Female-only
-          </div>
-
-
-          <div style="display: flex; gap: 6px; margin-top: 14px; flex-wrap: wrap">
-
-            <sc-for list="{{ stages }}" as="stage" hint-placeholder-count="4">
-
-              <button type="button"
-                      onClick="{{ stage.onPick }}"
-                      style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .04em; padding: 9px 12px; border-radius: 20px; cursor: pointer; border: 1px solid {{ stage.border }}; background: {{ stage.bg }}; color: {{ stage.color }}">
-                {{ stage.label }}
-              </button>
-
-            </sc-for>
-
-          </div>
-
-
-          <div style="margin-top: 14px; padding: 14px 16px; background: #fff; border: 1px solid var(--hairline); border-radius: 8px">
-
-            <div style="font-size: 13.5px; font-weight: 600">
-              {{ stageQuestion }}
-            </div>
-
-            <div style="display: flex; gap: 16px; margin-top: 10px; flex-wrap: wrap">
-
-              <sc-for list="{{ stageRows }}" as="row" hint-placeholder-count="4">
-
-                <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--slate)">
-                  <b style="color: var(--ink)">
-                    {{ row.a }}
-                  </b>
-                  {{ row.b }}
-                </span>
-
-              </sc-for>
-
-            </div>
-
-
-            <div style="margin-top: 12px; display: inline-block; font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .04em; text-transform: uppercase; padding: 6px 10px; border-radius: 6px; background: var(--signal-pale); color: var(--signal-deep); font-weight: 600">
-              {{ stageResult }}
-            </div>
-
-
-            <sc-if value="{{ hasStageNote }}" hint-placeholder-val="{{ false }}">
-              <div style="font-size: 11.5px; color: var(--muted); margin-top: 10px; font-style: italic">
-                {{ stageNote }}
-              </div>
-            </sc-if>
-
-          </div>
-
-
-          <div style="margin-top: 12px; display: flex; gap: 16px; flex-wrap: wrap">
-
-            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: var(--slate)">
-              <b style="color: var(--ink)">Impossible</b> → Remove
-            </span>
-
-            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: var(--slate)">
-              <b style="color: var(--ink)">Trade-off</b> → Compare
-            </span>
-
-            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: var(--slate)">
-              <b style="color: var(--ink)">Unknown</b> → Verify
-            </span>
-
-          </div>
-
-        </div>
-
-      </sc-if>
-
-    </div>
-
-
-    <!-- PRINCIPLE 03 -->
-    <div style="margin-top: 14px; padding: 18px 20px; border-left: 3px solid var(--signal-pale); border-radius: 0 10px 10px 0; max-width: 68ch">
-
-      <div onClick="{{ toggle3 }}"
-           style="display: flex; align-items: center; justify-content: space-between; gap: 16px; cursor: pointer">
-
-        <div style="font-size: 17.5px; font-weight: 600; letter-spacing: -.01em">
-          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: var(--signal-deep); letter-spacing: .04em; margin-right: 10px">
-            03
-          </span>
-          Decide where human judgement belongs
-        </div>
-
-        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .05em; color: var(--muted); border: 1px solid var(--hairline); padding: 6px 11px; border-radius: 20px; flex: 0 0 auto">
-          {{ label3 }}
-        </div>
-
-      </div>
-
-
-      <div style="font-size: 15px; color: var(--slate); margin-top: 10px; line-height: 1.55">
-        Rumi narrows the decision space, but Leasing keeps control of the final recommendation and response. It surfaces evidence, trade-offs and unknowns, then prepares a prospect-ready message that Leasing can edit, regenerate or tailor with additional instructions before sending.
-      </div>
-
-
-      <sc-if value="{{ open3 }}" hint-placeholder-val="{{ false }}">
-
-        <div style="margin-top: 18px; display: flex; flex-direction: column; align-items: flex-start">
-
-          <div style="padding: 11px 14px; background: #fff; border: 1px solid var(--hairline); border-radius: 8px">
-            <div style="font-size: 12.5px; font-weight: 600">
-              Rumi prepares
-            </div>
-            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; color: var(--slate); margin-top: 4px">
-              Summary · Recommendations · Rationale · Trade-offs · Unknowns
-            </div>
-          </div>
-
-          <div style="color: var(--muted); font-size: 11px; padding: 4px 0 4px 16px">
-            ↓
-          </div>
-
-          <div style="padding: 11px 14px; background: var(--signal-pale); border: 1px solid var(--signal); border-radius: 8px">
-            <div style="font-size: 12.5px; font-weight: 600; color: var(--signal-deep)">
-              Leasing reviews
-            </div>
-            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; color: var(--slate); margin-top: 4px">
-              Verify · Include / Exclude · Adjust recommendation
-            </div>
-          </div>
-
-          <div style="color: var(--muted); font-size: 11px; padding: 4px 0 4px 16px">
-            ↓
-          </div>
-
-          <div style="padding: 11px 14px; background: #fff; border: 1px solid var(--hairline); border-radius: 8px">
-            <div style="font-size: 12.5px; font-weight: 600">
-              Rumi drafts response
-            </div>
-            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; color: var(--slate); margin-top: 4px">
-              Email / WhatsApp · Standard / Concise / Bullets
-            </div>
-          </div>
-
-          <div style="color: var(--muted); font-size: 11px; padding: 4px 0 4px 16px">
-            ↓
-          </div>
-
-          <div style="padding: 11px 14px; background: var(--signal-pale); border: 1px solid var(--signal); border-radius: 8px">
-            <div style="font-size: 12.5px; font-weight: 600; color: var(--signal-deep)">
-              Leasing customises
-            </div>
-            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; color: var(--slate); margin-top: 4px">
-              Edit directly · Add instructions · Regenerate
-            </div>
-          </div>
-
-          <div style="color: var(--muted); font-size: 11px; padding: 4px 0 4px 16px">
-            ↓
-          </div>
-
-          <div style="padding: 11px 14px; background: var(--ink); border: 1px solid var(--ink); border-radius: 8px">
-            <div style="font-size: 12.5px; font-weight: 600; color: var(--frost)">
-              Final customer response
-            </div>
-          </div>
-
-        </div>
-
-        <div style="font-size: 12.5px; color: var(--slate); margin-top: 14px; font-style: italic">
-          Reduce cognitive work — without transferring decision or communication control.
-        </div>
-
-      </sc-if>
-
-    </div>
-
-
-    <!-- PRINCIPLE 04 -->
-    <div style="margin-top: 14px; padding: 18px 20px; border-left: 3px solid var(--signal-pale); border-radius: 0 10px 10px 0; max-width: 68ch">
-
-      <div onClick="{{ toggle4 }}"
-           style="display: flex; align-items: center; justify-content: space-between; gap: 16px; cursor: pointer">
-
-        <div style="font-size: 17.5px; font-weight: 600; letter-spacing: -.01em">
-          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: var(--signal-deep); letter-spacing: .04em; margin-right: 10px">
-            04
-          </span>
-          Design for what happens next
-        </div>
-
-        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .05em; color: var(--muted); border: 1px solid var(--hairline); padding: 6px 11px; border-radius: 20px; flex: 0 0 auto">
-          {{ label4 }}
-        </div>
-
-      </div>
-
-
-      <div style="font-size: 15px; color: var(--slate); margin-top: 10px; line-height: 1.55">
-        A recommendation still has to work in real operations. I designed for AI failure, incomplete evidence and overlapping team ownership, so the workflow always has a clear fallback, owner and next action rather than quietly failing or guessing.
-      </div>
-
-
-      <sc-if value="{{ open4 }}" hint-placeholder-val="{{ false }}">
-
-        <div style="margin-top: 18px">
-
-          <div style="display: flex; gap: 6px; flex-wrap: wrap">
-
-            <sc-for list="{{ scenarios }}" as="sc" hint-placeholder-count="3">
-
-              <button type="button"
-                      onClick="{{ sc.onPick }}"
-                      style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .04em; padding: 9px 12px; border-radius: 6px; cursor: pointer; border: 1px solid {{ sc.border }}; background: {{ sc.bg }}; color: {{ sc.color }}">
-                {{ sc.label }}
-              </button>
-
-            </sc-for>
-
-          </div>
-
-
-          <div style="margin-top: 14px; display: flex; align-items: center; gap: 8px 4px; flex-wrap: wrap">
-
-            <sc-for list="{{ scenarioNodes }}" as="node" hint-placeholder-count="5">
-
-              <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; padding: 7px 11px; border-radius: 6px; border: 1px solid {{ node.border }}; background: {{ node.bg }}; color: {{ node.color }}; font-weight: {{ node.weight }}">
-                {{ node.text }}
-              </span>
-
-            </sc-for>
-
-          </div>
-
-        </div>
-
-      </sc-if>
-
-    </div>
-
-
-    <!-- PRINCIPLE STATEMENT -->
-    <p style="margin: 56px 0 0; padding-left: 20px; border-left: 3px solid var(--signal); font-size: clamp(19px, 2.2vw, 23px); font-weight: 600; letter-spacing: -.02em; line-height: 1.35; max-width: 56ch; text-wrap: pretty">
-      The system doesn’t need to know everything. It needs to know what it can decide, what it should surface, and when a person should take over.
-    </p>
-
-    <div style="margin-top: 20px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: .09em; color: var(--muted); text-transform: uppercase">
-      DECIDE
-      <span style="color: var(--signal-deep); margin: 0 6px">→</span>
-      SURFACE
-      <span style="color: var(--signal-deep); margin: 0 6px">→</span>
-      HAND OVER
-    </div>
-
-
-    <!-- OUTCOME -->
-    <h2 style="font-size: clamp(22px, 2.4vw, 26px); font-weight: 600; letter-spacing: -.02em; margin: 64px 0 0">
-      Outcome
-    </h2>
-
-
-    <div style="margin-top: 24px; padding: clamp(22px, 3vw, 28px); border-radius: 16px; background: var(--ink); color: var(--frost); display: flex; flex-wrap: wrap; gap: 24px; align-items: center; justify-content: space-between">
-
-      <div style="flex: 1 1 280px; min-width: 0">
-
-        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .06em; color: var(--muted); text-transform: uppercase">
-          Room matching &amp; response preparation
-        </div>
-
-        <div style="font-size: 13.5px; color: #C9C6BC; margin-top: 8px; max-width: 40ch; line-height: 1.55">
-          Rumi turns prospect requirements and room availability into a review-ready recommendation and response in under a minute — replacing around 5–7 minutes of manual cross-referencing before Leasing review.
-        </div>
-
-      </div>
-
-
-      <div style="text-align: right; flex: 0 0 auto">
-
-        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 16px; color: #8B908C; text-decoration: line-through">
-          5–7 min
-        </div>
-
-        <div style="font-size: clamp(30px, 4vw, 38px); font-weight: 700; color: var(--signal); letter-spacing: -.03em; line-height: 1.1">
-          &lt;1 min
-        </div>
-
-        <div style="font-size: 11.5px; color: var(--muted); margin-top: 4px">
-          manual analysis → review-ready output
-        </div>
-
-      </div>
-
-    </div>
-
-
-    <!-- OUTCOME CARDS -->
-    <div style="margin-top: 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px">
-
-      <div style="padding: 18px; background: var(--frost); border: 1px solid var(--hairline); border-radius: 12px">
-
-        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--signal-deep); letter-spacing: .05em">
-          01
-        </div>
-
-        <div style="font-size: 16.5px; font-weight: 600; margin-top: 6px; letter-spacing: -.01em">
-          Structured decision
-        </div>
-
-        <div style="font-size: 12.5px; color: var(--slate); margin-top: 6px; font-style: italic">
-          From manual judgement to a repeatable decision flow.
-        </div>
-
-        <div style="font-size: 13px; color: var(--slate); margin-top: 8px; line-height: 1.5">
-          Rules, evidence, trade-offs and unknowns are surfaced consistently, while Leasing retains final judgement.
-        </div>
-
-      </div>
-
-
-      <div style="padding: 18px; background: var(--frost); border: 1px solid var(--hairline); border-radius: 12px">
-
-        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--signal-deep); letter-spacing: .05em">
-          02
-        </div>
-
-        <div style="font-size: 16.5px; font-weight: 600; margin-top: 6px; letter-spacing: -.01em">
-          Faster response
-        </div>
-
-        <div style="font-size: 12.5px; color: var(--slate); margin-top: 6px; font-style: italic">
-          Less processing between enquiry and response.
-        </div>
-
-        <div style="font-size: 13px; color: var(--slate); margin-top: 8px; line-height: 1.5">
-          Rumi prepares both the recommendation and prospect-ready message, helping Leasing respond sooner with relevant options.
-        </div>
-
-      </div>
-
-
-      <div style="padding: 18px; background: transparent; border: 1px dashed var(--hairline); border-radius: 12px">
-
-        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--signal-deep); letter-spacing: .05em">
-          03
-        </div>
-
-        <div style="font-size: 16.5px; font-weight: 600; margin-top: 6px; letter-spacing: -.01em">
-          Designed for extension
-        </div>
-
-        <div style="font-size: 12.5px; color: var(--muted); margin-top: 6px; font-style: italic">
-          A foundation for a more connected system.
-        </div>
-
-        <div style="font-size: 13px; color: var(--muted); margin-top: 8px; line-height: 1.5">
-          The structured enquiry-to-decision flow creates a reusable foundation for future CRM and operational integrations, reducing duplicate work and enabling richer insight.
-        </div>
-
-      </div>
-
-    </div>
-
-
-    <!-- TAGS -->
-    <div style="margin-top: 24px; display: flex; gap: 8px; flex-wrap: wrap">
-
-      <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .05em; text-transform: uppercase; padding: 6px 11px; border: 1px solid var(--hairline); border-radius: 6px; color: var(--slate)">
-        AI workflow
+    <div style="font-size: 17.5px; font-weight: 600; letter-spacing: -.01em">
+      <span style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: var(--signal-deep); letter-spacing: .04em; margin-right: 10px">
+        01
       </span>
+      Separate rules from judgement
+    </div>
 
-      <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .05em; text-transform: uppercase; padding: 6px 11px; border: 1px solid var(--hairline); border-radius: 6px; color: var(--slate)">
-        Decision rules
-      </span>
+    <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .05em; color: var(--muted); border: 1px solid var(--hairline); padding: 6px 11px; border-radius: 20px; flex: 0 0 auto">
+      {{ label2 }}
+    </div>
 
-      <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .05em; text-transform: uppercase; padding: 6px 11px; border: 1px solid var(--hairline); border-radius: 6px; color: var(--slate)">
-        Human-in-the-loop
-      </span>
+  </div>
 
-      <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .05em; text-transform: uppercase; padding: 6px 11px; border: 1px solid var(--hairline); border-radius: 6px; color: var(--slate)">
-        Failure design
-      </span>
+  <div style="font-size: 15px; color: var(--slate); margin-top: 10px; line-height: 1.55">
+    I modelled the recommendation process in layers: remove impossible options, compare viable ones, surface uncertainty, then use AI where contextual reasoning adds value.
+  </div>
+
+  <sc-if value="{{ open2 }}" hint-placeholder-val="{{ false }}">
+
+    <div style="margin-top: 18px">
+
+      <div style="font-size: 12.5px; padding: 11px 14px; background: var(--mist); border-radius: 8px; color: var(--ink)">
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .05em; text-transform: uppercase; color: var(--slate); margin-right: 10px">
+          Prospect needs
+        </span>
+        Student · Oct move-in · 12+ months · $400/wk · Monash Clayton · Female-only
+      </div>
+
+      <div style="display: flex; gap: 6px; margin-top: 14px; flex-wrap: wrap">
+
+        <sc-for list="{{ stages }}" as="stage" hint-placeholder-count="4">
+          <button type="button"
+                  onClick="{{ stage.onPick }}"
+                  style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .04em; padding: 9px 12px; border-radius: 20px; cursor: pointer; border: 1px solid {{ stage.border }}; background: {{ stage.bg }}; color: {{ stage.color }}">
+            {{ stage.label }}
+          </button>
+        </sc-for>
+
+      </div>
+
+      <div style="margin-top: 14px; padding: 14px 16px; background: #fff; border: 1px solid var(--hairline); border-radius: 8px">
+
+        <div style="font-size: 13.5px; font-weight: 600">
+          {{ stageQuestion }}
+        </div>
+
+        <div style="display: flex; gap: 16px; margin-top: 10px; flex-wrap: wrap">
+
+          <sc-for list="{{ stageRows }}" as="row" hint-placeholder-count="4">
+            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--slate)">
+              <b style="color: var(--ink)">{{ row.a }}</b> {{ row.b }}
+            </span>
+          </sc-for>
+
+        </div>
+
+        <div style="margin-top: 12px; display: inline-block; font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .04em; text-transform: uppercase; padding: 6px 10px; border-radius: 6px; background: var(--signal-pale); color: var(--signal-deep); font-weight: 600">
+          {{ stageResult }}
+        </div>
+
+        <sc-if value="{{ hasStageNote }}" hint-placeholder-val="{{ false }}">
+          <div style="font-size: 11.5px; color: var(--muted); margin-top: 10px; font-style: italic">
+            {{ stageNote }}
+          </div>
+        </sc-if>
+
+      </div>
+
+      <div style="margin-top: 12px; display: flex; gap: 16px; flex-wrap: wrap">
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: var(--slate)">
+          <b style="color: var(--ink)">Impossible</b> → Remove
+        </span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: var(--slate)">
+          <b style="color: var(--ink)">Trade-off</b> → Compare
+        </span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: var(--slate)">
+          <b style="color: var(--ink)">Unknown</b> → Verify
+        </span>
+      </div>
 
     </div>
+
+  </sc-if>
+
+</div>
+
+
+<!-- 02 -->
+<div style="margin-top: 14px; padding: 18px 20px; border-left: 3px solid var(--signal-pale); border-radius: 0 10px 10px 0; max-width: 68ch">
+
+  <div onClick="{{ toggle3 }}"
+       style="display: flex; align-items: center; justify-content: space-between; gap: 16px; cursor: pointer">
+
+    <div style="font-size: 17.5px; font-weight: 600; letter-spacing: -.01em">
+      <span style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: var(--signal-deep); letter-spacing: .04em; margin-right: 10px">
+        02
+      </span>
+      Keep the human in control
+    </div>
+
+    <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .05em; color: var(--muted); border: 1px solid var(--hairline); padding: 6px 11px; border-radius: 20px; flex: 0 0 auto">
+      {{ label3 }}
+    </div>
+
+  </div>
+
+  <div style="font-size: 15px; color: var(--slate); margin-top: 10px; line-height: 1.55">
+    I designed the hand-off so Leasing could inspect the evidence, change which rooms were included and tailor the final response before anything reached the prospect.
+  </div>
+
+  <sc-if value="{{ open3 }}" hint-placeholder-val="{{ false }}">
+
+    <div style="margin-top: 18px; display: flex; flex-direction: column; align-items: flex-start">
+
+      <div style="padding: 11px 14px; background: #fff; border: 1px solid var(--hairline); border-radius: 8px">
+        <div style="font-size: 12.5px; font-weight: 600">Rumi prepares</div>
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; color: var(--slate); margin-top: 4px">
+          Summary · Recommendations · Rationale · Trade-offs · Unknowns
+        </div>
+      </div>
+
+      <div style="color: var(--muted); font-size: 11px; padding: 4px 0 4px 16px">↓</div>
+
+      <div style="padding: 11px 14px; background: var(--signal-pale); border: 1px solid var(--signal); border-radius: 8px">
+        <div style="font-size: 12.5px; font-weight: 600; color: var(--signal-deep)">Leasing reviews</div>
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; color: var(--slate); margin-top: 4px">
+          Verify · Include / Exclude · Adjust recommendation
+        </div>
+      </div>
+
+      <div style="color: var(--muted); font-size: 11px; padding: 4px 0 4px 16px">↓</div>
+
+      <div style="padding: 11px 14px; background: #fff; border: 1px solid var(--hairline); border-radius: 8px">
+        <div style="font-size: 12.5px; font-weight: 600">Rumi drafts response</div>
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; color: var(--slate); margin-top: 4px">
+          Email / WhatsApp · Standard / Concise / Bullets
+        </div>
+      </div>
+
+      <div style="color: var(--muted); font-size: 11px; padding: 4px 0 4px 16px">↓</div>
+
+      <div style="padding: 11px 14px; background: var(--signal-pale); border: 1px solid var(--signal); border-radius: 8px">
+        <div style="font-size: 12.5px; font-weight: 600; color: var(--signal-deep)">Leasing customises</div>
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; color: var(--slate); margin-top: 4px">
+          Edit directly · Add instructions · Regenerate
+        </div>
+      </div>
+
+      <div style="color: var(--muted); font-size: 11px; padding: 4px 0 4px 16px">↓</div>
+
+      <div style="padding: 11px 14px; background: var(--ink); border: 1px solid var(--ink); border-radius: 8px">
+        <div style="font-size: 12.5px; font-weight: 600; color: var(--frost)">
+          Final customer response
+        </div>
+      </div>
+
+    </div>
+
+    <div style="font-size: 12.5px; color: var(--slate); margin-top: 14px; font-style: italic">
+      Reduce cognitive work — without transferring decision or communication control.
+    </div>
+
+  </sc-if>
+
+</div>
+
+
+<!-- 03 -->
+<div style="margin-top: 14px; padding: 18px 20px; border-left: 3px solid var(--signal-pale); border-radius: 0 10px 10px 0; max-width: 68ch">
+
+  <div onClick="{{ toggle4 }}"
+       style="display: flex; align-items: center; justify-content: space-between; gap: 16px; cursor: pointer">
+
+    <div style="font-size: 17.5px; font-weight: 600; letter-spacing: -.01em">
+      <span style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: var(--signal-deep); letter-spacing: .04em; margin-right: 10px">
+        03
+      </span>
+      Design for uncertainty and failure
+    </div>
+
+    <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .05em; color: var(--muted); border: 1px solid var(--hairline); padding: 6px 11px; border-radius: 20px; flex: 0 0 auto">
+      {{ label4 }}
+    </div>
+
+  </div>
+
+  <div style="font-size: 15px; color: var(--slate); margin-top: 10px; line-height: 1.55">
+    The workflow needed explicit behaviour when the system could not be certain. I designed paths for model failure, missing data and overlapping ownership so Rumi could fall back, flag or hand over rather than silently fail or guess.
+  </div>
+
+  <sc-if value="{{ open4 }}" hint-placeholder-val="{{ false }}">
+
+    <div style="margin-top: 18px">
+
+      <div style="display: flex; gap: 6px; flex-wrap: wrap">
+
+        <sc-for list="{{ scenarios }}" as="sc" hint-placeholder-count="3">
+          <button type="button"
+                  onClick="{{ sc.onPick }}"
+                  style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .04em; padding: 9px 12px; border-radius: 6px; cursor: pointer; border: 1px solid {{ sc.border }}; background: {{ sc.bg }}; color: {{ sc.color }}">
+            {{ sc.label }}
+          </button>
+        </sc-for>
+
+      </div>
+
+      <div style="margin-top: 14px; display: flex; align-items: center; gap: 8px 4px; flex-wrap: wrap">
+
+        <sc-for list="{{ scenarioNodes }}" as="node" hint-placeholder-count="5">
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; padding: 7px 11px; border-radius: 6px; border: 1px solid {{ node.border }}; background: {{ node.bg }}; color: {{ node.color }}; font-weight: {{ node.weight }}">
+            {{ node.text }}
+          </span>
+        </sc-for>
+
+      </div>
+
+    </div>
+
+  </sc-if>
+
+</div>
+
+
+<!-- 04 -->
+<div style="margin-top: 14px; padding: 18px 20px; border-left: 3px solid var(--signal-pale); border-radius: 0 10px 10px 0; max-width: 68ch">
+
+  <div onClick="{{ toggle1 }}"
+       style="display: flex; align-items: center; justify-content: space-between; gap: 16px; cursor: pointer">
+
+    <div style="font-size: 17.5px; font-weight: 600; letter-spacing: -.01em">
+      <span style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: var(--signal-deep); letter-spacing: .04em; margin-right: 10px">
+        04
+      </span>
+      Design beyond the feature
+    </div>
+
+    <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .05em; color: var(--muted); border: 1px solid var(--hairline); padding: 6px 11px; border-radius: 20px; flex: 0 0 auto">
+      {{ label1 }}
+    </div>
+
+  </div>
+
+  <div style="font-size: 15px; color: var(--slate); margin-top: 10px; line-height: 1.55">
+    I treated Rumi as one layer in a wider customer and operational system rather than a standalone AI feature. Structuring the enquiry first, then the decision that followed, created a reusable foundation for later CRM and operational connections.
+  </div>
+
+  <sc-if value="{{ open1 }}" hint-placeholder-val="{{ false }}">
+
+    <div style="margin-top: 18px">
+
+      <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px 4px">
+
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; padding: 7px 11px; border-radius: 6px; background: #fff; border: 1px solid var(--hairline)">
+          Enquiry
+        </span>
+
+        <span style="color: var(--muted); font-size: 11px">→</span>
+
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; padding: 7px 11px; border-radius: 6px; background: var(--mist); border: 1px solid var(--hairline); color: var(--slate)">
+          Recommendation
+        </span>
+
+        <span style="color: var(--muted); font-size: 11px">→</span>
+
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; padding: 7px 11px; border-radius: 6px; background: #fff; border: 1px dashed var(--hairline); color: var(--slate)">
+          Conversion
+        </span>
+
+        <span style="color: var(--muted); font-size: 11px">→</span>
+
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; padding: 7px 11px; border-radius: 6px; background: #fff; border: 1px dashed var(--hairline); color: var(--slate)">
+          Operations
+        </span>
+
+      </div>
+
+      <div style="font-size: 11.5px; color: var(--muted); margin-top: 12px; font-style: italic">
+        Future direction — CRM and operational connections are not yet built.
+      </div>
+
+    </div>
+
+  </sc-if>
+
+</div>
+
+
+<!-- PRINCIPLE -->
+<p style="margin: 56px 0 0; padding-left: 20px; border-left: 3px solid var(--signal); font-size: clamp(19px, 2.2vw, 23px); font-weight: 600; letter-spacing: -.02em; line-height: 1.35; max-width: 56ch; text-wrap: pretty">
+  The system doesn’t need to know everything. It needs to know what it can decide, what it should surface, and when a person should take over.
+</p>
+
+<div style="margin-top: 20px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: .09em; color: var(--muted); text-transform: uppercase">
+  DECIDE
+  <span style="color: var(--signal-deep); margin: 0 6px">→</span>
+  SURFACE
+  <span style="color: var(--signal-deep); margin: 0 6px">→</span>
+  HAND OVER
+</div>
+
+
+<!-- OUTCOME -->
+<h2 style="font-size: clamp(22px, 2.4vw, 26px); font-weight: 600; letter-spacing: -.02em; margin: 64px 0 0">
+  Outcome
+</h2>
+
+<div style="margin-top: 24px; padding: clamp(22px, 3vw, 28px); border-radius: 16px; background: var(--ink); color: var(--frost); display: flex; flex-wrap: wrap; gap: 24px; align-items: center; justify-content: space-between">
+
+  <div style="flex: 1 1 280px; min-width: 0">
+
+    <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .06em; color: var(--muted); text-transform: uppercase">
+      Room matching &amp; response preparation
+    </div>
+
+    <div style="font-size: 13.5px; color: #C9C6BC; margin-top: 8px; max-width: 42ch; line-height: 1.55">
+      Rumi reduced room-matching and response preparation from around 5–7 minutes of manual analysis to a review-ready recommendation in under one minute.
+    </div>
+
+  </div>
+
+  <div style="text-align: right; flex: 0 0 auto">
+
+    <div style="font-family: 'IBM Plex Mono', monospace; font-size: 16px; color: #8B908C; text-decoration: line-through">
+      5–7 min
+    </div>
+
+    <div style="font-size: clamp(30px, 4vw, 38px); font-weight: 700; color: var(--signal); letter-spacing: -.03em; line-height: 1.1">
+      &lt;1 min
+    </div>
+
+    <div style="font-size: 11.5px; color: var(--muted); margin-top: 4px">
+      manual analysis → review-ready output
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- OUTCOME CARDS -->
+<div style="margin-top: 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px">
+
+  <div style="padding: 18px; background: var(--frost); border: 1px solid var(--hairline); border-radius: 12px">
+
+    <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--signal-deep); letter-spacing: .05em">
+      01
+    </div>
+
+    <div style="font-size: 16.5px; font-weight: 600; margin-top: 6px; letter-spacing: -.01em">
+      Repeatable decision flow
+    </div>
+
+    <div style="font-size: 13px; color: var(--slate); margin-top: 8px; line-height: 1.5">
+      Room matching became a structured process rather than an ad hoc judgement call, with rules, trade-offs and unknowns surfaced consistently.
+    </div>
+
+  </div>
+
+
+  <div style="padding: 18px; background: var(--frost); border: 1px solid var(--hairline); border-radius: 12px">
+
+    <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--signal-deep); letter-spacing: .05em">
+      02
+    </div>
+
+    <div style="font-size: 16.5px; font-weight: 600; margin-top: 6px; letter-spacing: -.01em">
+      Less work before follow-up
+    </div>
+
+    <div style="font-size: 13px; color: var(--slate); margin-top: 8px; line-height: 1.5">
+      Leasing receives both a recommendation and a prospect-ready response, reducing the effort between enquiry and customer follow-up.
+    </div>
+
+  </div>
+
+
+  <div style="padding: 18px; background: transparent; border: 1px dashed var(--hairline); border-radius: 12px">
+
+    <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--signal-deep); letter-spacing: .05em">
+      03
+    </div>
+
+    <div style="font-size: 16.5px; font-weight: 600; margin-top: 6px; letter-spacing: -.01em">
+      Foundation for extension
+    </div>
+
+    <div style="font-size: 13px; color: var(--muted); margin-top: 8px; line-height: 1.5">
+      The structured enquiry-to-decision flow can support future CRM and operational integrations without rebuilding the decision logic from scratch.
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- TAGS -->
+<div style="margin-top: 24px; display: flex; gap: 8px; flex-wrap: wrap">
+
+  <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .05em; text-transform: uppercase; padding: 6px 11px; border: 1px solid var(--hairline); border-radius: 6px; color: var(--slate)">
+    AI workflow
+  </span>
+
+  <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .05em; text-transform: uppercase; padding: 6px 11px; border: 1px solid var(--hairline); border-radius: 6px; color: var(--slate)">
+    Decision rules
+  </span>
+
+  <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .05em; text-transform: uppercase; padding: 6px 11px; border: 1px solid var(--hairline); border-radius: 6px; color: var(--slate)">
+    Human-in-the-loop
+  </span>
+
+  <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .05em; text-transform: uppercase; padding: 6px 11px; border: 1px solid var(--hairline); border-radius: 6px; color: var(--slate)">
+    Failure design
+  </span>
+
+</div>
 
 
     <!-- BACK -->
