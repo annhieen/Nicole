@@ -4,27 +4,87 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Tenant Portal Redesign — Nicole Phan</title>
-
-<link rel="stylesheet" href="_ds/nicole-phan-portfolio-design-system-4bdb97ed-0a4d-49a2-a990-c73a92387521/tokens/fonts.css">
-<link rel="stylesheet" href="_ds/nicole-phan-portfolio-design-system-4bdb97ed-0a4d-49a2-a990-c73a92387521/tokens/colors.css">
-<link rel="stylesheet" href="_ds/nicole-phan-portfolio-design-system-4bdb97ed-0a4d-49a2-a990-c73a92387521/tokens/typography.css">
-<link rel="stylesheet" href="_ds/nicole-phan-portfolio-design-system-4bdb97ed-0a4d-49a2-a990-c73a92387521/tokens/spacing.css">
-<link rel="stylesheet" href="_ds/nicole-phan-portfolio-design-system-4bdb97ed-0a4d-49a2-a990-c73a92387521/tokens/radius-shadow.css">
-<link rel="stylesheet" href="_ds/nicole-phan-portfolio-design-system-4bdb97ed-0a4d-49a2-a990-c73a92387521/tokens/motion.css">
-<link rel="stylesheet" href="_ds/nicole-phan-portfolio-design-system-4bdb97ed-0a4d-49a2-a990-c73a92387521/tokens/base.css">
-<link rel="stylesheet" href="_ds/nicole-phan-portfolio-design-system-4bdb97ed-0a4d-49a2-a990-c73a92387521/styles.css">
-
 <style>
+@import url("https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap");
 
-html,body{margin:0;padding:0;background:var(--page-background);background-attachment:fixed}
+:root{
+  --canvas:#F3F3F1;
+  --mist:#E8EBEB;
+  --frost:#F7F7F4;
+  --ink:#14191C;
+  --slate:#687075;
+  --muted:#92999C;
+  --hairline:rgba(20,25,28,.10);
+
+  --signal:#D99A24;
+  --signal-deep:#B97912;
+  --signal-pale:#F3E4C2;
+  --signal-glow:rgba(217,154,36,.18);
+
+  --glass-bg:rgba(255,255,255,.46);
+  --glass-border:rgba(255,255,255,.68);
+
+  --text-primary:var(--ink);
+  --text-secondary:var(--slate);
+  --text-meta:var(--muted);
+  --text-inverse:#F7F7F4;
+  --text-accent:var(--signal-deep);
+
+  --surface-page:var(--canvas);
+  --surface-card:var(--frost);
+  --surface-mist:var(--mist);
+  --surface-accent-soft:var(--signal-pale);
+
+  --border-default:var(--hairline);
+  --border-active:rgba(217,154,36,.55);
+
+  --font-core:"Inter Tight","Inter","Helvetica Neue",Arial,sans-serif;
+  --font-mono:"IBM Plex Mono","SFMono-Regular",Consolas,monospace;
+
+  --text-body:17px;
+  --leading-body:1.55;
+  --tracking-body:-.005em;
+
+  --page-background:
+    radial-gradient(circle at 78% 20%,rgba(225,230,229,.70),transparent 38%),
+    radial-gradient(circle at 15% 75%,rgba(235,234,229,.72),transparent 42%),
+    #F3F3F1;
+}
+
+body{
+  margin:0;
+  background:var(--page-background);
+  color:var(--text-primary);
+  font-family:var(--font-core);
+  font-size:var(--text-body);
+  line-height:var(--leading-body);
+  letter-spacing:var(--tracking-body);
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+
+a{
+  color:var(--text-primary);
+  text-decoration:none;
+}
+
+a:hover{
+  color:var(--signal-deep);
+}
+
+*:focus-visible{
+  outline:2px solid var(--signal-deep);
+  outline-offset:2px;
+}
+
+html,body{padding:0;background-attachment:fixed}
 *{box-sizing:border-box}
-body{min-height:100vh}
-a{color:var(--ink);text-decoration:none}
-a:hover{color:var(--signal-deep)}
+
+
+
 button{font-family:inherit}
 .inspect-block:hover{background:rgba(255,255,255,.56)!important}
-.portal-card:hover{transform:translateY(-2px)}
-</style>
+.portal-card:hover{transform:translateY(-2px)}</style>
 </head>
 
 <body>
