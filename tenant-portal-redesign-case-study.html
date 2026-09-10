@@ -4,25 +4,242 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Tenant Portal Redesign — Nicole Phan</title>
+<meta name="description" content="A case study on redesigning StarRez PortalX into a clearer self-service journey for prospects and tenants." />
 
-<link rel="stylesheet" href="_ds/nicole-phan-portfolio-design-system-4bdb97ed-0a4d-49a2-a990-c73a92387521/tokens/fonts.css">
 <link rel="stylesheet" href="_ds/nicole-phan-portfolio-design-system-4bdb97ed-0a4d-49a2-a990-c73a92387521/tokens/colors.css">
-<link rel="stylesheet" href="_ds/nicole-phan-portfolio-design-system-4bdb97ed-0a4d-49a2-a990-c73a92387521/tokens/typography.css">
 <link rel="stylesheet" href="_ds/nicole-phan-portfolio-design-system-4bdb97ed-0a4d-49a2-a990-c73a92387521/tokens/spacing.css">
-<link rel="stylesheet" href="_ds/nicole-phan-portfolio-design-system-4bdb97ed-0a4d-49a2-a990-c73a92387521/tokens/radius-shadow.css">
 <link rel="stylesheet" href="_ds/nicole-phan-portfolio-design-system-4bdb97ed-0a4d-49a2-a990-c73a92387521/tokens/motion.css">
-<link rel="stylesheet" href="_ds/nicole-phan-portfolio-design-system-4bdb97ed-0a4d-49a2-a990-c73a92387521/tokens/base.css">
 <link rel="stylesheet" href="_ds/nicole-phan-portfolio-design-system-4bdb97ed-0a4d-49a2-a990-c73a92387521/styles.css">
 
 <style>
-  html, body { margin:0; padding:0; background:var(--page-background); background-attachment:fixed; }
-  * { box-sizing:border-box; }
-  body { font-family:'Inter Tight',system-ui,sans-serif; color:var(--ink); min-height:100vh; }
-  a { color:var(--ink); text-decoration:none; }
-  a:hover { color:var(--signal-deep); }
-  button { font:inherit; }
 
-  .process-card {
+    @import url("https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap");
+
+    :root {
+      --canvas: #F3F3F1;
+      --mist: #E8EBEB;
+      --frost: #F7F7F4;
+      --ink: #14191C;
+      --slate: #687075;
+      --muted: #92999C;
+      --signal: #D99A24;
+      --signal-deep: #B97912;
+      --signal-pale: #F3E4C2;
+      --signal-glow: rgba(217,154,36,.18);
+      --hairline: rgba(20,25,28,.10);
+      --border-active: rgba(217,154,36,.55);
+      --page-background:
+        radial-gradient(circle at 78% 20%, rgba(225,230,229,.70), transparent 38%),
+        radial-gradient(circle at 15% 75%, rgba(235,234,229,.72), transparent 42%),
+        #F3F3F1;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      background: var(--page-background);
+      color: var(--ink);
+      font-family: "Inter Tight", "Inter", "Helvetica Neue", Arial, system-ui, sans-serif;
+      line-height: 1.5;
+    }
+    a { color: inherit; text-decoration: none; }
+    a:hover { color: var(--signal-deep); }
+    a:focus-visible, button:focus-visible {
+      outline: 2px solid var(--signal);
+      outline-offset: 3px;
+    }
+    button { font: inherit; }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(247,247,244,.84);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--hairline);
+    }
+
+    .nav {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 12px clamp(20px, 4vw, 40px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .nav-logo {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: .06em;
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .nav-links {
+      font-family: "IBM Plex Mono", monospace;
+      display: flex;
+      align-items: center;
+      gap: clamp(16px, 3vw, 30px);
+      font-size: 11.5px;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+    }
+
+    .nav-links a {
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      border-bottom: 2px solid transparent;
+    }
+
+    .nav-links a.active { border-bottom-color: var(--signal); }
+    .nav-links a:hover { border-bottom-color: var(--border-active); color: var(--signal-deep); }
+
+    .contact-btn {
+      font-family: "IBM Plex Mono", monospace;
+      background: var(--ink);
+      color: var(--frost);
+      font-size: 11px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: 0 20px;
+      min-height: 44px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+    }
+
+    .contact-btn:hover { background: #000; color: #fff; }
+
+    .contact-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--signal);
+      box-shadow: 0 0 0 4px var(--signal-glow);
+    }
+
+    main {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: clamp(32px, 5vw, 64px) clamp(20px, 4vw, 32px) clamp(80px, 10vw, 140px);
+    }
+
+    .back-link {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 12px;
+      letter-spacing: .04em;
+      color: var(--slate);
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .eyebrow {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 11.5px;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      color: var(--slate);
+      margin-top: 20px;
+    }
+
+    h1 {
+      font-size: clamp(40px, 6vw, 58px);
+      font-weight: 600;
+      letter-spacing: -.03em;
+      line-height: 1.02;
+      margin: 12px 0 0;
+    }
+
+    h2 {
+      font-size: clamp(22px, 2.4vw, 26px);
+      font-weight: 600;
+      letter-spacing: -.02em;
+      margin: 64px 0 0;
+      line-height: 1.25;
+    }
+
+    .lede {
+      font-size: clamp(17px, 1.6vw, 19px);
+      line-height: 1.5;
+      color: var(--slate);
+      max-width: 58ch;
+      margin: 14px 0 0;
+    }
+
+    .body-copy {
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--slate);
+      max-width: 64ch;
+      margin: 24px 0 0;
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 20px 16px;
+      margin-top: 32px;
+      padding: 20px 0;
+      border-top: 1px solid var(--hairline);
+      border-bottom: 1px solid var(--hairline);
+    }
+
+    .meta-label {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 10px;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .meta-value {
+      font-size: 13.5px;
+      font-weight: 500;
+      margin-top: 5px;
+    }
+
+    .section-note {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 11px;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 10px 0 0;
+    }
+
+    .portal-note {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 10.5px;
+      letter-spacing: .05em;
+      color: var(--muted);
+      margin: 10px 0 0;
+    }
+
+    @media (max-width: 720px) {
+      .nav { justify-content: center; }
+      .nav-logo { margin-right: auto; }
+      .contact-btn { margin-left: auto; }
+    }
+
+    @media (max-width: 560px) {
+      .nav-links { order: 3; width: 100%; justify-content: center; }
+      .contact-btn { padding: 0 14px; }
+    }
+
+
+.process-card {
     padding:18px 20px;
     border-left:3px solid var(--signal-pale);
     border-radius:0 10px 10px 0;
@@ -115,61 +332,65 @@
 </head>
 
 <body>
-<main style="max-width:860px; margin:0 auto; padding:clamp(32px,5vw,56px) clamp(20px,4vw,40px) 120px">
 
-  <a href="index.html#work" style="font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.05em; color:var(--slate)">← All projects</a>
+<header class="site-header">
+  <nav class="nav">
+    <a href="index.html#top" class="nav-logo" aria-label="Nicole Phan home">NP</a>
 
-  <div style="font-family:'IBM Plex Mono',monospace; font-size:11.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--slate); margin-top:32px">
-    Product design · Content systems · Implementation
+    <div class="nav-links">
+      <a href="index.html#work" class="active">Work</a>
+      <a href="index.html#about">About</a>
+      <a href="https://drive.google.com/drive/folders/19rwDe3KDpOk7sqxjlr50XH5qkZM4HKiS?usp=sharing" target="_blank" rel="noopener noreferrer">Resume ↗</a>
+    </div>
+
+    <a href="index.html#connect" class="contact-btn">
+      <span class="contact-dot" aria-hidden="true"></span>
+      Contact
+    </a>
+  </nav>
+</header>
+
+<main>
+
+  <a href="index.html#work" class="back-link">← All projects</a>
+
+  <div class="eyebrow">Product design · Content systems · Implementation</div>
+
+  <h1>Tenant Portal Redesign</h1>
+
+  <p class="lede">Turning a text-heavy tenant portal into a clearer self-service journey for prospects and tenants — from application through move-in and everyday living.</p>
+
+  <div class="meta-grid">
+    <div>
+      <div class="meta-label">Role</div>
+      <div class="meta-value">Product &amp; systems design · Implementation</div>
+    </div>
+    <div>
+      <div class="meta-label">Team</div>
+      <div class="meta-value">Solo — proposed, designed &amp; implemented</div>
+    </div>
+    <div>
+      <div class="meta-label">Platform</div>
+      <div class="meta-value">StarRez PortalX</div>
+    </div>
+    <div>
+      <div class="meta-label">Status</div>
+      <div class="meta-value">Shipped · Late 2025</div>
+    </div>
+    <div>
+      <div class="meta-label">Scale</div>
+      <div class="meta-value">7 buildings + 40+ rooming houses</div>
+    </div>
   </div>
 
-  <h1 style="font-size:clamp(38px,5.6vw,56px); font-weight:600; letter-spacing:-.035em; line-height:1.02; margin:12px 0 0">
-    Tenant Portal Redesign
-  </h1>
+  <p class="body-copy">PortalX supported the journey from application through tenancy, but the experience relied heavily on long text templates. Prospects lacked clear guidance during application, while tenants still contacted Building Managers for information that should have been easier to find.</p>
 
-  <p style="font-size:clamp(16px,1.4vw,18px); line-height:1.5; color:var(--slate); max-width:56ch; margin:14px 0 0; text-wrap:pretty">
-    Turning a text-heavy tenant portal into a clearer self-service journey for prospects and tenants — from application through move-in and everyday living.
-  </p>
-
-  <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:16px; margin-top:32px; padding:20px 0; border-top:1px solid var(--hairline); border-bottom:1px solid var(--hairline)">
-    <div>
-      <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted)">Role</div>
-      <div style="font-size:13px; font-weight:500; margin-top:5px">Product &amp; systems design · Implementation</div>
-    </div>
-    <div>
-      <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted)">Team</div>
-      <div style="font-size:13px; font-weight:500; margin-top:5px">Solo — proposed, designed &amp; implemented</div>
-    </div>
-    <div>
-      <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted)">Platform</div>
-      <div style="font-size:13px; font-weight:500; margin-top:5px">StarRez PortalX</div>
-    </div>
-    <div>
-      <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted)">Status</div>
-      <div style="font-size:13px; font-weight:500; margin-top:5px">Shipped · Late 2025</div>
-    </div>
-    <div>
-      <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted)">Scale</div>
-      <div style="font-size:13px; font-weight:500; margin-top:5px">7 buildings + 40+ rooming houses</div>
-    </div>
-  </div>
-
-  <p style="font-size:16px; line-height:1.6; color:var(--slate); max-width:64ch; margin:24px 0 0">
-    PortalX supported the journey from application through tenancy, but the experience relied heavily on long text templates. Prospects lacked clear guidance during application, while tenants still contacted Building Managers for information that should have been easier to find.
-  </p>
-
-  <h2 style="font-size:clamp(22px,2.2vw,26px); font-weight:600; letter-spacing:-.015em; margin:clamp(48px,6vw,64px) 0 0">
-    How I Redesigned The Portal
-  </h2>
-  <p style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); margin:10px 0 0">
-    Select a step to inspect the reasoning underneath
-  </p>
+  <h2>How I Redesigned The Portal</h2>
+  <p class="section-note">Select a step to inspect the reasoning underneath</p>
 
   <div id="processBlocks" style="display:grid; gap:14px; margin-top:18px"></div>
 
-  <h2 style="font-size:clamp(22px,2.2vw,26px); font-weight:600; letter-spacing:-.015em; margin:clamp(48px,6vw,64px) 0 0">
-    Explore the tenant portal
-  </h2>
+  <h2>Explore the tenant portal</h2>
   <p style="font-size:16px; line-height:1.6; color:var(--slate); max-width:64ch; margin:14px 0 0">
     Switch buildings and open the main tenant sections to see how the same structure works with different branding and information.
   </p>
