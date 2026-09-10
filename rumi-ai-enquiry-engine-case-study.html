@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rumi — AI Enquiry Engine | Nicole Phan</title>
+  <meta name="description" content="Rumi is a human-supervised decision system that turns structured rental enquiries into room recommendations for Leasing review." />
+
+  <!-- Keep these if the _ds folder exists in your GitHub repo -->
+  <link rel="stylesheet" href="_ds/nicole-phan-portfolio-design-system-4bdb97ed-0a4d-49a2-a990-c73a92387521/tokens/fonts.css" />
+  <link rel="stylesheet" href="_ds/nicole-phan-portfolio-design-system-4bdb97ed-0a4d-49a2-a990-c73a92387521/tokens/colors.css" />
+  <link rel="stylesheet" href="_ds/nicole-phan-portfolio-design-system-4bdb97ed-0a4d-49a2-a990-c73a92387521/tokens/typography.css" />
+  <link rel="stylesheet" href="_ds/nicole-phan-portfolio-design-system-4bdb97ed-0a4d-49a2-a990-c73a92387521/tokens/spacing.css" />
+  <link rel="stylesheet" href="_ds/nicole-phan-portfolio-design-system-4bdb97ed-0a4d-49a2-a990-c73a92387521/tokens/radius-shadow.css" />
+  <link rel="stylesheet" href="_ds/nicole-phan-portfolio-design-system-4bdb97ed-0a4d-49a2-a990-c73a92387521/tokens/motion.css" />
+  <link rel="stylesheet" href="_ds/nicole-phan-portfolio-design-system-4bdb97ed-0a4d-49a2-a990-c73a92387521/tokens/base.css" />
+  <link rel="stylesheet" href="_ds/nicole-phan-portfolio-design-system-4bdb97ed-0a4d-49a2-a990-c73a92387521/styles.css" />
+
+  <style>
+    :root {
+      --page-background: #f7f7f4;
+      --ink: #14191c;
+      --slate: #626a6e;
+      --muted: #92999c;
+      --hairline: #deddd7;
+      --mist: #efefeb;
+      --frost: #ffffff;
+      --signal: #c8283a;
+      --signal-deep: #9f1f2e;
+      --signal-pale: #fae9eb;
+      --signal-glow: rgba(200, 40, 58, 0.12);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      padding: 0;
+      background: var(--page-background);
+      color: var(--ink);
+      font-family: "Inter Tight", Inter, Arial, sans-serif;
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    a:hover { color: var(--signal-deep); }
+    button, textarea { font: inherit; }
+    button { -webkit-tap-highlight-color: transparent; }
+
+    .mono {
+      font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(247, 247, 244, 0.82);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--hairline);
+    }
+
+    .nav {
+      max-width: 1480px;
+      margin: 0 auto;
+      padding: 14px clamp(20px, 4vw, 40px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .nav-logo {
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: .06em;
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: clamp(18px, 3vw, 34px);
+      font-size: 11.5px;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+    }
+
+    .nav-links a {
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      border-bottom: 2px solid transparent;
+    }
+
+    .nav-links a.active { border-bottom-color: var(--signal); }
+    .nav-links a:hover { border-bottom-color: var(--signal); }
+
+    .contact-btn {
+      background: var(--ink);
+      color: var(--frost);
+      font-size: 11px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: 0 20px;
+      min-height: 44px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+    }
+
+    .contact-btn:hover { background: #000; color: #fff; }
+    .contact-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--signal);
+      box-shadow: 0 0 0 4px var(--signal-glow);
+    }
+
+    main {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: clamp(32px, 5vw, 64px) clamp(20px, 4vw, 32px) clamp(80px, 10vw, 140px);
+    }
+
+    .back-link {
+      font-size: 12px;
+      letter-spacing: .04em;
+      color: var(--slate);
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .eyebrow {
+      font-size: 11.5px;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      color: var(--slate);
+      margin-top: 20px;
+    }
+
+    h1 {
+      font-size: clamp(40px, 6vw, 58px);
+      font-weight: 600;
+      letter-spacing: -.03em;
+      line-height: 1.02;
+      margin: 12px 0 0;
+    }
+
+    h2 {
+      font-size: clamp(22px, 2.4vw, 26px);
+      font-weight: 600;
+      letter-spacing: -.02em;
+      margin: 64px 0 0;
+      line-height: 1.25;
+    }
+
+    .lede {
+      font-size: clamp(17px, 1.6vw, 19px);
+      color: var(--slate);
+      margin: 14px 0 0;
+      max-width: 58ch;
+    }
+
+    .body-copy {
+      font-size: 16px;
+      color: var(--slate);
+      margin: 14px 0 0;
+      max-width: 64ch;
+    }
+
+    .meta-grid {
+      margin-top: 32px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 20px 16px;
+      padding: 20px 0;
+      border-top: 1px solid var(--hairline);
+      border-bottom: 1px solid var(--hairline);
+    }
+
+    .meta-label {
+      font-size: 10px;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .meta-value { font-size: 13.5px; margin-top: 5px; font-weight: 500; }
+    .ownership { font-size: 14px; color: var(--slate); margin: 20px 0 0; max-width: 66ch; line-height: 1.55; }
+
+    .progression {
+      margin-top: 26px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 28px minmax(0, 1fr);
+      align-items: stretch;
+      gap: 10px;
+    }
+    .progress-card { padding: 18px; border-radius: 12px; background: var(--mist); }
+    .progress-card.signal { background: var(--signal-pale); }
+    .progress-label { font-size: 9.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--slate); }
+    .progress-card.signal .progress-label { color: var(--signal-deep); }
+    .progress-text { font-size: 14.5px; margin-top: 8px; line-height: 1.45; color: var(--slate); }
+    .progress-card.signal .progress-text { color: var(--ink); }
+    .arrow { display:flex; align-items:center; justify-content:center; color:var(--muted); }
+
+    .finding-list { display: flex; flex-direction: column; gap: 14px; margin-top: 18px; max-width: 66ch; }
+    .finding { display: flex; gap: 12px; align-items: flex-start; font-size: 15px; color: var(--slate); line-height: 1.55; }
+    .finding-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--signal); margin-top: 9px; flex: 0 0 auto; }
+    .finding strong { color: var(--ink); font-weight: 600; }
+
+    .core-question {
+      margin: 34px 0 0;
+      padding: 22px 24px;
+      background: var(--frost);
+      border: 1px solid var(--hairline);
+      border-radius: 12px;
+      font-size: 16.5px;
+      line-height: 1.5;
+      max-width: 66ch;
+    }
+    .question-label { font-size: 10px; color: var(--slate); margin-top: 10px; text-transform: uppercase; letter-spacing: .06em; }
+
+    .demo-shell {
+      margin-top: 24px;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--hairline);
+      background: #fbf8f3;
+      box-shadow: 0 12px 36px rgba(25,35,40,.055);
+    }
+    .demo-topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      padding: 14px 20px;
+      background: #fff;
+      border-bottom: 1px solid var(--hairline);
+    }
+    .brand { display:flex; align-items:center; gap:10px; }
+    .brand-badge { width:30px;height:30px;border-radius:7px;background:#c8283a;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px; }
+    .brand-name { font-size: 13px; font-weight: 700; letter-spacing: -.01em; }
+    .brand-sub { font-size: 10px; color: var(--muted); margin-top: 1px; }
+    .demo-nav { display:flex;align-items:center;gap:18px;font-size:12px;color:var(--muted);font-weight:500; }
+    .demo-nav .active { color:var(--ink);border-bottom:2px solid #c8283a;padding-bottom:2px; }
+    .demo-status { font-size:10px;letter-spacing:.06em;color:var(--signal-deep);background:var(--signal-pale);padding:5px 10px;border-radius:20px;display:flex;align-items:center;gap:6px; }
+    .demo-status-dot { width:6px;height:6px;border-radius:50%;background:var(--signal-deep); }
+    .demo-body { padding: 22px clamp(16px, 3vw, 24px) 26px; }
+    .step-title { display:flex;align-items:center;gap:10px; }
+    .step-number { width:22px;height:22px;border-radius:50%;background:var(--ink);color:#fff;font-size:11px;font-weight:600;display:flex;align-items:center;justify-content:center;flex:0 0 auto; }
+    .step-name { font-size:16px;font-weight:700; }
+    .enquiry-grid { margin-top:12px;display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:14px 18px;padding:16px 18px;background:#fff;border:1px solid var(--hairline);border-radius:10px; }
+    .field-label { font-size:9.5px;letter-spacing:.06em;color:var(--muted);text-transform:uppercase; }
+    .field-value { font-size:13px;font-weight:600;margin-top:4px; }
+
+    .match-head { display:flex;align-items:center;gap:10px;margin-top:26px; }
+    .replay-btn, .pill-btn, .toggle-btn, .chip, .regen-btn, .accordion-btn {
+      cursor: pointer;
+      border: 1px solid var(--hairline);
+      background: #fff;
+      color: var(--ink);
+    }
+    .replay-btn { margin-left:auto;font-size:10.5px;letter-spacing:.04em;padding:8px 14px;border-radius:20px; }
+    .replay-btn:hover { border-color:#c8283a;color:#c8283a; }
+
+    .flow-wrap { margin-top:12px;padding:16px 12px 8px;background:#fff;border:1px solid var(--hairline);border-radius:10px;overflow-x:auto; }
+    #matchFlow { width:100%;min-width:680px;display:block; }
+    .checks { margin-top:10px;font-size:12.5px;color:var(--slate);line-height:1.6;padding:0 2px; }
+    .checks b { font-size:10.5px;color:var(--ink); }
+
+    .pick-grid { margin-top:16px;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px; }
+    .pick-card { padding:16px;border-radius:12px;background:#fff;border:1.5px solid var(--hairline); }
+    .pick-card.primary { border-color:#c8283a; }
+    .pick-card.flagged { border-color:var(--signal); }
+    .rank-badge { width:22px;height:22px;border-radius:50%;background:var(--mist);color:var(--slate);font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-bottom:8px; }
+    .pick-card.primary .rank-badge { background:#c8283a;color:#fff; }
+    .pick-name { font-size:13.5px;font-weight:700; }
+    .pick-price { font-size:16px;font-weight:700;margin-top:8px; }
+    .pick-price small { font-weight:400;font-size:9.5px;color:var(--muted); }
+    .pick-why { font-size:11.5px;color:var(--slate);margin-top:8px;line-height:1.45;min-height:50px; }
+    .pick-actions { display:flex;gap:6px;margin-top:10px; }
+    .static-tag, .toggle-btn { flex:1 1 0;min-width:0;font-size:10px;letter-spacing:.04em;text-transform:uppercase;padding:9px 6px;border-radius:6px;text-align:center; }
+    .static-tag { border:1px solid var(--hairline);background:#fff; }
+    .toggle-btn.active { border-color:#c8283a;background:#c8283a;color:#fff; }
+
+    .reply-head { display:flex;align-items:center;gap:10px;margin-top:26px; }
+    .reply-count { margin-left:auto;font-size:11.5px;color:#c8283a;font-weight:600; }
+    .reply-card { margin-top:12px;padding:14px 16px 16px;background:#fff;border:1px solid var(--hairline);border-radius:10px; }
+    .control-row { display:grid;grid-template-columns:90px minmax(0,1fr);align-items:center;gap:12px;padding:5px 0; }
+    .control-row.notes { align-items:start;padding:7px 0 4px; }
+    .control-label { font-size:10px;letter-spacing:.05em;color:var(--muted); }
+    .segmented { display:flex;gap:4px;background:var(--mist);padding:3px;border-radius:8px;width:fit-content;flex-wrap:wrap; }
+    .pill-btn { font-size:11.5px;padding:7px 12px;border-radius:6px;border:none;background:transparent;color:var(--slate); }
+    .pill-btn.active { background:#fff;color:#c8283a;font-weight:600; }
+    textarea { width:100%;min-height:48px;padding:9px 11px;font-size:11.5px;line-height:1.45;color:var(--ink);background:var(--frost);border:1px solid var(--hairline);border-radius:8px;resize:vertical; }
+    .chips { margin-top:7px;display:flex;gap:6px;flex-wrap:wrap; }
+    .chip { font-size:10px;padding:6px 11px;border-radius:20px;color:var(--slate); }
+    .chip:hover { border-color:#c8283a;color:#c8283a; }
+    .reply-action { margin-top:10px;display:flex;align-items:center;gap:12px;flex-wrap:wrap; }
+    .regen-btn { font-size:11px;letter-spacing:.04em;padding:10px 16px;border-radius:8px;border:none;background:#c8283a;color:#fff; }
+    .regen-note { font-size:11.5px;color:var(--muted);font-style:italic;line-height:1.45;max-width:48ch; }
+    .applied-tag { display:none;margin-top:9px;font-size:10px;color:var(--signal-deep);background:var(--signal-pale);padding:6px 10px;border-radius:6px; }
+    .generated-response { margin-top:10px;padding:12px 14px;background:var(--frost);border:1px solid var(--hairline);border-radius:8px;font-size:12.5px;line-height:1.6;color:#3a3d40;white-space:pre-wrap; }
+
+    .section-note { font-size:13px;color:var(--muted);margin:8px 0 0; }
+    .accordion { margin-top:20px;max-width:68ch; }
+    .decision-card { margin-top:14px;padding:18px 20px;border-left:3px solid var(--signal-pale);border-radius:0 10px 10px 0; }
+    .decision-card:first-child { margin-top:0; }
+    .decision-header { display:flex;align-items:center;justify-content:space-between;gap:16px;cursor:pointer; }
+    .decision-title { font-size:17.5px;font-weight:600;letter-spacing:-.01em; }
+    .decision-num { font-size:13px;color:var(--signal-deep);letter-spacing:.04em;margin-right:10px; }
+    .accordion-btn { font-size:10px;letter-spacing:.05em;color:var(--muted);padding:6px 11px;border-radius:20px;flex:0 0 auto; }
+    .decision-summary { font-size:15px;color:var(--slate);margin-top:10px;line-height:1.55; }
+    .decision-detail { display:none;margin-top:18px; }
+    .decision-card.open .decision-detail { display:block; }
+
+    .prospect-needs { font-size:12.5px;padding:11px 14px;background:var(--mist);border-radius:8px;color:var(--ink); }
+    .prospect-needs span { font-size:9.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--slate);margin-right:10px; }
+    .tabs { display:flex;gap:6px;margin-top:14px;flex-wrap:wrap; }
+    .tab-btn { font-size:10px;letter-spacing:.04em;padding:9px 12px;border-radius:20px;cursor:pointer;border:1px solid var(--hairline);background:#fff;color:var(--slate); }
+    .tab-btn.active { background:var(--ink);color:#fff;border-color:var(--ink); }
+    .stage-panel { margin-top:14px;padding:14px 16px;background:#fff;border:1px solid var(--hairline);border-radius:8px; }
+    .stage-question { font-size:13.5px;font-weight:600; }
+    .stage-rows { display:flex;gap:16px;margin-top:10px;flex-wrap:wrap; }
+    .stage-row { font-size:11px;color:var(--slate); }
+    .stage-result { margin-top:12px;display:inline-block;font-size:10px;letter-spacing:.04em;text-transform:uppercase;padding:6px 10px;border-radius:6px;background:var(--signal-pale);color:var(--signal-deep);font-weight:600; }
+    .stage-note { display:none;font-size:11.5px;color:var(--muted);margin-top:10px;font-style:italic; }
+    .legend { margin-top:12px;display:flex;gap:16px;flex-wrap:wrap;font-size:10.5px;color:var(--slate); }
+
+    .handoff { display:flex;flex-direction:column;align-items:flex-start; }
+    .handoff-node { padding:11px 14px;background:#fff;border:1px solid var(--hairline);border-radius:8px; }
+    .handoff-node.signal { background:var(--signal-pale);border-color:var(--signal); }
+    .handoff-node.dark { background:var(--ink);border-color:var(--ink);color:var(--frost); }
+    .handoff-title { font-size:12.5px;font-weight:600; }
+    .handoff-node.signal .handoff-title { color:var(--signal-deep); }
+    .handoff-sub { font-size:9.5px;color:var(--slate);margin-top:4px; }
+    .handoff-arrow { color:var(--muted);font-size:11px;padding:4px 0 4px 16px; }
+    .handoff-principle { font-size:12.5px;color:var(--slate);margin-top:14px;font-style:italic; }
+
+    .scenario-tabs { display:flex;gap:6px;flex-wrap:wrap; }
+    .scenario-flow { margin-top:14px;display:flex;align-items:center;gap:8px 4px;flex-wrap:wrap; }
+    .scenario-node { font-size:10.5px;padding:7px 11px;border-radius:6px;border:1px solid var(--hairline);background:#fff;color:var(--ink); }
+    .scenario-node.arrow-node { border-color:transparent;background:transparent;color:var(--muted);padding-inline:2px; }
+    .scenario-node.signal { background:var(--signal-pale);border-color:var(--signal);color:var(--signal-deep);font-weight:600; }
+
+    .future-flow { display:flex;flex-wrap:wrap;align-items:center;gap:8px 4px; }
+    .future-node { font-size:10.5px;padding:7px 11px;border-radius:6px;background:#fff;border:1px solid var(--hairline); }
+    .future-node.built { background:var(--mist);color:var(--slate); }
+    .future-node.future { border-style:dashed;color:var(--slate); }
+    .future-note { font-size:11.5px;color:var(--muted);margin-top:12px;font-style:italic; }
+
+    .principle { margin:56px 0 0;padding-left:20px;border-left:3px solid var(--signal);font-size:clamp(19px,2.2vw,23px);font-weight:600;letter-spacing:-.02em;line-height:1.35;max-width:56ch; }
+    .principle-flow { margin-top:20px;font-size:12px;letter-spacing:.09em;color:var(--muted);text-transform:uppercase; }
+    .principle-flow span { color:var(--signal-deep);margin:0 6px; }
+
+    .outcome-main { margin-top:24px;padding:clamp(22px,3vw,28px);border-radius:16px;background:var(--ink);color:var(--frost);display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between; }
+    .outcome-copy { flex:1 1 280px;min-width:0; }
+    .outcome-label { font-size:10px;letter-spacing:.06em;color:var(--muted);text-transform:uppercase; }
+    .outcome-text { font-size:13.5px;color:#c9c6bc;margin-top:8px;max-width:42ch;line-height:1.55; }
+    .outcome-metric { text-align:right;flex:0 0 auto; }
+    .before { font-size:16px;color:#8b908c;text-decoration:line-through; }
+    .after { font-size:clamp(30px,4vw,38px);font-weight:700;color:var(--signal);letter-spacing:-.03em;line-height:1.1; }
+    .metric-note { font-size:11.5px;color:var(--muted);margin-top:4px; }
+
+    .outcome-grid { margin-top:20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px; }
+    .outcome-card { padding:18px;background:var(--frost);border:1px solid var(--hairline);border-radius:12px; }
+    .outcome-card.future { background:transparent;border-style:dashed; }
+    .outcome-num { font-size:11px;color:var(--signal-deep);letter-spacing:.05em; }
+    .outcome-title { font-size:16.5px;font-weight:600;margin-top:6px;letter-spacing:-.01em; }
+    .outcome-desc { font-size:13px;color:var(--slate);margin-top:8px;line-height:1.5; }
+    .outcome-card.future .outcome-desc { color:var(--muted); }
+    .tags { margin-top:24px;display:flex;gap:8px;flex-wrap:wrap; }
+    .tag { font-size:10px;letter-spacing:.05em;text-transform:uppercase;padding:6px 11px;border:1px solid var(--hairline);border-radius:6px;color:var(--slate); }
+    .footer-back { margin-top:80px;padding-top:24px;border-top:1px solid var(--hairline); }
+    .footer-back a { font-size:13.5px;color:var(--slate);min-height:44px;display:inline-flex;align-items:center; }
+
+    @media (max-width: 700px) {
+      .nav-links { order: 3; width: 100%; justify-content: center; }
+      .contact-btn { padding-inline: 14px; }
+      .progression { grid-template-columns: 1fr; }
+      .progression .arrow { transform: rotate(90deg); min-height: 18px; }
+      .demo-nav { display: none; }
+      .control-row, .control-row.notes { grid-template-columns: 1fr; gap: 6px; }
+      .outcome-metric { text-align: left; }
+      .decision-header { align-items: flex-start; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav">
+      <a class="nav-logo mono" href="index.html">NP</a>
+      <div class="nav-links mono">
+        <a class="active" href="index.html#work">Work</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#resume">Resume ↗</a>
+      </div>
+      <a class="contact-btn mono" href="index.html#contact">
+        <span class="contact-dot"></span>Contact
+      </a>
+    </nav>
+  </header>
+
+  <main>
+    <a class="back-link mono" href="index.html#work">← All projects</a>
+
+    <div class="eyebrow mono">Product strategy · Business analysis · AI workflow design</div>
+    <h1>Rumi</h1>
+    <p class="lede">A human-supervised decision system that turns structured rental enquiries into room recommendations for Leasing review.</p>
+
+    <div class="meta-grid">
+      <div><div class="meta-label mono">Role</div><div class="meta-value">Product &amp; BA / Delivery lead</div></div>
+      <div><div class="meta-label mono">Team</div><div class="meta-value">Nicole + 1 developer</div></div>
+      <div><div class="meta-label mono">Status</div><div class="meta-value">Shipped · 2026</div></div>
+      <div><div class="meta-label mono">Timeline</div><div class="meta-value">3 weeks to build</div></div>
+    </div>
+
+    <p class="ownership">I led the Leasing discovery, designed the decision logic and human hand-off, and worked with one developer to ship the workflow.</p>
+
+    <h2>The next problem appeared downstream</h2>
+    <p class="body-copy">The Guided Enquiry flow on the RoomingKos website improved the quality and structure of incoming rental enquiries. But room matching and recommendation were still manual, typically taking Leasing 5–7 minutes per enquiry.</p>
+
+    <div class="progression">
+      <div class="progress-card">
+        <div class="progress-label mono">Guided Enquiry</div>
+        <div class="progress-text">Better, more structured prospect information.</div>
+      </div>
+      <div class="arrow">→</div>
+      <div class="progress-card signal">
+        <div class="progress-label mono">New bottleneck</div>
+        <div class="progress-text">Room matching and recommendation were still manual.</div>
+      </div>
+    </div>
+
+    <h2>What Leasing’s process revealed</h2>
+    <div class="finding-list">
+      <div class="finding"><span class="finding-dot"></span><span><strong>Room matching relied on a mix of fixed business rules and contextual judgement.</strong> Some criteria were clear-cut, while preferences such as location, budget and room type could carry different weight depending on the prospect’s wider needs and trade-offs.</span></div>
+      <div class="finding"><span class="finding-dot"></span><span><strong>Some requirements could not be verified from the available data.</strong> Those unknowns needed to remain visible rather than being guessed away.</span></div>
+      <div class="finding"><span class="finding-dot"></span><span><strong>The final recommendation still needed a human owner.</strong> A system could narrow and explain the strongest options, but Leasing needed to retain control of the decision and customer response.</span></div>
+    </div>
+
+    <div class="core-question">
+      How do we structure the way an experienced Leasing Manager evaluates and recommends rooms — without removing the judgement that still belongs to them?
+      <div class="question-label mono">The question behind Rumi</div>
+    </div>
+
+    <h2>See the decision logic in action</h2>
+    <p class="body-copy">A simplified recreation of how Rumi filters available rooms, compares viable options and prepares a recommendation for Leasing review.</p>
+
+    <div class="demo-shell">
+      <div class="demo-topbar">
+        <div class="brand">
+          <div class="brand-badge mono">RK</div>
+          <div><div class="brand-name">RoomingKos</div><div class="brand-sub">Rumi for Sales</div></div>
+        </div>
+        <div class="demo-nav"><span class="active">Today</span><span>Enquiries</span><span>Properties</span><span>Admin</span></div>
+        <div class="demo-status mono"><span class="demo-status-dot"></span>Recreated demo · not live</div>
+      </div>
+
+      <div class="demo-body">
+        <div class="step-title"><div class="step-number">1</div><div class="step-name">Enquiry</div></div>
+        <div class="enquiry-grid">
+          <div><div class="field-label mono">Applicant</div><div class="field-value">Student</div></div>
+          <div><div class="field-label mono">Budget</div><div class="field-value">$350–450 / wk</div></div>
+          <div><div class="field-label mono">Preferred area</div><div class="field-value">Monash Clayton</div></div>
+          <div><div class="field-label mono">Move-in</div><div class="field-value">10 Feb</div></div>
+          <div><div class="field-label mono">Room type</div><div class="field-value">Single, solo</div></div>
+          <div><div class="field-label mono">Mandatory</div><div class="field-value">Female-only</div></div>
+        </div>
+
+        <div class="match-head">
+          <div class="step-number">2</div><div class="step-name">Matches</div>
+          <button class="replay-btn mono" id="replayFlow" type="button">Replay</button>
+        </div>
+        <div class="flow-wrap"><svg id="matchFlow" viewBox="0 0 1000 330" preserveAspectRatio="xMinYMin meet" aria-label="Room matching flow diagram"></svg></div>
+        <div class="checks">
+          <b class="mono">FEASIBILITY CHECKS</b> — Lease · Category · Occupancy · Move-in window · Location eligibility.<br />
+          <b class="mono">REQUIREMENT CHECKS</b> — must-have requirements are enforced where the data allows, or surfaced for human verification where it doesn’t.
+        </div>
+
+        <div class="pick-grid" id="pickGrid"></div>
+
+        <div class="reply-head">
+          <div class="step-number">3</div><div class="step-name">Reply</div><div class="reply-count" id="replyCount"></div>
+        </div>
+        <div class="reply-card">
+          <div class="control-row">
+            <span class="control-label mono">SEND AS</span>
+            <div class="segmented" id="channelControls"></div>
+          </div>
+          <div class="control-row">
+            <span class="control-label mono">FORMAT</span>
+            <div class="segmented" id="formatControls"></div>
+          </div>
+          <div class="control-row notes">
+            <span class="control-label mono">NOTES</span>
+            <div>
+              <textarea class="mono" id="instructions" placeholder="Mood to strike, something to emphasise, a question to ask — the facts, rooms and links never change."></textarea>
+              <div class="chips" id="chips"></div>
+            </div>
+          </div>
+          <div class="reply-action">
+            <button class="regen-btn mono" id="regenerate" type="button">Regenerate</button>
+            <div class="regen-note">Built from a template I wrote — Rumi fills in the room facts and adapts tone or emphasis to staff instructions.</div>
+          </div>
+          <div class="applied-tag mono" id="appliedTag"></div>
+          <div class="generated-response" id="replyText"></div>
+        </div>
+      </div>
+    </div>
+
+    <h2>How I designed the decision system</h2>
+    <p class="section-note">The design decisions behind the workflow.</p>
+
+    <div class="accordion">
+      <div class="decision-card" data-card="rules">
+        <div class="decision-header">
+          <div class="decision-title"><span class="decision-num mono">01</span>Separate rules from judgement</div>
+          <button class="accordion-btn mono" type="button">Inspect +</button>
+        </div>
+        <div class="decision-summary">I modelled the recommendation process in layers: remove impossible options, compare viable ones, surface uncertainty, then use AI where contextual reasoning adds value.</div>
+        <div class="decision-detail">
+          <div class="prospect-needs"><span class="mono">Prospect needs</span>Student · Oct move-in · 12+ months · $400/wk · Monash Clayton · Female-only</div>
+          <div class="tabs" id="stageTabs"></div>
+          <div class="stage-panel">
+            <div class="stage-question" id="stageQuestion"></div>
+            <div class="stage-rows" id="stageRows"></div>
+            <div class="stage-result mono" id="stageResult"></div>
+            <div class="stage-note" id="stageNote"></div>
+          </div>
+          <div class="legend mono"><span><b>Impossible</b> → Remove</span><span><b>Trade-off</b> → Compare</span><span><b>Unknown</b> → Verify</span></div>
+        </div>
+      </div>
+
+      <div class="decision-card" data-card="human">
+        <div class="decision-header">
+          <div class="decision-title"><span class="decision-num mono">02</span>Keep the human in control</div>
+          <button class="accordion-btn mono" type="button">Inspect +</button>
+        </div>
+        <div class="decision-summary">I designed the hand-off so Leasing could inspect the evidence, change which rooms were included and tailor the final response before anything reached the prospect.</div>
+        <div class="decision-detail">
+          <div class="handoff">
+            <div class="handoff-node"><div class="handoff-title">Rumi prepares</div><div class="handoff-sub mono">Summary · Recommendations · Rationale · Trade-offs · Unknowns</div></div>
+            <div class="handoff-arrow">↓</div>
+            <div class="handoff-node signal"><div class="handoff-title">Leasing reviews</div><div class="handoff-sub mono">Verify · Include / Exclude · Adjust recommendation</div></div>
+            <div class="handoff-arrow">↓</div>
+            <div class="handoff-node"><div class="handoff-title">Rumi drafts response</div><div class="handoff-sub mono">Email / WhatsApp · Standard / Concise / Bullets</div></div>
+            <div class="handoff-arrow">↓</div>
+            <div class="handoff-node signal"><div class="handoff-title">Leasing customises</div><div class="handoff-sub mono">Edit directly · Add instructions · Regenerate</div></div>
+            <div class="handoff-arrow">↓</div>
+            <div class="handoff-node dark"><div class="handoff-title">Final customer response</div></div>
+          </div>
+          <div class="handoff-principle">Reduce cognitive work — without transferring decision or communication control.</div>
+        </div>
+      </div>
+
+      <div class="decision-card" data-card="failure">
+        <div class="decision-header">
+          <div class="decision-title"><span class="decision-num mono">03</span>Design for uncertainty and failure</div>
+          <button class="accordion-btn mono" type="button">Inspect +</button>
+        </div>
+        <div class="decision-summary">The workflow needed explicit behaviour when normal decision-making broke down. I designed paths for model failure, missing data and overlapping ownership so Rumi could fall back, flag or hand over instead of silently failing or inventing certainty.</div>
+        <div class="decision-detail">
+          <div class="scenario-tabs" id="scenarioTabs"></div>
+          <div class="scenario-flow" id="scenarioFlow"></div>
+        </div>
+      </div>
+
+      <div class="decision-card" data-card="beyond">
+        <div class="decision-header">
+          <div class="decision-title"><span class="decision-num mono">04</span>Design beyond the feature</div>
+          <button class="accordion-btn mono" type="button">Inspect +</button>
+        </div>
+        <div class="decision-summary">I treated Rumi as one layer in a wider customer and operational system rather than a standalone AI feature. Structuring the enquiry first, then the decision that followed, created a reusable foundation that could later connect into CRM and operational workflows.</div>
+        <div class="decision-detail">
+          <div class="future-flow mono">
+            <span class="future-node">Enquiry</span><span>→</span><span class="future-node built">Recommendation</span><span>→</span><span class="future-node future">Conversion</span><span>→</span><span class="future-node future">Operations</span>
+          </div>
+          <div class="future-note">Future direction — CRM and operational connections are not yet built.</div>
+        </div>
+      </div>
+    </div>
+
+    <p class="principle">The system doesn’t have to know everything. It should be clear about what it can decide, what it should surface, and when human judgement should take over.</p>
+    <div class="principle-flow mono">DECIDE <span>→</span> SURFACE <span>→</span> HAND OVER</div>
+
+    <h2>Outcome</h2>
+    <div class="outcome-main">
+      <div class="outcome-copy">
+        <div class="outcome-label mono">Room matching &amp; response preparation</div>
+        <div class="outcome-text">Rumi cut room-matching and response preparation from 5–7 minutes to under one minute, generating both a review-ready recommendation and a prospect-ready response for Leasing.</div>
+      </div>
+      <div class="outcome-metric">
+        <div class="before mono">5–7 min</div>
+        <div class="after">&lt;1 min</div>
+        <div class="metric-note">manual analysis → review-ready output</div>
+      </div>
+    </div>
+
+    <div class="outcome-grid">
+      <div class="outcome-card"><div class="outcome-num mono">01</div><div class="outcome-title">Repeatable decision flow</div><div class="outcome-desc">Room matching became a repeatable decision flow, with rules, trade-offs and unknowns surfaced consistently for review.</div></div>
+      <div class="outcome-card"><div class="outcome-num mono">02</div><div class="outcome-title">Faster follow-up</div><div class="outcome-desc">Leasing receives both the recommendation and a prospect-ready response, reducing the work between enquiry and customer follow-up.</div></div>
+      <div class="outcome-card future"><div class="outcome-num mono">03</div><div class="outcome-title">Designed to extend</div><div class="outcome-desc">The structured enquiry-to-decision flow provides a reusable foundation for future CRM and operational integrations.</div></div>
+    </div>
+
+    <div class="tags mono"><span class="tag">AI workflow</span><span class="tag">Decision rules</span><span class="tag">Human-in-the-loop</span><span class="tag">Failure design</span></div>
+
+    <div class="footer-back"><a href="index.html#work">← Back to all projects</a></div>
+  </main>
+
+<script>
+  const ROOMS = [
+    {id:1,name:'Clayton Central Studio',dropStage:null,pick:1},
+    {id:2,name:'Sunview PBSA Ensuite',dropStage:null,pick:2},
+    {id:3,name:'Birch Lane Twin',dropStage:2,reason:'Reached ranking, not selected'},
+    {id:4,name:'Riverside Rooming Single',dropStage:null,pick:3},
+    {id:5,name:'Maple Ct Professional',dropStage:0,reason:'Professional-only — category gate'},
+    {id:6,name:'Clayton Overflow Twin',dropStage:0,reason:'Needs 2 tenants — occupancy gate'},
+    {id:7,name:'Birch Lane Single',dropStage:1,reason:'Leased til March — window gate'},
+    {id:8,name:'Hawthorn Studio',dropStage:1,reason:'55 min commute — location gate'},
+    {id:9,name:'Birch Lane Compact',dropStage:0,reason:'12-month lease only — lease gate'},
+    {id:10,name:'Maple Ct Twin Share',dropStage:0,reason:'Co-lease required — occupancy gate'},
+    {id:11,name:'Eastview PBSA',dropStage:1,reason:'Available 20 Feb — window gate'},
+    {id:12,name:'Southbank PBSA',dropStage:0,reason:'Building requires a co-signed lease — occupancy gate'}
+  ];
+
+  const PICKS = [
+    {id:1,rank:1,name:'Clayton Central Studio',price:420,why:'In budget, right room type, closest commute to campus.',note:'Closest option to campus, in budget, right room type.',flag:false},
+    {id:2,rank:2,name:'Sunview PBSA Ensuite',price:480,why:'$30/wk above budget — but strongest overall room fit.',note:'$30/wk above your budget, but the strongest overall room fit.',flag:false},
+    {id:4,rank:3,name:'Riverside Rooming Single',price:360,why:'Female-only requirement could not be confirmed from available data.',note:'Great fit overall — the female-only requirement still needs confirming before this goes out.',flag:true}
+  ];
+
+  const STAGES = {
+    feas:{label:'01 Feasibility',q:'Can this room actually work?',rows:[['Lease','✓'],['Eligibility','✓'],['Occupancy','✓'],['Move-in','✓']],result:'Impossible → Remove'},
+    fit:{label:'02 Fit',q:'How well does it match?',rows:[['Location','Strong'],['Price','+$30/wk'],['Room type','Strong']],result:'Trade-off → Keep + Compare',note:'Location isn’t literal: a student is ranked by commute to campus; a professional by suburb + nearby areas.'},
+    unc:{label:'03 Uncertainty',q:'What can’t we verify?',rows:[['Female-only','Source data unavailable']],result:'Unknown → Flag for review'},
+    rea:{label:'04 Reasoning',q:'Which options are strongest overall?',rows:[['Viable rooms','→'],['Compare fit + trade-offs','→'],['AI reasoning','→']],result:'Recommend + Explain'}
+  };
+
+  const SCENARIOS = {
+    fail:{label:'AI FAILS',nodes:['Recommendation ready','→','Model call times out','→','Deterministic fallback','→','Marked “degraded”','→','Human review']},
+    unknown:{label:'DATA UNKNOWN',nodes:['Requirement can’t be verified','→','Flagged, not guessed','→','Stays visible on the card','→','Human confirms before sending']},
+    overlap:{label:'TEAM OVERLAP',nodes:['2 rooms, 2 teams','→','Best match sets primary owner','→','Secondary: view-only','→','Explicit handoff if needed']}
+  };
+
+  const state = {
+    included:{1:true,2:true,4:false},
+    channel:'Email',
+    format:'standard',
+    stage:'feas',
+    scenario:'fail'
+  };
+
+  function el(name, attrs = {}, text = '') {
+    const node = document.createElement(name);
+    Object.entries(attrs).forEach(([k,v]) => {
+      if (k === 'class') node.className = v;
+      else node.setAttribute(k,v);
+    });
+    if (text) node.textContent = text;
+    return node;
+  }
+
+  function buildFlow() {
+    const svg = document.getElementById('matchFlow');
+    const NS = 'http://www.w3.org/2000/svg';
+    const make = (name,attrs) => {
+      const n = document.createElementNS(NS,name);
+      Object.entries(attrs).forEach(([k,v]) => n.setAttribute(k,v));
+      return n;
+    };
+    const COL_X=[30,220,410,600,720];
+    const COL_LABELS=[['Pool','12 in'],['Hard gates','7 on'],['Location','4 on'],['Rank','4 on'],['LLM picks','3 picked']];
+    const PICK_Y=[70,110,150];
+    svg.innerHTML='';
+
+    COL_LABELS.forEach((c,i) => {
+      const t1=make('text',{x:COL_X[i],y:16,fill:'#14191C','font-size':9.5,'font-weight':700,'font-family':"IBM Plex Mono, monospace"}); t1.textContent=c[0]; svg.appendChild(t1);
+      const t2=make('text',{x:COL_X[i],y:28,fill:'#92999C','font-size':8.5,'font-family':"IBM Plex Mono, monospace"}); t2.textContent=c[1]; svg.appendChild(t2);
+      svg.appendChild(make('line',{x1:COL_X[i],x2:COL_X[i],y1:36,y2:300,stroke:'#EDEAE3','stroke-width':1}));
+    });
+
+    const paths=[];
+    ROOMS.forEach((r,i) => {
+      const y0=46+i*20;
+      let d,stroke,w;
+      if(r.dropStage===null){
+        const yf=PICK_Y[r.pick-1];
+        d=`M ${COL_X[0]},${y0} L ${COL_X[3]},${y0} C ${COL_X[3]+50},${y0} ${COL_X[4]-50},${yf} ${COL_X[4]},${yf}`;
+        stroke='#C8283A'; w=2;
+      } else {
+        const xd=COL_X[r.dropStage+1];
+        d=`M ${COL_X[0]},${y0} L ${xd},${y0} C ${xd+30},${y0} ${xd+50},290 ${xd+70},310`;
+        stroke='#D8D1C7'; w=1.5;
+      }
+      const p=make('path',{d,fill:'none',stroke,'stroke-width':w,'stroke-linecap':'round'});
+      const title=make('title',{}); title.textContent=r.dropStage===null?`${r.name} — LLM pick #${r.pick}`:`${r.name} — ${r.reason}`; p.appendChild(title);
+      svg.appendChild(p); paths.push(p);
+    });
+
+    ROOMS.filter(r=>r.dropStage===null).sort((a,b)=>a.pick-b.pick).forEach(r=>{
+      const y=PICK_Y[r.pick-1];
+      svg.appendChild(make('circle',{cx:728,cy:y,r:9,fill:'#C8283A'}));
+      const num=make('text',{x:728,y:y+3,'text-anchor':'middle',fill:'#fff','font-size':9,'font-weight':700,'font-family':"IBM Plex Mono, monospace"}); num.textContent=r.pick; svg.appendChild(num);
+      const lab=make('text',{x:742,y:y+4,fill:'#14191C','font-size':10.5,'font-weight':600,'font-family':"Inter Tight, sans-serif"}); lab.textContent=r.name; svg.appendChild(lab);
+    });
+
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    paths.forEach(p=>{ const l=p.getTotalLength(); p.style.transition='none'; p.style.strokeDasharray=l; p.style.strokeDashoffset=l; });
+    void svg.getBoundingClientRect();
+    paths.forEach((p,i)=>{ p.style.transition=`stroke-dashoffset .9s cubic-bezier(.22,1,.36,1) ${i*.035}s`; p.style.strokeDashoffset=0; });
+  }
+
+  function renderPicks() {
+    const grid=document.getElementById('pickGrid'); grid.innerHTML='';
+    PICKS.forEach(p=>{
+      const card=el('div',{class:`pick-card ${p.rank===1?'primary':''} ${p.flag?'flagged':''}`.trim()});
+      card.appendChild(el('div',{class:'rank-badge'},String(p.rank)));
+      card.appendChild(el('div',{class:'pick-name'},p.name));
+      const price=el('div',{class:'pick-price'}); price.innerHTML=`$${p.price} <small>/ wk</small>`; card.appendChild(price);
+      card.appendChild(el('div',{class:'pick-why'},p.why));
+      const actions=el('div',{class:'pick-actions'});
+      actions.appendChild(el('div',{class:'static-tag mono'},'Why matched'));
+      const active=!!state.included[p.id];
+      const btn=el('button',{class:`toggle-btn mono ${active?'active':''}`,type:'button'},active?'Included':(p.flag?'1 to check':'Include'));
+      btn.addEventListener('click',()=>{ state.included[p.id]=!state.included[p.id]; renderPicks(); renderReply(); });
+      actions.appendChild(btn); card.appendChild(actions); grid.appendChild(card);
+    });
+  }
+
+  function renderControls() {
+    const channels=document.getElementById('channelControls'); channels.innerHTML='';
+    ['Email','WhatsApp'].forEach(c=>{ const b=el('button',{class:`pill-btn ${state.channel===c?'active':''}`,type:'button'},c); b.addEventListener('click',()=>{state.channel=c;renderControls();}); channels.appendChild(b); });
+    const formats=document.getElementById('formatControls'); formats.innerHTML='';
+    [['standard','Standard'],['concise','Concise'],['simple','Simple'],['bullets','Bullets']].forEach(([k,label])=>{ const b=el('button',{class:`pill-btn ${state.format===k?'active':''}`,type:'button'},label); b.addEventListener('click',()=>{state.format=k;renderControls();renderReply();}); formats.appendChild(b); });
+  }
+
+  function renderChips() {
+    const chips=document.getElementById('chips'); chips.innerHTML='';
+    [
+      ['More casual','Make it sound more casual'],
+      ['Mention weekend viewings','Mention I can arrange viewings this weekend'],
+      ['Keep it brief','Keep it as brief as possible']
+    ].forEach(([label,txt])=>{ const b=el('button',{class:'chip mono',type:'button'},label); b.addEventListener('click',()=>{ document.getElementById('instructions').value=txt; renderReply(); }); chips.appendChild(b); });
+  }
+
+  function buildReply() {
+    const inc=PICKS.filter(p=>state.included[p.id]);
+    if(!inc.length) return 'Select at least one room above to include it in the reply.';
+    const instructions=document.getElementById('instructions').value;
+    const lower=instructions.toLowerCase();
+    const casual=lower.includes('casual');
+    const weekend=lower.includes('weekend');
+    const brief=lower.includes('brief')||lower.includes('short');
+    const greeting=casual?'Hey Alex,':'Hi Alex,';
+    const closing=casual?'Keen to hear what you think!':'Let me know if you’d like to arrange a viewing for either of these.';
+    const weekendLine=weekend?'I can also arrange viewings this weekend if that’s easier for you.\n\n':'';
+    const n=inc.length, plural=n===1?'':'s';
+    let msg='';
+    if(state.format==='bullets'){
+      msg=`${greeting}\n\nHere ${n===1?'is':'are'} ${n} option${plural} worth considering:\n\n`;
+      inc.forEach(r=>msg+=`• ${r.name} — $${r.price}/wk. ${r.note}\n`);
+      msg+=`\n${weekendLine}${closing}`;
+    } else if(state.format==='simple'){
+      msg=`${greeting}\n\n`;
+      inc.forEach(r=>msg+=`${r.name}: $${r.price}/wk.\n`);
+      msg+=`\n${weekendLine}${closing}`;
+    } else if(state.format==='concise'||brief){
+      msg=`${greeting} Found ${n} option${plural} near Monash Clayton within your budget:\n\n`;
+      inc.forEach(r=>msg+=`${r.name} — $${r.price}/wk\n`);
+      msg+=`\n${weekendLine}${closing}`;
+    } else {
+      msg=`${greeting}\n\nI’ve found ${n} current option${plural} that look worth considering for your move.\n\nYou’re looking for a room from around 10 Feb, near Monash Clayton, with a weekly budget of $350–450.\n\n`;
+      inc.forEach(r=>msg+=`${r.name} — $${r.price}/wk\n${r.note}\nView details →\n\n`);
+      msg+=`${weekendLine}${closing}`;
+    }
+    return msg;
+  }
+
+  function renderReply() {
+    const count=PICKS.filter(p=>state.included[p.id]).length;
+    document.getElementById('replyCount').textContent=`${count} room${count===1?'':'s'} included`;
+    document.getElementById('replyText').textContent=buildReply();
+    const txt=document.getElementById('instructions').value.trim();
+    const tag=document.getElementById('appliedTag');
+    if(txt){ tag.style.display='inline-block'; tag.textContent=`Applied: “${txt}”`; } else { tag.style.display='none'; tag.textContent=''; }
+  }
+
+  function renderStages() {
+    const tabs=document.getElementById('stageTabs'); tabs.innerHTML='';
+    Object.entries(STAGES).forEach(([k,v])=>{ const b=el('button',{class:`tab-btn mono ${state.stage===k?'active':''}`,type:'button'},v.label); b.addEventListener('click',()=>{state.stage=k;renderStages();}); tabs.appendChild(b); });
+    const s=STAGES[state.stage];
+    document.getElementById('stageQuestion').textContent=s.q;
+    const rows=document.getElementById('stageRows'); rows.innerHTML='';
+    s.rows.forEach(([a,b])=>{ const span=el('span',{class:'stage-row mono'}); span.innerHTML=`<b style="color:var(--ink)">${a}</b> ${b}`; rows.appendChild(span); });
+    document.getElementById('stageResult').textContent=s.result;
+    const note=document.getElementById('stageNote'); note.textContent=s.note||''; note.style.display=s.note?'block':'none';
+  }
+
+  function renderScenarios() {
+    const tabs=document.getElementById('scenarioTabs'); tabs.innerHTML='';
+    Object.entries(SCENARIOS).forEach(([k,v])=>{ const b=el('button',{class:`tab-btn mono ${state.scenario===k?'active':''}`,type:'button'},v.label); b.addEventListener('click',()=>{state.scenario=k;renderScenarios();}); tabs.appendChild(b); });
+    const flow=document.getElementById('scenarioFlow'); flow.innerHTML='';
+    SCENARIOS[state.scenario].nodes.forEach(t=>{
+      if(t==='→'){ flow.appendChild(el('span',{class:'scenario-node arrow-node mono'},t)); return; }
+      const signal=t.includes('degraded')||t.includes('Flagged')||t.includes('primary owner');
+      flow.appendChild(el('span',{class:`scenario-node mono ${signal?'signal':''}`.trim()},t));
+    });
+  }
+
+  function setupAccordion() {
+    document.querySelectorAll('.decision-card').forEach(card=>{
+      const header=card.querySelector('.decision-header');
+      const btn=card.querySelector('.accordion-btn');
+      header.addEventListener('click',()=>{
+        const isOpen=card.classList.contains('open');
+        document.querySelectorAll('.decision-card.open').forEach(c=>{c.classList.remove('open');c.querySelector('.accordion-btn').textContent='Inspect +';});
+        if(!isOpen){card.classList.add('open');btn.textContent='Close −';}
+      });
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded',()=>{
+    buildFlow(); renderPicks(); renderControls(); renderChips(); renderReply(); renderStages(); renderScenarios(); setupAccordion();
+    document.getElementById('replayFlow').addEventListener('click',buildFlow);
+    document.getElementById('instructions').addEventListener('input',renderReply);
+    document.getElementById('regenerate').addEventListener('click',e=>{
+      const b=e.currentTarget; b.disabled=true; b.textContent='Regenerating…';
+      setTimeout(()=>{renderReply();b.disabled=false;b.textContent='Regenerate';},450);
+    });
+  });
+</script>
+</body>
+</html>
