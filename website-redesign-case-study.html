@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Website Redesign — Nicole Phan</title>
+<title>Website Redesign: Nicole Phan</title>
 <meta name="description" content="A case study on redesigning the RoomingKos website into a guided self-service property discovery journey." />
 
 
@@ -108,6 +108,118 @@
     .compare-row { grid-template-columns:1.15fr repeat(5,minmax(78px,1fr)); min-width:560px; }
     .compare-scroll { overflow-x:auto; }
   }
+
+  .demo-section-title {
+    font-size:16px;
+    font-weight:600;
+    letter-spacing:-.01em;
+  }
+  .demo-section-copy {
+    font-size:12px;
+    line-height:1.5;
+    color:var(--slate);
+    margin-top:4px;
+  }
+  .demo-cta {
+    font-family:'IBM Plex Mono',monospace;
+    font-size:10.5px;
+    letter-spacing:.04em;
+    padding:9px 13px;
+    border-radius:8px;
+    border:1px solid var(--hairline);
+    background:#fff;
+    color:var(--slate);
+    cursor:pointer;
+  }
+  .demo-cta.primary {
+    background:#C8283A;
+    color:#fff;
+    border-color:#C8283A;
+  }
+  .room-option-card {
+    padding:14px;
+    background:#fff;
+    border:1px solid var(--hairline);
+    border-radius:10px;
+    cursor:pointer;
+  }
+  .room-option-card.active {
+    border-color:#C8283A;
+    box-shadow:0 0 0 1px rgba(200,40,58,.12);
+  }
+  .field-mini-label {
+    font-family:'IBM Plex Mono',monospace;
+    font-size:9.5px;
+    letter-spacing:.07em;
+    text-transform:uppercase;
+    color:var(--slate);
+    margin-bottom:6px;
+  }
+  .demo-select {
+    width:100%;
+    padding:10px 12px;
+    border-radius:8px;
+    border:1px solid var(--hairline);
+    font-size:13px;
+    background:#fff;
+    color:var(--ink);
+  }
+  .location-card {
+    padding:11px 12px;
+    background:#fff;
+    border:1px solid var(--hairline);
+    border-radius:9px;
+    display:flex;
+    flex-direction:column;
+    gap:3px;
+  }
+  .location-card b { font-size:11.5px; }
+  .location-card span { font-size:10.5px;color:var(--slate); }
+  .reel-card {
+    padding:10px;
+    background:#fff;
+    border:1px solid var(--hairline);
+    border-radius:10px;
+  }
+  .reel-thumb {
+    aspect-ratio:9/12;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:8px;
+    background:linear-gradient(160deg,#ECEAE4,#D7DBD8);
+    color:#C8283A;
+    font-size:18px;
+  }
+  .reel-title {
+    font-size:11px;
+    font-weight:600;
+    margin-top:7px;
+  }
+  @media (max-width:640px) {
+    #swanstonDemo [style*="grid-template-columns:minmax(0,1.25fr)"] {
+      grid-template-columns:1fr !important;
+    }
+  }
+
+
+  .path-btn {
+    font-size:12.5px;
+    font-weight:500;
+    padding:0 14px;
+    min-height:40px;
+    border-radius:999px;
+    border:1px solid var(--hairline);
+    background:#fff;
+    color:var(--slate);
+    cursor:pointer;
+  }
+  .path-btn.active {
+    background:#C8283A;
+    color:#fff;
+    border-color:#C8283A;
+  }
+
 </style>
 </head>
 
@@ -125,103 +237,171 @@
   </h1>
 
   <p style="font-size:clamp(16px,1.4vw,18px); line-height:1.5; color:var(--slate); max-width:56ch; margin:14px 0 0; text-wrap:pretty">
-    Turning a property-listing website into a guided self-service discovery experience — while making content easier for property teams to maintain.
+    Redesigning a rental website to help prospective renters find the right room faster, while making property listings easier for Building Managers to update.
   </p>
 
   <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:16px; margin-top:32px; padding:20px 0; border-top:1px solid var(--hairline); border-bottom:1px solid var(--hairline)">
     <div><div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)">Role</div><div style="font-size:13px;font-weight:500;margin-top:5px">Product, UX &amp; delivery</div></div>
-    <div><div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)">Team</div><div style="font-size:13px;font-weight:500;margin-top:5px">Solo, AI-assisted build</div></div>
+    <div><div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)">Team</div><div style="font-size:13px;font-weight:500;margin-top:5px">Solo, designed and delivered</div></div>
     <div><div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)">Status</div><div style="font-size:13px;font-weight:500;margin-top:5px">Shipped · 2025–2026</div></div>
     <div><div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)">Approach</div><div style="font-size:13px;font-weight:500;margin-top:5px">Iterative, ongoing releases</div></div>
   </div>
 
   <p style="font-size:16px;line-height:1.6;color:var(--slate);max-width:64ch;margin:24px 0 0">
-    The original website listed properties but gave people little help deciding what suited them. I combined analytics, recurring enquiry patterns and operational feedback to identify friction points, then iteratively redesigned the site around them.
+    The original website showed available rooms and properties, but gave people little help deciding which room suited them. I used analytics and recurring enquiry patterns to identify where people needed more help, then redesigned the site around those points.
   </p>
 
-  <h2 style="font-size:clamp(22px,2.2vw,26px);font-weight:600;letter-spacing:-.015em;margin:clamp(48px,6vw,64px) 0 0">Start with what people already know</h2>
-  <p style="font-size:16px;line-height:1.6;color:var(--slate);max-width:64ch;margin:14px 0 0">
-    Not everyone arrives with the same level of knowledge. I created different paths based on what each person already knows — and what they still need help figuring out.
-  </p>
+  
 
-  <div style="margin-top:18px;border-radius:16px;overflow:hidden;border:1px solid var(--hairline);background:rgba(255,255,255,.62);box-shadow:0 12px 36px rgba(25,35,40,.06)">
-    <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 20px;background:#fff;border-bottom:1px solid var(--hairline)">
-      <div style="display:flex;align-items:center;gap:10px">
-        <div style="width:30px;height:30px;border-radius:7px;background:#C8283A;color:#fff;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:500">RK</div>
-        <div>
-          <div style="font-size:13px;font-weight:600;letter-spacing:-.01em">RoomingKos</div>
-          <div style="font-size:10px;color:var(--muted);margin-top:1px">Path finder</div>
+<h2 style="font-size:clamp(22px,2.2vw,26px);font-weight:600;letter-spacing:-.015em;margin:clamp(48px,6vw,64px) 0 0">Start with what people already know</h2>
+<p style="font-size:16px;line-height:1.6;color:var(--slate);max-width:64ch;margin:14px 0 0">
+  Renters arrive with different levels of knowledge. The website gives them a relevant starting point based on what they already know.
+</p>
+
+<div style="margin-top:18px;border-radius:16px;overflow:hidden;border:1px solid var(--hairline);background:rgba(255,255,255,.62);box-shadow:0 12px 36px rgba(25,35,40,.06)">
+  <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 20px;background:#fff;border-bottom:1px solid var(--hairline)">
+    <div style="display:flex;align-items:center;gap:10px">
+      <div style="width:30px;height:30px;border-radius:7px;background:#C8283A;color:#fff;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:500">RK</div>
+      <div>
+        <div style="font-size:13px;font-weight:600;letter-spacing:-.01em">RoomingKos</div>
+        <div style="font-size:10px;color:var(--muted);margin-top:1px">Path finder</div>
+      </div>
+    </div>
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.07em;color:var(--signal-deep);background:var(--signal-pale);padding:5px 10px;border-radius:999px">RECREATED DEMO · SITE STRUCTURE</div>
+  </div>
+
+  <div style="padding:20px 22px 24px">
+    <div style="font-size:14px;font-weight:600">What do you already know?</div>
+    <div id="pathOptions" style="display:flex;flex-wrap:wrap;gap:8px;margin-top:12px"></div>
+
+    <div style="margin-top:16px;padding:16px 18px;background:var(--frost);border:1px solid var(--hairline);border-radius:10px">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--slate)">You'd land on</div>
+      <div id="pathDest" style="font-size:16px;font-weight:600;margin-top:6px;color:#C8283A"></div>
+      <div id="pathDesc" style="font-size:13px;line-height:1.55;color:var(--slate);margin-top:6px"></div>
+    </div>
+  </div>
+</div>
+
+<h2 style="font-size:clamp(22px,2.2vw,26px);font-weight:600;letter-spacing:-.015em;margin:clamp(48px,6vw,64px) 0 0">See the redesigned experience in practice</h2>
+<p style="font-size:16px;line-height:1.6;color:var(--slate);max-width:64ch;margin:14px 0 0">
+  This Swanston property page shows how the redesign helps renters compare room options, understand the cost, check the location and decide what to do next.
+</p>
+
+<div id="swanstonDemo" style="margin-top:18px;border-radius:16px;overflow:hidden;border:1px solid var(--hairline);background:#FBF8F3;box-shadow:0 12px 36px rgba(25,35,40,.06)">
+  <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 20px;background:#fff;border-bottom:1px solid var(--hairline)">
+    <div style="display:flex;align-items:center;gap:10px">
+      <div style="width:30px;height:30px;border-radius:7px;background:#C8283A;color:#fff;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:500">RK</div>
+      <div>
+        <div style="font-size:13px;font-weight:600;letter-spacing:-.01em">RoomingKos Swanston</div>
+        <div style="font-size:10px;color:var(--muted);margin-top:1px">Recreated property page</div>
+      </div>
+    </div>
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.07em;color:var(--signal-deep);background:var(--signal-pale);padding:5px 10px;border-radius:999px">RECREATED DEMO · NOT LIVE</div>
+  </div>
+
+  <div style="padding:20px 22px 24px">
+    <section style="padding:18px;background:#fff;border:1px solid var(--hairline);border-radius:12px">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.07em;text-transform:uppercase;color:#C8283A">Carlton · Student accommodation</div>
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:18px;flex-wrap:wrap;margin-top:8px">
+        <div style="max-width:52ch">
+          <div style="font-size:24px;font-weight:600;letter-spacing:-.02em">RoomingKos Swanston</div>
+          <p style="font-size:12.5px;line-height:1.55;color:var(--slate);margin:7px 0 0">
+            Furnished student rooms close to Melbourne CBD, universities and public transport.
+          </p>
+        </div>
+        <div style="min-width:170px">
+          <div style="font-size:11px;color:var(--muted)">Rooms from</div>
+          <div style="font-size:24px;font-weight:600;color:#C8283A;margin-top:2px">$299.18/wk</div>
+          <div style="font-size:11px;color:#2F7D5A;margin-top:4px">Rooms available</div>
         </div>
       </div>
-      <div style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.07em;color:var(--signal-deep);background:var(--signal-pale);padding:5px 10px;border-radius:999px">RECREATED DEMO · SITE STRUCTURE</div>
-    </div>
-
-    <div style="padding:20px 22px 24px">
-      <div style="font-size:14px;font-weight:600">What do you already know?</div>
-      <div id="pathOptions" style="display:flex;flex-wrap:wrap;gap:8px;margin-top:12px"></div>
-
-      <div style="margin-top:16px;padding:16px 18px;background:var(--frost);border:1px solid var(--hairline);border-radius:10px">
-        <div style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--slate)">You'd land on</div>
-        <div id="pathDest" style="font-size:16px;font-weight:600;margin-top:6px;color:#C8283A"></div>
-        <div id="pathDesc" style="font-size:13px;line-height:1.55;color:var(--slate);margin-top:6px"></div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:14px">
+        <button class="demo-cta primary" type="button">View rooms</button>
+        <button class="demo-cta" type="button">Enquire</button>
+        <button class="demo-cta" type="button">Book a viewing</button>
       </div>
-    </div>
+    </section>
+
+    <section style="margin-top:22px">
+      <div class="demo-section-title">Room options</div>
+      <div class="demo-section-copy">See the main room types, occupancy and starting rent before opening the full comparison.</div>
+      <div id="roomCards" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin-top:12px"></div>
+    </section>
+
+    <section style="margin-top:24px;padding-top:20px;border-top:1px solid var(--hairline)">
+      <div class="demo-section-title">Compare room types</div>
+      <div class="demo-section-copy">Select a room to highlight its main differences.</div>
+      <div class="compare-scroll">
+        <div class="compare-table" id="swanstonCompare"></div>
+      </div>
+    </section>
+
+    <section style="margin-top:24px;padding-top:20px;border-top:1px solid var(--hairline)">
+      <div class="demo-section-title">Compare your rent</div>
+      <div class="demo-section-copy">See the same room price as daily, weekly and monthly rent.</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:12px">
+        <div>
+          <div class="field-mini-label">Room type 1</div>
+          <select id="swanstonRentA" class="demo-select"></select>
+        </div>
+        <div>
+          <div class="field-mini-label">Room type 2</div>
+          <select id="swanstonRentB" class="demo-select"></select>
+        </div>
+      </div>
+      <div id="swanstonRentCards" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:14px"></div>
+    </section>
+
+    <section style="margin-top:24px;padding-top:20px;border-top:1px solid var(--hairline)">
+      <div class="demo-section-title">Location</div>
+      <div class="demo-section-copy">See where the property sits relative to transport, universities and everyday essentials.</div>
+      <div style="margin-top:12px;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(180px,.75fr);gap:12px">
+        <div style="min-height:180px;border-radius:12px;background:
+          radial-gradient(circle at 35% 44%, rgba(200,40,58,.12) 0 9px, transparent 10px),
+          linear-gradient(20deg,transparent 47%,rgba(104,112,117,.18) 48% 50%,transparent 51%),
+          linear-gradient(-25deg,transparent 40%,rgba(104,112,117,.16) 41% 43%,transparent 44%),
+          #EEF0ED;border:1px solid var(--hairline);position:relative;overflow:hidden">
+          <div style="position:absolute;left:33%;top:39%;width:18px;height:18px;border-radius:50% 50% 50% 0;background:#C8283A;transform:rotate(-45deg)"></div>
+          <div style="position:absolute;left:34%;top:40%;width:6px;height:6px;border-radius:50%;background:#fff"></div>
+          <div style="position:absolute;left:14px;bottom:12px;font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:var(--slate)">SWANSTON ST · CARLTON</div>
+        </div>
+        <div style="display:grid;gap:8px">
+          <div class="location-card"><b>Melbourne CBD</b><span>Short tram ride</span></div>
+          <div class="location-card"><b>University precinct</b><span>Nearby campuses</span></div>
+          <div class="location-card"><b>Public transport</b><span>Tram stops nearby</span></div>
+          <div class="location-card"><b>Everyday essentials</b><span>Shops and services</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section style="margin-top:24px;padding-top:20px;border-top:1px solid var(--hairline)">
+      <div class="demo-section-title">See what living there feels like</div>
+      <div class="demo-section-copy">Short videos give renters a quicker sense of the rooms, facilities and day-to-day environment.</div>
+      <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:12px">
+        <div class="reel-card"><div class="reel-thumb">▶</div><div class="reel-title">Room tour</div></div>
+        <div class="reel-card"><div class="reel-thumb">▶</div><div class="reel-title">Shared spaces</div></div>
+        <div class="reel-card"><div class="reel-thumb">▶</div><div class="reel-title">Around Swanston</div></div>
+      </div>
+    </section>
+
+    <section style="margin-top:24px;padding:18px;background:#fff;border:1px solid var(--hairline);border-radius:12px;text-align:center">
+      <div style="font-size:18px;font-weight:600">Found a room that suits you?</div>
+      <div style="font-size:12.5px;line-height:1.5;color:var(--slate);margin-top:5px">Apply, enquire or book a viewing from the same property page.</div>
+      <div style="display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:14px">
+        <button class="demo-cta primary" type="button">Apply now</button>
+        <button class="demo-cta" type="button">Enquire</button>
+        <button class="demo-cta" type="button">Book a viewing</button>
+      </div>
+    </section>
   </div>
+</div>
 
-  <h2 style="font-size:clamp(22px,2.2vw,26px);font-weight:600;letter-spacing:-.015em;margin:clamp(48px,6vw,64px) 0 0">Explore the redesigned journey</h2>
-  <p style="font-size:16px;line-height:1.6;color:var(--slate);max-width:64ch;margin:14px 0 0">
-    Click through a recreated version of the website. One representative journey is built out in full; other branches show the real structure at a lighter level.
-  </p>
-
-  <div style="margin-top:18px;border-radius:16px;overflow:hidden;border:1px solid var(--hairline);background:#FBF8F3;box-shadow:0 12px 36px rgba(25,35,40,.06)">
-    <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;background:#fff;border-bottom:1px solid var(--hairline)">
-      <div style="display:flex;gap:5px">
-        <span style="width:9px;height:9px;border-radius:50%;background:var(--mist)"></span>
-        <span style="width:9px;height:9px;border-radius:50%;background:var(--mist)"></span>
-        <span style="width:9px;height:9px;border-radius:50%;background:var(--mist)"></span>
-      </div>
-      <div style="flex:1;display:flex;align-items:center;gap:8px;background:var(--frost);border:1px solid var(--hairline);border-radius:999px;padding:4px 12px">
-        <button id="backBtn" title="Back" style="border:none;background:none;cursor:pointer;font-size:14px;color:var(--slate);padding:4px">←</button>
-        <span id="demoUrl" style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--slate)">roomingkos.com.au</span>
-      </div>
-    </div>
-
-    <div style="padding:20px 22px 24px;min-height:300px">
-      <div style="display:flex;gap:8px;flex-wrap:wrap;padding-bottom:16px;border-bottom:1px solid var(--hairline);margin-bottom:18px">
-        <button class="demo-nav-btn" data-route="category">Student accommodation</button>
-        <button class="demo-nav-btn" data-route="rooming">Rooming houses</button>
-        <button class="demo-nav-btn" data-route="university">Universities</button>
-      </div>
-
-      <div id="pageTitle" style="font-size:22px;font-weight:600;letter-spacing:-.02em;color:#C8283A"></div>
-      <p id="pageIntro" style="font-size:13px;line-height:1.55;color:var(--slate);margin:8px 0 0;max-width:60ch"></p>
-
-      <div id="pageDynamic"></div>
-    </div>
-  </div>
-
-  <h2 style="font-size:clamp(22px,2.2vw,26px);font-weight:600;letter-spacing:-.015em;margin:clamp(48px,6vw,64px) 0 0">What I changed — and why</h2>
+<h2 style="font-size:clamp(22px,2.2vw,26px);font-weight:600;letter-spacing:-.015em;margin:clamp(48px,6vw,64px) 0 0">What I changed and why</h2>
   <div id="changeBlocks" style="display:grid;gap:14px;margin-top:18px"></div>
 
   <p style="font-size:clamp(20px,2.1vw,22px);font-weight:600;letter-spacing:-.015em;line-height:1.32;max-width:52ch;margin:clamp(44px,5vw,56px) 0 0;padding-left:18px;border-left:3px solid var(--signal);text-wrap:pretty">
-    The person who owns the information can update it directly.
+    The website should answer the questions that would otherwise become enquiries.
   </p>
-
-  <h2 style="font-size:clamp(22px,2.2vw,26px);font-weight:600;letter-spacing:-.015em;margin:clamp(48px,6vw,64px) 0 0">Built iteratively</h2>
-  <p style="font-size:16px;line-height:1.6;color:var(--slate);max-width:64ch;margin:14px 0 0">
-    The redesign evolved iteratively as new user and operational needs became visible.
-  </p>
-
-  <div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:18px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.05em;text-transform:uppercase">
-    <span style="padding:8px 14px;border-radius:999px;background:rgba(247,247,244,.85);border:1px solid var(--hairline);font-weight:500">Observe</span>
-    <span style="color:var(--muted)">→</span>
-    <span style="padding:8px 14px;border-radius:999px;background:rgba(247,247,244,.85);border:1px solid var(--hairline);font-weight:500">Build</span>
-    <span style="color:var(--muted)">→</span>
-    <span style="padding:8px 14px;border-radius:999px;background:rgba(247,247,244,.85);border:1px solid var(--hairline);font-weight:500">Learn</span>
-    <span style="color:var(--muted)">→</span>
-    <span style="padding:8px 14px;border-radius:999px;background:rgba(247,247,244,.85);border:1px solid var(--border-active);color:var(--signal-deep);font-weight:500">Improve</span>
-    <span style="color:var(--signal-deep);font-size:14px">↺</span>
-  </div>
 
   <h2 style="font-size:clamp(22px,2.2vw,26px);font-weight:600;letter-spacing:-.015em;margin:clamp(48px,6vw,64px) 0 0">Impact</h2>
 
@@ -241,9 +421,9 @@
     </div>
 
     <div style="padding:22px 20px;background:rgba(255,255,255,.62);border:1px solid var(--hairline);border-radius:14px;box-shadow:0 10px 30px rgba(15,25,30,.05)">
-      <div style="font-size:32px;font-weight:600;letter-spacing:-.03em;color:var(--signal-deep)">~50%</div>
-      <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;font-weight:500;margin-top:8px">Fewer repeat enquiries</div>
-      <p style="font-size:12px;line-height:1.5;color:var(--muted);margin:10px 0 0">More common questions about rooms, rent, availability and location are now answered on the website before reaching the team.</p>
+      <div style="font-size:18px;font-weight:600;letter-spacing:-.01em;color:var(--signal-deep)">Fewer repeat enquiries</div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--slate);margin-top:6px">Team feedback</div>
+      <p style="font-size:12px;line-height:1.5;color:var(--muted);margin:10px 0 0">More common questions about rooms, rent, availability and location are now answered on the website before reaching Leasing.</p>
     </div>
   </div>
 
@@ -262,65 +442,53 @@
 
 <script>
 const PATHS = [
-  { label:"I’m not sure what room suits me", dest:"Guided Enquiry (popup)", desc:"A short, structured form captures key needs so Leasing can recommend suitable rooms without repeated back-and-forth." },
-  { label:"I know the accommodation type", dest:"Student Accommodation / Rooming Houses", desc:"Go straight to the relevant accommodation category and browse available options." },
-  { label:"I know where I want to live", dest:"Suburb landing page", desc:"Browse RoomingKos properties grouped by suburb, such as Clayton or Malvern East." },
-  { label:"I know my university, not Melbourne", dest:"University / campus page", desc:"Explore properties around a campus, ranked by commute time and rent rate, designed for students unfamiliar with Melbourne geography." },
-  { label:"I already know the room", dest:"Property / room detail → Apply", desc:"Go straight to the relevant room page, check availability and apply." }
+  {
+    label:"I'm not sure what room suits me",
+    dest:"Guided Enquiry",
+    desc:"A short form captures key requirements so Leasing can recommend suitable rooms without repeated back-and-forth."
+  },
+  {
+    label:"I know the accommodation type",
+    dest:"Accommodation category",
+    desc:"Browse the relevant accommodation type and compare available room options."
+  },
+  {
+    label:"I know where I want to live",
+    dest:"Suburb page",
+    desc:"See properties and rooms available in the suburb you already have in mind."
+  },
+  {
+    label:"I know my university, not Melbourne",
+    dest:"University page",
+    desc:"See properties near your campus without needing to know Melbourne suburbs first."
+  },
+  {
+    label:"I already know the room",
+    dest:"Room on its property page",
+    desc:"Go straight to the room details, check availability and continue to enquiry."
+  }
 ];
 
-const RENT_ROOMS = [
-  { name:"Studio Single", weekly:299.18 },
-  { name:"Studio Single Plus", weekly:322.19 },
-  { name:"Studio Double (2 pax)", weekly:391.23 },
-  { name:"Studio Twin", weekly:392.0 },
-  { name:"Studio Deluxe", weekly:392.0 }
-];
-
-const COMPARE = [
-  { key:"single", name:"Studio Single", rent:"From $299.18", resident:"1", size:"15m²", bed:"Single bed" },
-  { key:"plus", name:"Studio Single Plus", rent:"From $329.19", resident:"1", size:"15m²", bed:"Single bed", popular:true },
-  { key:"double", name:"Studio Double", rent:"From $392", resident:"1 – 2", size:"20m²", bed:"Double bed" },
-  { key:"twin", name:"Studio Twin", rent:"From $392", resident:"2", size:"20m²", bed:"2 × single bed" },
-  { key:"deluxe", name:"Studio Deluxe", rent:"From $392", resident:"1 – 2", size:"20m²", bed:"Double bed" }
-];
-
-const SUBURBS = [
-  { key:"all", label:"All suburbs", desc:"See every available rooming house across Melbourne." },
-  { key:"Clayton", label:"Clayton", desc:"A safe, student-oriented area close to Monash University Clayton campus and everyday essentials." },
-  { key:"Chadstone", label:"Chadstone", desc:"Convenient neighbourhood with easy access to Chadstone Shopping Centre, transport and services." },
-  { key:"Malvern East", label:"Malvern East", desc:"A well-connected location close to local shops, public transport and everyday amenities." },
-  { key:"Other", label:"Other suburbs", desc:"Located across a range of suburbs, with convenient access to transport, shops and essential services." }
-];
-
-const PROPERTIES = [
-  { name:"25 Murdo Road, Clayton", suburb:"Clayton", price:380, avail:"14/08/2026", distM:650, anchor:true },
-  { name:"38 Dennis Street, Clayton", suburb:"Clayton", price:430, avail:"21/08/2026", distM:600 },
-  { name:"18 Waverley Road, Chadstone", suburb:"Chadstone", price:300, avail:"08/07/2026", distM:null },
-  { name:"44 Batesford Road, Malvern East", suburb:"Malvern East", price:280, avail:"08/07/2026", distM:null },
-  { name:"622 Warrigal Road, Malvern East", suburb:"Malvern East", price:300, avail:"08/08/2026", distM:null },
-  { name:"103 Monash Drive, Mulgrave", suburb:"Other", price:280, avail:"01/08/2026", distM:2700 },
-  { name:"15 Kings Court, Oakleigh East", suburb:"Other", price:390, avail:"17/08/2026", distM:1400 }
-];
-
-const UNI_PROPERTIES = [
-  { name:"Marshall Monash", tag:"Student accommodation", sub:"43 Marshall Avenue, Clayton VIC 3168", sub2:"550m walk to Monash University Clayton" },
-  { name:"Student Sanctuary Acacia", tag:"Student accommodation", sub:"25 Beddoe Ave, Clayton VIC 3168", sub2:"350m walk to Monash University Clayton" },
-  { name:"25 Murdo Road, Clayton", tag:"Rooming house", sub:"Rooms from $380/wk", sub2:"650m walk to Monash University Clayton", anchor:true }
+const SWANSTON_ROOMS = [
+  {key:"single",name:"Studio Single",weekly:299.18,resident:"1",size:"15m²",bed:"Single bed"},
+  {key:"plus",name:"Studio Single Plus",weekly:329.19,resident:"1",size:"15m²",bed:"Single bed"},
+  {key:"double",name:"Studio Double",weekly:392,resident:"1–2",size:"20m²",bed:"Double bed"},
+  {key:"twin",name:"Studio Twin",weekly:392,resident:"2",size:"20m²",bed:"2 single beds"},
+  {key:"deluxe",name:"Studio Deluxe",weekly:392,resident:"1–2",size:"20m²",bed:"Double bed"}
 ];
 
 const BLOCKS = [
   {
     idx:"01",
-    title:"Start with what people already know",
-    desc:"Prospects can start from what they already know, a room type, suburb or university, or use Guided Enquiry when they still need help deciding.",
-    rows:[["Know the room type","Category page"],["Know the area","Suburb page"],["Know the university","Campus page"],["Not sure yet","Guided Enquiry"]],
+    title:"Create multiple ways to start",
+    desc:"Visitors can begin with a room type, suburb, university or specific room, or use Guided Enquiry when they still need help choosing.",
+    rows:[["Know the room type","Category page"],["Know the area","Suburb page"],["Know the university","Campus page"],["Know the room","Room / property page"],["Not sure yet","Guided Enquiry"]],
     note:"Guided Enquiry appears where people are most likely to need help choosing, while the same structured flow can also be shared directly by link."
   },
   {
     idx:"02",
-    title:"Answer the questions that block a decision",
-    desc:"I turned recurring pre-enquiry questions into self-service tools people could use before contacting the team.",
+    title:"Answer common questions before enquiry",
+    desc:"I added clearer room availability, rent, room comparisons, location guidance and property information so people could narrow down their room options before contacting Leasing.",
     questions:[
       ["Is it available?","Availability + lease dates"],
       ["What's included?","Room + property features"],
@@ -332,8 +500,8 @@ const BLOCKS = [
   },
   {
     idx:"03",
-    title:"Give Building Managers direct control",
-    desc:"Rent, availability and property details change frequently, so I structured the site so Building Managers could update them directly in WordPress Admin instead of routing routine changes through me.",
+    title:"Let Building Managers update property information directly",
+    desc:"Rent, availability, property details and room information can be updated in WordPress by the people managing each building, instead of routing routine changes through me.",
     rows:[["Building Manager","WordPress","Website"]],
     chips:["Rent","Availability","Lease dates","Images","Room features","Campus","Travel time"],
     note:"Before: routine updates came through me. After: Building Managers could publish changes directly."
@@ -342,14 +510,9 @@ const BLOCKS = [
 
 const state = {
   path:0,
-  route:"home",
-  param:null,
-  history:[],
-  suburb:"all",
-  sort:"default",
-  compare:null,
-  rentA:1,
-  rentB:2
+  compare:"single",
+  rentA:0,
+  rentB:1
 };
 
 function money(n) {
@@ -358,316 +521,138 @@ function money(n) {
 
 function renderPaths() {
   const root = document.getElementById("pathOptions");
+  const dest = document.getElementById("pathDest");
+  const desc = document.getElementById("pathDesc");
+  if (!root || !dest || !desc) return;
+
   root.innerHTML = "";
-  PATHS.forEach((p,i)=>{
+  PATHS.forEach((p,i) => {
     const btn = document.createElement("button");
     btn.type = "button";
     btn.className = "path-btn" + (state.path===i ? " active" : "");
     btn.textContent = p.label;
-    btn.addEventListener("click",()=>{
-      state.path=i;
+    btn.addEventListener("click", () => {
+      state.path = i;
       renderPaths();
     });
     root.appendChild(btn);
   });
-  document.getElementById("pathDest").textContent = PATHS[state.path].dest;
-  document.getElementById("pathDesc").textContent = PATHS[state.path].desc;
+
+  dest.textContent = PATHS[state.path].dest;
+  desc.textContent = PATHS[state.path].desc;
 }
 
-function go(route,param=null) {
-  state.history.push({route:state.route,param:state.param});
-  state.route=route;
-  state.param=param;
-  renderPage();
-}
-
-function back() {
-  if (!state.history.length) return;
-  const prev = state.history.pop();
-  state.route=prev.route;
-  state.param=prev.param;
-  renderPage();
-}
-
-function getPage() {
-  const {route,param} = state;
-
-  if(route==="home") return {
-    title:"Find your perfect place to live.",
-    intro:"Explore student accommodation, rooming houses, or search by university — using the menu above.",
-    type:"cards",
-    cards:[{tag:"Rooming house",title:"25 Murdo Road, Clayton",sub:"Rooms from $380/wk",sub2:"650m to Monash Clayton",anchor:true}],
-    note:"Just like a real visitor, you can jump straight into a room from here — no need to go through the menu first."
-  };
-
-  if(route==="category") return {
-    title:"Student accommodation",
-    intro:"Fully furnished student accommodation across prime Melbourne areas.",
-    type:"cards",
-    cards:[
-      {tag:"Melbourne CBD",title:"RoomingKos Swanston",sub:"Studio options · compare types",sub2:"",anchor:true,route:"building"},
-      {tag:"Caulfield",title:"RoomingKos Dudley",sub:"Ensuite rooms from $300/wk",sub2:"Structure shown only",opacity:.62},
-      {tag:"Caulfield",title:"SPIRE by RoomingKos",sub:"Single to studio double",sub2:"Structure shown only",opacity:.62}
-    ]
-  };
-
-  if(route==="building") return {
-    title:param || "RoomingKos Swanston",
-    intro:"Studio options at Swanston — select a column to compare.",
-    type:"compare",
-    note:"The full room-to-application experience is built out at 25 Murdo Road, Clayton."
-  };
-
-  if(route==="rooming") {
-    let list = state.suburb==="all" ? PROPERTIES : PROPERTIES.filter(p=>p.suburb===state.suburb);
-    list = [...list];
-    if(state.sort==="closest") list.sort((a,b)=>(a.distM??Infinity)-(b.distM??Infinity));
-    if(state.sort==="price-asc") list.sort((a,b)=>a.price-b.price);
-    if(state.sort==="price-desc") list.sort((a,b)=>b.price-a.price);
-
-    return {
-      title:"Rooming houses",
-      intro:"Furnished rooms across Melbourne suburbs — for students and young professionals.",
-      type:"rooming",
-      cards:list
-    };
-  }
-
-  if(route==="university") return {
-    title:"Monash University Clayton",
-    intro:"Comfortable, convenient student living minutes from Monash Clayton — properties aggregated by commute time rather than suburb name.",
-    type:"cards",
-    cards:UNI_PROPERTIES,
-    note:"Availability is grouped by intake — available now, Semester 1 2027, and coming soon."
-  };
-
-  return {
-    title:param || "25 Murdo Road, Clayton",
-    intro:"Single room · all bills and utilities included.",
-    type:"property"
-  };
-}
-
-function renderCards(cards) {
-  const wrap = document.createElement("div");
-  wrap.style.cssText = "display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin-top:14px";
-
-  cards.forEach(c=>{
-    const card=document.createElement("div");
-    card.className="demo-card";
-    card.style.opacity = c.opacity ?? (c.anchor ? 1 : .7);
-
-    let sub2 = c.sub2 || "";
-    if ("price" in c) {
-      const dist = c.distM==null ? "" : ((c.distM>=1000 ? (c.distM/1000).toFixed(1)+"km" : c.distM+"m") + " to Monash Clayton");
-      c = {...c, tag:"Rooming house", sub:`Rooms from $${c.price}/wk · available ${c.avail}`, sub2:dist};
-    }
-
+function renderRoomCards() {
+  const root = document.getElementById("roomCards");
+  if (!root) return;
+  root.innerHTML = "";
+  SWANSTON_ROOMS.forEach(room => {
+    const card = document.createElement("div");
+    card.className = "room-option-card" + (state.compare===room.key ? " active" : "");
     card.innerHTML = `
-      <div style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;letter-spacing:.07em;text-transform:uppercase;color:#C8283A;border:1px solid #C8283A;display:inline-block;padding:2px 6px;border-radius:999px">${c.tag || ""}</div>
-      <div style="font-size:13px;font-weight:600;margin-top:6px">${c.title || c.name}</div>
-      <div style="font-size:11.5px;line-height:1.45;color:var(--slate);margin-top:4px">${c.sub || ""}</div>
-      <div style="font-size:11.5px;line-height:1.45;color:var(--slate)">${c.sub2 || ""}</div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;letter-spacing:.07em;text-transform:uppercase;color:#C8283A">${room.resident} resident${room.resident==="1"?"":"s"}</div>
+      <div style="font-size:13px;font-weight:600;margin-top:5px">${room.name}</div>
+      <div style="font-size:16px;font-weight:600;color:#C8283A;margin-top:8px">${money(room.weekly)}/wk</div>
+      <div style="font-size:10.5px;color:var(--slate);margin-top:5px">${room.size} · ${room.bed}</div>
     `;
-
-    if(c.anchor || c.route) {
-      card.addEventListener("click",()=>{
-        if(c.route==="building") go("building",c.title);
-        else go("property",c.title || c.name);
-      });
-    }
-    wrap.appendChild(card);
-  });
-
-  return wrap;
-}
-
-function renderCompare() {
-  const outer=document.createElement("div");
-  outer.className="compare-scroll";
-  outer.innerHTML = `
-    <div style="margin-top:14px">
-      <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.05em;color:var(--muted)">
-        Select a column to compare — furnished, utilities &amp; WiFi, kitchen, bathroom and study desk are included across all types.
-      </div>
-      <div class="compare-table" id="compareTable"></div>
-    </div>
-  `;
-  setTimeout(()=>{
-    const table=document.getElementById("compareTable");
-    const rows=[
-      ["Room type","name"],
-      ["Weekly rent","rent"],
-      ["Resident","resident"],
-      ["Room size","size"],
-      ["Bed type","bed"]
-    ];
-    table.innerHTML = rows.map(([label,key],ri)=>`
-      <div class="compare-row">
-        <div class="compare-feature">${label}</div>
-        ${COMPARE.map(c=>`
-          <div class="compare-cell ${state.compare===c.key?'active':''}" data-key="${c.key}">
-            ${ri===0 && c.popular ? `<span style="display:block;font-family:'IBM Plex Mono',monospace;font-size:7.5px;letter-spacing:.06em;background:#C8283A;color:#fff;padding:2px 5px;border-radius:999px;margin-bottom:3px">MOST POPULAR</span>` : ""}
-            ${c[key]}
-          </div>
-        `).join("")}
-      </div>
-    `).join("");
-
-    table.querySelectorAll(".compare-cell").forEach(cell=>{
-      cell.addEventListener("click",()=>{
-        const key=cell.dataset.key;
-        state.compare = state.compare===key ? null : key;
-        renderPage();
-      });
+    card.addEventListener("click", () => {
+      state.compare = room.key;
+      renderRoomCards();
+      renderCompareTable();
     });
-  },0);
-  return outer;
+    root.appendChild(card);
+  });
 }
 
-function rentCardHtml(r) {
+function renderCompareTable() {
+  const table = document.getElementById("swanstonCompare");
+  if (!table) return;
+  const rows = [
+    ["Room type","name"],
+    ["Weekly rent","weekly"],
+    ["Residents","resident"],
+    ["Room size","size"],
+    ["Bed","bed"]
+  ];
+
+  table.innerHTML = rows.map(([label,key],ri) => `
+    <div class="compare-row">
+      <div class="compare-feature">${label}</div>
+      ${SWANSTON_ROOMS.map(room => {
+        let value = room[key];
+        if (key==="weekly") value = money(value);
+        return `<div class="compare-cell ${state.compare===room.key?'active':''}" data-key="${room.key}">${value}</div>`;
+      }).join("")}
+    </div>
+  `).join("");
+
+  table.querySelectorAll(".compare-cell").forEach(cell => {
+    cell.addEventListener("click", () => {
+      state.compare = cell.dataset.key;
+      renderRoomCards();
+      renderCompareTable();
+    });
+  });
+}
+
+function rentCardHtml(room) {
   return `
     <div style="padding:14px 16px;background:#fff;border:1px solid var(--hairline);border-radius:10px">
-      <div style="font-size:13.5px;font-weight:600;color:#C8283A">${r.name}</div>
-      <div style="display:flex;justify-content:space-between;gap:12px;padding:6px 0;margin-top:8px;font-size:12.5px"><span style="color:var(--slate)">Daily rent</span><b style="color:#C8283A;font-weight:600">${money(r.weekly/7)}/day</b></div>
-      <div style="display:flex;justify-content:space-between;gap:12px;padding:6px 0;border-top:1px solid var(--hairline);font-size:12.5px"><span style="color:var(--slate)">Weekly rent</span><b style="color:#C8283A;font-weight:600">${money(r.weekly)}/week</b></div>
-      <div style="display:flex;justify-content:space-between;gap:12px;padding:6px 0;border-top:1px solid var(--hairline);font-size:12.5px"><span style="color:var(--slate)">Monthly rent</span><b style="color:#C8283A;font-weight:600">${money((r.weekly/7)*365/12)}/month</b></div>
+      <div style="font-size:13.5px;font-weight:600;color:#C8283A">${room.name}</div>
+      <div style="display:flex;justify-content:space-between;gap:12px;padding:6px 0;margin-top:8px;font-size:12.5px">
+        <span style="color:var(--slate)">Daily rent</span><b style="color:#C8283A;font-weight:600">${money(room.weekly/7)}/day</b>
+      </div>
+      <div style="display:flex;justify-content:space-between;gap:12px;padding:6px 0;border-top:1px solid var(--hairline);font-size:12.5px">
+        <span style="color:var(--slate)">Weekly rent</span><b style="color:#C8283A;font-weight:600">${money(room.weekly)}/week</b>
+      </div>
+      <div style="display:flex;justify-content:space-between;gap:12px;padding:6px 0;border-top:1px solid var(--hairline);font-size:12.5px">
+        <span style="color:var(--slate)">Monthly rent</span><b style="color:#C8283A;font-weight:600">${money((room.weekly/7)*365/12)}/month</b>
+      </div>
     </div>
   `;
 }
 
-function renderProperty() {
-  const wrap=document.createElement("div");
-  wrap.innerHTML = `
-    <div style="margin-top:14px;padding:16px;background:#fff;border:1px solid var(--hairline);border-radius:12px">
-      <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
-        <div style="font-size:17px;font-weight:600;letter-spacing:-.015em">Single room</div>
-        <span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.06em;padding:5px 10px;border-radius:999px;font-weight:500;background:#E4EEE7;color:#2F7D5A">Available now</span>
-      </div>
-      <div style="font-size:12px;font-weight:500;color:#C8283A;margin-top:6px">All bills and utilities included</div>
-      <div style="display:flex;flex-wrap:wrap;margin-top:12px;border:1px solid var(--hairline);border-radius:8px;overflow:hidden">
-        <div style="flex:1 1 160px;padding:10px 14px;border-right:1px solid var(--hairline)">
-          <b style="display:block;font-size:14px;font-weight:600">$300 per week</b>
-          <span style="font-size:10.5px;color:var(--slate)">Lease to 31 January 2027</span>
-        </div>
-        <div style="flex:1 1 160px;padding:10px 14px">
-          <b style="display:block;font-size:14px;font-weight:600">$280 per week</b>
-          <span style="font-size:10.5px;color:var(--slate)">Lease to 30 June 2027</span>
-        </div>
-      </div>
-      <div style="display:flex;gap:10px;margin-top:14px;flex-wrap:wrap">
-        <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.05em;padding:10px 16px;border-radius:8px;background:#C8283A;color:#fff">Apply now</span>
-        <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.05em;padding:10px 16px;border-radius:8px;border:1px solid var(--hairline);background:#fff;color:var(--slate)">Video tour</span>
-      </div>
-    </div>
+function renderRentCalculator() {
+  const a = document.getElementById("swanstonRentA");
+  const b = document.getElementById("swanstonRentB");
+  const cards = document.getElementById("swanstonRentCards");
+  if (!a || !b || !cards) return;
 
-    <div style="margin-top:22px;padding-top:18px;border-top:1px dashed var(--hairline)">
-      <div style="font-size:15px;font-weight:600">Compare your rent</div>
+  a.innerHTML = "";
+  b.innerHTML = "";
+  SWANSTON_ROOMS.forEach((room,i) => {
+    const oa = document.createElement("option");
+    oa.value = i;
+    oa.textContent = `${room.name} · ${money(room.weekly)}/wk`;
+    oa.selected = i===state.rentA;
+    a.appendChild(oa);
 
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:10px">
-        <div>
-          <div style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--slate);margin-bottom:6px">Room type 1</div>
-          <select id="rentA" style="width:100%;padding:10px 12px;border-radius:8px;border:1px solid var(--hairline);font-size:13px;background:#fff;color:var(--ink)"></select>
-        </div>
-        <div>
-          <div style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--slate);margin-bottom:6px">Room type 2</div>
-          <select id="rentB" style="width:100%;padding:10px 12px;border-radius:8px;border:1px solid var(--hairline);font-size:13px;background:#fff;color:var(--ink)"></select>
-        </div>
-      </div>
-
-      <div id="rentCards" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:16px"></div>
-      <p style="font-size:12px;color:var(--muted);margin:10px 0 0">Daily = weekly ÷ 7. Monthly = daily × 365 ÷ 12 — real published rates.</p>
-    </div>
-  `;
-
-  setTimeout(()=>{
-    const a=document.getElementById("rentA");
-    const b=document.getElementById("rentB");
-    RENT_ROOMS.forEach((r,i)=>{
-      const oa=document.createElement("option");
-      oa.value=i; oa.textContent=`${r.name} — ${money(r.weekly)}/wk`; oa.selected=i===state.rentA; a.appendChild(oa);
-      const ob=document.createElement("option");
-      ob.value=i; ob.textContent=`${r.name} — ${money(r.weekly)}/wk`; ob.selected=i===state.rentB; b.appendChild(ob);
-    });
-    const update=()=>{
-      document.getElementById("rentCards").innerHTML = rentCardHtml(RENT_ROOMS[state.rentA]) + rentCardHtml(RENT_ROOMS[state.rentB]);
-    };
-    a.addEventListener("change",()=>{ state.rentA=parseInt(a.value,10); update(); });
-    b.addEventListener("change",()=>{ state.rentB=parseInt(b.value,10); update(); });
-    update();
-  },0);
-
-  return wrap;
-}
-
-function renderRooming(page) {
-  const wrap=document.createElement("div");
-
-  const suburbs=document.createElement("div");
-  suburbs.style.cssText="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin-top:14px";
-  SUBURBS.forEach(s=>{
-    const card=document.createElement("div");
-    card.className="suburb-card" + (state.suburb===s.key ? " active" : "");
-    card.innerHTML=`<div style="font-size:12.5px;font-weight:600;color:#C8283A">${s.label}</div><div style="font-size:11px;line-height:1.45;color:var(--slate);margin-top:5px">${s.desc}</div>`;
-    card.addEventListener("click",()=>{ state.suburb=s.key; renderPage(); });
-    suburbs.appendChild(card);
+    const ob = document.createElement("option");
+    ob.value = i;
+    ob.textContent = `${room.name} · ${money(room.weekly)}/wk`;
+    ob.selected = i===state.rentB;
+    b.appendChild(ob);
   });
-  wrap.appendChild(suburbs);
 
-  const toolbar=document.createElement("div");
-  toolbar.style.cssText="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:22px";
-  toolbar.innerHTML=`
-    <div style="font-size:15px;font-weight:600">Available rooms</div>
-    <select id="sortSelect" style="padding:9px 12px;border-radius:8px;border:1px solid var(--hairline);font-size:12.5px;background:#fff;color:var(--ink)">
-      <option value="default">Sort: default</option>
-      <option value="closest">Closest to Monash Clayton</option>
-      <option value="price-asc">Price: low to high</option>
-      <option value="price-desc">Price: high to low</option>
-    </select>`;
-  wrap.appendChild(toolbar);
+  const update = () => {
+    cards.innerHTML = rentCardHtml(SWANSTON_ROOMS[state.rentA]) + rentCardHtml(SWANSTON_ROOMS[state.rentB]);
+  };
 
-  const cards=renderCards(page.cards);
-  wrap.appendChild(cards);
-
-  setTimeout(()=>{
-    const sel=document.getElementById("sortSelect");
-    sel.value=state.sort;
-    sel.addEventListener("change",()=>{ state.sort=sel.value; renderPage(); });
-  },0);
-
-  return wrap;
+  a.onchange = () => {
+    state.rentA = parseInt(a.value,10);
+    update();
+  };
+  b.onchange = () => {
+    state.rentB = parseInt(b.value,10);
+    update();
+  };
+  update();
 }
 
-function renderPage() {
-  const page=getPage();
-  document.getElementById("pageTitle").textContent=page.title;
-  document.getElementById("pageIntro").textContent=page.intro;
-
-  const urlMap={
-    home:"roomingkos.com.au",
-    category:"roomingkos.com.au/student-accommodation/",
-    building:"roomingkos.com.au/student-accommodation/roomingkos-swanston",
-    rooming:"roomingkos.com.au/rooming-houses/",
-    university:"roomingkos.com.au/university/monash-clayton/",
-    property:"roomingkos.com.au/properties/25-murdo-road-clayton"
-  };
-  document.getElementById("demoUrl").textContent=urlMap[state.route] || "roomingkos.com.au";
-  document.getElementById("backBtn").style.opacity=state.history.length ? "1" : ".3";
-
-  const root=document.getElementById("pageDynamic");
-  root.innerHTML="";
-
-  if(page.type==="cards") root.appendChild(renderCards(page.cards));
-  if(page.type==="compare") root.appendChild(renderCompare());
-  if(page.type==="rooming") root.appendChild(renderRooming(page));
-  if(page.type==="property") root.appendChild(renderProperty());
-
-  if(page.note) {
-    const note=document.createElement("div");
-    note.style.cssText="margin-top:16px;padding:12px 16px;background:var(--frost);border-left:3px solid #C8283A;border-radius:0 8px 8px 0;font-size:12.5px;line-height:1.55;color:var(--slate)";
-    note.textContent=page.note;
-    root.appendChild(note);
-  }
+function renderSwanstonDemo() {
+  renderRoomCards();
+  renderCompareTable();
+  renderRentCalculator();
 }
 
 function renderBlocks() {
@@ -749,13 +734,8 @@ function renderBlocks() {
   });
 }
 
-document.querySelectorAll(".demo-nav-btn").forEach(btn=>{
-  btn.addEventListener("click",()=>go(btn.dataset.route));
-});
-document.getElementById("backBtn").addEventListener("click",back);
-
 renderPaths();
-renderPage();
+renderSwanstonDemo();
 renderBlocks();
 </script>
 </body>
