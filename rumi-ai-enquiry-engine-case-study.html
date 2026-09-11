@@ -439,31 +439,14 @@
 
     <p class="ownership">I led the Leasing discovery, designed the decision logic and human hand-off, and worked with one developer to ship the workflow.</p>
 
-    <h2>The next problem appeared downstream</h2>
-    <p class="body-copy">The Guided Enquiry flow on the RoomingKos website improved the quality and structure of incoming rental enquiries. But room matching and recommendation were still manual, typically taking Leasing 5–7 minutes per enquiry.</p>
-
-    <div class="progression">
-      <div class="progress-card">
-        <div class="progress-label mono">Guided Enquiry</div>
-        <div class="progress-text">Better, more structured prospect information.</div>
-      </div>
-      <div class="arrow">→</div>
-      <div class="progress-card signal">
-        <div class="progress-label mono">New bottleneck</div>
-        <div class="progress-text">Room matching and recommendation were still manual.</div>
-      </div>
-    </div>
-
-    <h2>What Leasing’s process revealed</h2>
+    <h2>From better enquiries to faster decisions</h2>
+    <p class="body-copy">A new website enquiry workflow captured prospect requirements and preferences in a more structured format. But Leasing still spent 5–7 minutes checking available rooms and preparing a recommendation for each enquiry.</p>
+    <p class="body-copy">Rumi was built to reduce that manual work:</p>
     <div class="finding-list">
-      <div class="finding"><span class="finding-dot"></span><span><strong>Room matching relied on a mix of fixed business rules and contextual judgement.</strong> Some criteria were clear-cut, while preferences such as location, budget and room type could carry different weight depending on the prospect’s wider needs and trade-offs.</span></div>
-      <div class="finding"><span class="finding-dot"></span><span><strong>Some requirements could not be verified from the available data.</strong> Those unknowns needed to remain visible rather than being guessed away.</span></div>
-      <div class="finding"><span class="finding-dot"></span><span><strong>The final recommendation still needed a human owner.</strong> A system could narrow and explain the strongest options, but Leasing needed to retain control of the decision and customer response.</span></div>
-    </div>
-
-    <div class="core-question">
-      How do we structure the way an experienced Leasing Manager evaluates and recommends rooms — without removing the judgement that still belongs to them?
-      <div class="question-label mono">The question behind Rumi</div>
+      <div class="finding"><span class="finding-dot"></span><span><strong>Apply eligibility rules</strong> to remove rooms that do not meet clear requirements.</span></div>
+      <div class="finding"><span class="finding-dot"></span><span><strong>Compare suitable rooms</strong> across factors such as location, price and room fit.</span></div>
+      <div class="finding"><span class="finding-dot"></span><span><strong>Flag anything that still needs checking</strong> for Leasing to verify.</span></div>
+      <div class="finding"><span class="finding-dot"></span><span><strong>Prepare a recommendation and draft response</strong> for Leasing to review.</span></div>
     </div>
 
     <h2>See the decision logic in action</h2>
@@ -523,7 +506,7 @@
           </div>
           <div class="reply-action">
             <button class="regen-btn mono" id="regenerate" type="button">Regenerate</button>
-            <div class="regen-note">Built from a template I wrote — Rumi fills in the room facts and adapts tone or emphasis to staff instructions.</div>
+            <div class="regen-note">Built from a template I wrote — Rumi fills in the room facts and adapts tone or emphasis to Leasing instructions.</div>
           </div>
           <div class="applied-tag mono" id="appliedTag"></div>
           <div class="generated-response" id="replyText"></div>
@@ -537,10 +520,10 @@
     <div class="accordion">
       <div class="decision-card" data-card="rules">
         <div class="decision-header">
-          <div class="decision-title"><span class="decision-num mono">01</span>Separate rules from judgement</div>
+          <div class="decision-title"><span class="decision-num mono">01</span>Use rules for clear decisions</div>
           <button class="accordion-btn mono" type="button">Inspect +</button>
         </div>
-        <div class="decision-summary">I modelled the recommendation process in layers: remove impossible options, compare viable ones, surface uncertainty, then use AI where contextual reasoning adds value.</div>
+        <div class="decision-summary">Availability, move-in timing and room eligibility are checked first, before any room is considered further.</div>
         <div class="decision-detail">
           <div class="prospect-needs"><span class="mono">Prospect needs</span>Student · Oct move-in · 12+ months · $400/wk · Monash Clayton · Female-only</div>
           <div class="tabs" id="stageTabs"></div>
@@ -550,19 +533,45 @@
             <div class="stage-result mono" id="stageResult"></div>
             <div class="stage-note" id="stageNote"></div>
           </div>
-          <div class="legend mono"><span><b>Impossible</b> → Remove</span><span><b>Trade-off</b> → Compare</span><span><b>Unknown</b> → Verify</span></div>
+          <div class="legend mono"><span><b>Ineligible</b> → Remove</span><span><b>Trade-off</b> → Compare</span><span><b>Unconfirmed</b> → Verify</span></div>
+        </div>
+      </div>
+
+      <div class="decision-card" data-card="ai">
+        <div class="decision-header">
+          <div class="decision-title"><span class="decision-num mono">02</span>Use AI for comparison</div>
+          <button class="accordion-btn mono" type="button">Inspect +</button>
+        </div>
+        <div class="decision-summary">AI compares the rooms that pass the rules across factors such as location, price and room fit, then explains the strongest options for Leasing to review.</div>
+        <div class="decision-detail">
+          <div class="future-flow mono">
+            <span class="future-node">Eligible rooms</span><span>→</span><span class="future-node built">Compare location · price · room fit</span><span>→</span><span class="future-node">Explain trade-offs</span><span>→</span><span class="future-node built">Recommended shortlist</span>
+          </div>
+          <div class="future-note">AI is used after the rule-based checks, not instead of them.</div>
+        </div>
+      </div>
+
+      <div class="decision-card" data-card="failure">
+        <div class="decision-header">
+          <div class="decision-title"><span class="decision-num mono">03</span>Flag what cannot be confirmed</div>
+          <button class="accordion-btn mono" type="button">Inspect +</button>
+        </div>
+        <div class="decision-summary">If the available data cannot verify a requirement, Rumi flags it for Leasing. If the model fails, the workflow falls back or hands the enquiry over instead of guessing.</div>
+        <div class="decision-detail">
+          <div class="scenario-tabs" id="scenarioTabs"></div>
+          <div class="scenario-flow" id="scenarioFlow"></div>
         </div>
       </div>
 
       <div class="decision-card" data-card="human">
         <div class="decision-header">
-          <div class="decision-title"><span class="decision-num mono">02</span>Keep the human in control</div>
+          <div class="decision-title"><span class="decision-num mono">04</span>Keep the final decision with Leasing</div>
           <button class="accordion-btn mono" type="button">Inspect +</button>
         </div>
-        <div class="decision-summary">I designed the hand-off so Leasing could inspect the evidence, change which rooms were included and tailor the final response before anything reached the prospect.</div>
+        <div class="decision-summary">Leasing can review why each room was recommended, change the shortlist and edit the customer response before sending.</div>
         <div class="decision-detail">
           <div class="handoff">
-            <div class="handoff-node"><div class="handoff-title">Rumi prepares</div><div class="handoff-sub mono">Summary · Recommendations · Rationale · Trade-offs · Unknowns</div></div>
+            <div class="handoff-node"><div class="handoff-title">Rumi prepares</div><div class="handoff-sub mono">Summary · Recommendations · Reasons · Trade-offs · Unconfirmed items</div></div>
             <div class="handoff-arrow">↓</div>
             <div class="handoff-node signal"><div class="handoff-title">Leasing reviews</div><div class="handoff-sub mono">Verify · Include / Exclude · Adjust recommendation</div></div>
             <div class="handoff-arrow">↓</div>
@@ -572,33 +581,7 @@
             <div class="handoff-arrow">↓</div>
             <div class="handoff-node dark"><div class="handoff-title">Final customer response</div></div>
           </div>
-          <div class="handoff-principle">Reduce cognitive work — without transferring decision or communication control.</div>
-        </div>
-      </div>
-
-      <div class="decision-card" data-card="failure">
-        <div class="decision-header">
-          <div class="decision-title"><span class="decision-num mono">03</span>Design for uncertainty and failure</div>
-          <button class="accordion-btn mono" type="button">Inspect +</button>
-        </div>
-        <div class="decision-summary">The workflow needed explicit behaviour when normal decision-making broke down. I designed paths for model failure, missing data and overlapping ownership so Rumi could fall back, flag or hand over instead of silently failing or inventing certainty.</div>
-        <div class="decision-detail">
-          <div class="scenario-tabs" id="scenarioTabs"></div>
-          <div class="scenario-flow" id="scenarioFlow"></div>
-        </div>
-      </div>
-
-      <div class="decision-card" data-card="beyond">
-        <div class="decision-header">
-          <div class="decision-title"><span class="decision-num mono">04</span>Design beyond the feature</div>
-          <button class="accordion-btn mono" type="button">Inspect +</button>
-        </div>
-        <div class="decision-summary">I treated Rumi as one layer in a wider customer and operational system rather than a standalone AI feature. Structuring the enquiry first, then the decision that followed, created a reusable foundation that could later connect into CRM and operational workflows.</div>
-        <div class="decision-detail">
-          <div class="future-flow mono">
-            <span class="future-node">Enquiry</span><span>→</span><span class="future-node built">Recommendation</span><span>→</span><span class="future-node future">Conversion</span><span>→</span><span class="future-node future">Operations</span>
-          </div>
-          <div class="future-note">Future direction — CRM and operational connections are not yet built.</div>
+          <div class="handoff-principle">Reduce manual work without removing Leasing's control of the recommendation or customer response.</div>
         </div>
       </div>
     </div>
@@ -610,7 +593,7 @@
     <div class="outcome-main">
       <div class="outcome-copy">
         <div class="outcome-label mono">Room matching &amp; response preparation</div>
-        <div class="outcome-text">Rumi cut room-matching and response preparation from 5–7 minutes to under one minute, generating both a review-ready recommendation and a prospect-ready response for Leasing.</div>
+        <div class="outcome-text">Rumi cut room-matching and response preparation from 5–7 minutes to under one minute, giving Leasing a recommended shortlist and draft response ready to review.</div>
       </div>
       <div class="outcome-metric">
         <div class="before mono">5–7 min</div>
@@ -620,9 +603,9 @@
     </div>
 
     <div class="outcome-grid">
-      <div class="outcome-card"><div class="outcome-num mono">01</div><div class="outcome-title">Repeatable decision flow</div><div class="outcome-desc">Room matching became a repeatable decision flow, with rules, trade-offs and unknowns surfaced consistently for review.</div></div>
-      <div class="outcome-card"><div class="outcome-num mono">02</div><div class="outcome-title">Faster follow-up</div><div class="outcome-desc">Leasing receives both the recommendation and a prospect-ready response, reducing the work between enquiry and customer follow-up.</div></div>
-      <div class="outcome-card future"><div class="outcome-num mono">03</div><div class="outcome-title">Designed to extend</div><div class="outcome-desc">The structured enquiry-to-decision flow provides a reusable foundation for future CRM and operational integrations.</div></div>
+      <div class="outcome-card"><div class="outcome-num mono">01</div><div class="outcome-title">Repeatable decision flow</div><div class="outcome-desc">Room matching became more consistent, with rules, trade-offs and unconfirmed requirements shown clearly for review.</div></div>
+      <div class="outcome-card"><div class="outcome-num mono">02</div><div class="outcome-title">Faster follow-up</div><div class="outcome-desc">Leasing receives both a recommended shortlist and a draft response, reducing the work between enquiry and customer follow-up.</div></div>
+      <div class="outcome-card future"><div class="outcome-num mono">03</div><div class="outcome-title">Designed to extend</div><div class="outcome-desc">The same enquiry and decision structure can later connect to CRM and operational workflows.</div></div>
     </div>
 
     <div class="tags mono"><span class="tag">AI workflow</span><span class="tag">Decision rules</span><span class="tag">Human-in-the-loop</span><span class="tag">Failure design</span></div>
